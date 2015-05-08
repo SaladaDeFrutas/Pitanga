@@ -1,7 +1,0 @@
-INDEX VERSION 1.3+C:\Users\Daniel\git\SVRI\2-Projeto\2.03-Código-Fonte\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
-3594429082.index
-1812718000.index
-231072123.index
-3703185501.index
-1958521715.index
-1292162322.index
