@@ -17,7 +17,7 @@
 <body class = pagina>	
 <c:import url="cabecalho.jsp"/>
 <h3 >Ingressos:</h3>
-<form action="lugares" method = "get" >
+<form action="lugares" method = "post" >
 <table>
 	<tr>
 		<td>
@@ -44,7 +44,7 @@
 						 <option value = "4">4</option>
 						 <option value = "5">5</option>
 					</select>
-				
+				<input type="hidden" name = "nomeTipoIngresso" value = "${tipoIngresso.nome}">
 				<!-- <input type = "text" name = "quantidadeIngresso"> -->
 				</td>  
 			</tr>
@@ -52,6 +52,7 @@
 </table>
 	<br><button type="submit" class="btn btn-default">Enviar</button>
 	<input type="hidden" name = "id" value = "${sessao.id}">
+	
 </form>
 
 </body>
