@@ -7,7 +7,7 @@ import javax.persistence.PersistenceContext;
 
 import org.springframework.stereotype.Repository;
 
-import svri.entidades.Assento;
+import svri.entidades.TipoAssento;
 import svri.interfaces.dao.InterfaceAssentoDao;
 
 @Repository
@@ -17,31 +17,31 @@ public class AssentoDao implements InterfaceAssentoDao{
 	private EntityManager manager;
 
 	@Override
-	public void adicionarAssento(Assento umAssento) {
+	public void adicionarAssento(TipoAssento umAssento) {
 		manager.persist(umAssento);
 	}
 
 	@Override
-	public void removerAssento(Assento umAssento) {
-		Assento assentoARemover = buscarPorId(umAssento.getId());
+	public void removerAssento(TipoAssento umAssento) {
+		TipoAssento assentoARemover = buscarPorId(umAssento.getId());
 		manager.remove(assentoARemover);
 		
 	}
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<Assento> listarAssentos() {
+	public List<TipoAssento> listarAssentos() {
 		
 		return manager.createQuery("from Assento").getResultList();
 	}
 
 	@Override
-	public void alterarAssento(Assento umAssento) {
+	public void alterarAssento(TipoAssento umAssento) {
 		manager.merge(umAssento);
 	}
 
 	@Override
-	public Assento buscarPorId(int id) {
-		return manager.find(Assento.class, id);
+	public TipoAssento buscarPorId(int id) {
+		return manager.find(TipoAssento.class, id);
 	}
 }
