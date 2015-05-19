@@ -1,5 +1,6 @@
 package svri.entidades;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -12,6 +13,7 @@ public class TipoIngresso {
 	private String nome;
 	@Id
 	@GeneratedValue
+	@Column(name = "idTipoIngresso")
 	private int id;
 	
 	public String getNome() {
