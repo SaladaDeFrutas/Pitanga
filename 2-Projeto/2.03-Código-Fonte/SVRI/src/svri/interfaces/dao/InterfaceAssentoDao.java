@@ -2,15 +2,15 @@ package svri.interfaces.dao;
 
 import java.util.List;
 
-import svri.entidades.Assento;
+import svri.entidades.TipoAssento;
 
 
 
 public interface InterfaceAssentoDao {
 
-	public void adicionarAssento(Assento umAssento);
-	public void removerAssento(Assento umAssento);
-	public List<Assento> listarAssentos();
-	public void alterarAssento(Assento umAssento);
-	public Assento buscarPorId(int Id);
+	public void adicionarAssento(TipoAssento umAssento);
+	public void removerAssento(TipoAssento umAssento);
+	public List<TipoAssento> listarAssentos();
+	public void alterarAssento(TipoAssento umAssento);
+	public TipoAssento buscarPorId(int Id);
 }
