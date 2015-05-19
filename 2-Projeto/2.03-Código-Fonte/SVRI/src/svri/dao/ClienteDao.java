@@ -20,7 +20,6 @@ public class ClienteDao implements InterfaceClienteDao{
 	@Override
 	public void adicionarCliente(Cliente umCliente) {
 		umCliente.setSenha(FuncaoHash.gerarHash(umCliente.getSenha()));
-		System.out.println("HASH CADASTRADO: "+umCliente.getSenha());
 		manager.persist(umCliente);
 	}
 
@@ -45,13 +44,15 @@ public class ClienteDao implements InterfaceClienteDao{
 		return manager.find(Cliente.class, email);
 	}
 
+	/**
+	 * recebe o objeto cliente que deve possuir o ID
+	 * do cliente para buscar no banco
+	 */
 	@Override
 	public boolean checarCliente(Cliente cliente) {
 		
 		Cliente clienteBuscado = buscarPorId(cliente.getEmail());
-		System.out.println("SENHA DO BANCO: " + clienteBuscado.getSenha());
-		System.out.println("SENHA DIGITADA: " + FuncaoHash.gerarHash(cliente.getSenha()));
-		if(clienteBuscado != null){
+		if(null != clienteBuscado){
 			if (clienteBuscado.getEmail().equals(cliente.getEmail())){
 				if(clienteBuscado.getSenha().equals(FuncaoHash.gerarHash(cliente.getSenha()))){
 					return true;
