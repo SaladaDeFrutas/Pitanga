@@ -3,22 +3,22 @@ package svri.entidades;
 import java.util.Calendar;
 
 import javax.persistence.CascadeType;
-import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
 import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.stereotype.Repository;
 
-@Repository
+@Entity
+@Table(name = "registrosCompra")
 public class RegistroCompra {
 	
 	@Id
 	@GeneratedValue
-	@Column(name = "idRegistroCompra")
-	private int idCompra;
+	private int idRegistroCompra;
 	@DateTimeFormat(pattern="dd/MM/yyyy HH:mm")
 	private Calendar dataCompra;
 	@OneToOne(cascade=CascadeType.ALL)
@@ -28,10 +28,10 @@ public class RegistroCompra {
 	private boolean pagamentoAprovado;
 	
 	public int getIdCompra() {
-		return idCompra;
+		return idRegistroCompra;
 	}
 	public void setIdCompra(int idCompra) {
-		this.idCompra = idCompra;
+		this.idRegistroCompra = idCompra;
 	}
 	public Calendar getDataCompra() {
 		return dataCompra;

@@ -11,7 +11,7 @@ public class Assento {
 	
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "idTipoAssento")
-	TipoAssento tipoAssento;
+	private TipoAssento tipoAssento;
 	
 	private int fileira;
 	private int coluna;
@@ -27,6 +27,13 @@ public class Assento {
 	}
 	public void setColuna(int coluna) {
 		this.coluna = coluna;
+	}
+	
+	public TipoAssento getTipoAssento() {
+		return tipoAssento;
+	}
+	public void setTipoAssento(TipoAssento tipoAssento) {
+		this.tipoAssento = tipoAssento;
 	}
 	
 }

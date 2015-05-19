@@ -1,6 +1,7 @@
 package svri.controller;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -15,16 +16,22 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import svri.auxiliares.Compra;
+import svri.dao.RegistroCompraDao;
 import svri.entidades.Assento;
 import svri.entidades.Cliente;
 import svri.entidades.Filme;
+import svri.entidades.Ingresso;
 import svri.entidades.Peca;
+import svri.entidades.RegistroCompra;
 import svri.entidades.Sala;
 import svri.entidades.Sessao;
 import svri.entidades.TipoIngresso;
 import svri.interfaces.dao.InterfaceClienteDao;
 import svri.interfaces.dao.InterfaceFilmeDao;
+import svri.interfaces.dao.InterfaceIngressoDao;
 import svri.interfaces.dao.InterfacePecaDao;
+import svri.interfaces.dao.InterfaceRegistroCompraDao;
 import svri.interfaces.dao.InterfaceSalaDao;
 import svri.interfaces.dao.InterfaceSessaoDao;
 import svri.interfaces.dao.InterfaceTipoIngressoDao;
@@ -64,6 +71,14 @@ public class SistemaController {
 	@Autowired
 	@Qualifier("SalaDao")
 	private InterfaceSalaDao salaDao;
+	
+	@Autowired
+	@Qualifier("RegistroCompraDao")
+	private InterfaceRegistroCompraDao registroCompraDao;
+	
+	@Autowired
+	@Qualifier("IngressoDao")
+	private InterfaceIngressoDao ingressoDao;
 	
 	@RequestMapping("/mostrarFilme")
 	public String mostrarFilme(Filme umFilme, Model model){
@@ -201,13 +216,47 @@ public class SistemaController {
 	public String finalizaCompra(@RequestParam ArrayList<Assento> assentos,
 			@RequestParam ArrayList<Integer> quantidadeIngresso,
 			@RequestParam ArrayList<String> nomeTipoIngresso, Sessao umaSessao, HttpSession sessaoUsuario) {
-			System.out.println(assentos);
-			System.out.println(quantidadeIngresso);
-			System.out.println(nomeTipoIngresso);
-			System.out.println("ID: "+umaSessao.getId() + " Atracao: " +
-					umaSessao.getAtracao() + " Data: " +
-					umaSessao.getData().getTime() + " Sala: " +
-					umaSessao.getSala() );
+			
+			umaSessao = sessaoDao.buscarPorId(umaSessao.getId());
+			
+			for (int i = 0; i< quantidadeIngresso.size(); i++) {
+				int quantidade = quantidadeIngresso.get(i);
+				if(quantidade == 0){
+					quantidadeIngresso.remove(i);
+					nomeTipoIngresso.remove(i);
+				}
+			}
+		
+			Cliente umCliente = (Cliente)sessaoUsuario.getAttribute("usuarioLogado");
+		
+			Calendar dataCompra = Calendar.getInstance();
+			RegistroCompra novoRegistroCompra = new RegistroCompra();
+			novoRegistroCompra.setDataCompra(dataCompra);
+			novoRegistroCompra.setPagamentoAprovado(false);
+			novoRegistroCompra.setUmCliente(umCliente);
+			novoRegistroCompra.setValor(0);
+			registroCompraDao.adicionarRegistroCompra(novoRegistroCompra);
+			
+			ArrayList<Ingresso> ingressos = new ArrayList<>();
+			
+			for (int i = 0; i < assentos.size(); i++) {
+				Assento umAssento = assentos.get(i);
+				
+				TipoIngresso umTipoIngresso = tipoIngressoDao.
+						buscarPorNome(nomeTipoIngresso.get(i));
+				
+				Ingresso umIngresso = new Ingresso();
+				umIngresso.setUmaSessao(umaSessao);
+				umIngresso.setUmAssento(umAssento);
+				umIngresso.setUmTipoIngresso(umTipoIngresso);
+				umIngresso.setUmCliente(umCliente);
+				umIngresso.setRegistroCompra(novoRegistroCompra);
+				ingressoDao.adicionarIngresso(umIngresso);
+				
+			}
+			
+			Compra novaCompra = new Compra();
+			novaCompra.calcularTotal(ingressos,novoRegistroCompra);
 			
 			return "notFound";
 	}
