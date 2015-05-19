@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import svri.entidades.Cliente;
 import svri.entidades.Ingresso;
+import svri.entidades.RegistroCompra;
 import svri.interfaces.dao.InterfaceIngressoDao;
 
 @Repository
@@ -49,6 +50,12 @@ public class IngressoDao implements InterfaceIngressoDao{
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Ingresso> buscaPorCliente(Cliente umCliente) {
-		return manager.createQuery("from Ingresso as i where cliente.email="+umCliente.getEmail()).getResultList();
+		return manager.createQuery("from Ingresso as i where umCliente.email="+umCliente.getEmail()).getResultList();
+	}
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Ingresso> buscaPorRegistroCompra(RegistroCompra umRegistroCompra) {
+		return manager.createQuery("from Ingresso as i where registroCompra.idCompra="+umRegistroCompra.getIdCompra()).getResultList();
 	}
 }

@@ -4,6 +4,7 @@ import java.util.List;
 
 import svri.entidades.Cliente;
 import svri.entidades.Ingresso;
+import svri.entidades.RegistroCompra;
 
 public interface InterfaceIngressoDao {
 
@@ -13,4 +14,5 @@ public interface InterfaceIngressoDao {
 	public void alterarIngresso(Ingresso umIngresso);
 	public Ingresso buscarPorId(int Id);
 	public List<Ingresso> buscaPorCliente(Cliente umCliente);
+	public List<Ingresso> buscaPorRegistroCompra(RegistroCompra umRegistroCompra);
 }
