@@ -1,6 +1,7 @@
 package svri.entidades;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -19,14 +20,24 @@ public class Ingresso {
 	@JoinColumn(name = "email")
 	private Cliente umCliente;
 	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "id")
+	@JoinColumn(name = "idSessao")
 	private Sessao umaSessao;
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "id")
+	@Embedded
 	private Assento umAssento;
 	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "id")
+	@JoinColumn(name = "idTipoIngresso")
 	private TipoIngresso umTipoIngresso;
+	
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "idRegistroCompra")
+	private RegistroCompra registroCompra;
+	
+	public RegistroCompra getRegistroCompra() {
+		return registroCompra;
+	}
+	public void setRegistroCompra(RegistroCompra registroCompra) {
+		this.registroCompra = registroCompra;
+	}
 	public int getId() {
 		return id;
 	}

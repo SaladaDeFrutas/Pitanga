@@ -1,8 +1,8 @@
 package svri.entidades;
 
-import java.sql.Date;
 import java.util.Calendar;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -18,6 +18,7 @@ public abstract class Atracao {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.TABLE)
+	@Column(name = "idAtracao")
 	private int id;
 	private String titulo;
 	private String idioma;
