@@ -46,7 +46,7 @@ public class SessaoDao implements InterfaceSessaoDao{
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Sessao> buscarPorAtracao(Atracao umaAtracao) {
-		return manager.createQuery("from Sessao as s where s.atracao="+umaAtracao.getId()).getResultList();
+		return manager.createQuery("from Sessao as s where atracao.id="+umaAtracao.getId()).getResultList();
 
 	}
 

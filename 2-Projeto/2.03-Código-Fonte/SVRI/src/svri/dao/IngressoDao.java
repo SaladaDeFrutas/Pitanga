@@ -48,7 +48,7 @@ public class IngressoDao implements InterfaceIngressoDao{
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<Cliente> buscaPorCliente(Cliente umCliente) {
-		return manager.createQuery("select i from ingressos i where i.cliente="+umCliente.getEmail()).getResultList();
+	public List<Ingresso> buscaPorCliente(Cliente umCliente) {
+		return manager.createQuery("from Ingresso as i where cliente.email="+umCliente.getEmail()).getResultList();
 	}
 }
