@@ -2,32 +2,30 @@ package svri.entidades;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "tiposIngresso")
 public class TipoIngresso {
-
-	private String nome;
 	@Id
-	@GeneratedValue
-	@Column(name = "idTipoIngresso")
-	private int id;
+	@Column(name = "nomeTipoIngresso")
+	private String nome;
 	
+	private double preco;
+	
+	public double getPreco() {
+		return preco;
+	}
+	public void setPreco(double preco) {
+		this.preco = preco;
+	}
 	public String getNome() {
 		return nome;
 	}
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	public int getId() {
-		return id;
-	}
-	public void setId(int id) {
-		this.id = id;
-	}
-	
+
 	
 }

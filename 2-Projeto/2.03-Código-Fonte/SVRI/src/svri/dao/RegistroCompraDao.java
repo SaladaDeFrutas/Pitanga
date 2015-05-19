@@ -47,7 +47,7 @@ public class RegistroCompraDao implements InterfaceRegistroCompraDao{
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<RegistroCompra> buscaPorCliente(Cliente umCliente) {
-		return manager.createQuery("from RegistroCompra as r where cliente.email="+umCliente.getEmail()).getResultList();
+		return manager.createQuery("from RegistroCompra as r where umCliente.email="+umCliente.getEmail()).getResultList();
 	}
 
 }

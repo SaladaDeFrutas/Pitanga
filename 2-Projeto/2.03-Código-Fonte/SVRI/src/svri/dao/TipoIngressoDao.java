@@ -19,7 +19,7 @@ public class TipoIngressoDao implements InterfaceTipoIngressoDao{
 
 	@Override
 	public void removerTipoIngresso(TipoIngresso umTipoIngresso) {
-		TipoIngresso TipoIngressoARemover = buscarPorId(umTipoIngresso.getId());
+		TipoIngresso TipoIngressoARemover = buscarPorNome(umTipoIngresso.getNome());
 		manager.remove(TipoIngressoARemover);
 		
 	}
@@ -37,7 +37,7 @@ public class TipoIngressoDao implements InterfaceTipoIngressoDao{
 	}
 
 	@Override
-	public TipoIngresso buscarPorId(int id) {
-		return manager.find(TipoIngresso.class, id);
+	public TipoIngresso buscarPorNome(String nome) {
+		return manager.find(TipoIngresso.class, nome);
 	}
 }

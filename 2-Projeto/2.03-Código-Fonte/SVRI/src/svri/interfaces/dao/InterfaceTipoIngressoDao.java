@@ -10,6 +10,5 @@ public interface InterfaceTipoIngressoDao {
 	 public void removerTipoIngresso(TipoIngresso umTipoIngresso);
 	 public List<TipoIngresso> listarTipoIngresso();
 	 public void alterarTipoIngresso(TipoIngresso umTipoIngresso);
-	 public TipoIngresso buscarPorId(int id);
-
+	 public TipoIngresso buscarPorNome(String nome);
 }
