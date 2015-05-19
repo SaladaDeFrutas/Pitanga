@@ -14,11 +14,10 @@
     <servlet-name>springmvc</servlet-name>
     <url-pattern>/</url-pattern>
   </servlet-mapping>
-  
-  <error-page>
-  	<error-code>404</error-code>
- 	 <location>/notFound</location>
-  </error-page>
+ 
+ <session-config>
+ 	<session-timeout>5</session-timeout>
+ </session-config>
   
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>

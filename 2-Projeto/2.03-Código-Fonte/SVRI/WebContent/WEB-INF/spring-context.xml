@@ -53,6 +53,8 @@
 	<bean id="PecaDao" class="svri.dao.PecaDao" />
 	<bean id="SessaoDao" class="svri.dao.SessaoDao" />
 	<bean id="TipoIngressoDao" class="svri.dao.TipoIngressoDao"/>
+	<bean id="SalaDao" class="svri.dao.SalaDao"/>
+	<bean id="RegistroCompraDao" class="svri.dao.RegistroCompraDao"/>
 	
 	<mvc:interceptors><bean class="svri.interceptor.AutorizadorInterceptor"/></mvc:interceptors>
 </beans>
