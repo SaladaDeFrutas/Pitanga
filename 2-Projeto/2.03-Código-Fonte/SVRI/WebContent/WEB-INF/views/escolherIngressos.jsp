@@ -17,7 +17,7 @@
 <body class = pagina>	
 <c:import url="cabecalho.jsp"/>
 <h3 >Ingressos:</h3>
-<form action="lugares" method = "post" >
+<form action="lugares" method = "get" >
 <table>
 	<tr>
 		<td>

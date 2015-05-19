@@ -38,13 +38,11 @@
 				if($(element).is(':checked')){
 					$("#quantidadeRestanteId").html(quantidadeRestante - 1);
 					quantidadeRestante--;
-					var assentosFileira = "assentos.fileira".concat(i,j);
 					
-					$("#assentos.fileira".concat(i,j)).html(
-							'<input type="hidden" name = "assentos.fileira" value="1"/>'
+					$("#assentos-coluna".concat(i,j)).html(
+							"<input type='hidden' name = 'assentos.fileira' value='" + i + "'/>"
 					);
-				}
-// 					
+				} 					
 				if(!$(element).is(':checked')){
 					$("#quantidadeRestanteId").html(quantidadeRestante + 1);
 					quantidadeRestante++;
@@ -104,7 +102,7 @@
 					<c:if test="${entrou == 0}">
 						<img name = "cadeira" id="cadeira" src = "resources/assento_disponivel.gif" >
 						<br/>
-							<input  id="assentos.fileira${i}${j}" type="checkbox" name = "assentos.coluna"  value="${j}"
+							<input  id="assentos-coluna${i}${j}" type="checkbox" name = "assentos.coluna"  value="${j}"
 							onClick="mudarContador(this,${i},${j})"/>
 							
 							
