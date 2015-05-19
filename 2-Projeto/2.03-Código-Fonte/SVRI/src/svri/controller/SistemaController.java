@@ -3,31 +3,29 @@ package svri.controller;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.transaction.Transactional;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.View;
 
-import svri.entidades.Atracao;
+import svri.entidades.Assento;
 import svri.entidades.Cliente;
 import svri.entidades.Filme;
-import svri.entidades.Ingresso;
 import svri.entidades.Peca;
+import svri.entidades.Sala;
 import svri.entidades.Sessao;
 import svri.entidades.TipoIngresso;
 import svri.interfaces.dao.InterfaceClienteDao;
 import svri.interfaces.dao.InterfaceFilmeDao;
 import svri.interfaces.dao.InterfacePecaDao;
+import svri.interfaces.dao.InterfaceSalaDao;
 import svri.interfaces.dao.InterfaceSessaoDao;
 import svri.interfaces.dao.InterfaceTipoIngressoDao;
 
@@ -62,6 +60,10 @@ public class SistemaController {
 	@Autowired
 	@Qualifier("TipoIngressoDao")
 	private InterfaceTipoIngressoDao tipoIngressoDao;
+	
+	@Autowired
+	@Qualifier("SalaDao")
+	private InterfaceSalaDao salaDao;
 	
 	@RequestMapping("/mostrarFilme")
 	public String mostrarFilme(Filme umFilme, Model model){
@@ -112,9 +114,7 @@ public class SistemaController {
 	 */
 	@RequestMapping("mostrarSessoesFilme")
 	public String mostrarSessoesFilme(Filme umFilme, Model model){
-		System.out.println("O titulo do filme: " + umFilme.getTitulo());
 		List<Sessao> sessoes = sessaoDao.buscarPorAtracao(umFilme);
-		System.out.println("A lista de sessoes" + sessoes);
 		model.addAttribute("sessoes",sessoes);
 		model.addAttribute("filme",umFilme);
 		return "mostrarSessoesFilme";
@@ -122,7 +122,6 @@ public class SistemaController {
 	
 	@RequestMapping("mostrarSessoesPeca")
 	public String mostrarSessoesPeca(Peca umaPeca, Model model){
-		System.out.println("O TITULO DA PECA: " + umaPeca.getTitulo());
 		List<Sessao> sessoes = sessaoDao.buscarPorAtracao(umaPeca);
 		model.addAttribute("sessoes",sessoes);
 		model.addAttribute("peca",umaPeca);
@@ -138,8 +137,6 @@ public class SistemaController {
 	 */
 	@RequestMapping("escolherIngressos")
 	public String escolherTipoIngresso(Sessao umaSessao, Model model){
-		
-		System.out.println("O ID da sessao " + umaSessao.getId());
 		List<TipoIngresso> tiposIngressos = tipoIngressoDao.listarTipoIngresso();
 		model.addAttribute("sessao",umaSessao);
 		model.addAttribute("tiposIngressos",tiposIngressos);
@@ -155,21 +152,65 @@ public class SistemaController {
 	 */
 	@RequestMapping("lugares")
 	public String escolherLugar(Sessao umaSessao, Model model,
-			@RequestParam ArrayList<Integer> quantidadeIngresso){
-		System.out.println("quantidadeIngresso[0]" + quantidadeIngresso.get(0));
-		System.out.println("quantidadeIngresso[1]" + quantidadeIngresso.get(1));
-		System.out.println("quantidadeIngresso[2]" + quantidadeIngresso.get(2));
+			@RequestParam ArrayList<Integer> quantidadeIngresso,
+			@RequestParam ArrayList<String> nomeTipoIngresso){
 		
+		umaSessao = sessaoDao.buscarPorId(umaSessao.getId());
+		Sala umaSala = salaDao.buscarPorId(umaSessao.getSala().getId());
+		
+		int qntIngressos = 0;
+		
+		for(Integer umValor : quantidadeIngresso)
+			 qntIngressos += umValor; 
+		//Assentos invalidos
+		Assento assento1 = new Assento();
+		Assento assento2 = new Assento();
+		assento1.setColuna(2);
+		assento1.setFileira(0);
+		assento2.setColuna(18);
+		assento2.setFileira(3);
+		
+		ArrayList<Assento> assentosInvalidos = new ArrayList<>();
+		assentosInvalidos.add(assento1);
+		assentosInvalidos.add(assento2);
+		
+		//Assentos ocupados
+		Assento assento3 = new Assento();
+		Assento assento4 = new Assento();
+		assento3.setColuna(0);
+		assento3.setFileira(0);
+		assento4.setColuna(12);
+		assento4.setFileira(5);
+				
+		ArrayList<Assento> assentosOcupados = new ArrayList<>();
+		assentosOcupados.add(assento3);
+		assentosOcupados.add(assento4);
+		
+		//Função para transformar string da sala e da sessao em arraylist de assentos
+		model.addAttribute("sala",umaSala);
+		model.addAttribute("assentosInvalidos", assentosInvalidos);
+		model.addAttribute("assentosOcupados", assentosOcupados);
+		model.addAttribute("qntIngressos",qntIngressos);	
+		model.addAttribute("quantidadeIngresso",quantidadeIngresso);
+		model.addAttribute("nomeTipoIngresso",nomeTipoIngresso);
+		model.addAttribute("umaSessao", umaSessao);
 		return "mostrarLugares";
 	}
 	
-	/**@RequestMapping("lugaresInteira")
-	public String escolherLugarInteira(Sessao umaSessao, Model model,
-			TipoIngresso tipoIngresso){
+	@RequestMapping("finalizarCompra")
+	public String finalizaCompra(@RequestParam ArrayList<Assento> assentos,
+			@RequestParam ArrayList<Integer> quantidadeIngresso,
+			@RequestParam ArrayList<String> nomeTipoIngresso, Sessao umaSessao, HttpSession sessaoUsuario) {
+			System.out.println(assentos);
+			System.out.println(quantidadeIngresso);
+			System.out.println(nomeTipoIngresso);
+			System.out.println("ID: "+umaSessao.getId() + " Atracao: " +
+					umaSessao.getAtracao() + " Data: " +
+					umaSessao.getData().getTime() + " Sala: " +
+					umaSessao.getSala() );
 			
-	}*/
-	
-	
+			return "notFound";
+	}
 	
 	/**
 	 * 
