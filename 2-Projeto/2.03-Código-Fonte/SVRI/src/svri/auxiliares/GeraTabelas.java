@@ -1,12 +1,12 @@
 package svri.auxiliares;
 import java.util.Calendar;
-import java.util.Date;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
-import svri.entidades.Assento;
+import svri.entidades.Sala;
+import svri.entidades.TipoAssento;
 import svri.entidades.Filme;
 import svri.entidades.Peca;
 import svri.entidades.Sessao;
@@ -56,15 +56,6 @@ public class GeraTabelas {
 		umaPeca.setGenero("Comedia");
 		umaPeca.setDataEstreia(dataEstreia);
 		
-		Sessao umaSessao = new Sessao();
-		umaSessao.setData(dataEstreia);
-		//umaSessao.setId(1);
-		umaSessao.setUmaAtracao(umFilme);
-		
-		Sessao outraSessao = new Sessao();
-		outraSessao.setData(outraDataEstreia);
-		//outraSessao.setId(1);
-		outraSessao.setUmaAtracao(umFilme);
 		
 		TipoIngresso umTipoIngresso = new TipoIngresso();
 		//umTipoIngresso.setId(1);
@@ -76,11 +67,41 @@ public class GeraTabelas {
 		//maisUmTipoIngresso.setId(3);
 		maisUmTipoIngresso.setNome("Meia-Itau");
 		
-		Assento umAssento = new Assento();
+		TipoAssento umAssento = new TipoAssento();
 		umAssento.setDescricao("Assento especial do dia dos Namorados.");
 		//umAssento.setId(1);
 		umAssento.setNome("Lovers");
 		umAssento.setPreco(40.9);
+		
+		String assentosInvalidos= "";
+	
+		for(int i = 2; i < 4; i++){
+			for (int j = 0; j<20;j++){
+				assentosInvalidos += j+ "," +i + ";";
+			}
+		}
+		
+		
+		for(int i = 17; i < 19; i++){
+			for (int j = 0; j<20;j++){
+				assentosInvalidos += j+ "," +i + ";";
+			}
+		}
+		Sala umaSala = new Sala();
+		umaSala.setQntColunas(20);
+		umaSala.setQntFileiras(20);
+		umaSala.setAssentosInvalidos(assentosInvalidos);
+		
+		Sessao umaSessao = new Sessao();
+		umaSessao.setData(dataEstreia);
+		umaSessao.setAtracao(umFilme);
+		umaSessao.setSala(umaSala);
+		
+		Sessao outraSessao = new Sessao();
+		outraSessao.setData(outraDataEstreia);
+		outraSessao.setAtracao(umFilme);
+		outraSessao.setSala(umaSala);
+		
 		
 		EntityManagerFactory factory = Persistence.
 				createEntityManagerFactory("SVRIUnit");
@@ -94,6 +115,7 @@ public class GeraTabelas {
 		manager.persist(outroTipoIngresso);
 		manager.persist(maisUmTipoIngresso);
 		manager.persist(umAssento);
+		manager.persist(umaSala);
 		manager.getTransaction().commit();
 		
 		manager.close();
