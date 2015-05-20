@@ -60,13 +60,15 @@ public class GeraTabelas {
 		TipoIngresso umTipoIngresso = new TipoIngresso();
 		//umTipoIngresso.setId(1);
 		umTipoIngresso.setNome("Inteira");
+		umTipoIngresso.setPreco(40);
 		TipoIngresso outroTipoIngresso = new TipoIngresso();
 		//outroTipoIngresso.setId(2);
 		outroTipoIngresso.setNome("Meia");
+		outroTipoIngresso.setPreco(20);
 		TipoIngresso maisUmTipoIngresso = new TipoIngresso();
 		//maisUmTipoIngresso.setId(3);
 		maisUmTipoIngresso.setNome("Meia-Itau");
-		
+		maisUmTipoIngresso.setPreco(19.5);
 		TipoAssento umAssento = new TipoAssento();
 		umAssento.setDescricao("Assento especial do dia dos Namorados.");
 		//umAssento.setId(1);

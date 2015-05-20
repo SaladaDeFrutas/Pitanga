@@ -6,6 +6,8 @@ import javax.persistence.Embeddable;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 @Embeddable
 public class Assento {
 	
@@ -13,9 +15,14 @@ public class Assento {
 	@JoinColumn(name = "idTipoAssento")
 	private TipoAssento tipoAssento;
 	
-	private int fileira;
-	private int coluna;
 	
+	private int coluna;
+	private int fileira;
+	
+	@Autowired
+	public Assento(){
+		
+	}
 	public int getFileira() {
 		return fileira;
 	}

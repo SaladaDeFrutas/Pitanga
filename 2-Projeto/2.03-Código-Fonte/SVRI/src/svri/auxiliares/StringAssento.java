@@ -34,4 +34,16 @@ public class StringAssento {
 		
 		return string;
 	}
+	
+	public static ArrayList<Assento> converterArrayStringParaArrayAssento(ArrayList<String> assentosString){
+		ArrayList<Assento> assentos = new ArrayList<>();
+		
+		for(int i = 0; i < assentosString.size(); i+=2){
+			Assento umAssento = new Assento();
+			umAssento.setColuna(Integer.parseInt(assentosString.get(i)));
+			umAssento.setFileira(Integer.parseInt(assentosString.get(i+1)));
+			assentos.add(umAssento);
+		}
+		return assentos;
+	}
 }

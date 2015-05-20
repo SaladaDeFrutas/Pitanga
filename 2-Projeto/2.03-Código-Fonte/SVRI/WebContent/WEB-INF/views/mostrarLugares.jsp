@@ -16,9 +16,9 @@
 		var maxAllowed;
 		var cnt;
 		$(document).ready(function () {
-	    $("input[name='assentos.coluna']").change(function () {
+	    $("input[name='assentos']").change(function () {
 	    	maxAllowed = ${qntIngressos};
-	    	cnt = $("input[name='assentos.coluna']:checked").length;
+	    	cnt = $("input[name='assentos']:checked").length;
 	      if (cnt > maxAllowed)
 	      {
 	         $(this).prop("checked", "");
@@ -40,7 +40,7 @@
 					quantidadeRestante--;
 					
 					$("#assentos-coluna".concat(i,j)).html(
-							"<input type='hidden' name = 'assentos.fileira' value='" + i + "'/>"
+							"<input type='hidden' name = 'assentos' value='" + i + "'/>"
 					);
 				} 					
 				if(!$(element).is(':checked')){
@@ -71,7 +71,7 @@
 							
  </h4>
 <div class = posicaoSala>
-<form action="finalizarCompra" method="get">
+<form action="finalizarCompra" method="post">
 	<table>
 		<c:set var="alphabet" value="A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z" />
 		<c:set var="alphabetsplit" value="${fn:split(alphabet, ',')}"/>
@@ -95,14 +95,14 @@
 						<c:if test= "${assentoOcupado.fileira == i && assentoOcupado.coluna == j}" >	
 							<img name = "cadeira" id="cadeira" src = "resources/assento_indisponivel.gif" >	
 							<c:set var="entrou" scope="page" value="${1}"/>
-							<br/><input type="checkbox" name = "assentos.coluna" disabled = "disabled"
+							<br/><input type="checkbox" name = "assentos" disabled = "disabled"
 								/>	
 						</c:if>
 					</c:forEach>
 					<c:if test="${entrou == 0}">
 						<img name = "cadeira" id="cadeira" src = "resources/assento_disponivel.gif" >
 						<br/>
-							<input  id="assentos-coluna${i}${j}" type="checkbox" name = "assentos.coluna"  value="${j}"
+							<input  id="assentos-coluna${i}${j}" type="checkbox" name = "assentos"  value="${j}"
 							onClick="mudarContador(this,${i},${j})"/>
 							
 							
@@ -114,7 +114,7 @@
 	</table>
 		<input type="hidden" name = "quantidadeIngresso" value="${quantidadeIngresso}"/>
 		<input type="hidden" name = "nomeTipoIngresso" value="${nomeTipoIngresso}"/>
-		<input type="hidden" name = "umaSessao" value="${umaSessao.id}"/> <br/>
+		<input type="hidden" name = "id" value="${umaSessao.id}"/> <br/>
 		<button type="submit" name = "idBotao" value ="" class="btn btn-default">Finalizar Compra
  		</button>
 </form>

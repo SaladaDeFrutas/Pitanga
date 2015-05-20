@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.transaction.Transactional;
 import javax.validation.Valid;
@@ -13,10 +14,14 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import svri.auxiliares.ArrayQuantidadeIngresso;
 import svri.auxiliares.Compra;
+import svri.auxiliares.StringAssento;
 import svri.dao.RegistroCompraDao;
 import svri.entidades.Assento;
 import svri.entidades.Cliente;
@@ -202,6 +207,8 @@ public class SistemaController {
 		assentosOcupados.add(assento4);
 		
 		//Função para transformar string da sala e da sessao em arraylist de assentos
+		
+		
 		model.addAttribute("sala",umaSala);
 		model.addAttribute("assentosInvalidos", assentosInvalidos);
 		model.addAttribute("assentosOcupados", assentosOcupados);
@@ -213,22 +220,35 @@ public class SistemaController {
 	}
 	
 	@RequestMapping("finalizarCompra")
-	public String finalizaCompra(@RequestParam ArrayList<Assento> assentos,
-			@RequestParam ArrayList<Integer> quantidadeIngresso,
-			@RequestParam ArrayList<String> nomeTipoIngresso, Sessao umaSessao, HttpSession sessaoUsuario) {
-			
+	public String finalizaCompra(@RequestParam ArrayList<String> assentos,
+			@RequestParam String quantidadeIngresso,
+			@RequestParam String nomeTipoIngresso, Sessao umaSessao, HttpSession sessaoUsuario) {
+		
 			umaSessao = sessaoDao.buscarPorId(umaSessao.getId());
 			
-			for (int i = 0; i< quantidadeIngresso.size(); i++) {
-				int quantidade = quantidadeIngresso.get(i);
+			String[] quantidadeIngressoArray =  quantidadeIngresso.replace("[","").
+					replace("]", "").replace(" ","").split(",");
+			
+			String[] nomeTipoIngressosArray = nomeTipoIngresso.replace("[","").
+					replace("]", "").replace(" ","").split(",");
+			ArrayList<Integer> quantidadeIngressos = new ArrayList<>();
+			ArrayList<String> nomeTipoIngressos = new ArrayList<>();
+			
+			for(int i = 0; i<quantidadeIngressoArray.length;i++){
+				quantidadeIngressos.add(Integer.parseInt(quantidadeIngressoArray[i]));
+				nomeTipoIngressos.add(nomeTipoIngressosArray[i]);
+			}
+			
+			for (int i = 0; i< quantidadeIngressos.size(); i++) {
+				int quantidade = quantidadeIngressos.get(i);
 				if(quantidade == 0){
-					quantidadeIngresso.remove(i);
-					nomeTipoIngresso.remove(i);
+					quantidadeIngressos.remove(i);
+					nomeTipoIngressos.remove(i);
 				}
 			}
-		
+			ArrayList<Assento> assentosEscolhidos = StringAssento.converterArrayStringParaArrayAssento(assentos);
 			Cliente umCliente = (Cliente)sessaoUsuario.getAttribute("usuarioLogado");
-		
+			umCliente = clienteDao.buscarPorId(umCliente.getEmail());
 			Calendar dataCompra = Calendar.getInstance();
 			RegistroCompra novoRegistroCompra = new RegistroCompra();
 			novoRegistroCompra.setDataCompra(dataCompra);
@@ -238,26 +258,33 @@ public class SistemaController {
 			registroCompraDao.adicionarRegistroCompra(novoRegistroCompra);
 			
 			ArrayList<Ingresso> ingressos = new ArrayList<>();
+			ArrayList<TipoIngresso> tiposIngressos = new ArrayList<>();
+			for (int i = 0; i<quantidadeIngressos.size();i++) {
+				int quantidade = quantidadeIngressos.get(i);
+				for(int j=0;j<quantidade;j++){
+					System.out.println(nomeTipoIngressos.get(j));
+					TipoIngresso umTipoIngresso = tipoIngressoDao.
+								buscarPorNome(nomeTipoIngressos.get(j));
+					tiposIngressos.add(umTipoIngresso);
+				}
+			}
 			
-			for (int i = 0; i < assentos.size(); i++) {
-				Assento umAssento = assentos.get(i);
-				
-				TipoIngresso umTipoIngresso = tipoIngressoDao.
-						buscarPorNome(nomeTipoIngresso.get(i));
+			for (int i = 0; i < assentosEscolhidos.size(); i++) {
+				Assento umAssento = assentosEscolhidos.get(i);
 				
 				Ingresso umIngresso = new Ingresso();
+				System.out.println("ID da sessao: " + umaSessao.getId());
 				umIngresso.setUmaSessao(umaSessao);
 				umIngresso.setUmAssento(umAssento);
-				umIngresso.setUmTipoIngresso(umTipoIngresso);
+				umIngresso.setUmTipoIngresso(tiposIngressos.get(i));
 				umIngresso.setUmCliente(umCliente);
 				umIngresso.setRegistroCompra(novoRegistroCompra);
 				ingressoDao.adicionarIngresso(umIngresso);
 				
 			}
-			
 			Compra novaCompra = new Compra();
-			novaCompra.calcularTotal(ingressos,novoRegistroCompra);
-			
+			novoRegistroCompra = novaCompra.calcularTotal(ingressos,novoRegistroCompra);
+			registroCompraDao.alterarRegistroCompra(novoRegistroCompra);
 			return "notFound";
 	}
 	
