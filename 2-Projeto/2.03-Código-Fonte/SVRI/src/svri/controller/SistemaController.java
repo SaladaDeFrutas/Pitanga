@@ -261,10 +261,9 @@ public class SistemaController {
 			ArrayList<TipoIngresso> tiposIngressos = new ArrayList<>();
 			for (int i = 0; i<quantidadeIngressos.size();i++) {
 				int quantidade = quantidadeIngressos.get(i);
+				TipoIngresso umTipoIngresso = tipoIngressoDao.
+						buscarPorNome(nomeTipoIngressos.get(i));
 				for(int j=0;j<quantidade;j++){
-					System.out.println(nomeTipoIngressos.get(j));
-					TipoIngresso umTipoIngresso = tipoIngressoDao.
-								buscarPorNome(nomeTipoIngressos.get(j));
 					tiposIngressos.add(umTipoIngresso);
 				}
 			}
@@ -273,7 +272,6 @@ public class SistemaController {
 				Assento umAssento = assentosEscolhidos.get(i);
 				
 				Ingresso umIngresso = new Ingresso();
-				System.out.println("ID da sessao: " + umaSessao.getId());
 				umIngresso.setUmaSessao(umaSessao);
 				umIngresso.setUmAssento(umAssento);
 				umIngresso.setUmTipoIngresso(tiposIngressos.get(i));
