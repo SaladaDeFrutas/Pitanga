@@ -2,6 +2,8 @@ package svri.auxiliares;
 
 import java.util.ArrayList;
 
+import br.com.uol.pagseguro.domain.Item;
+import br.com.uol.pagseguro.domain.checkout.Checkout;
 import svri.entidades.Ingresso;
 import svri.entidades.RegistroCompra;
 
@@ -22,7 +24,12 @@ public class Compra {
 		
 	}
 	
-	public void efetuarPagamento(){}
+	public void efetuarPagamento(ArrayList<Ingresso> ingressos, RegistroCompra novoRegistroCompra){
+		Checkout checkout = new Checkout();
+		
+		//adicionar aqui cada ingresso usando o while
+		//checkout.addItem();
+	}
 	public void gerarComprovante(){}
 	public void gerarIngresso(){}
 	

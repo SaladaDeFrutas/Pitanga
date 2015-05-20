@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.transaction.Transactional;
 import javax.validation.Valid;
@@ -14,15 +13,12 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import svri.auxiliares.ArrayQuantidadeIngresso;
+
 import svri.auxiliares.Compra;
 import svri.auxiliares.StringAssento;
-import svri.dao.RegistroCompraDao;
 import svri.entidades.Assento;
 import svri.entidades.Cliente;
 import svri.entidades.Filme;
@@ -278,11 +274,13 @@ public class SistemaController {
 				umIngresso.setUmCliente(umCliente);
 				umIngresso.setRegistroCompra(novoRegistroCompra);
 				ingressoDao.adicionarIngresso(umIngresso);
+				ingressos.add(umIngresso);
 				
 			}
 			Compra novaCompra = new Compra();
 			novoRegistroCompra = novaCompra.calcularTotal(ingressos,novoRegistroCompra);
 			registroCompraDao.alterarRegistroCompra(novoRegistroCompra);
+			novaCompra.efetuarPagamento(ingressos, novoRegistroCompra);
 			return "notFound";
 	}
 	
