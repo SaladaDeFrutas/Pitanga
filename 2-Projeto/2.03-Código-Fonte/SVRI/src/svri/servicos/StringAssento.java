@@ -1,4 +1,4 @@
-package svri.auxiliares;
+package svri.servicos;
 
 import java.util.ArrayList;
 
@@ -6,7 +6,7 @@ import svri.entidades.Assento;
 
 public class StringAssento {
 
-	/*Função utilizada para converter uma string do banco de dados (Entidades sala e sessao)
+	/*Funï¿½ï¿½o utilizada para converter uma string do banco de dados (Entidades sala e sessao)
 	 * em um arrayList de Assento. */
 	public static ArrayList<Assento> converterStringParaAssento(String string){
 		ArrayList<Assento> assentos = new ArrayList<>();

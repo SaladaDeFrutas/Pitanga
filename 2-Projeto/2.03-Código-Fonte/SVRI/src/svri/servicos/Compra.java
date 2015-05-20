@@ -1,13 +1,13 @@
-package svri.auxiliares;
+package svri.servicos;
 
 import java.util.ArrayList;
 
-import br.com.uol.pagseguro.domain.Item;
-import br.com.uol.pagseguro.domain.checkout.Checkout;
+import svri.entidades.Cliente;
 import svri.entidades.Ingresso;
 import svri.entidades.RegistroCompra;
 
 public class Compra {
+	InterfacePagamento tipoPagamento;
 	
 	public RegistroCompra calcularTotal(ArrayList<Ingresso> ingressos, RegistroCompra novoRegistroCompra){
 		double valor = 0;
@@ -24,11 +24,10 @@ public class Compra {
 		
 	}
 	
-	public void efetuarPagamento(ArrayList<Ingresso> ingressos, RegistroCompra novoRegistroCompra){
-		Checkout checkout = new Checkout();
+	public String efetuarPagamento(ArrayList<Ingresso> ingressos, RegistroCompra novoRegistroCompra, Cliente cliente){
+		tipoPagamento = new PagamentoPagseguro();
+		return tipoPagamento.realizaPagamento(ingressos, novoRegistroCompra, cliente);
 		
-		//adicionar aqui cada ingresso usando o while
-		//checkout.addItem();
 	}
 	public void gerarComprovante(){}
 	public void gerarIngresso(){}

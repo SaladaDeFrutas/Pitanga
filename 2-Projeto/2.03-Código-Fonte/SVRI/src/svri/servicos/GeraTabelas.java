@@ -1,4 +1,4 @@
-package svri.auxiliares;
+package svri.servicos;
 import java.util.Calendar;
 
 import javax.persistence.EntityManager;
@@ -49,7 +49,7 @@ public class GeraTabelas {
 		
 		Peca umaPeca = new Peca();
 		//umaPeca.setId(1);
-		umaPeca.setTitulo("Minha mae e uma peça.");
+		umaPeca.setTitulo("Minha mae e uma peï¿½a.");
 		umaPeca.setIdioma("Pt-br");
 		umaPeca.setDuracao(180);
 		umaPeca.setSinopse("Muito engracado.");

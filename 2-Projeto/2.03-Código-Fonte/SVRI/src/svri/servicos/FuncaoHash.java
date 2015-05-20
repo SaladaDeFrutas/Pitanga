@@ -1,4 +1,4 @@
-package svri.auxiliares;
+package svri.servicos;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;

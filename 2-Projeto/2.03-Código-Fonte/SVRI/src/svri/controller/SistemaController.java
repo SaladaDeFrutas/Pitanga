@@ -16,9 +16,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-
-import svri.auxiliares.Compra;
-import svri.auxiliares.StringAssento;
 import svri.entidades.Assento;
 import svri.entidades.Cliente;
 import svri.entidades.Filme;
@@ -36,6 +33,8 @@ import svri.interfaces.dao.InterfaceRegistroCompraDao;
 import svri.interfaces.dao.InterfaceSalaDao;
 import svri.interfaces.dao.InterfaceSessaoDao;
 import svri.interfaces.dao.InterfaceTipoIngressoDao;
+import svri.servicos.Compra;
+import svri.servicos.StringAssento;
 
 @Transactional
 @Controller
@@ -202,7 +201,7 @@ public class SistemaController {
 		assentosOcupados.add(assento3);
 		assentosOcupados.add(assento4);
 		
-		//Função para transformar string da sala e da sessao em arraylist de assentos
+		//Funï¿½ï¿½o para transformar string da sala e da sessao em arraylist de assentos
 		
 		
 		model.addAttribute("sala",umaSala);
@@ -280,7 +279,9 @@ public class SistemaController {
 			Compra novaCompra = new Compra();
 			novoRegistroCompra = novaCompra.calcularTotal(ingressos,novoRegistroCompra);
 			registroCompraDao.alterarRegistroCompra(novoRegistroCompra);
-			novaCompra.efetuarPagamento(ingressos, novoRegistroCompra);
+			
+			// pega-se o retorno, o codigo da compra e utiliza-o
+			novaCompra.efetuarPagamento(ingressos, novoRegistroCompra, umCliente);
 			return "notFound";
 	}
 	

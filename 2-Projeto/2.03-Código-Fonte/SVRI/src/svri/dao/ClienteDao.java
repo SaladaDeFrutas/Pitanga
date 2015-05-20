@@ -7,9 +7,9 @@ import javax.persistence.PersistenceContext;
 
 import org.springframework.stereotype.Repository;
 
-import svri.auxiliares.FuncaoHash;
 import svri.entidades.Cliente;
 import svri.interfaces.dao.InterfaceClienteDao;
+import svri.servicos.FuncaoHash;
 
 @Repository
 public class ClienteDao implements InterfaceClienteDao{
