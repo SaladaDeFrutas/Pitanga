@@ -16,6 +16,8 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import svri.auxiliares.Compra;
+import svri.auxiliares.StringAssento;
 import svri.entidades.Assento;
 import svri.entidades.Cliente;
 import svri.entidades.Filme;
@@ -33,8 +35,6 @@ import svri.interfaces.dao.InterfaceRegistroCompraDao;
 import svri.interfaces.dao.InterfaceSalaDao;
 import svri.interfaces.dao.InterfaceSessaoDao;
 import svri.interfaces.dao.InterfaceTipoIngressoDao;
-import svri.servicos.Compra;
-import svri.servicos.StringAssento;
 
 @Transactional
 @Controller
