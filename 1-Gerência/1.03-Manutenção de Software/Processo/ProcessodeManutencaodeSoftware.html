@@ -1,1 +1,2287 @@
-<html><head><title>Processo de Manuten&ccedil;&atilde;o de Software</title><meta content="text/html; charset=UTF-8" http-equiv="content-type"><style type="text/css">ol.lst-kix_nyctxtjifx3q-1.start{counter-reset:lst-ctn-kix_nyctxtjifx3q-1 0}.lst-kix_8xaiykm0sunq-4>li:before{content:"" counter(lst-ctn-kix_8xaiykm0sunq-4,lower-roman) ". "}.lst-kix_mc7zvu88fmwa-3>li{counter-increment:lst-ctn-kix_mc7zvu88fmwa-3}ol.lst-kix_993w0gs5eab1-8.start{counter-reset:lst-ctn-kix_993w0gs5eab1-8 0}.lst-kix_nyctxtjifx3q-0>li{counter-increment:lst-ctn-kix_nyctxtjifx3q-0}.lst-kix_8xaiykm0sunq-5>li:before{content:"" counter(lst-ctn-kix_8xaiykm0sunq-5,decimal) ". "}.lst-kix_7j1kkc3xfjlq-2>li{counter-increment:lst-ctn-kix_7j1kkc3xfjlq-2}.lst-kix_1h24sy4wxziu-3>li:before{content:"-  "}ol.lst-kix_dgl7o571ifn4-6.start{counter-reset:lst-ctn-kix_dgl7o571ifn4-6 0}.lst-kix_esog94ssfkm4-0>li:before{content:"" counter(lst-ctn-kix_esog94ssfkm4-0,lower-latin) ". "}.lst-kix_tkmvkoz760w0-3>li:before{content:"\0025cf  "}.lst-kix_fs1utsv21f33-7>li:before{content:"-  "}.lst-kix_esog94ssfkm4-2>li{counter-increment:lst-ctn-kix_esog94ssfkm4-2}ol.lst-kix_8xaiykm0sunq-8.start{counter-reset:lst-ctn-kix_8xaiykm0sunq-8 0}.lst-kix_tkmvkoz760w0-7>li:before{content:"\0025cb  "}ol.lst-kix_mc7zvu88fmwa-6.start{counter-reset:lst-ctn-kix_mc7zvu88fmwa-6 0}.lst-kix_8xaiykm0sunq-6>li:before{content:"" counter(lst-ctn-kix_8xaiykm0sunq-6,lower-latin) ". "}ul.lst-kix_tkmvkoz760w0-0{list-style-type:none}ul.lst-kix_tkmvkoz760w0-2{list-style-type:none}ul.lst-kix_tkmvkoz760w0-1{list-style-type:none}ul.lst-kix_tkmvkoz760w0-4{list-style-type:none}ul.lst-kix_tkmvkoz760w0-3{list-style-type:none}ul.lst-kix_tkmvkoz760w0-6{list-style-type:none}ul.lst-kix_tkmvkoz760w0-5{list-style-type:none}ul.lst-kix_tkmvkoz760w0-8{list-style-type:none}ul.lst-kix_tkmvkoz760w0-7{list-style-type:none}.lst-kix_1h24sy4wxziu-7>li:before{content:"-  "}.lst-kix_6qmejayq8ok-2>li:before{content:"-  "}.lst-kix_6qmejayq8ok-8>li:before{content:"-  "}.lst-kix_dgl7o571ifn4-2>li:before{content:"" counter(lst-ctn-kix_dgl7o571ifn4-2,decimal) ". "}.lst-kix_7j1kkc3xfjlq-3>li{counter-increment:lst-ctn-kix_7j1kkc3xfjlq-3}.lst-kix_7j1kkc3xfjlq-8>li:before{content:"" counter(lst-ctn-kix_7j1kkc3xfjlq-8,decimal) ". "}ol.lst-kix_57xehzgj0o0q-0.start{counter-reset:lst-ctn-kix_57xehzgj0o0q-0 0}.lst-kix_5hfm47220p7m-1>li{counter-increment:lst-ctn-kix_5hfm47220p7m-1}.lst-kix_lzy2fl49ovol-1>li:before{content:"-  "}.lst-kix_57xehzgj0o0q-5>li:before{content:"" counter(lst-ctn-kix_57xehzgj0o0q-5,decimal) ". "}.lst-kix_dgl7o571ifn4-4>li{counter-increment:lst-ctn-kix_dgl7o571ifn4-4}.lst-kix_esog94ssfkm4-6>li:before{content:"" counter(lst-ctn-kix_esog94ssfkm4-6,lower-latin) ". "}.lst-kix_nyctxtjifx3q-5>li:before{content:"" counter(lst-ctn-kix_nyctxtjifx3q-5,decimal) ". "}ol.lst-kix_57xehzgj0o0q-2.start{counter-reset:lst-ctn-kix_57xehzgj0o0q-2 0}.lst-kix_lzy2fl49ovol-5>li:before{content:"-  "}.lst-kix_8xaiykm0sunq-0>li{counter-increment:lst-ctn-kix_8xaiykm0sunq-0}ol.lst-kix_7j1kkc3xfjlq-2.start{counter-reset:lst-ctn-kix_7j1kkc3xfjlq-2 0}.lst-kix_qa09h5s3llnm-0>li:before{content:"-  "}.lst-kix_nyctxtjifx3q-8>li{counter-increment:lst-ctn-kix_nyctxtjifx3q-8}.lst-kix_57xehzgj0o0q-4>li{counter-increment:lst-ctn-kix_57xehzgj0o0q-4}.lst-kix_dgl7o571ifn4-7>li:before{content:"" counter(lst-ctn-kix_dgl7o571ifn4-7,lower-roman) ". "}ol.lst-kix_mc7zvu88fmwa-3.start{counter-reset:lst-ctn-kix_mc7zvu88fmwa-3 0}ol.lst-kix_8xaiykm0sunq-4.start{counter-reset:lst-ctn-kix_8xaiykm0sunq-4 0}.lst-kix_993w0gs5eab1-5>li:before{content:"" counter(lst-ctn-kix_993w0gs5eab1-5,decimal) ". "}.lst-kix_5hfm47220p7m-1>li:before{content:"" counter(lst-ctn-kix_5hfm47220p7m-1,lower-roman) ". "}.lst-kix_57xehzgj0o0q-1>li{counter-increment:lst-ctn-kix_57xehzgj0o0q-1}.lst-kix_38q91hcff1hy-1>li:before{content:"-  "}ol.lst-kix_esog94ssfkm4-3.start{counter-reset:lst-ctn-kix_esog94ssfkm4-3 0}.lst-kix_5hfm47220p7m-0>li:before{content:"" counter(lst-ctn-kix_5hfm47220p7m-0,lower-latin) ". "}ol.lst-kix_8xaiykm0sunq-5.start{counter-reset:lst-ctn-kix_8xaiykm0sunq-5 0}.lst-kix_nyctxtjifx3q-4>li{counter-increment:lst-ctn-kix_nyctxtjifx3q-4}.lst-kix_8xaiykm0sunq-6>li{counter-increment:lst-ctn-kix_8xaiykm0sunq-6}ol.lst-kix_7j1kkc3xfjlq-8.start{counter-reset:lst-ctn-kix_7j1kkc3xfjlq-8 0}.lst-kix_fs1utsv21f33-5>li:before{content:"-  "}.lst-kix_nyctxtjifx3q-5>li{counter-increment:lst-ctn-kix_nyctxtjifx3q-5}.lst-kix_tkmvkoz760w0-5>li:before{content:"\0025a0  "}.lst-kix_993w0gs5eab1-8>li{counter-increment:lst-ctn-kix_993w0gs5eab1-8}.lst-kix_8xaiykm0sunq-3>li{counter-increment:lst-ctn-kix_8xaiykm0sunq-3}.lst-kix_5hfm47220p7m-6>li:before{content:"" counter(lst-ctn-kix_5hfm47220p7m-6,lower-latin) ". "}ol.lst-kix_7j1kkc3xfjlq-4.start{counter-reset:lst-ctn-kix_7j1kkc3xfjlq-4 0}ol.lst-kix_esog94ssfkm4-8.start{counter-reset:lst-ctn-kix_esog94ssfkm4-8 0}ol.lst-kix_8xaiykm0sunq-0.start{counter-reset:lst-ctn-kix_8xaiykm0sunq-0 0}.lst-kix_mc7zvu88fmwa-6>li:before{content:"" counter(lst-ctn-kix_mc7zvu88fmwa-6,decimal) ". "}.lst-kix_993w0gs5eab1-0>li{counter-increment:lst-ctn-kix_993w0gs5eab1-0}.lst-kix_993w0gs5eab1-4>li{counter-increment:lst-ctn-kix_993w0gs5eab1-4}.lst-kix_993w0gs5eab1-7>li{counter-increment:lst-ctn-kix_993w0gs5eab1-7}.lst-kix_6qmejayq8ok-7>li:before{content:"-  "}.lst-kix_38q91hcff1hy-3>li:before{content:"-  "}ol.lst-kix_esog94ssfkm4-4.start{counter-reset:lst-ctn-kix_esog94ssfkm4-4 0}.lst-kix_6qmejayq8ok-0>li:before{content:"-  "}.lst-kix_7j1kkc3xfjlq-6>li:before{content:"" counter(lst-ctn-kix_7j1kkc3xfjlq-6,lower-latin) ". "}ol.lst-kix_8xaiykm0sunq-7{list-style-type:none}ol.lst-kix_8xaiykm0sunq-8{list-style-type:none}ol.lst-kix_8xaiykm0sunq-5{list-style-type:none}.lst-kix_6qmejayq8ok-1>li:before{content:"-  "}ol.lst-kix_8xaiykm0sunq-6{list-style-type:none}.lst-kix_mc7zvu88fmwa-3>li:before{content:"(" counter(lst-ctn-kix_mc7zvu88fmwa-3,decimal) ") "}.lst-kix_57xehzgj0o0q-6>li{counter-increment:lst-ctn-kix_57xehzgj0o0q-6}ol.lst-kix_57xehzgj0o0q-4.start{counter-reset:lst-ctn-kix_57xehzgj0o0q-4 0}ol.lst-kix_8xaiykm0sunq-2{list-style-type:none}.lst-kix_38q91hcff1hy-6>li:before{content:"-  "}ol.lst-kix_5hfm47220p7m-0{list-style-type:none}.lst-kix_5hfm47220p7m-3>li{counter-increment:lst-ctn-kix_5hfm47220p7m-3}ol.lst-kix_8xaiykm0sunq-1{list-style-type:none}ol.lst-kix_5hfm47220p7m-1{list-style-type:none}ol.lst-kix_dgl7o571ifn4-5.start{counter-reset:lst-ctn-kix_dgl7o571ifn4-5 0}ol.lst-kix_5hfm47220p7m-2{list-style-type:none}ol.lst-kix_8xaiykm0sunq-4{list-style-type:none}ol.lst-kix_5hfm47220p7m-3{list-style-type:none}ol.lst-kix_8xaiykm0sunq-3{list-style-type:none}.lst-kix_nyctxtjifx3q-6>li:before{content:"" counter(lst-ctn-kix_nyctxtjifx3q-6,lower-latin) ". "}.lst-kix_tkmvkoz760w0-8>li:before{content:"\0025a0  "}.lst-kix_8xaiykm0sunq-2>li{counter-increment:lst-ctn-kix_8xaiykm0sunq-2}ol.lst-kix_8xaiykm0sunq-0{list-style-type:none}ol.lst-kix_nyctxtjifx3q-4.start{counter-reset:lst-ctn-kix_nyctxtjifx3q-4 0}ol.lst-kix_5hfm47220p7m-8{list-style-type:none}.lst-kix_fs1utsv21f33-4>li:before{content:"-  "}ul.lst-kix_qa09h5s3llnm-0{list-style-type:none}ol.lst-kix_5hfm47220p7m-5{list-style-type:none}.lst-kix_7j1kkc3xfjlq-2>li:before{content:"" counter(lst-ctn-kix_7j1kkc3xfjlq-2,decimal) ". "}ul.lst-kix_qa09h5s3llnm-1{list-style-type:none}ol.lst-kix_5hfm47220p7m-4{list-style-type:none}ul.lst-kix_qa09h5s3llnm-2{list-style-type:none}ol.lst-kix_5hfm47220p7m-7{list-style-type:none}ul.lst-kix_qa09h5s3llnm-3{list-style-type:none}ol.lst-kix_5hfm47220p7m-6{list-style-type:none}.lst-kix_993w0gs5eab1-2>li{counter-increment:lst-ctn-kix_993w0gs5eab1-2}ol.lst-kix_mc7zvu88fmwa-7.start{counter-reset:lst-ctn-kix_mc7zvu88fmwa-7 0}ul.lst-kix_qa09h5s3llnm-4{list-style-type:none}ul.lst-kix_qa09h5s3llnm-5{list-style-type:none}ul.lst-kix_qa09h5s3llnm-6{list-style-type:none}ol.lst-kix_57xehzgj0o0q-7.start{counter-reset:lst-ctn-kix_57xehzgj0o0q-7 0}ul.lst-kix_qa09h5s3llnm-7{list-style-type:none}.lst-kix_8xaiykm0sunq-8>li:before{content:"" counter(lst-ctn-kix_8xaiykm0sunq-8,decimal) ". "}ul.lst-kix_qa09h5s3llnm-8{list-style-type:none}.lst-kix_57xehzgj0o0q-7>li:before{content:"" counter(lst-ctn-kix_57xehzgj0o0q-7,lower-roman) ". "}.lst-kix_esog94ssfkm4-1>li:before{content:"" counter(lst-ctn-kix_esog94ssfkm4-1,lower-roman) ". "}ol.lst-kix_nyctxtjifx3q-6.start{counter-reset:lst-ctn-kix_nyctxtjifx3q-6 0}.lst-kix_lzy2fl49ovol-8>li:before{content:"-  "}ol.lst-kix_mc7zvu88fmwa-1{list-style-type:none}ol.lst-kix_mc7zvu88fmwa-0{list-style-type:none}ol.lst-kix_mc7zvu88fmwa-5{list-style-type:none}.lst-kix_dgl7o571ifn4-5>li:before{content:"" counter(lst-ctn-kix_dgl7o571ifn4-5,decimal) ". "}ol.lst-kix_mc7zvu88fmwa-4{list-style-type:none}ol.lst-kix_mc7zvu88fmwa-3{list-style-type:none}ol.lst-kix_mc7zvu88fmwa-0.start{counter-reset:lst-ctn-kix_mc7zvu88fmwa-0 0}ol.lst-kix_5hfm47220p7m-8.start{counter-reset:lst-ctn-kix_5hfm47220p7m-8 0}.lst-kix_57xehzgj0o0q-5>li{counter-increment:lst-ctn-kix_57xehzgj0o0q-5}ol.lst-kix_mc7zvu88fmwa-2{list-style-type:none}ol.lst-kix_mc7zvu88fmwa-8{list-style-type:none}.lst-kix_dgl7o571ifn4-0>li:before{content:"" counter(lst-ctn-kix_dgl7o571ifn4-0,lower-latin) ". "}ol.lst-kix_mc7zvu88fmwa-7{list-style-type:none}ol.lst-kix_mc7zvu88fmwa-6{list-style-type:none}ol.lst-kix_8xaiykm0sunq-3.start{counter-reset:lst-ctn-kix_8xaiykm0sunq-3 0}.lst-kix_nyctxtjifx3q-2>li:before{content:"" counter(lst-ctn-kix_nyctxtjifx3q-2,decimal) ". "}.lst-kix_5hfm47220p7m-0>li{counter-increment:lst-ctn-kix_5hfm47220p7m-0}.lst-kix_qa09h5s3llnm-2>li:before{content:"-  "}.lst-kix_57xehzgj0o0q-8>li{counter-increment:lst-ctn-kix_57xehzgj0o0q-8}.lst-kix_57xehzgj0o0q-7>li{counter-increment:lst-ctn-kix_57xehzgj0o0q-7}.lst-kix_993w0gs5eab1-2>li:before{content:"" counter(lst-ctn-kix_993w0gs5eab1-2,decimal) ". "}.lst-kix_38q91hcff1hy-4>li:before{content:"-  "}.lst-kix_dgl7o571ifn4-3>li:before{content:"" counter(lst-ctn-kix_dgl7o571ifn4-3,lower-latin) ". "}.lst-kix_dgl7o571ifn4-8>li:before{content:"" counter(lst-ctn-kix_dgl7o571ifn4-8,decimal) ". "}.lst-kix_7j1kkc3xfjlq-1>li{counter-increment:lst-ctn-kix_7j1kkc3xfjlq-1}.lst-kix_esog94ssfkm4-1>li{counter-increment:lst-ctn-kix_esog94ssfkm4-1}.lst-kix_8xaiykm0sunq-3>li:before{content:"" counter(lst-ctn-kix_8xaiykm0sunq-3,lower-latin) ". "}.lst-kix_qa09h5s3llnm-3>li:before{content:"-  "}.lst-kix_fs1utsv21f33-2>li:before{content:"-  "}.lst-kix_dgl7o571ifn4-1>li:before{content:"" counter(lst-ctn-kix_dgl7o571ifn4-1,lower-roman) ". "}.lst-kix_mc7zvu88fmwa-5>li{counter-increment:lst-ctn-kix_mc7zvu88fmwa-5}.lst-kix_5hfm47220p7m-7>li:before{content:"" counter(lst-ctn-kix_5hfm47220p7m-7,lower-roman) ". "}.lst-kix_dgl7o571ifn4-6>li:before{content:"" counter(lst-ctn-kix_dgl7o571ifn4-6,lower-latin) ". "}.lst-kix_1h24sy4wxziu-6>li:before{content:"-  "}.lst-kix_5hfm47220p7m-7>li{counter-increment:lst-ctn-kix_5hfm47220p7m-7}ol.lst-kix_8xaiykm0sunq-2.start{counter-reset:lst-ctn-kix_8xaiykm0sunq-2 0}.lst-kix_57xehzgj0o0q-8>li:before{content:"" counter(lst-ctn-kix_57xehzgj0o0q-8,decimal) ". "}ol.lst-kix_dgl7o571ifn4-0.start{counter-reset:lst-ctn-kix_dgl7o571ifn4-0 0}ol.lst-kix_esog94ssfkm4-0.start{counter-reset:lst-ctn-kix_esog94ssfkm4-0 0}ol.lst-kix_nyctxtjifx3q-3.start{counter-reset:lst-ctn-kix_nyctxtjifx3q-3 0}.lst-kix_8xaiykm0sunq-0>li:before{content:"" counter(lst-ctn-kix_8xaiykm0sunq-0,lower-latin) ". "}ol.lst-kix_esog94ssfkm4-5.start{counter-reset:lst-ctn-kix_esog94ssfkm4-5 0}.lst-kix_nyctxtjifx3q-6>li{counter-increment:lst-ctn-kix_nyctxtjifx3q-6}ol.lst-kix_5hfm47220p7m-4.start{counter-reset:lst-ctn-kix_5hfm47220p7m-4 0}.lst-kix_dgl7o571ifn4-5>li{counter-increment:lst-ctn-kix_dgl7o571ifn4-5}.lst-kix_1h24sy4wxziu-5>li:before{content:"-  "}.lst-kix_1h24sy4wxziu-0>li:before{content:"-  "}.lst-kix_lzy2fl49ovol-3>li:before{content:"-  "}.lst-kix_mc7zvu88fmwa-1>li{counter-increment:lst-ctn-kix_mc7zvu88fmwa-1}.lst-kix_esog94ssfkm4-5>li:before{content:"" counter(lst-ctn-kix_esog94ssfkm4-5,decimal) ". "}.lst-kix_dgl7o571ifn4-1>li{counter-increment:lst-ctn-kix_dgl7o571ifn4-1}.lst-kix_1h24sy4wxziu-8>li:before{content:"-  "}ol.lst-kix_57xehzgj0o0q-8.start{counter-reset:lst-ctn-kix_57xehzgj0o0q-8 0}ul.lst-kix_1h24sy4wxziu-5{list-style-type:none}ol.lst-kix_dgl7o571ifn4-5{list-style-type:none}ul.lst-kix_1h24sy4wxziu-6{list-style-type:none}ol.lst-kix_dgl7o571ifn4-4{list-style-type:none}.lst-kix_esog94ssfkm4-8>li:before{content:"" counter(lst-ctn-kix_esog94ssfkm4-8,decimal) ". "}ul.lst-kix_1h24sy4wxziu-7{list-style-type:none}ol.lst-kix_dgl7o571ifn4-3{list-style-type:none}ul.lst-kix_1h24sy4wxziu-8{list-style-type:none}ol.lst-kix_dgl7o571ifn4-2{list-style-type:none}ul.lst-kix_1h24sy4wxziu-1{list-style-type:none}ol.lst-kix_dgl7o571ifn4-1{list-style-type:none}ul.lst-kix_1h24sy4wxziu-2{list-style-type:none}ol.lst-kix_dgl7o571ifn4-0{list-style-type:none}ul.lst-kix_1h24sy4wxziu-3{list-style-type:none}ul.lst-kix_1h24sy4wxziu-4{list-style-type:none}.lst-kix_5hfm47220p7m-8>li{counter-increment:lst-ctn-kix_5hfm47220p7m-8}.lst-kix_esog94ssfkm4-2>li:before{content:"" counter(lst-ctn-kix_esog94ssfkm4-2,decimal) ". "}.lst-kix_6qmejayq8ok-3>li:before{content:"-  "}ol.lst-kix_57xehzgj0o0q-6.start{counter-reset:lst-ctn-kix_57xehzgj0o0q-6 0}.lst-kix_qa09h5s3llnm-5>li:before{content:"-  "}.lst-kix_qa09h5s3llnm-8>li:before{content:"-  "}ol.lst-kix_esog94ssfkm4-1.start{counter-reset:lst-ctn-kix_esog94ssfkm4-1 0}.lst-kix_qa09h5s3llnm-6>li:before{content:"-  "}ul.lst-kix_1h24sy4wxziu-0{list-style-type:none}.lst-kix_tkmvkoz760w0-2>li:before{content:"\0025a0  "}ol.lst-kix_dgl7o571ifn4-8{list-style-type:none}ol.lst-kix_dgl7o571ifn4-6{list-style-type:none}ol.lst-kix_dgl7o571ifn4-7{list-style-type:none}.lst-kix_dgl7o571ifn4-6>li{counter-increment:lst-ctn-kix_dgl7o571ifn4-6}.lst-kix_1h24sy4wxziu-4>li:before{content:"-  "}.lst-kix_7j1kkc3xfjlq-4>li{counter-increment:lst-ctn-kix_7j1kkc3xfjlq-4}.lst-kix_993w0gs5eab1-5>li{counter-increment:lst-ctn-kix_993w0gs5eab1-5}ol.lst-kix_mc7zvu88fmwa-5.start{counter-reset:lst-ctn-kix_mc7zvu88fmwa-5 0}.lst-kix_esog94ssfkm4-3>li{counter-increment:lst-ctn-kix_esog94ssfkm4-3}.lst-kix_5hfm47220p7m-2>li:before{content:"" counter(lst-ctn-kix_5hfm47220p7m-2,decimal) ". "}ol.lst-kix_dgl7o571ifn4-8.start{counter-reset:lst-ctn-kix_dgl7o571ifn4-8 0}.lst-kix_57xehzgj0o0q-4>li:before{content:"" counter(lst-ctn-kix_57xehzgj0o0q-4,lower-roman) ". "}ol.lst-kix_7j1kkc3xfjlq-5.start{counter-reset:lst-ctn-kix_7j1kkc3xfjlq-5 0}.lst-kix_57xehzgj0o0q-1>li:before{content:"" counter(lst-ctn-kix_57xehzgj0o0q-1,lower-roman) ". "}ol.lst-kix_esog94ssfkm4-2.start{counter-reset:lst-ctn-kix_esog94ssfkm4-2 0}.lst-kix_5hfm47220p7m-4>li{counter-increment:lst-ctn-kix_5hfm47220p7m-4}.lst-kix_1h24sy4wxziu-1>li:before{content:"-  "}.lst-kix_mc7zvu88fmwa-0>li{counter-increment:lst-ctn-kix_mc7zvu88fmwa-0}ol.lst-kix_dgl7o571ifn4-3.start{counter-reset:lst-ctn-kix_dgl7o571ifn4-3 0}.lst-kix_lzy2fl49ovol-7>li:before{content:"-  "}ol.lst-kix_5hfm47220p7m-1.start{counter-reset:lst-ctn-kix_5hfm47220p7m-1 0}.lst-kix_esog94ssfkm4-8>li{counter-increment:lst-ctn-kix_esog94ssfkm4-8}.lst-kix_993w0gs5eab1-7>li:before{content:"" counter(lst-ctn-kix_993w0gs5eab1-7,lower-roman) ". "}ol.lst-kix_mc7zvu88fmwa-8.start{counter-reset:lst-ctn-kix_mc7zvu88fmwa-8 0}ol.lst-kix_7j1kkc3xfjlq-6.start{counter-reset:lst-ctn-kix_7j1kkc3xfjlq-6 0}.lst-kix_8xaiykm0sunq-5>li{counter-increment:lst-ctn-kix_8xaiykm0sunq-5}.lst-kix_7j1kkc3xfjlq-7>li:before{content:"" counter(lst-ctn-kix_7j1kkc3xfjlq-7,lower-roman) ". "}ol.lst-kix_dgl7o571ifn4-4.start{counter-reset:lst-ctn-kix_dgl7o571ifn4-4 0}.lst-kix_lzy2fl49ovol-4>li:before{content:"-  "}.lst-kix_5hfm47220p7m-4>li:before{content:"" counter(lst-ctn-kix_5hfm47220p7m-4,lower-roman) ". "}.lst-kix_6qmejayq8ok-6>li:before{content:"-  "}.lst-kix_993w0gs5eab1-3>li:before{content:"" counter(lst-ctn-kix_993w0gs5eab1-3,lower-latin) ". "}.lst-kix_5hfm47220p7m-2>li{counter-increment:lst-ctn-kix_5hfm47220p7m-2}ol.lst-kix_7j1kkc3xfjlq-1.start{counter-reset:lst-ctn-kix_7j1kkc3xfjlq-1 0}.lst-kix_7j1kkc3xfjlq-5>li{counter-increment:lst-ctn-kix_7j1kkc3xfjlq-5}.lst-kix_8xaiykm0sunq-8>li{counter-increment:lst-ctn-kix_8xaiykm0sunq-8}.lst-kix_dgl7o571ifn4-8>li{counter-increment:lst-ctn-kix_dgl7o571ifn4-8}ol.lst-kix_nyctxtjifx3q-8.start{counter-reset:lst-ctn-kix_nyctxtjifx3q-8 0}ol.lst-kix_7j1kkc3xfjlq-7.start{counter-reset:lst-ctn-kix_7j1kkc3xfjlq-7 0}ol.lst-kix_8xaiykm0sunq-7.start{counter-reset:lst-ctn-kix_8xaiykm0sunq-7 0}.lst-kix_7j1kkc3xfjlq-7>li{counter-increment:lst-ctn-kix_7j1kkc3xfjlq-7}.lst-kix_8xaiykm0sunq-4>li{counter-increment:lst-ctn-kix_8xaiykm0sunq-4}.lst-kix_nyctxtjifx3q-7>li{counter-increment:lst-ctn-kix_nyctxtjifx3q-7}ol.lst-kix_57xehzgj0o0q-3.start{counter-reset:lst-ctn-kix_57xehzgj0o0q-3 0}.lst-kix_mc7zvu88fmwa-2>li:before{content:"" counter(lst-ctn-kix_mc7zvu88fmwa-2,lower-roman) ") "}.lst-kix_993w0gs5eab1-1>li{counter-increment:lst-ctn-kix_993w0gs5eab1-1}.lst-kix_esog94ssfkm4-5>li{counter-increment:lst-ctn-kix_esog94ssfkm4-5}.lst-kix_esog94ssfkm4-6>li{counter-increment:lst-ctn-kix_esog94ssfkm4-6}ol.lst-kix_993w0gs5eab1-5.start{counter-reset:lst-ctn-kix_993w0gs5eab1-5 0}.lst-kix_7j1kkc3xfjlq-0>li{counter-increment:lst-ctn-kix_7j1kkc3xfjlq-0}.lst-kix_993w0gs5eab1-0>li:before{content:"" counter(lst-ctn-kix_993w0gs5eab1-0,lower-latin) ". "}.lst-kix_mc7zvu88fmwa-2>li{counter-increment:lst-ctn-kix_mc7zvu88fmwa-2}.lst-kix_dgl7o571ifn4-7>li{counter-increment:lst-ctn-kix_dgl7o571ifn4-7}ol.lst-kix_8xaiykm0sunq-1.start{counter-reset:lst-ctn-kix_8xaiykm0sunq-1 0}.lst-kix_38q91hcff1hy-2>li:before{content:"-  "}.lst-kix_7j1kkc3xfjlq-4>li:before{content:"" counter(lst-ctn-kix_7j1kkc3xfjlq-4,lower-roman) ". "}.lst-kix_lzy2fl49ovol-2>li:before{content:"-  "}.lst-kix_6qmejayq8ok-5>li:before{content:"-  "}ul.lst-kix_lzy2fl49ovol-1{list-style-type:none}ul.lst-kix_lzy2fl49ovol-2{list-style-type:none}.lst-kix_nyctxtjifx3q-1>li{counter-increment:lst-ctn-kix_nyctxtjifx3q-1}ul.lst-kix_lzy2fl49ovol-0{list-style-type:none}ol.lst-kix_nyctxtjifx3q-8{list-style-type:none}ol.lst-kix_esog94ssfkm4-7.start{counter-reset:lst-ctn-kix_esog94ssfkm4-7 0}.lst-kix_lzy2fl49ovol-6>li:before{content:"-  "}.lst-kix_993w0gs5eab1-4>li:before{content:"" counter(lst-ctn-kix_993w0gs5eab1-4,lower-roman) ". "}ol.lst-kix_nyctxtjifx3q-6{list-style-type:none}ol.lst-kix_nyctxtjifx3q-7{list-style-type:none}ul.lst-kix_lzy2fl49ovol-7{list-style-type:none}ol.lst-kix_nyctxtjifx3q-4{list-style-type:none}ul.lst-kix_lzy2fl49ovol-8{list-style-type:none}ol.lst-kix_nyctxtjifx3q-5{list-style-type:none}ul.lst-kix_lzy2fl49ovol-5{list-style-type:none}ol.lst-kix_nyctxtjifx3q-2{list-style-type:none}ul.lst-kix_lzy2fl49ovol-6{list-style-type:none}ol.lst-kix_nyctxtjifx3q-3{list-style-type:none}.lst-kix_57xehzgj0o0q-0>li:before{content:"" counter(lst-ctn-kix_57xehzgj0o0q-0,lower-latin) ". "}ul.lst-kix_lzy2fl49ovol-3{list-style-type:none}ol.lst-kix_nyctxtjifx3q-0{list-style-type:none}ul.lst-kix_lzy2fl49ovol-4{list-style-type:none}ol.lst-kix_nyctxtjifx3q-1{list-style-type:none}ol.lst-kix_esog94ssfkm4-8{list-style-type:none}ol.lst-kix_esog94ssfkm4-6{list-style-type:none}ol.lst-kix_esog94ssfkm4-7{list-style-type:none}ol.lst-kix_esog94ssfkm4-4{list-style-type:none}ol.lst-kix_esog94ssfkm4-5{list-style-type:none}.lst-kix_8xaiykm0sunq-1>li{counter-increment:lst-ctn-kix_8xaiykm0sunq-1}ol.lst-kix_esog94ssfkm4-2{list-style-type:none}ol.lst-kix_esog94ssfkm4-3{list-style-type:none}ol.lst-kix_esog94ssfkm4-0{list-style-type:none}ol.lst-kix_esog94ssfkm4-1{list-style-type:none}.lst-kix_tkmvkoz760w0-0>li:before{content:"\0025cf  "}ul.lst-kix_fs1utsv21f33-8{list-style-type:none}ul.lst-kix_fs1utsv21f33-5{list-style-type:none}ul.lst-kix_fs1utsv21f33-4{list-style-type:none}ol.lst-kix_993w0gs5eab1-0.start{counter-reset:lst-ctn-kix_993w0gs5eab1-0 0}ul.lst-kix_fs1utsv21f33-7{list-style-type:none}.lst-kix_mc7zvu88fmwa-4>li{counter-increment:lst-ctn-kix_mc7zvu88fmwa-4}ul.lst-kix_fs1utsv21f33-6{list-style-type:none}ul.lst-kix_fs1utsv21f33-1{list-style-type:none}ul.lst-kix_fs1utsv21f33-0{list-style-type:none}ul.lst-kix_fs1utsv21f33-3{list-style-type:none}ul.lst-kix_fs1utsv21f33-2{list-style-type:none}ul.lst-kix_38q91hcff1hy-6{list-style-type:none}ul.lst-kix_38q91hcff1hy-7{list-style-type:none}.lst-kix_8xaiykm0sunq-7>li:before{content:"" counter(lst-ctn-kix_8xaiykm0sunq-7,lower-roman) ". "}ul.lst-kix_38q91hcff1hy-8{list-style-type:none}.lst-kix_esog94ssfkm4-4>li{counter-increment:lst-ctn-kix_esog94ssfkm4-4}.lst-kix_5hfm47220p7m-6>li{counter-increment:lst-ctn-kix_5hfm47220p7m-6}.lst-kix_esog94ssfkm4-7>li{counter-increment:lst-ctn-kix_esog94ssfkm4-7}ol.lst-kix_993w0gs5eab1-7.start{counter-reset:lst-ctn-kix_993w0gs5eab1-7 0}.lst-kix_993w0gs5eab1-6>li:before{content:"" counter(lst-ctn-kix_993w0gs5eab1-6,lower-latin) ". "}.lst-kix_57xehzgj0o0q-2>li{counter-increment:lst-ctn-kix_57xehzgj0o0q-2}ul.lst-kix_38q91hcff1hy-0{list-style-type:none}ul.lst-kix_38q91hcff1hy-1{list-style-type:none}ul.lst-kix_38q91hcff1hy-2{list-style-type:none}ol.lst-kix_5hfm47220p7m-2.start{counter-reset:lst-ctn-kix_5hfm47220p7m-2 0}ul.lst-kix_38q91hcff1hy-3{list-style-type:none}ul.lst-kix_38q91hcff1hy-4{list-style-type:none}ul.lst-kix_38q91hcff1hy-5{list-style-type:none}.lst-kix_1h24sy4wxziu-2>li:before{content:"-  "}ol.lst-kix_5hfm47220p7m-0.start{counter-reset:lst-ctn-kix_5hfm47220p7m-0 0}.lst-kix_993w0gs5eab1-3>li{counter-increment:lst-ctn-kix_993w0gs5eab1-3}.lst-kix_57xehzgj0o0q-2>li:before{content:"" counter(lst-ctn-kix_57xehzgj0o0q-2,decimal) ". "}.lst-kix_esog94ssfkm4-4>li:before{content:"" counter(lst-ctn-kix_esog94ssfkm4-4,lower-roman) ". "}.lst-kix_mc7zvu88fmwa-7>li{counter-increment:lst-ctn-kix_mc7zvu88fmwa-7}.lst-kix_fs1utsv21f33-8>li:before{content:"-  "}.lst-kix_38q91hcff1hy-0>li:before{content:"-  "}.lst-kix_993w0gs5eab1-6>li{counter-increment:lst-ctn-kix_993w0gs5eab1-6}.lst-kix_mc7zvu88fmwa-1>li:before{content:"" counter(lst-ctn-kix_mc7zvu88fmwa-1,lower-latin) ") "}.lst-kix_7j1kkc3xfjlq-5>li:before{content:"" counter(lst-ctn-kix_7j1kkc3xfjlq-5,decimal) ". "}ol.lst-kix_993w0gs5eab1-1.start{counter-reset:lst-ctn-kix_993w0gs5eab1-1 0}.lst-kix_38q91hcff1hy-7>li:before{content:"-  "}.lst-kix_7j1kkc3xfjlq-0>li:before{content:"" counter(lst-ctn-kix_7j1kkc3xfjlq-0,lower-latin) ". "}ol.lst-kix_993w0gs5eab1-6.start{counter-reset:lst-ctn-kix_993w0gs5eab1-6 0}ol.lst-kix_5hfm47220p7m-7.start{counter-reset:lst-ctn-kix_5hfm47220p7m-7 0}.lst-kix_993w0gs5eab1-8>li:before{content:"" counter(lst-ctn-kix_993w0gs5eab1-8,decimal) ". "}.lst-kix_5hfm47220p7m-5>li:before{content:"" counter(lst-ctn-kix_5hfm47220p7m-5,decimal) ". "}.lst-kix_57xehzgj0o0q-0>li{counter-increment:lst-ctn-kix_57xehzgj0o0q-0}.lst-kix_57xehzgj0o0q-3>li:before{content:"" counter(lst-ctn-kix_57xehzgj0o0q-3,lower-latin) ". "}ol.lst-kix_nyctxtjifx3q-2.start{counter-reset:lst-ctn-kix_nyctxtjifx3q-2 0}.lst-kix_fs1utsv21f33-6>li:before{content:"-  "}ol.lst-kix_esog94ssfkm4-6.start{counter-reset:lst-ctn-kix_esog94ssfkm4-6 0}ol.lst-kix_993w0gs5eab1-3.start{counter-reset:lst-ctn-kix_993w0gs5eab1-3 0}.lst-kix_mc7zvu88fmwa-0>li:before{content:"" counter(lst-ctn-kix_mc7zvu88fmwa-0,decimal) ") "}ol.lst-kix_7j1kkc3xfjlq-3.start{counter-reset:lst-ctn-kix_7j1kkc3xfjlq-3 0}ol.lst-kix_nyctxtjifx3q-0.start{counter-reset:lst-ctn-kix_nyctxtjifx3q-0 0}ol.lst-kix_5hfm47220p7m-5.start{counter-reset:lst-ctn-kix_5hfm47220p7m-5 0}ol.lst-kix_993w0gs5eab1-4.start{counter-reset:lst-ctn-kix_993w0gs5eab1-4 0}.lst-kix_qa09h5s3llnm-4>li:before{content:"-  "}ul.lst-kix_6qmejayq8ok-5{list-style-type:none}ul.lst-kix_6qmejayq8ok-6{list-style-type:none}ul.lst-kix_6qmejayq8ok-3{list-style-type:none}ul.lst-kix_6qmejayq8ok-4{list-style-type:none}ul.lst-kix_6qmejayq8ok-1{list-style-type:none}ul.lst-kix_6qmejayq8ok-2{list-style-type:none}.lst-kix_7j1kkc3xfjlq-6>li{counter-increment:lst-ctn-kix_7j1kkc3xfjlq-6}.lst-kix_dgl7o571ifn4-4>li:before{content:"" counter(lst-ctn-kix_dgl7o571ifn4-4,lower-roman) ". "}ul.lst-kix_6qmejayq8ok-0{list-style-type:none}ol.lst-kix_8xaiykm0sunq-6.start{counter-reset:lst-ctn-kix_8xaiykm0sunq-6 0}.lst-kix_esog94ssfkm4-3>li:before{content:"" counter(lst-ctn-kix_esog94ssfkm4-3,lower-latin) ". "}.lst-kix_dgl7o571ifn4-3>li{counter-increment:lst-ctn-kix_dgl7o571ifn4-3}.lst-kix_esog94ssfkm4-0>li{counter-increment:lst-ctn-kix_esog94ssfkm4-0}ol.lst-kix_993w0gs5eab1-7{list-style-type:none}ol.lst-kix_993w0gs5eab1-8{list-style-type:none}.lst-kix_tkmvkoz760w0-1>li:before{content:"\0025cb  "}ol.lst-kix_57xehzgj0o0q-8{list-style-type:none}ol.lst-kix_993w0gs5eab1-5{list-style-type:none}ol.lst-kix_993w0gs5eab1-6{list-style-type:none}ol.lst-kix_57xehzgj0o0q-7{list-style-type:none}ol.lst-kix_993w0gs5eab1-3{list-style-type:none}ol.lst-kix_993w0gs5eab1-4{list-style-type:none}ol.lst-kix_57xehzgj0o0q-4{list-style-type:none}ol.lst-kix_993w0gs5eab1-1{list-style-type:none}ol.lst-kix_57xehzgj0o0q-3{list-style-type:none}ol.lst-kix_993w0gs5eab1-2{list-style-type:none}ol.lst-kix_57xehzgj0o0q-6{list-style-type:none}ol.lst-kix_57xehzgj0o0q-5{list-style-type:none}ol.lst-kix_993w0gs5eab1-0{list-style-type:none}ol.lst-kix_57xehzgj0o0q-1{list-style-type:none}ol.lst-kix_57xehzgj0o0q-2{list-style-type:none}ol.lst-kix_57xehzgj0o0q-0{list-style-type:none}ol.lst-kix_7j1kkc3xfjlq-3{list-style-type:none}ol.lst-kix_7j1kkc3xfjlq-2{list-style-type:none}.lst-kix_mc7zvu88fmwa-5>li:before{content:"(" counter(lst-ctn-kix_mc7zvu88fmwa-5,lower-roman) ") "}.lst-kix_5hfm47220p7m-5>li{counter-increment:lst-ctn-kix_5hfm47220p7m-5}ol.lst-kix_7j1kkc3xfjlq-1{list-style-type:none}.lst-kix_nyctxtjifx3q-2>li{counter-increment:lst-ctn-kix_nyctxtjifx3q-2}.lst-kix_tkmvkoz760w0-4>li:before{content:"\0025cb  "}ol.lst-kix_7j1kkc3xfjlq-0{list-style-type:none}.lst-kix_nyctxtjifx3q-7>li:before{content:"" counter(lst-ctn-kix_nyctxtjifx3q-7,lower-roman) ". "}ol.lst-kix_mc7zvu88fmwa-4.start{counter-reset:lst-ctn-kix_mc7zvu88fmwa-4 0}.lst-kix_nyctxtjifx3q-0>li:before{content:"" counter(lst-ctn-kix_nyctxtjifx3q-0,lower-latin) ". "}ol.lst-kix_5hfm47220p7m-3.start{counter-reset:lst-ctn-kix_5hfm47220p7m-3 0}.lst-kix_nyctxtjifx3q-1>li:before{content:"" counter(lst-ctn-kix_nyctxtjifx3q-1,lower-roman) ". "}ol.lst-kix_dgl7o571ifn4-1.start{counter-reset:lst-ctn-kix_dgl7o571ifn4-1 0}ol.lst-kix_5hfm47220p7m-6.start{counter-reset:lst-ctn-kix_5hfm47220p7m-6 0}.lst-kix_7j1kkc3xfjlq-8>li{counter-increment:lst-ctn-kix_7j1kkc3xfjlq-8}ol.lst-kix_7j1kkc3xfjlq-6{list-style-type:none}ol.lst-kix_7j1kkc3xfjlq-7{list-style-type:none}.lst-kix_38q91hcff1hy-8>li:before{content:"-  "}ol.lst-kix_dgl7o571ifn4-2.start{counter-reset:lst-ctn-kix_dgl7o571ifn4-2 0}ol.lst-kix_7j1kkc3xfjlq-4{list-style-type:none}ol.lst-kix_7j1kkc3xfjlq-5{list-style-type:none}ul.lst-kix_6qmejayq8ok-8{list-style-type:none}.lst-kix_38q91hcff1hy-5>li:before{content:"-  "}ul.lst-kix_6qmejayq8ok-7{list-style-type:none}ol.lst-kix_7j1kkc3xfjlq-8{list-style-type:none}ol.lst-kix_nyctxtjifx3q-5.start{counter-reset:lst-ctn-kix_nyctxtjifx3q-5 0}.lst-kix_57xehzgj0o0q-6>li:before{content:"" counter(lst-ctn-kix_57xehzgj0o0q-6,lower-latin) ". "}.lst-kix_mc7zvu88fmwa-6>li{counter-increment:lst-ctn-kix_mc7zvu88fmwa-6}.lst-kix_nyctxtjifx3q-3>li:before{content:"" counter(lst-ctn-kix_nyctxtjifx3q-3,lower-latin) ". "}ol.lst-kix_7j1kkc3xfjlq-0.start{counter-reset:lst-ctn-kix_7j1kkc3xfjlq-0 0}.lst-kix_5hfm47220p7m-8>li:before{content:"" counter(lst-ctn-kix_5hfm47220p7m-8,decimal) ". "}ol.lst-kix_dgl7o571ifn4-7.start{counter-reset:lst-ctn-kix_dgl7o571ifn4-7 0}.lst-kix_5hfm47220p7m-3>li:before{content:"" counter(lst-ctn-kix_5hfm47220p7m-3,lower-latin) ". "}.lst-kix_8xaiykm0sunq-1>li:before{content:"" counter(lst-ctn-kix_8xaiykm0sunq-1,lower-roman) ". "}.lst-kix_dgl7o571ifn4-2>li{counter-increment:lst-ctn-kix_dgl7o571ifn4-2}.lst-kix_qa09h5s3llnm-1>li:before{content:"-  "}.lst-kix_mc7zvu88fmwa-8>li{counter-increment:lst-ctn-kix_mc7zvu88fmwa-8}ol.lst-kix_nyctxtjifx3q-7.start{counter-reset:lst-ctn-kix_nyctxtjifx3q-7 0}.lst-kix_8xaiykm0sunq-2>li:before{content:"" counter(lst-ctn-kix_8xaiykm0sunq-2,decimal) ". "}.lst-kix_fs1utsv21f33-3>li:before{content:"-  "}.lst-kix_993w0gs5eab1-1>li:before{content:"" counter(lst-ctn-kix_993w0gs5eab1-1,lower-roman) ". "}.lst-kix_7j1kkc3xfjlq-3>li:before{content:"" counter(lst-ctn-kix_7j1kkc3xfjlq-3,lower-latin) ". "}.lst-kix_nyctxtjifx3q-3>li{counter-increment:lst-ctn-kix_nyctxtjifx3q-3}ol.lst-kix_57xehzgj0o0q-5.start{counter-reset:lst-ctn-kix_57xehzgj0o0q-5 0}.lst-kix_tkmvkoz760w0-6>li:before{content:"\0025cf  "}.lst-kix_8xaiykm0sunq-7>li{counter-increment:lst-ctn-kix_8xaiykm0sunq-7}.lst-kix_mc7zvu88fmwa-7>li:before{content:"" counter(lst-ctn-kix_mc7zvu88fmwa-7,lower-latin) ". "}.lst-kix_nyctxtjifx3q-4>li:before{content:"" counter(lst-ctn-kix_nyctxtjifx3q-4,lower-roman) ". "}ol.lst-kix_mc7zvu88fmwa-2.start{counter-reset:lst-ctn-kix_mc7zvu88fmwa-2 0}.lst-kix_nyctxtjifx3q-8>li:before{content:"" counter(lst-ctn-kix_nyctxtjifx3q-8,decimal) ". "}.lst-kix_6qmejayq8ok-4>li:before{content:"-  "}ol.lst-kix_mc7zvu88fmwa-1.start{counter-reset:lst-ctn-kix_mc7zvu88fmwa-1 0}.lst-kix_qa09h5s3llnm-7>li:before{content:"-  "}ol.lst-kix_993w0gs5eab1-2.start{counter-reset:lst-ctn-kix_993w0gs5eab1-2 0}ol.lst-kix_57xehzgj0o0q-1.start{counter-reset:lst-ctn-kix_57xehzgj0o0q-1 0}.lst-kix_57xehzgj0o0q-3>li{counter-increment:lst-ctn-kix_57xehzgj0o0q-3}.lst-kix_7j1kkc3xfjlq-1>li:before{content:"" counter(lst-ctn-kix_7j1kkc3xfjlq-1,lower-roman) ". "}.lst-kix_mc7zvu88fmwa-4>li:before{content:"(" counter(lst-ctn-kix_mc7zvu88fmwa-4,lower-latin) ") "}.lst-kix_dgl7o571ifn4-0>li{counter-increment:lst-ctn-kix_dgl7o571ifn4-0}.lst-kix_fs1utsv21f33-0>li:before{content:"-  "}.lst-kix_lzy2fl49ovol-0>li:before{content:"-  "}.lst-kix_fs1utsv21f33-1>li:before{content:"-  "}.lst-kix_esog94ssfkm4-7>li:before{content:"" counter(lst-ctn-kix_esog94ssfkm4-7,lower-roman) ". "}.lst-kix_mc7zvu88fmwa-8>li:before{content:"" counter(lst-ctn-kix_mc7zvu88fmwa-8,lower-roman) ". "}ol{margin:0;padding:0}.c19{border-bottom-width:1pt;border-top-style:solid;width:115.5pt;border-right-style:solid;padding:5pt 5pt 5pt 5pt;border-bottom-color:#000000;border-top-width:1pt;border-bottom-style:solid;vertical-align:top;border-top-color:#000000;border-left-color:#000000;border-right-color:#000000;border-left-style:solid;border-right-width:1pt;border-left-width:1pt}.c0{border-bottom-width:1pt;border-top-style:solid;width:344.2pt;border-right-style:solid;padding:5pt 5pt 5pt 5pt;border-bottom-color:#000000;border-top-width:1pt;border-bottom-style:solid;vertical-align:top;border-top-color:#000000;border-left-color:#000000;border-right-color:#000000;border-left-style:solid;border-right-width:1pt;border-left-width:1pt}.c14{border-bottom-width:1pt;border-top-style:solid;width:117.8pt;border-right-style:solid;padding:5pt 5pt 5pt 5pt;border-bottom-color:#000000;border-top-width:1pt;border-bottom-style:solid;vertical-align:top;border-top-color:#000000;border-left-color:#000000;border-right-color:#000000;border-left-style:solid;border-right-width:1pt;border-left-width:1pt}.c15{border-bottom-width:1pt;border-top-style:solid;width:341.2pt;border-right-style:solid;padding:5pt 5pt 5pt 5pt;border-bottom-color:#000000;border-top-width:1pt;border-bottom-style:solid;vertical-align:top;border-top-color:#000000;border-left-color:#000000;border-right-color:#000000;border-left-style:solid;border-right-width:1pt;border-left-width:1pt}.c1{border-bottom-width:1pt;border-top-style:solid;width:118.5pt;border-right-style:solid;padding:5pt 5pt 5pt 5pt;border-bottom-color:#000000;border-top-width:1pt;border-bottom-style:solid;vertical-align:top;border-top-color:#000000;border-left-color:#000000;border-right-color:#000000;border-left-style:solid;border-right-width:1pt;border-left-width:1pt}.c4{vertical-align:baseline;color:#000000;font-size:11pt;font-style:normal;background-color:#ffffff;font-family:"Arial";text-decoration:none;font-weight:normal}.c18{vertical-align:baseline;color:#000000;font-size:11pt;font-style:normal;font-family:"Arial";text-decoration:none}.c16{vertical-align:baseline;font-size:11pt;font-style:normal;font-family:"Arial";text-decoration:none;font-weight:normal}.c8{line-height:1.15;padding-top:0pt;height:11pt;text-align:left;padding-bottom:0pt}.c9{line-height:1.15;padding-top:0pt;text-align:left;padding-bottom:0pt}.c31{margin-right:auto;border-collapse:collapse}.c28{margin-right:auto;border-collapse:collapse;margin-left:0.8pt}.c2{widows:2;orphans:2;direction:ltr}.c27{padding-top:24pt;padding-bottom:6pt;page-break-after:avoid}.c25{padding-left:0pt;margin-left:108pt}.c24{padding-left:0pt;margin-left:36pt}.c7{color:inherit;text-decoration:inherit}.c5{background-color:#ffffff;font-weight:bold}.c11{color:#1155cc;text-decoration:underline}.c21{max-width:612pt;padding:0pt 0pt 0pt 0pt}.c22{font-size:23pt;font-family:"Arial"}.c26{margin:0;padding:0}.c3{height:0pt}.c13{color:#ff0000}.c23{height:25pt}.c12{height:11pt}.c10{background-color:#ffffff}.c17{text-indent:36pt}.c30{margin-left:-57.8pt}.c20{height:39pt}.c6{height:26pt}.c29{height:114pt}.title{widows:2;padding-top:0pt;line-height:1.15;orphans:2;text-align:left;color:#000000;font-size:21pt;font-family:"Trebuchet MS";padding-bottom:0pt;page-break-after:avoid}.subtitle{widows:2;padding-top:0pt;line-height:1.15;orphans:2;text-align:left;color:#666666;font-style:italic;font-size:13pt;font-family:"Trebuchet MS";padding-bottom:10pt;page-break-after:avoid}li{color:#000000;font-size:11pt;font-family:"Arial"}p{color:#000000;font-size:11pt;margin:0;font-family:"Arial"}h1{widows:2;padding-top:10pt;line-height:1.15;orphans:2;text-align:left;color:#000000;font-size:16pt;font-family:"Trebuchet MS";padding-bottom:0pt;page-break-after:avoid}h2{widows:2;padding-top:10pt;line-height:1.15;orphans:2;text-align:left;color:#000000;font-size:13pt;font-family:"Trebuchet MS";font-weight:bold;padding-bottom:0pt;page-break-after:avoid}h3{widows:2;padding-top:8pt;line-height:1.15;orphans:2;text-align:left;color:#666666;font-size:12pt;font-family:"Trebuchet MS";font-weight:bold;padding-bottom:0pt;page-break-after:avoid}h4{widows:2;padding-top:8pt;line-height:1.15;orphans:2;text-align:left;color:#666666;font-size:11pt;text-decoration:underline;font-family:"Trebuchet MS";padding-bottom:0pt;page-break-after:avoid}h5{widows:2;padding-top:8pt;line-height:1.15;orphans:2;text-align:left;color:#666666;font-size:11pt;font-family:"Trebuchet MS";padding-bottom:0pt;page-break-after:avoid}h6{widows:2;padding-top:8pt;line-height:1.15;orphans:2;text-align:left;color:#666666;font-style:italic;font-size:11pt;font-family:"Trebuchet MS";padding-bottom:0pt;page-break-after:avoid}</style></head><body class="c10 c21"><h1 class="c2 c27 c30"><a name="h.b0dgkiehxuco"></a><span class="c5 c22">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="c5 c22">Defini&ccedil;&atilde;o de Processo Padr&atilde;</span><span class="c5 c22">o</span></h1><p class="c2"><span>Daniel de Oliveira Vasconcelos</span></p><p class="c2"><span>L</span><span>ucas de Assis Rosa</span></p><p class="c2"><span>Lucas Henrique Nonato de Oliveira</span></p><p class="c2"><span>Marcos Vinicius Ribeiro Silva</span></p><p class="c2"><span>Rafael Can&ecirc;do de Moraes Mereb</span></p><p class="c2"><span>Yuri Matheus Dias Pereira</span></p><p class="c2"><span>Guilherme Alves Rosa e Silva</span></p><h1 class="c2 c27"><a name="h.xkd5isq9zact"></a><span class="c5 c22">Processo de manuten&ccedil;&atilde;o</span></h1><p class="c2"><span class="c5">1) Prop&oacute;sito</span><span class="c10">&nbsp;</span></p><p class="c2 c12"><span class="c10"></span></p><p class="c2"><span class="c10">Este processo de manuten&ccedil;&atilde;o possui o intento de controlar evolu&ccedil;&otilde;es pertinentes ao sistema, promovendo sua melhoria, otimiza&ccedil;&atilde;o e o repar de defeitos encontrados. Por meio de determinadas atividades atreladas ao ciclo de vida do software, procura-se formar um processo que garanta alta longevidade.</span></p><p class="c2"><span class="c10">A organiza&ccedil;&atilde;o dever&aacute; estar ciente e assegurar conformidade com os seguintes objetivos:</span></p><ul class="c26 lst-kix_1h24sy4wxziu-0 start"><li class="c2 c24"><span>Garantir alta manutenibilidade de forma a diminuir os custos com manuten&ccedil;&atilde;o;</span></li><li class="c2 c24"><span>Definir a forma como as solicita&ccedil;&otilde;es de mudan&ccedil;a no software devem ocorrer, para manter a qualidade e o controle dos produtos de software da empresa. </span></li><li class="c2 c24"><span>Assegurar que evolu&ccedil;&otilde;es (novas vers&otilde;es) do software est&atilde;o sempre atendendo &agrave;s necessidades do cliente para assim prolongar a vida &uacute;til do software.</span></li></ul><p class="c2 c12"><span class="c13"></span></p><p class="c2"><span class="c5">2) Defini&ccedil;&otilde;es</span></p><p class="c2"><span class="c10">Os seguintes termos e suas defini&ccedil;&otilde;es usadas neste processo s&atilde;o listados abaixo (defini&ccedil;&otilde;es de acordo com a norma ISO/IEC IEE 14764).</span></p><p class="c2"><span class="c10">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.01) Manuten&ccedil;&atilde;o de Melhoria - Uma modifica&ccedil;&atilde;o em um produto de software para satisfazer um novo requisito.</span></p><p class="c2"><span class="c10 c13">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="c10">2.02) Manuten&ccedil;&atilde;o Corretiva - A modifica&ccedil;&atilde;o reativa (ap&oacute;s o relato do problema) em um produto de software realizada ap&oacute;s a entrega para corrigir problemas descobertos.</span></p><p class="c2 c17"><span class="c10">2.03) Manuten&ccedil;&atilde;o Preventiva - A modifica&ccedil;&atilde;o em um produto de software, ap&oacute;s a entrega, para detectar e corrigir defeitos latentes (que est&atilde;o na imin&ecirc;ncia de causar falhas).</span></p><p class="c2"><span class="c13 c10">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="c10">2.08) Manutenibilidade - A capacidade de um produto de software de ser modificado. Modifica&ccedil;&otilde;es incluem corre&ccedil;&otilde;es, melhorias, mudan&ccedil;as no ambiente, mudan&ccedil;as em requisitos e em especifica&ccedil;&otilde;es funcionais (modelos de projeto).</span></p><p class="c2"><span class="c13 c10">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="c10">2.09) Solicita&ccedil;&atilde;o de Mudan&ccedil;a - Documento para as modifica&ccedil;&otilde;es propostas &agrave; um produto de software que est&aacute; sendo mantido.</span></p><p class="c2"><span class="c13 c10">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="c10">2.10) Relat&oacute;rio de Problema - Documento para identificar e descrever problemas detectados em um produto de software que est&aacute; sendo mantido.</span></p><p class="c2"><span class="c13 c10">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="c10">2.11) An&aacute;lise de Impacto da Mudan&ccedil;a - &Eacute; a an&aacute;lise realizada para descobrir quais componentes/partes do sistema uma mudan&ccedil;a afetar&aacute; e como essa mudan&ccedil;a ir&aacute; afetar esses componentes.</span></p><p class="c2"><span class="c13 c10">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="c10">2.12) Release -</span><span class="c13 c10">&nbsp;</span><span class="c10">&Eacute; uma vers&atilde;o aprovada e revisada do sistema que est&aacute; dispon&iacute;vel para uso.</span></p><p class="c2"><span class="c13 c10">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="c10">2.13) Replica&ccedil;&atilde;o - Consiste na reprodu&ccedil;&atilde;o de um problema, na forma como ele foi detectado. Significa conseguir repetir o problema de forma controlada, identificando a causa desse problema.</span></p><p class="c2"><span class="c10">&nbsp;</span></p><p class="c2"><span class="c5">3) Escopo de Aplica&ccedil;&atilde;o</span><span class="c10">&nbsp;</span></p><p class="c2"><span class="c10">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;O processo ir&aacute; agir na &aacute;rea de desenvolvimento de produto de software, de modo a apoiar a sua exist&ecirc;ncia no ambiente do usu&aacute;rio. Isto &eacute;, a partir do momento que o desenvolvimento de um produto de software &eacute; iniciado, tem-se a a&ccedil;&atilde;o da manuten&ccedil;&atilde;o de software, para acompanhar sua evolu&ccedil;&atilde;o. </span></p><p class="c2 c17"><span class="c10">Ap&oacute;s a entrega de uma release, o processo de manuten&ccedil;&atilde;o ir&aacute; agir em funcionalidades do software que apresentem problemas para o usu&aacute;rio ou que precisam ser modificadas, ap&oacute;s an&aacute;lises pr&eacute;vias destas.</span></p><p class="c2 c12 c17"><span class="c10"></span></p><p class="c2"><span class="c5">4) Pol&iacute;ticas. </span><span class="c10">As seguintes pol&iacute;ticas ser&atilde;o seguidas pelos envolvidos com o Processo de Manuten&ccedil;&atilde;o:</span></p><ol class="c26 lst-kix_mc7zvu88fmwa-0 start" start="1"><li class="c2 c25"><span class="c5">Conven&ccedil;&atilde;o de c&oacute;digo fonte.</span><span class="c10">&nbsp;O desenvolvimento de c&oacute;digo para implementa&ccedil;&atilde;o de uma modifica&ccedil;&atilde;o, assim como o c&oacute;digo anterior &agrave; modifica&ccedil;&atilde;o, deve seguir as conven&ccedil;&otilde;es de codifica&ccedil;&atilde;o da linguagem de programa&ccedil;&atilde;o utilizada (por exemplo, java code conventions), e ser corretamente comentado.</span></li><li class="c2 c25"><span class="c5">Utiliza&ccedil;&atilde;o de padr&otilde;es de projeto. </span><span class="c10">Modifica&ccedil;&otilde;es em c&oacute;digos-fonte que foram desenvolvidos e est&atilde;o organizados em padr&otilde;es de projeto detalhado devem, se poss&iacute;vel, respeitar as estruturas dos padr&otilde;es para continuar a implement&aacute;-los.</span></li><li class="c2 c25"><span class="c5">Atualiza&ccedil;&atilde;o de Documenta&ccedil;&atilde;o. </span><span class="c10">Qualquer documenta&ccedil;&atilde;o pr&eacute;-existente que for afetada durante a execu&ccedil;&atilde;o do Processo de Manuten&ccedil;&atilde;o de Software deve ser corretamente atualizada atrav&eacute;s do reposit&oacute;rio utilizado e uma ferramenta de controle de vers&atilde;o(por exemplo, via Git) durante o projeto em aberto. Novos documentos gerados tamb&eacute;m precisam entrar sobre o controle da ger&ecirc;ncia de configura&ccedil;&atilde;o.</span></li></ol><p class="c2 c12"><span class="c10"></span></p><p class="c2"><span class="c5">5) M&eacute;tricas</span><span class="c10">&nbsp;</span></p><p class="c2"><span class="c10">Aqui ser&atilde;o definidos as formas para medir o qu&atilde;o bem o processo de manuten&ccedil;&atilde;o foi executado.</span></p><ul class="c26 lst-kix_qa09h5s3llnm-0 start"><li class="c2 c24"><span class="c10">O n&uacute;mero de erros encontrados com o uso do plugin Checkstyle para o Eclipse;</span></li></ul><ul class="c26 lst-kix_38q91hcff1hy-0 start"><li class="c2 c24"><span class="c10">Quantidade de tempo gasto pelos mantenedores durante as etapas de entendimento e an&aacute;lise do produto de software a ser alterado;</span></li><li class="c2 c24"><span class="c10">Quantidade de problemas encontrados derivados de uma determinada mudan&ccedil;a;</span></li><li class="c2 c24"><span class="c10">Quantidade de componentes afetados pela mudan&ccedil;a identificada em um determinado componente;</span></li></ul><p class="c2 c12"><span class="c10"></span></p><p class="c2"><span class="c5">6) Macro Fluxo</span></p><p class="c2"><span class="c10">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Clique </span><span class="c11 c10"><a class="c7" href="./imagens/processoBPMN.png">aqui</a></span><span class="c10">&nbsp;para ver a imagem do fluxo BPMN do processo de manuten&ccedil;&atilde;o de software.</span></p><p class="c2 c12"><span class="c10"></span></p><p class="c2"><span class="c5">7) Defini&ccedil;&atilde;o de Atividades</span><span class="c10">&nbsp;</span></p><a href="#" name="d5c7d912bf4cbb82be4a5ee517afd000a41054c1"></a><a href="#" name="0"></a><table cellpadding="0" cellspacing="0" class="c31"><tbody><tr class="c3"><td class="c19" colspan="1" rowspan="1"><p class="c9 c2"><span class="c5">Atividade</span></p></td><td class="c0" colspan="1" rowspan="1"><p class="c9 c2"><span class="c4">Analisar problema e/ou modifica&ccedil;&atilde;o.</span></p></td></tr><tr class="c3"><td class="c19" colspan="1" rowspan="4"><p class="c9 c2"><span class="c5">Responsabilidades</span></p></td><td class="c0" colspan="1" rowspan="1"><p class="c9 c2"><span class="c5">Realiza&ccedil;&atilde;o:</span><span class="c4">&nbsp;Presidente do Comit&ecirc; de Mudan&ccedil;a de Configura&ccedil;&atilde;o</span></p></td></tr><tr class="c6"><td class="c0" colspan="1" rowspan="1"><p class="c9 c2"><span class="c5">Aprova&ccedil;&atilde;o:</span><span class="c4">&nbsp;N&atilde;o se aplica.</span></p></td></tr><tr class="c3"><td class="c0" colspan="1" rowspan="1"><p class="c9 c2"><span class="c5">Colabora&ccedil;&atilde;o:</span><span class="c10">&nbsp;Membros do Comit&ecirc; de Mudan&ccedil;a de Configura&ccedil;&atilde;o</span></p></td></tr><tr class="c3"><td class="c0" colspan="1" rowspan="1"><p class="c9 c2"><span class="c5">Informa&ccedil;&atilde;o:</span><span class="c4">&nbsp;Todas as &aacute;reas afetadas pela mudan&ccedil;a.</span></p></td></tr><tr class="c3"><td class="c19" colspan="1" rowspan="5"><p class="c9 c2"><span class="c5">Tarefas</span></p></td><td class="c0" colspan="1" rowspan="1"><p class="c9 c2"><span class="c5">1.</span><span class="c10">&nbsp;An&aacute;lise de solicita&ccedil;&atilde;o de mudan&ccedil;a ou problema. O procedimento para esta tarefa est&aacute; </span><span class="c11 c10"><a class="c7" href="./Procedimentos/ProcedimentoAnaliseDeSolicitacao.html">aqui</a></span><span class="c10">.</span></p></td></tr><tr class="c3"><td class="c0" colspan="1" rowspan="1"><p class="c9 c2"><span class="c5">2.</span><span class="c10">&nbsp;Verifica&ccedil;&atilde;o da ocorr&ecirc;ncia do problema. Para se assegurar da validade das mudan&ccedil;as e do problema. Os procedimentos para essa tarefa est&aacute; </span><span class="c11 c10"><a class="c7" href="./Procedimentos/ProcedimentoVerificacaoDoProblema.html">aqui</a></span><span class="c10">.</span></p></td></tr><tr class="c3"><td class="c0" colspan="1" rowspan="1"><p class="c9 c2"><span class="c5">3.</span><span class="c10">&nbsp;Diferentes op&ccedil;&otilde;es s&atilde;o desenvolvidas para a implementa&ccedil;&atilde;o da mudan&ccedil;a. Os procedimentos para essa tarefa est&aacute; </span><span class="c11 c10"><a class="c7" href="./Procedimentos/ProcedimentoOpcoes.html">aqui</a></span><span class="c4">.</span></p></td></tr><tr class="c3"><td class="c0" colspan="1" rowspan="1"><p class="c9 c2"><span class="c5">4.</span><span class="c10">&nbsp;Documenta&ccedil;&atilde;o dos artefatos. Os procedimentos para essa tarefa est&aacute; </span><span class="c11 c10"><a class="c7" href="./Procedimentos/ProcedimentoDocumentacao.html">aqui</a></span><span class="c4">.</span></p></td></tr><tr class="c3"><td class="c0" colspan="1" rowspan="1"><p class="c9 c2"><span class="c5">5</span><span class="c5">.</span><span class="c10">&nbsp;Aprova&ccedil;&atilde;o para a mudan&ccedil;a selecionada deve ser obtida. Os procedimentos para essa tarefa est&aacute; </span><span class="c11 c10"><a class="c7" href="./Procedimentos/ProcedimentoAprovacaoDaMudanca.html">aqui</a></span><span class="c10">.</span></p></td></tr><tr class="c3"><td class="c19" colspan="1" rowspan="1"><p class="c9 c2"><span class="c5">Pr&eacute;-Condi&ccedil;&otilde;es</span></p></td><td class="c0" colspan="1" rowspan="1"><p class="c9 c2"><span class="c4">A solicita&ccedil;&atilde;o de mudan&ccedil;a ser recebida pelo Presidente do Comit&ecirc;, e este definir quem s&atilde;o os outros membros interessados do Comit&ecirc; de Mudan&ccedil;a.</span></p></td></tr><tr class="c3"><td class="c19" colspan="1" rowspan="1"><p class="c9 c2"><span class="c5">Entradas</span></p></td><td class="c0" colspan="1" rowspan="1"><p class="c9 c2"><span class="c11 c10"><a class="c7" href="./Templates/TemplateSolicitacaodeMudanca.html">-Documento de Solicita&ccedil;&atilde;o de Mudan&ccedil;a;</a></span></p><p class="c9 c2"><span class="c10">-</span><span class="c11 c10"><a class="c7" href="./Templates/TemplateRelatoriodeProblema.html">Documento de Relat&oacute;rio de Problema;</a></span></p><p class="c9 c2"><span class="c4">-Baseline em que o problema/mudan&ccedil;a foi requisitado.</span></p></td></tr><tr class="c3"><td class="c19" colspan="1" rowspan="1"><p class="c9 c2"><span class="c5">Crit&eacute;rios de Sa&iacute;da</span></p></td><td class="c0" colspan="1" rowspan="1"><p class="c9 c2"><span class="c4">A mudan&ccedil;a ou a corre&ccedil;&atilde;o do problema devem ter sido aprovados e sua an&aacute;lise de impacto deve ter tido sido feita, juntamente com diferentes op&ccedil;&otilde;es devem ter sido pesquisadas e uma op&ccedil;&atilde;o deve ter sido recomendada para a aprova&ccedil;&atilde;o.</span></p></td></tr><tr class="c20"><td class="c19" colspan="1" rowspan="1"><p class="c9 c2"><span class="c5">Produtos</span></p></td><td class="c0" colspan="1" rowspan="1"><p class="c9 c2"><span class="c10">-</span><span class="c11 c10"><a class="c7" href="./Templates/TemplateAnalisedeImpacto.html">Documento de An&aacute;lise de Impacto de Modifica&ccedil;&atilde;o;</a></span></p><p class="c9 c2"><span class="c11 c10"><a class="c7" href="./Templates/TemplateOpcoesdeImplementacao.html">-Documento de op&ccedil;&otilde;es de implementa&ccedil;&atilde;o;</a></span></p><p class="c9 c2"><span class="c10">-Documenta&ccedil;&atilde;o do sistema atualizada com a mudan&ccedil;a.</span></p></td></tr><tr class="c3"><td class="c19" colspan="1" rowspan="1"><p class="c9 c2"><span class="c5">Infraestrutura</span></p></td><td class="c0" colspan="1" rowspan="1"><p class="c9 c2"><span class="c4">-Uma sala de reuni&atilde;o para o Comit&ecirc; poder debater sobre as mudan&ccedil;as, com cadeiras e mesa para os membros, caso necess&aacute;rio reuni&otilde;es podem ser feitas de forma online;</span></p><p class="c9 c2"><span class="c4">-Computadores necess&aacute;rios para os ambientes utilizados e para os membros do comit&ecirc;.</span></p></td></tr><tr class="c3"><td class="c19" colspan="1" rowspan="1"><p class="c9 c2"><span class="c5">Ferramentas</span></p></td><td class="c0" colspan="1" rowspan="1"><p class="c9 c2"><span class="c4">-Um software de controle de vers&atilde;o e de configura&ccedil;&atilde;o definido, como por exemplo o Git ou o SVN;</span></p><p class="c9 c2"><span class="c4">-Ferramentas de edi&ccedil;&atilde;o de texto para os v&aacute;rios documentos utilizados e modificados, como Microsoft Word ou LibreOffice Writer;</span></p><p class="c9 c2"><span class="c10">-Para comunica&ccedil;&atilde;o, pode ser utilizada uma lista de e-mails ou o ambiente Hangout para reuni&otilde;es online.</span></p><p class="c8 c2"><span class="c4"></span></p></td></tr></tbody></table><p class="c2 c12"><span class="c10"></span></p><p class="c2 c12"><span class="c10"></span></p><p class="c2 c12"><span class="c10"></span></p><a href="#" name="4d5d5e4ce0eb36998f319b8381da5d6530b7b8b9"></a><a href="#" name="1"></a><table cellpadding="0" cellspacing="0" class="c31"><tbody><tr class="c3"><td class="c1" colspan="1" rowspan="1"><p class="c9 c2"><span class="c5">Atividade</span></p></td><td class="c15" colspan="1" rowspan="1"><p class="c9 c2"><span class="c4">Implementar modifica&ccedil;&atilde;o</span></p></td></tr><tr class="c3"><td class="c1" colspan="1" rowspan="4"><p class="c9 c2"><span class="c5">Responsabilidades</span></p></td><td class="c15" colspan="1" rowspan="1"><p class="c9 c2"><span class="c5">Realiza&ccedil;&atilde;o:</span><span class="c4">&nbsp;L&iacute;der da equipe de manuten&ccedil;&atilde;o.</span></p></td></tr><tr class="c6"><td class="c15" colspan="1" rowspan="1"><p class="c9 c2"><span class="c5">Aprova&ccedil;&atilde;o:</span><span class="c4">&nbsp;Comit&ecirc; de Mudan&ccedil;a de Configura&ccedil;&atilde;o.</span></p></td></tr><tr class="c3"><td class="c15" colspan="1" rowspan="1"><p class="c9 c2"><span class="c5">Colabora&ccedil;&atilde;o:</span><span class="c4">&nbsp;Membros da equipe de manuten&ccedil;&atilde;o.</span></p></td></tr><tr class="c3"><td class="c15" colspan="1" rowspan="1"><p class="c9 c2"><span class="c5">Informa&ccedil;&atilde;o:</span><span class="c4">&nbsp;Todas as &aacute;reas afetadas pela mudan&ccedil;a, e o final da mudan&ccedil;a deve ser avisado ao Comit&ecirc; de Mudan&ccedil;a de Configura&ccedil;&atilde;o e ao Cliente que requisitou a mudan&ccedil;a.</span></p></td></tr><tr class="c3"><td class="c1" colspan="1" rowspan="2"><p class="c9 c2"><span class="c18 c5">Tarefas</span></p></td><td class="c15" colspan="1" rowspan="1"><p class="c9 c2"><span class="c5">1.</span><span class="c10">&nbsp;An&aacute;lise de documenta&ccedil;&atilde;o e componentes. O procedimento para esta tarefa est&aacute; </span><span class="c11 c10"><a class="c7" href="./Procedimentos/ProcedimentoAnaliseDeDocumentacao.html">aqui</a></span><span class="c10">.</span></p></td></tr><tr class="c3"><td class="c15" colspan="1" rowspan="1"><p class="c9 c2"><span class="c5">2.</span><span class="c4">&nbsp;Processo de desenvolvimento. Nesta tarefa ser&aacute; iniciado o processo de desenvolvimento para implementar as modifica&ccedil;&otilde;es.</span></p></td></tr><tr class="c3"><td class="c1" colspan="1" rowspan="1"><p class="c9 c2"><span class="c5">Pr&eacute;-Condi&ccedil;&otilde;es</span></p></td><td class="c15" colspan="1" rowspan="1"><p class="c9 c2"><span class="c4">A Mudan&ccedil;a foi aprovada pelo Comit&ecirc; de Mudan&ccedil;a de Configura&ccedil;&atilde;o e foi escalada para ser desenvolvida.</span></p></td></tr><tr class="c3"><td class="c1" colspan="1" rowspan="1"><p class="c9 c2"><span class="c5">Entradas</span></p></td><td class="c15" colspan="1" rowspan="1"><p class="c9 c2"><span class="c4">-A Baseline que ser&aacute; modificada;</span></p><p class="c9 c2"><span class="c4">-A aprova&ccedil;&atilde;o formal da Mudan&ccedil;a;</span></p></td></tr><tr class="c3"><td class="c1" colspan="1" rowspan="1"><p class="c9 c2"><span class="c5">Crit&eacute;rios de Sa&iacute;da</span></p></td><td class="c15" colspan="1" rowspan="1"><p class="c9 c2"><span class="c4">A mudan&ccedil;a foi implementada e os testes foram feitos para garantir a integridade do sistema, com o Comit&ecirc; de Mudan&ccedil;a de Configura&ccedil;&atilde;o tendo avaliado o final da implementa&ccedil;&atilde;o da Mudan&ccedil;a.</span></p></td></tr><tr class="c20"><td class="c1" colspan="1" rowspan="1"><p class="c9 c2"><span class="c5">Produtos</span></p></td><td class="c15" colspan="1" rowspan="1"><p class="c9 c2"><span class="c4">-Planos de Teste e Procedimentos atualizados;</span></p><p class="c9 c2"><span class="c4">-Documenta&ccedil;&atilde;o atualizada;</span></p><p class="c9 c2"><span class="c4">-Resultados dos testes feitos;</span></p></td></tr><tr class="c3"><td class="c1" colspan="1" rowspan="1"><p class="c9 c2"><span class="c5">Infraestrutura</span></p></td><td class="c15" colspan="1" rowspan="1"><p class="c9 c2"><span class="c4">-Uma sala de reuni&atilde;o para o Comit&ecirc; poder debater sobre as mudan&ccedil;as, com cadeiras e mesa para os membros, caso necess&aacute;rio reuni&otilde;es podem ser feitas de forma online;</span></p><p class="c9 c2"><span class="c4">-Computadores necess&aacute;rios para os ambientes utilizados e para os membros do comit&ecirc;.</span></p></td></tr><tr class="c3"><td class="c1" colspan="1" rowspan="1"><p class="c9 c2"><span class="c5">Ferramentas</span></p></td><td class="c15" colspan="1" rowspan="1"><p class="c9 c2"><span class="c4">-Um software de controle de vers&atilde;o e de configura&ccedil;&atilde;o definido, como por exemplo o Git ou o SVN;</span></p><p class="c9 c2"><span class="c4">-Ferramentas de edi&ccedil;&atilde;o de texto para os v&aacute;rios documentos utilizados e modificados, como Microsoft Word ou LibreOffice Writer;</span></p><p class="c9 c2"><span class="c4">-Para comunica&ccedil;&atilde;o, pode ser utilizada uma lista de e-mails ou o ambiente Hangout para reuni&otilde;es online.</span></p><p class="c8 c2"><span class="c4"></span></p></td></tr></tbody></table><p class="c2 c12"><span class="c10"></span></p><p class="c2 c12"><span class="c10"></span></p><a href="#" name="1e3deac845c4b545265995489aabf90df719e150"></a><a href="#" name="2"></a><table cellpadding="0" cellspacing="0" class="c28"><tbody><tr class="c3"><td class="c14" colspan="1" rowspan="1"><p class="c9 c2"><span class="c5">Atividade</span></p></td><td class="c15" colspan="1" rowspan="1"><p class="c9 c2"><span class="c4">Revisar manuten&ccedil;&atilde;o</span></p></td></tr><tr class="c3"><td class="c14" colspan="1" rowspan="4"><p class="c9 c2"><span class="c5">Responsabilidades</span></p></td><td class="c15" colspan="1" rowspan="1"><p class="c9 c2"><span class="c5">Realiza&ccedil;&atilde;o:</span><span class="c4">&nbsp;L&iacute;der da equipe de manuten&ccedil;&atilde;o.</span></p></td></tr><tr class="c6"><td class="c15" colspan="1" rowspan="1"><p class="c9 c2"><span class="c5">Aprova&ccedil;&atilde;o:</span><span class="c4">&nbsp;Comit&ecirc; de Mudan&ccedil;a de Configura&ccedil;&atilde;o.</span></p></td></tr><tr class="c3"><td class="c15" colspan="1" rowspan="1"><p class="c9 c2"><span class="c5">Colabora&ccedil;&atilde;o:</span><span class="c4">&nbsp;Membros da equipe de manuten&ccedil;&atilde;o.</span></p></td></tr><tr class="c3"><td class="c15" colspan="1" rowspan="1"><p class="c9 c2"><span class="c5">Informa&ccedil;&atilde;o:</span><span class="c4">&nbsp;Comit&ecirc; de Mudan&ccedil;a de Configura&ccedil;&atilde;o e todas as &aacute;reas respons&aacute;veis pelos documentos onde foram encontradas n&atilde;o-conformidades. </span></p></td></tr><tr class="c3"><td class="c14" colspan="1" rowspan="2"><p class="c9 c2"><span class="c18 c5">Tarefas</span></p></td><td class="c15" colspan="1" rowspan="1"><p class="c9 c2"><span class="c5">1.</span><span class="c10">&nbsp;Revis&otilde;es. O procedimento para esta tarefa est&aacute; </span><span class="c11 c10"><a class="c7" href="./Procedimentos/ProcedimentoRevisoes.html">aqui</a></span><span class="c10">.</span></p></td></tr><tr class="c3"><td class="c15" colspan="1" rowspan="1"><p class="c9 c2"><span class="c5">2.</span><span class="c10">&nbsp;Aprova&ccedil;&atilde;o da Manuten&ccedil;&atilde;o. Os procedimentos para essa tarefa est&atilde;o </span><span class="c11 c10"><a class="c7" href="./Procedimentos/ProcedimentoAprovacaoDaManutencao.html">aqui</a></span><span class="c4">.</span></p></td></tr><tr class="c3"><td class="c14" colspan="1" rowspan="1"><p class="c9 c2"><span class="c5">Pr&eacute;-Condi&ccedil;&otilde;es</span></p></td><td class="c15" colspan="1" rowspan="1"><p class="c9 c2"><span class="c4">A Mudan&ccedil;a foi implementada pelo time de manuten&ccedil;&atilde;o ap&oacute;s ter sido aprovada e testada.</span></p></td></tr><tr class="c3"><td class="c14" colspan="1" rowspan="1"><p class="c9 c2"><span class="c5">Entradas</span></p></td><td class="c15" colspan="1" rowspan="1"><p class="c2 c9"><span class="c4">-O software modificado;</span></p><p class="c9 c2"><span class="c4">-Resultados dos testes da modifica&ccedil;&atilde;o.</span></p></td></tr><tr class="c3"><td class="c14" colspan="1" rowspan="1"><p class="c9 c2"><span class="c5">Crit&eacute;rios de Sa&iacute;da</span></p></td><td class="c15" colspan="1" rowspan="1"><p class="c9 c2"><span class="c4">A mudan&ccedil;a foi aceita, com os testes formalmente realizados e uma nosa baseline com as mudan&ccedil;as aceitadas for liberada.</span></p></td></tr><tr class="c20"><td class="c14" colspan="1" rowspan="1"><p class="c9 c2"><span class="c5">Produtos</span></p></td><td class="c15" colspan="1" rowspan="1"><p class="c9 c2"><span class="c4">-Nova baseline com as mudan&ccedil;as aceitas incorporadas;</span></p><p class="c9 c2"><span class="c4">-Mudan&ccedil;as rejeitadas;</span></p><p class="c9 c2"><span class="c10">-</span><span class="c10 c11"><a class="c7" href="./Templates/TemplateRelatoriodeRevisao.html">Relat&oacute;rio de Revis&atilde;o;</a></span></p></td></tr><tr class="c3"><td class="c14" colspan="1" rowspan="1"><p class="c9 c2"><span class="c5">Infraestrutura</span></p></td><td class="c15" colspan="1" rowspan="1"><p class="c9 c2"><span class="c4">-Uma sala de reuni&atilde;o para o Comit&ecirc; poder debater sobre as mudan&ccedil;as, com cadeiras e mesa para os membros, caso necess&aacute;rio reuni&otilde;es podem ser feitas de forma online;</span></p><p class="c9 c2"><span class="c4">-Computadores necess&aacute;rios para os ambientes utilizados e para os membros do comit&ecirc;.</span></p></td></tr><tr class="c3"><td class="c14" colspan="1" rowspan="1"><p class="c9 c2"><span class="c5">Ferramentas</span></p></td><td class="c15" colspan="1" rowspan="1"><p class="c9 c2"><span class="c4">-Um software de controle de vers&atilde;o e de configura&ccedil;&atilde;o definido, como por exemplo o Git ou o SVN;</span></p><p class="c9 c2"><span class="c4">-Ferramentas de edi&ccedil;&atilde;o de texto para os v&aacute;rios documentos utilizados e modificados, como Microsoft Word ou LibreOffice Writer;</span></p><p class="c9 c2"><span class="c4">-Para comunica&ccedil;&atilde;o, pode ser utilizada uma lista de e-mails ou o ambiente Hangout para reuni&otilde;es online.</span></p><p class="c8 c2"><span class="c4"></span></p></td></tr></tbody></table><p class="c2 c12"><span class="c10"></span></p><p class="c2 c12"><span class="c10"></span></p><a href="#" name="9c4c011a3070fb82309547d000c87612fcc22dd1"></a><a href="#" name="3"></a><table cellpadding="0" cellspacing="0" class="c28"><tbody><tr class="c23"><td class="c14" colspan="1" rowspan="1"><p class="c9 c2"><span class="c5">Atividade</span></p></td><td class="c15" colspan="1" rowspan="1"><p class="c9 c2"><span class="c4">Realizar Migra&ccedil;&atilde;o</span></p></td></tr><tr class="c3"><td class="c14" colspan="1" rowspan="4"><p class="c9 c2"><span class="c5">Responsabilidades</span></p></td><td class="c15" colspan="1" rowspan="1"><p class="c9 c2"><span class="c5">Realiza&ccedil;&atilde;o:</span><span class="c4">&nbsp;L&iacute;der da equipe de manuten&ccedil;&atilde;o.</span></p></td></tr><tr class="c6"><td class="c15" colspan="1" rowspan="1"><p class="c9 c2"><span class="c5">Aprova&ccedil;&atilde;o:</span><span class="c4">&nbsp;Clientes.</span></p></td></tr><tr class="c3"><td class="c15" colspan="1" rowspan="1"><p class="c9 c2"><span class="c5">Colabora&ccedil;&atilde;o:</span><span class="c4">&nbsp;Membros da equipe de manuten&ccedil;&atilde;o.</span></p></td></tr><tr class="c3"><td class="c15" colspan="1" rowspan="1"><p class="c9 c2"><span class="c5">Informa&ccedil;&atilde;o: </span><span class="c4">Clientes e usu&aacute;rios do sistema em migra&ccedil;&atilde;o. Usu&aacute;rios do sistema em migra&ccedil;&atilde;o incluem outros sistemas.</span></p></td></tr><tr class="c3"><td class="c14" colspan="1" rowspan="7"><p class="c9 c2"><span class="c5 c18">Tarefas</span></p></td><td class="c15" colspan="1" rowspan="1"><p class="c9 c2"><span class="c5">1.</span><span class="c10">&nbsp;Identificar todos os produtos de software ou dados que foram adicionados ou modificados dentre um software.</span></p></td></tr><tr class="c3"><td class="c15" colspan="1" rowspan="1"><p class="c9 c2"><span class="c5">2.</span><span class="c10">&nbsp;Um plano de migra&ccedil;&atilde;o deve ser desenvolvido, documentado e executado, cujo planejamento deve incluir os usu&aacute;rios do sistema.</span></p></td></tr><tr class="c3"><td class="c15" colspan="1" rowspan="1"><p class="c9 c2"><span class="c5">3.</span><span class="c10">&nbsp;Os usu&aacute;rios do sistema devem ser notificados do planejamento da migra&ccedil;&atilde;o e das atividades geradas pela migra&ccedil;&atilde;o antes dela acontecer.</span></p></td></tr><tr class="c3"><td class="c15" colspan="1" rowspan="1"><p class="c9 c2"><span class="c5">4.</span><span class="c10">&nbsp;As opera&ccedil;&otilde;es de implementa&ccedil;&atilde;o podem ser feitas em paralelo para garantir uma mudan&ccedil;a para o novo sistema mais suave, sendo que o treinamento necess&aacute;rio para os usu&aacute;rios do novo sistema deve ser providenciado como especificado no planejamento.</span></p></td></tr><tr class="c3"><td class="c15" colspan="1" rowspan="1"><p class="c9 c2"><span class="c5">5.</span><span class="c10">&nbsp;Quando a migra&ccedil;&atilde;o planejada for iniciada, uma notifica&ccedil;&atilde;o deve ser enviada a todos os que ser&atilde;o afetados pela mesma, com os dados do antigo sistema, como documentos, logs e c&oacute;digo, devem ser arquivados.</span></p></td></tr><tr class="c3"><td class="c15" colspan="1" rowspan="1"><p class="c9 c2"><span class="c5">6.</span><span class="c10">&nbsp;Uma revis&atilde;o de opera&ccedil;&atilde;o deve ser feita para calcular o impacto da mudan&ccedil;a de ambiente, sendo que os seus resultados devem ser enviados para as autoridades interessadas para informa&ccedil;&atilde;o, e para nortear as a&ccedil;&otilde;es feitas pelos mesmos.</span></p></td></tr><tr class="c3"><td class="c15" colspan="1" rowspan="1"><p class="c9 c2"><span class="c5">7.</span><span class="c10">&nbsp;Os dados associados ao sistema anterior devem ser acess&iacute;veis de acordo com os requisitos contratuais, para prote&ccedil;&atilde;o dos dados e de poss&iacute;vel audi&ccedil;&atilde;o dos dados.</span></p></td></tr><tr class="c3"><td class="c14" colspan="1" rowspan="1"><p class="c9 c2"><span class="c5">Pr&eacute;-Condi&ccedil;&otilde;es</span></p></td><td class="c15" colspan="1" rowspan="1"><p class="c9 c2"><span class="c4">A Migra&ccedil;&atilde;o foi aprovada e analisada pelos interessados, e os usu&aacute;rios foram avisados da mudan&ccedil;a.</span></p></td></tr><tr class="c3"><td class="c14" colspan="1" rowspan="1"><p class="c9 c2"><span class="c5">Entradas</span></p></td><td class="c15" colspan="1" rowspan="1"><p class="c9 c2"><span class="c4">-O ambiente antigo;</span></p><p class="c9 c2"><span class="c4">-O novo ambiente;</span></p><p class="c9 c2"><span class="c4">-A antiga baseline;</span></p><p class="c9 c2"><span class="c4">-A nova baseline;</span></p></td></tr><tr class="c3"><td class="c14" colspan="1" rowspan="1"><p class="c9 c2"><span class="c5">Crit&eacute;rios de Sa&iacute;da</span></p></td><td class="c15" colspan="1" rowspan="1"><p class="c9 c2"><span class="c4">A migra&ccedil;&atilde;o foi aceita, planejada e uma notifica&ccedil;&atilde;o da migra&ccedil;&atilde;o foi enviada aos usu&aacute;rios atuais do sistema do que ir&aacute; acontecer, bem como os dados arquivados do software anterior ser&atilde;o guardados.</span></p></td></tr><tr class="c20"><td class="c14" colspan="1" rowspan="1"><p class="c9 c2"><span class="c5">Produtos</span></p></td><td class="c15" colspan="1" rowspan="1"><p class="c9 c2"><span class="c4">-Plano de Migra&ccedil;&atilde;o;</span></p><p class="c9 c2"><span class="c4">-Ferramentas de migra&ccedil;&atilde;o;</span></p><p class="c9 c2"><span class="c4">-Notifica&ccedil;&atilde;o da Mudan&ccedil;a;</span></p><p class="c9 c2"><span class="c4">-Software Migrado;</span></p><p class="c9 c2"><span class="c4">-Notifica&ccedil;&atilde;o de migra&ccedil;&atilde;o;</span></p><p class="c9 c2"><span class="c4">-Dados arquivados.</span></p></td></tr><tr class="c3"><td class="c14" colspan="1" rowspan="1"><p class="c9 c2"><span class="c5">Infraestrutura</span></p></td><td class="c15" colspan="1" rowspan="1"><p class="c9 c2"><span class="c4">-Uma sala de reuni&atilde;o para o Comit&ecirc; poder debater sobre as mudan&ccedil;as, com cadeiras e mesa para os membros, caso necess&aacute;rio reuni&otilde;es podem ser feitas de forma online;</span></p><p class="c9 c2"><span class="c4">-Computadores necess&aacute;rios para os ambientes utilizados e para os membros do comit&ecirc;.</span></p></td></tr><tr class="c29"><td class="c14" colspan="1" rowspan="1"><p class="c9 c2"><span class="c5">Ferramentas</span></p></td><td class="c15" colspan="1" rowspan="1"><p class="c9 c2"><span class="c4">-Um software de controle de vers&atilde;o e de configura&ccedil;&atilde;o definido, como por exemplo o Git ou o SVN;</span></p><p class="c9 c2"><span class="c4">-Ferramentas de edi&ccedil;&atilde;o de texto para os v&aacute;rios documentos utilizados e modificados, como Microsoft Word ou LibreOffice Writer;</span></p><p class="c9 c2"><span class="c4">-Para comunica&ccedil;&atilde;o, pode ser utilizada uma lista de e-mails ou o ambiente Hangout para reuni&otilde;es online.</span></p></td></tr></tbody></table><p class="c2 c12"><span class="c10"></span></p></body></html>
+<html>
+<head>
+	<title>Processo de Manuten&ccedil;&atilde;o de Software</title>
+	<meta content="text/html; charset=UTF-8" http-equiv="content-type">
+	<style type="text/css">ol.lst-kix_nyctxtjifx3q-1.start {
+                counter-reset:lst-ctn-kix_nyctxtjifx3q-1 0
+            }
+            .lst-kix_8xaiykm0sunq-4>li:before {
+                content:"" counter(lst-ctn-kix_8xaiykm0sunq-4, lower-roman)". "
+            }
+            .lst-kix_mc7zvu88fmwa-3>li {
+                counter-increment:lst-ctn-kix_mc7zvu88fmwa-3
+            }
+            ol.lst-kix_993w0gs5eab1-8.start {
+                counter-reset:lst-ctn-kix_993w0gs5eab1-8 0
+            }
+            .lst-kix_nyctxtjifx3q-0>li {
+                counter-increment:lst-ctn-kix_nyctxtjifx3q-0
+            }
+            .lst-kix_8xaiykm0sunq-5>li:before {
+                content:"" counter(lst-ctn-kix_8xaiykm0sunq-5, decimal)". "
+            }
+            .lst-kix_7j1kkc3xfjlq-2>li {
+                counter-increment:lst-ctn-kix_7j1kkc3xfjlq-2
+            }
+            .lst-kix_1h24sy4wxziu-3>li:before {
+                content:"-  "
+            }
+            ol.lst-kix_dgl7o571ifn4-6.start {
+                counter-reset:lst-ctn-kix_dgl7o571ifn4-6 0
+            }
+            .lst-kix_esog94ssfkm4-0>li:before {
+                content:"" counter(lst-ctn-kix_esog94ssfkm4-0, lower-latin)". "
+            }
+            .lst-kix_tkmvkoz760w0-3>li:before {
+                content:"\0025cf  "
+            }
+            .lst-kix_fs1utsv21f33-7>li:before {
+                content:"-  "
+            }
+            .lst-kix_esog94ssfkm4-2>li {
+                counter-increment:lst-ctn-kix_esog94ssfkm4-2
+            }
+            ol.lst-kix_8xaiykm0sunq-8.start {
+                counter-reset:lst-ctn-kix_8xaiykm0sunq-8 0
+            }
+            .lst-kix_tkmvkoz760w0-7>li:before {
+                content:"\0025cb  "
+            }
+            ol.lst-kix_mc7zvu88fmwa-6.start {
+                counter-reset:lst-ctn-kix_mc7zvu88fmwa-6 0
+            }
+            .lst-kix_8xaiykm0sunq-6>li:before {
+                content:"" counter(lst-ctn-kix_8xaiykm0sunq-6, lower-latin)". "
+            }
+            ul.lst-kix_tkmvkoz760w0-0 {
+                list-style-type:none
+            }
+            ul.lst-kix_tkmvkoz760w0-2 {
+                list-style-type:none
+            }
+            ul.lst-kix_tkmvkoz760w0-1 {
+                list-style-type:none
+            }
+            ul.lst-kix_tkmvkoz760w0-4 {
+                list-style-type:none
+            }
+            ul.lst-kix_tkmvkoz760w0-3 {
+                list-style-type:none
+            }
+            ul.lst-kix_tkmvkoz760w0-6 {
+                list-style-type:none
+            }
+            ul.lst-kix_tkmvkoz760w0-5 {
+                list-style-type:none
+            }
+            ul.lst-kix_tkmvkoz760w0-8 {
+                list-style-type:none
+            }
+            ul.lst-kix_tkmvkoz760w0-7 {
+                list-style-type:none
+            }
+            .lst-kix_1h24sy4wxziu-7>li:before {
+                content:"-  "
+            }
+            .lst-kix_6qmejayq8ok-2>li:before {
+                content:"-  "
+            }
+            .lst-kix_6qmejayq8ok-8>li:before {
+                content:"-  "
+            }
+            .lst-kix_dgl7o571ifn4-2>li:before {
+                content:"" counter(lst-ctn-kix_dgl7o571ifn4-2, decimal)". "
+            }
+            .lst-kix_7j1kkc3xfjlq-3>li {
+                counter-increment:lst-ctn-kix_7j1kkc3xfjlq-3
+            }
+            .lst-kix_7j1kkc3xfjlq-8>li:before {
+                content:"" counter(lst-ctn-kix_7j1kkc3xfjlq-8, decimal)". "
+            }
+            ol.lst-kix_57xehzgj0o0q-0.start {
+                counter-reset:lst-ctn-kix_57xehzgj0o0q-0 0
+            }
+            .lst-kix_5hfm47220p7m-1>li {
+                counter-increment:lst-ctn-kix_5hfm47220p7m-1
+            }
+            .lst-kix_lzy2fl49ovol-1>li:before {
+                content:"-  "
+            }
+            .lst-kix_57xehzgj0o0q-5>li:before {
+                content:"" counter(lst-ctn-kix_57xehzgj0o0q-5, decimal)". "
+            }
+            .lst-kix_dgl7o571ifn4-4>li {
+                counter-increment:lst-ctn-kix_dgl7o571ifn4-4
+            }
+            .lst-kix_esog94ssfkm4-6>li:before {
+                content:"" counter(lst-ctn-kix_esog94ssfkm4-6, lower-latin)". "
+            }
+            .lst-kix_nyctxtjifx3q-5>li:before {
+                content:"" counter(lst-ctn-kix_nyctxtjifx3q-5, decimal)". "
+            }
+            ol.lst-kix_57xehzgj0o0q-2.start {
+                counter-reset:lst-ctn-kix_57xehzgj0o0q-2 0
+            }
+            .lst-kix_lzy2fl49ovol-5>li:before {
+                content:"-  "
+            }
+            .lst-kix_8xaiykm0sunq-0>li {
+                counter-increment:lst-ctn-kix_8xaiykm0sunq-0
+            }
+            ol.lst-kix_7j1kkc3xfjlq-2.start {
+                counter-reset:lst-ctn-kix_7j1kkc3xfjlq-2 0
+            }
+            .lst-kix_qa09h5s3llnm-0>li:before {
+                content:"-  "
+            }
+            .lst-kix_nyctxtjifx3q-8>li {
+                counter-increment:lst-ctn-kix_nyctxtjifx3q-8
+            }
+            .lst-kix_57xehzgj0o0q-4>li {
+                counter-increment:lst-ctn-kix_57xehzgj0o0q-4
+            }
+            .lst-kix_dgl7o571ifn4-7>li:before {
+                content:"" counter(lst-ctn-kix_dgl7o571ifn4-7, lower-roman)". "
+            }
+            ol.lst-kix_mc7zvu88fmwa-3.start {
+                counter-reset:lst-ctn-kix_mc7zvu88fmwa-3 0
+            }
+            ol.lst-kix_8xaiykm0sunq-4.start {
+                counter-reset:lst-ctn-kix_8xaiykm0sunq-4 0
+            }
+            .lst-kix_993w0gs5eab1-5>li:before {
+                content:"" counter(lst-ctn-kix_993w0gs5eab1-5, decimal)". "
+            }
+            .lst-kix_5hfm47220p7m-1>li:before {
+                content:"" counter(lst-ctn-kix_5hfm47220p7m-1, lower-roman)". "
+            }
+            .lst-kix_57xehzgj0o0q-1>li {
+                counter-increment:lst-ctn-kix_57xehzgj0o0q-1
+            }
+            .lst-kix_38q91hcff1hy-1>li:before {
+                content:"-  "
+            }
+            ol.lst-kix_esog94ssfkm4-3.start {
+                counter-reset:lst-ctn-kix_esog94ssfkm4-3 0
+            }
+            .lst-kix_5hfm47220p7m-0>li:before {
+                content:"" counter(lst-ctn-kix_5hfm47220p7m-0, lower-latin)". "
+            }
+            ol.lst-kix_8xaiykm0sunq-5.start {
+                counter-reset:lst-ctn-kix_8xaiykm0sunq-5 0
+            }
+            .lst-kix_nyctxtjifx3q-4>li {
+                counter-increment:lst-ctn-kix_nyctxtjifx3q-4
+            }
+            .lst-kix_8xaiykm0sunq-6>li {
+                counter-increment:lst-ctn-kix_8xaiykm0sunq-6
+            }
+            ol.lst-kix_7j1kkc3xfjlq-8.start {
+                counter-reset:lst-ctn-kix_7j1kkc3xfjlq-8 0
+            }
+            .lst-kix_fs1utsv21f33-5>li:before {
+                content:"-  "
+            }
+            .lst-kix_nyctxtjifx3q-5>li {
+                counter-increment:lst-ctn-kix_nyctxtjifx3q-5
+            }
+            .lst-kix_tkmvkoz760w0-5>li:before {
+                content:"\0025a0  "
+            }
+            .lst-kix_993w0gs5eab1-8>li {
+                counter-increment:lst-ctn-kix_993w0gs5eab1-8
+            }
+            .lst-kix_8xaiykm0sunq-3>li {
+                counter-increment:lst-ctn-kix_8xaiykm0sunq-3
+            }
+            .lst-kix_5hfm47220p7m-6>li:before {
+                content:"" counter(lst-ctn-kix_5hfm47220p7m-6, lower-latin)". "
+            }
+            ol.lst-kix_7j1kkc3xfjlq-4.start {
+                counter-reset:lst-ctn-kix_7j1kkc3xfjlq-4 0
+            }
+            ol.lst-kix_esog94ssfkm4-8.start {
+                counter-reset:lst-ctn-kix_esog94ssfkm4-8 0
+            }
+            ol.lst-kix_8xaiykm0sunq-0.start {
+                counter-reset:lst-ctn-kix_8xaiykm0sunq-0 0
+            }
+            .lst-kix_mc7zvu88fmwa-6>li:before {
+                content:"" counter(lst-ctn-kix_mc7zvu88fmwa-6, decimal)". "
+            }
+            .lst-kix_993w0gs5eab1-0>li {
+                counter-increment:lst-ctn-kix_993w0gs5eab1-0
+            }
+            .lst-kix_993w0gs5eab1-4>li {
+                counter-increment:lst-ctn-kix_993w0gs5eab1-4
+            }
+            .lst-kix_993w0gs5eab1-7>li {
+                counter-increment:lst-ctn-kix_993w0gs5eab1-7
+            }
+            .lst-kix_6qmejayq8ok-7>li:before {
+                content:"-  "
+            }
+            .lst-kix_38q91hcff1hy-3>li:before {
+                content:"-  "
+            }
+            ol.lst-kix_esog94ssfkm4-4.start {
+                counter-reset:lst-ctn-kix_esog94ssfkm4-4 0
+            }
+            .lst-kix_6qmejayq8ok-0>li:before {
+                content:"-  "
+            }
+            .lst-kix_7j1kkc3xfjlq-6>li:before {
+                content:"" counter(lst-ctn-kix_7j1kkc3xfjlq-6, lower-latin)". "
+            }
+            ol.lst-kix_8xaiykm0sunq-7 {
+                list-style-type:none
+            }
+            ol.lst-kix_8xaiykm0sunq-8 {
+                list-style-type:none
+            }
+            ol.lst-kix_8xaiykm0sunq-5 {
+                list-style-type:none
+            }
+            .lst-kix_6qmejayq8ok-1>li:before {
+                content:"-  "
+            }
+            ol.lst-kix_8xaiykm0sunq-6 {
+                list-style-type:none
+            }
+            .lst-kix_mc7zvu88fmwa-3>li:before {
+                content:"(" counter(lst-ctn-kix_mc7zvu88fmwa-3, decimal)") "
+            }
+            .lst-kix_57xehzgj0o0q-6>li {
+                counter-increment:lst-ctn-kix_57xehzgj0o0q-6
+            }
+            ol.lst-kix_57xehzgj0o0q-4.start {
+                counter-reset:lst-ctn-kix_57xehzgj0o0q-4 0
+            }
+            ol.lst-kix_8xaiykm0sunq-2 {
+                list-style-type:none
+            }
+            .lst-kix_38q91hcff1hy-6>li:before {
+                content:"-  "
+            }
+            ol.lst-kix_5hfm47220p7m-0 {
+                list-style-type:none
+            }
+            .lst-kix_5hfm47220p7m-3>li {
+                counter-increment:lst-ctn-kix_5hfm47220p7m-3
+            }
+            ol.lst-kix_8xaiykm0sunq-1 {
+                list-style-type:none
+            }
+            ol.lst-kix_5hfm47220p7m-1 {
+                list-style-type:none
+            }
+            ol.lst-kix_dgl7o571ifn4-5.start {
+                counter-reset:lst-ctn-kix_dgl7o571ifn4-5 0
+            }
+            ol.lst-kix_5hfm47220p7m-2 {
+                list-style-type:none
+            }
+            ol.lst-kix_8xaiykm0sunq-4 {
+                list-style-type:none
+            }
+            ol.lst-kix_5hfm47220p7m-3 {
+                list-style-type:none
+            }
+            ol.lst-kix_8xaiykm0sunq-3 {
+                list-style-type:none
+            }
+            .lst-kix_nyctxtjifx3q-6>li:before {
+                content:"" counter(lst-ctn-kix_nyctxtjifx3q-6, lower-latin)". "
+            }
+            .lst-kix_tkmvkoz760w0-8>li:before {
+                content:"\0025a0  "
+            }
+            .lst-kix_8xaiykm0sunq-2>li {
+                counter-increment:lst-ctn-kix_8xaiykm0sunq-2
+            }
+            ol.lst-kix_8xaiykm0sunq-0 {
+                list-style-type:none
+            }
+            ol.lst-kix_nyctxtjifx3q-4.start {
+                counter-reset:lst-ctn-kix_nyctxtjifx3q-4 0
+            }
+            ol.lst-kix_5hfm47220p7m-8 {
+                list-style-type:none
+            }
+            .lst-kix_fs1utsv21f33-4>li:before {
+                content:"-  "
+            }
+            ul.lst-kix_qa09h5s3llnm-0 {
+                list-style-type:none
+            }
+            ol.lst-kix_5hfm47220p7m-5 {
+                list-style-type:none
+            }
+            .lst-kix_7j1kkc3xfjlq-2>li:before {
+                content:"" counter(lst-ctn-kix_7j1kkc3xfjlq-2, decimal)". "
+            }
+            ul.lst-kix_qa09h5s3llnm-1 {
+                list-style-type:none
+            }
+            ol.lst-kix_5hfm47220p7m-4 {
+                list-style-type:none
+            }
+            ul.lst-kix_qa09h5s3llnm-2 {
+                list-style-type:none
+            }
+            ol.lst-kix_5hfm47220p7m-7 {
+                list-style-type:none
+            }
+            ul.lst-kix_qa09h5s3llnm-3 {
+                list-style-type:none
+            }
+            ol.lst-kix_5hfm47220p7m-6 {
+                list-style-type:none
+            }
+            .lst-kix_993w0gs5eab1-2>li {
+                counter-increment:lst-ctn-kix_993w0gs5eab1-2
+            }
+            ol.lst-kix_mc7zvu88fmwa-7.start {
+                counter-reset:lst-ctn-kix_mc7zvu88fmwa-7 0
+            }
+            ul.lst-kix_qa09h5s3llnm-4 {
+                list-style-type:none
+            }
+            ul.lst-kix_qa09h5s3llnm-5 {
+                list-style-type:none
+            }
+            ul.lst-kix_qa09h5s3llnm-6 {
+                list-style-type:none
+            }
+            ol.lst-kix_57xehzgj0o0q-7.start {
+                counter-reset:lst-ctn-kix_57xehzgj0o0q-7 0
+            }
+            ul.lst-kix_qa09h5s3llnm-7 {
+                list-style-type:none
+            }
+            .lst-kix_8xaiykm0sunq-8>li:before {
+                content:"" counter(lst-ctn-kix_8xaiykm0sunq-8, decimal)". "
+            }
+            ul.lst-kix_qa09h5s3llnm-8 {
+                list-style-type:none
+            }
+            .lst-kix_57xehzgj0o0q-7>li:before {
+                content:"" counter(lst-ctn-kix_57xehzgj0o0q-7, lower-roman)". "
+            }
+            .lst-kix_esog94ssfkm4-1>li:before {
+                content:"" counter(lst-ctn-kix_esog94ssfkm4-1, lower-roman)". "
+            }
+            ol.lst-kix_nyctxtjifx3q-6.start {
+                counter-reset:lst-ctn-kix_nyctxtjifx3q-6 0
+            }
+            .lst-kix_lzy2fl49ovol-8>li:before {
+                content:"-  "
+            }
+            ol.lst-kix_mc7zvu88fmwa-1 {
+                list-style-type:none
+            }
+            ol.lst-kix_mc7zvu88fmwa-0 {
+                list-style-type:none
+            }
+            ol.lst-kix_mc7zvu88fmwa-5 {
+                list-style-type:none
+            }
+            .lst-kix_dgl7o571ifn4-5>li:before {
+                content:"" counter(lst-ctn-kix_dgl7o571ifn4-5, decimal)". "
+            }
+            ol.lst-kix_mc7zvu88fmwa-4 {
+                list-style-type:none
+            }
+            ol.lst-kix_mc7zvu88fmwa-3 {
+                list-style-type:none
+            }
+            ol.lst-kix_mc7zvu88fmwa-0.start {
+                counter-reset:lst-ctn-kix_mc7zvu88fmwa-0 0
+            }
+            ol.lst-kix_5hfm47220p7m-8.start {
+                counter-reset:lst-ctn-kix_5hfm47220p7m-8 0
+            }
+            .lst-kix_57xehzgj0o0q-5>li {
+                counter-increment:lst-ctn-kix_57xehzgj0o0q-5
+            }
+            ol.lst-kix_mc7zvu88fmwa-2 {
+                list-style-type:none
+            }
+            ol.lst-kix_mc7zvu88fmwa-8 {
+                list-style-type:none
+            }
+            .lst-kix_dgl7o571ifn4-0>li:before {
+                content:"" counter(lst-ctn-kix_dgl7o571ifn4-0, lower-latin)". "
+            }
+            ol.lst-kix_mc7zvu88fmwa-7 {
+                list-style-type:none
+            }
+            ol.lst-kix_mc7zvu88fmwa-6 {
+                list-style-type:none
+            }
+            ol.lst-kix_8xaiykm0sunq-3.start {
+                counter-reset:lst-ctn-kix_8xaiykm0sunq-3 0
+            }
+            .lst-kix_nyctxtjifx3q-2>li:before {
+                content:"" counter(lst-ctn-kix_nyctxtjifx3q-2, decimal)". "
+            }
+            .lst-kix_5hfm47220p7m-0>li {
+                counter-increment:lst-ctn-kix_5hfm47220p7m-0
+            }
+            .lst-kix_qa09h5s3llnm-2>li:before {
+                content:"-  "
+            }
+            .lst-kix_57xehzgj0o0q-8>li {
+                counter-increment:lst-ctn-kix_57xehzgj0o0q-8
+            }
+            .lst-kix_57xehzgj0o0q-7>li {
+                counter-increment:lst-ctn-kix_57xehzgj0o0q-7
+            }
+            .lst-kix_993w0gs5eab1-2>li:before {
+                content:"" counter(lst-ctn-kix_993w0gs5eab1-2, decimal)". "
+            }
+            .lst-kix_38q91hcff1hy-4>li:before {
+                content:"-  "
+            }
+            .lst-kix_dgl7o571ifn4-3>li:before {
+                content:"" counter(lst-ctn-kix_dgl7o571ifn4-3, lower-latin)". "
+            }
+            .lst-kix_dgl7o571ifn4-8>li:before {
+                content:"" counter(lst-ctn-kix_dgl7o571ifn4-8, decimal)". "
+            }
+            .lst-kix_7j1kkc3xfjlq-1>li {
+                counter-increment:lst-ctn-kix_7j1kkc3xfjlq-1
+            }
+            .lst-kix_esog94ssfkm4-1>li {
+                counter-increment:lst-ctn-kix_esog94ssfkm4-1
+            }
+            .lst-kix_8xaiykm0sunq-3>li:before {
+                content:"" counter(lst-ctn-kix_8xaiykm0sunq-3, lower-latin)". "
+            }
+            .lst-kix_qa09h5s3llnm-3>li:before {
+                content:"-  "
+            }
+            .lst-kix_fs1utsv21f33-2>li:before {
+                content:"-  "
+            }
+            .lst-kix_dgl7o571ifn4-1>li:before {
+                content:"" counter(lst-ctn-kix_dgl7o571ifn4-1, lower-roman)". "
+            }
+            .lst-kix_mc7zvu88fmwa-5>li {
+                counter-increment:lst-ctn-kix_mc7zvu88fmwa-5
+            }
+            .lst-kix_5hfm47220p7m-7>li:before {
+                content:"" counter(lst-ctn-kix_5hfm47220p7m-7, lower-roman)". "
+            }
+            .lst-kix_dgl7o571ifn4-6>li:before {
+                content:"" counter(lst-ctn-kix_dgl7o571ifn4-6, lower-latin)". "
+            }
+            .lst-kix_1h24sy4wxziu-6>li:before {
+                content:"-  "
+            }
+            .lst-kix_5hfm47220p7m-7>li {
+                counter-increment:lst-ctn-kix_5hfm47220p7m-7
+            }
+            ol.lst-kix_8xaiykm0sunq-2.start {
+                counter-reset:lst-ctn-kix_8xaiykm0sunq-2 0
+            }
+            .lst-kix_57xehzgj0o0q-8>li:before {
+                content:"" counter(lst-ctn-kix_57xehzgj0o0q-8, decimal)". "
+            }
+            ol.lst-kix_dgl7o571ifn4-0.start {
+                counter-reset:lst-ctn-kix_dgl7o571ifn4-0 0
+            }
+            ol.lst-kix_esog94ssfkm4-0.start {
+                counter-reset:lst-ctn-kix_esog94ssfkm4-0 0
+            }
+            ol.lst-kix_nyctxtjifx3q-3.start {
+                counter-reset:lst-ctn-kix_nyctxtjifx3q-3 0
+            }
+            .lst-kix_8xaiykm0sunq-0>li:before {
+                content:"" counter(lst-ctn-kix_8xaiykm0sunq-0, lower-latin)". "
+            }
+            ol.lst-kix_esog94ssfkm4-5.start {
+                counter-reset:lst-ctn-kix_esog94ssfkm4-5 0
+            }
+            .lst-kix_nyctxtjifx3q-6>li {
+                counter-increment:lst-ctn-kix_nyctxtjifx3q-6
+            }
+            ol.lst-kix_5hfm47220p7m-4.start {
+                counter-reset:lst-ctn-kix_5hfm47220p7m-4 0
+            }
+            .lst-kix_dgl7o571ifn4-5>li {
+                counter-increment:lst-ctn-kix_dgl7o571ifn4-5
+            }
+            .lst-kix_1h24sy4wxziu-5>li:before {
+                content:"-  "
+            }
+            .lst-kix_1h24sy4wxziu-0>li:before {
+                content:"-  "
+            }
+            .lst-kix_lzy2fl49ovol-3>li:before {
+                content:"-  "
+            }
+            .lst-kix_mc7zvu88fmwa-1>li {
+                counter-increment:lst-ctn-kix_mc7zvu88fmwa-1
+            }
+            .lst-kix_esog94ssfkm4-5>li:before {
+                content:"" counter(lst-ctn-kix_esog94ssfkm4-5, decimal)". "
+            }
+            .lst-kix_dgl7o571ifn4-1>li {
+                counter-increment:lst-ctn-kix_dgl7o571ifn4-1
+            }
+            .lst-kix_1h24sy4wxziu-8>li:before {
+                content:"-  "
+            }
+            ol.lst-kix_57xehzgj0o0q-8.start {
+                counter-reset:lst-ctn-kix_57xehzgj0o0q-8 0
+            }
+            ul.lst-kix_1h24sy4wxziu-5 {
+                list-style-type:none
+            }
+            ol.lst-kix_dgl7o571ifn4-5 {
+                list-style-type:none
+            }
+            ul.lst-kix_1h24sy4wxziu-6 {
+                list-style-type:none
+            }
+            ol.lst-kix_dgl7o571ifn4-4 {
+                list-style-type:none
+            }
+            .lst-kix_esog94ssfkm4-8>li:before {
+                content:"" counter(lst-ctn-kix_esog94ssfkm4-8, decimal)". "
+            }
+            ul.lst-kix_1h24sy4wxziu-7 {
+                list-style-type:none
+            }
+            ol.lst-kix_dgl7o571ifn4-3 {
+                list-style-type:none
+            }
+            ul.lst-kix_1h24sy4wxziu-8 {
+                list-style-type:none
+            }
+            ol.lst-kix_dgl7o571ifn4-2 {
+                list-style-type:none
+            }
+            ul.lst-kix_1h24sy4wxziu-1 {
+                list-style-type:none
+            }
+            ol.lst-kix_dgl7o571ifn4-1 {
+                list-style-type:none
+            }
+            ul.lst-kix_1h24sy4wxziu-2 {
+                list-style-type:none
+            }
+            ol.lst-kix_dgl7o571ifn4-0 {
+                list-style-type:none
+            }
+            ul.lst-kix_1h24sy4wxziu-3 {
+                list-style-type:none
+            }
+            ul.lst-kix_1h24sy4wxziu-4 {
+                list-style-type:none
+            }
+            .lst-kix_5hfm47220p7m-8>li {
+                counter-increment:lst-ctn-kix_5hfm47220p7m-8
+            }
+            .lst-kix_esog94ssfkm4-2>li:before {
+                content:"" counter(lst-ctn-kix_esog94ssfkm4-2, decimal)". "
+            }
+            .lst-kix_6qmejayq8ok-3>li:before {
+                content:"-  "
+            }
+            ol.lst-kix_57xehzgj0o0q-6.start {
+                counter-reset:lst-ctn-kix_57xehzgj0o0q-6 0
+            }
+            .lst-kix_qa09h5s3llnm-5>li:before {
+                content:"-  "
+            }
+            .lst-kix_qa09h5s3llnm-8>li:before {
+                content:"-  "
+            }
+            ol.lst-kix_esog94ssfkm4-1.start {
+                counter-reset:lst-ctn-kix_esog94ssfkm4-1 0
+            }
+            .lst-kix_qa09h5s3llnm-6>li:before {
+                content:"-  "
+            }
+            ul.lst-kix_1h24sy4wxziu-0 {
+                list-style-type:none
+            }
+            .lst-kix_tkmvkoz760w0-2>li:before {
+                content:"\0025a0  "
+            }
+            ol.lst-kix_dgl7o571ifn4-8 {
+                list-style-type:none
+            }
+            ol.lst-kix_dgl7o571ifn4-6 {
+                list-style-type:none
+            }
+            ol.lst-kix_dgl7o571ifn4-7 {
+                list-style-type:none
+            }
+            .lst-kix_dgl7o571ifn4-6>li {
+                counter-increment:lst-ctn-kix_dgl7o571ifn4-6
+            }
+            .lst-kix_1h24sy4wxziu-4>li:before {
+                content:"-  "
+            }
+            .lst-kix_7j1kkc3xfjlq-4>li {
+                counter-increment:lst-ctn-kix_7j1kkc3xfjlq-4
+            }
+            .lst-kix_993w0gs5eab1-5>li {
+                counter-increment:lst-ctn-kix_993w0gs5eab1-5
+            }
+            ol.lst-kix_mc7zvu88fmwa-5.start {
+                counter-reset:lst-ctn-kix_mc7zvu88fmwa-5 0
+            }
+            .lst-kix_esog94ssfkm4-3>li {
+                counter-increment:lst-ctn-kix_esog94ssfkm4-3
+            }
+            .lst-kix_5hfm47220p7m-2>li:before {
+                content:"" counter(lst-ctn-kix_5hfm47220p7m-2, decimal)". "
+            }
+            ol.lst-kix_dgl7o571ifn4-8.start {
+                counter-reset:lst-ctn-kix_dgl7o571ifn4-8 0
+            }
+            .lst-kix_57xehzgj0o0q-4>li:before {
+                content:"" counter(lst-ctn-kix_57xehzgj0o0q-4, lower-roman)". "
+            }
+            ol.lst-kix_7j1kkc3xfjlq-5.start {
+                counter-reset:lst-ctn-kix_7j1kkc3xfjlq-5 0
+            }
+            .lst-kix_57xehzgj0o0q-1>li:before {
+                content:"" counter(lst-ctn-kix_57xehzgj0o0q-1, lower-roman)". "
+            }
+            ol.lst-kix_esog94ssfkm4-2.start {
+                counter-reset:lst-ctn-kix_esog94ssfkm4-2 0
+            }
+            .lst-kix_5hfm47220p7m-4>li {
+                counter-increment:lst-ctn-kix_5hfm47220p7m-4
+            }
+            .lst-kix_1h24sy4wxziu-1>li:before {
+                content:"-  "
+            }
+            .lst-kix_mc7zvu88fmwa-0>li {
+                counter-increment:lst-ctn-kix_mc7zvu88fmwa-0
+            }
+            ol.lst-kix_dgl7o571ifn4-3.start {
+                counter-reset:lst-ctn-kix_dgl7o571ifn4-3 0
+            }
+            .lst-kix_lzy2fl49ovol-7>li:before {
+                content:"-  "
+            }
+            ol.lst-kix_5hfm47220p7m-1.start {
+                counter-reset:lst-ctn-kix_5hfm47220p7m-1 0
+            }
+            .lst-kix_esog94ssfkm4-8>li {
+                counter-increment:lst-ctn-kix_esog94ssfkm4-8
+            }
+            .lst-kix_993w0gs5eab1-7>li:before {
+                content:"" counter(lst-ctn-kix_993w0gs5eab1-7, lower-roman)". "
+            }
+            ol.lst-kix_mc7zvu88fmwa-8.start {
+                counter-reset:lst-ctn-kix_mc7zvu88fmwa-8 0
+            }
+            ol.lst-kix_7j1kkc3xfjlq-6.start {
+                counter-reset:lst-ctn-kix_7j1kkc3xfjlq-6 0
+            }
+            .lst-kix_8xaiykm0sunq-5>li {
+                counter-increment:lst-ctn-kix_8xaiykm0sunq-5
+            }
+            .lst-kix_7j1kkc3xfjlq-7>li:before {
+                content:"" counter(lst-ctn-kix_7j1kkc3xfjlq-7, lower-roman)". "
+            }
+            ol.lst-kix_dgl7o571ifn4-4.start {
+                counter-reset:lst-ctn-kix_dgl7o571ifn4-4 0
+            }
+            .lst-kix_lzy2fl49ovol-4>li:before {
+                content:"-  "
+            }
+            .lst-kix_5hfm47220p7m-4>li:before {
+                content:"" counter(lst-ctn-kix_5hfm47220p7m-4, lower-roman)". "
+            }
+            .lst-kix_6qmejayq8ok-6>li:before {
+                content:"-  "
+            }
+            .lst-kix_993w0gs5eab1-3>li:before {
+                content:"" counter(lst-ctn-kix_993w0gs5eab1-3, lower-latin)". "
+            }
+            .lst-kix_5hfm47220p7m-2>li {
+                counter-increment:lst-ctn-kix_5hfm47220p7m-2
+            }
+            ol.lst-kix_7j1kkc3xfjlq-1.start {
+                counter-reset:lst-ctn-kix_7j1kkc3xfjlq-1 0
+            }
+            .lst-kix_7j1kkc3xfjlq-5>li {
+                counter-increment:lst-ctn-kix_7j1kkc3xfjlq-5
+            }
+            .lst-kix_8xaiykm0sunq-8>li {
+                counter-increment:lst-ctn-kix_8xaiykm0sunq-8
+            }
+            .lst-kix_dgl7o571ifn4-8>li {
+                counter-increment:lst-ctn-kix_dgl7o571ifn4-8
+            }
+            ol.lst-kix_nyctxtjifx3q-8.start {
+                counter-reset:lst-ctn-kix_nyctxtjifx3q-8 0
+            }
+            ol.lst-kix_7j1kkc3xfjlq-7.start {
+                counter-reset:lst-ctn-kix_7j1kkc3xfjlq-7 0
+            }
+            ol.lst-kix_8xaiykm0sunq-7.start {
+                counter-reset:lst-ctn-kix_8xaiykm0sunq-7 0
+            }
+            .lst-kix_7j1kkc3xfjlq-7>li {
+                counter-increment:lst-ctn-kix_7j1kkc3xfjlq-7
+            }
+            .lst-kix_8xaiykm0sunq-4>li {
+                counter-increment:lst-ctn-kix_8xaiykm0sunq-4
+            }
+            .lst-kix_nyctxtjifx3q-7>li {
+                counter-increment:lst-ctn-kix_nyctxtjifx3q-7
+            }
+            ol.lst-kix_57xehzgj0o0q-3.start {
+                counter-reset:lst-ctn-kix_57xehzgj0o0q-3 0
+            }
+            .lst-kix_mc7zvu88fmwa-2>li:before {
+                content:"" counter(lst-ctn-kix_mc7zvu88fmwa-2, lower-roman)") "
+            }
+            .lst-kix_993w0gs5eab1-1>li {
+                counter-increment:lst-ctn-kix_993w0gs5eab1-1
+            }
+            .lst-kix_esog94ssfkm4-5>li {
+                counter-increment:lst-ctn-kix_esog94ssfkm4-5
+            }
+            .lst-kix_esog94ssfkm4-6>li {
+                counter-increment:lst-ctn-kix_esog94ssfkm4-6
+            }
+            ol.lst-kix_993w0gs5eab1-5.start {
+                counter-reset:lst-ctn-kix_993w0gs5eab1-5 0
+            }
+            .lst-kix_7j1kkc3xfjlq-0>li {
+                counter-increment:lst-ctn-kix_7j1kkc3xfjlq-0
+            }
+            .lst-kix_993w0gs5eab1-0>li:before {
+                content:"" counter(lst-ctn-kix_993w0gs5eab1-0, lower-latin)". "
+            }
+            .lst-kix_mc7zvu88fmwa-2>li {
+                counter-increment:lst-ctn-kix_mc7zvu88fmwa-2
+            }
+            .lst-kix_dgl7o571ifn4-7>li {
+                counter-increment:lst-ctn-kix_dgl7o571ifn4-7
+            }
+            ol.lst-kix_8xaiykm0sunq-1.start {
+                counter-reset:lst-ctn-kix_8xaiykm0sunq-1 0
+            }
+            .lst-kix_38q91hcff1hy-2>li:before {
+                content:"-  "
+            }
+            .lst-kix_7j1kkc3xfjlq-4>li:before {
+                content:"" counter(lst-ctn-kix_7j1kkc3xfjlq-4, lower-roman)". "
+            }
+            .lst-kix_lzy2fl49ovol-2>li:before {
+                content:"-  "
+            }
+            .lst-kix_6qmejayq8ok-5>li:before {
+                content:"-  "
+            }
+            ul.lst-kix_lzy2fl49ovol-1 {
+                list-style-type:none
+            }
+            ul.lst-kix_lzy2fl49ovol-2 {
+                list-style-type:none
+            }
+            .lst-kix_nyctxtjifx3q-1>li {
+                counter-increment:lst-ctn-kix_nyctxtjifx3q-1
+            }
+            ul.lst-kix_lzy2fl49ovol-0 {
+                list-style-type:none
+            }
+            ol.lst-kix_nyctxtjifx3q-8 {
+                list-style-type:none
+            }
+            ol.lst-kix_esog94ssfkm4-7.start {
+                counter-reset:lst-ctn-kix_esog94ssfkm4-7 0
+            }
+            .lst-kix_lzy2fl49ovol-6>li:before {
+                content:"-  "
+            }
+            .lst-kix_993w0gs5eab1-4>li:before {
+                content:"" counter(lst-ctn-kix_993w0gs5eab1-4, lower-roman)". "
+            }
+            ol.lst-kix_nyctxtjifx3q-6 {
+                list-style-type:none
+            }
+            ol.lst-kix_nyctxtjifx3q-7 {
+                list-style-type:none
+            }
+            ul.lst-kix_lzy2fl49ovol-7 {
+                list-style-type:none
+            }
+            ol.lst-kix_nyctxtjifx3q-4 {
+                list-style-type:none
+            }
+            ul.lst-kix_lzy2fl49ovol-8 {
+                list-style-type:none
+            }
+            ol.lst-kix_nyctxtjifx3q-5 {
+                list-style-type:none
+            }
+            ul.lst-kix_lzy2fl49ovol-5 {
+                list-style-type:none
+            }
+            ol.lst-kix_nyctxtjifx3q-2 {
+                list-style-type:none
+            }
+            ul.lst-kix_lzy2fl49ovol-6 {
+                list-style-type:none
+            }
+            ol.lst-kix_nyctxtjifx3q-3 {
+                list-style-type:none
+            }
+            .lst-kix_57xehzgj0o0q-0>li:before {
+                content:"" counter(lst-ctn-kix_57xehzgj0o0q-0, lower-latin)". "
+            }
+            ul.lst-kix_lzy2fl49ovol-3 {
+                list-style-type:none
+            }
+            ol.lst-kix_nyctxtjifx3q-0 {
+                list-style-type:none
+            }
+            ul.lst-kix_lzy2fl49ovol-4 {
+                list-style-type:none
+            }
+            ol.lst-kix_nyctxtjifx3q-1 {
+                list-style-type:none
+            }
+            ol.lst-kix_esog94ssfkm4-8 {
+                list-style-type:none
+            }
+            ol.lst-kix_esog94ssfkm4-6 {
+                list-style-type:none
+            }
+            ol.lst-kix_esog94ssfkm4-7 {
+                list-style-type:none
+            }
+            ol.lst-kix_esog94ssfkm4-4 {
+                list-style-type:none
+            }
+            ol.lst-kix_esog94ssfkm4-5 {
+                list-style-type:none
+            }
+            .lst-kix_8xaiykm0sunq-1>li {
+                counter-increment:lst-ctn-kix_8xaiykm0sunq-1
+            }
+            ol.lst-kix_esog94ssfkm4-2 {
+                list-style-type:none
+            }
+            ol.lst-kix_esog94ssfkm4-3 {
+                list-style-type:none
+            }
+            ol.lst-kix_esog94ssfkm4-0 {
+                list-style-type:none
+            }
+            ol.lst-kix_esog94ssfkm4-1 {
+                list-style-type:none
+            }
+            .lst-kix_tkmvkoz760w0-0>li:before {
+                content:"\0025cf  "
+            }
+            ul.lst-kix_fs1utsv21f33-8 {
+                list-style-type:none
+            }
+            ul.lst-kix_fs1utsv21f33-5 {
+                list-style-type:none
+            }
+            ul.lst-kix_fs1utsv21f33-4 {
+                list-style-type:none
+            }
+            ol.lst-kix_993w0gs5eab1-0.start {
+                counter-reset:lst-ctn-kix_993w0gs5eab1-0 0
+            }
+            ul.lst-kix_fs1utsv21f33-7 {
+                list-style-type:none
+            }
+            .lst-kix_mc7zvu88fmwa-4>li {
+                counter-increment:lst-ctn-kix_mc7zvu88fmwa-4
+            }
+            ul.lst-kix_fs1utsv21f33-6 {
+                list-style-type:none
+            }
+            ul.lst-kix_fs1utsv21f33-1 {
+                list-style-type:none
+            }
+            ul.lst-kix_fs1utsv21f33-0 {
+                list-style-type:none
+            }
+            ul.lst-kix_fs1utsv21f33-3 {
+                list-style-type:none
+            }
+            ul.lst-kix_fs1utsv21f33-2 {
+                list-style-type:none
+            }
+            ul.lst-kix_38q91hcff1hy-6 {
+                list-style-type:none
+            }
+            ul.lst-kix_38q91hcff1hy-7 {
+                list-style-type:none
+            }
+            .lst-kix_8xaiykm0sunq-7>li:before {
+                content:"" counter(lst-ctn-kix_8xaiykm0sunq-7, lower-roman)". "
+            }
+            ul.lst-kix_38q91hcff1hy-8 {
+                list-style-type:none
+            }
+            .lst-kix_esog94ssfkm4-4>li {
+                counter-increment:lst-ctn-kix_esog94ssfkm4-4
+            }
+            .lst-kix_5hfm47220p7m-6>li {
+                counter-increment:lst-ctn-kix_5hfm47220p7m-6
+            }
+            .lst-kix_esog94ssfkm4-7>li {
+                counter-increment:lst-ctn-kix_esog94ssfkm4-7
+            }
+            ol.lst-kix_993w0gs5eab1-7.start {
+                counter-reset:lst-ctn-kix_993w0gs5eab1-7 0
+            }
+            .lst-kix_993w0gs5eab1-6>li:before {
+                content:"" counter(lst-ctn-kix_993w0gs5eab1-6, lower-latin)". "
+            }
+            .lst-kix_57xehzgj0o0q-2>li {
+                counter-increment:lst-ctn-kix_57xehzgj0o0q-2
+            }
+            ul.lst-kix_38q91hcff1hy-0 {
+                list-style-type:none
+            }
+            ul.lst-kix_38q91hcff1hy-1 {
+                list-style-type:none
+            }
+            ul.lst-kix_38q91hcff1hy-2 {
+                list-style-type:none
+            }
+            ol.lst-kix_5hfm47220p7m-2.start {
+                counter-reset:lst-ctn-kix_5hfm47220p7m-2 0
+            }
+            ul.lst-kix_38q91hcff1hy-3 {
+                list-style-type:none
+            }
+            ul.lst-kix_38q91hcff1hy-4 {
+                list-style-type:none
+            }
+            ul.lst-kix_38q91hcff1hy-5 {
+                list-style-type:none
+            }
+            .lst-kix_1h24sy4wxziu-2>li:before {
+                content:"-  "
+            }
+            ol.lst-kix_5hfm47220p7m-0.start {
+                counter-reset:lst-ctn-kix_5hfm47220p7m-0 0
+            }
+            .lst-kix_993w0gs5eab1-3>li {
+                counter-increment:lst-ctn-kix_993w0gs5eab1-3
+            }
+            .lst-kix_57xehzgj0o0q-2>li:before {
+                content:"" counter(lst-ctn-kix_57xehzgj0o0q-2, decimal)". "
+            }
+            .lst-kix_esog94ssfkm4-4>li:before {
+                content:"" counter(lst-ctn-kix_esog94ssfkm4-4, lower-roman)". "
+            }
+            .lst-kix_mc7zvu88fmwa-7>li {
+                counter-increment:lst-ctn-kix_mc7zvu88fmwa-7
+            }
+            .lst-kix_fs1utsv21f33-8>li:before {
+                content:"-  "
+            }
+            .lst-kix_38q91hcff1hy-0>li:before {
+                content:"-  "
+            }
+            .lst-kix_993w0gs5eab1-6>li {
+                counter-increment:lst-ctn-kix_993w0gs5eab1-6
+            }
+            .lst-kix_mc7zvu88fmwa-1>li:before {
+                content:"" counter(lst-ctn-kix_mc7zvu88fmwa-1, lower-latin)") "
+            }
+            .lst-kix_7j1kkc3xfjlq-5>li:before {
+                content:"" counter(lst-ctn-kix_7j1kkc3xfjlq-5, decimal)". "
+            }
+            ol.lst-kix_993w0gs5eab1-1.start {
+                counter-reset:lst-ctn-kix_993w0gs5eab1-1 0
+            }
+            .lst-kix_38q91hcff1hy-7>li:before {
+                content:"-  "
+            }
+            .lst-kix_7j1kkc3xfjlq-0>li:before {
+                content:"" counter(lst-ctn-kix_7j1kkc3xfjlq-0, lower-latin)". "
+            }
+            ol.lst-kix_993w0gs5eab1-6.start {
+                counter-reset:lst-ctn-kix_993w0gs5eab1-6 0
+            }
+            ol.lst-kix_5hfm47220p7m-7.start {
+                counter-reset:lst-ctn-kix_5hfm47220p7m-7 0
+            }
+            .lst-kix_993w0gs5eab1-8>li:before {
+                content:"" counter(lst-ctn-kix_993w0gs5eab1-8, decimal)". "
+            }
+            .lst-kix_5hfm47220p7m-5>li:before {
+                content:"" counter(lst-ctn-kix_5hfm47220p7m-5, decimal)". "
+            }
+            .lst-kix_57xehzgj0o0q-0>li {
+                counter-increment:lst-ctn-kix_57xehzgj0o0q-0
+            }
+            .lst-kix_57xehzgj0o0q-3>li:before {
+                content:"" counter(lst-ctn-kix_57xehzgj0o0q-3, lower-latin)". "
+            }
+            ol.lst-kix_nyctxtjifx3q-2.start {
+                counter-reset:lst-ctn-kix_nyctxtjifx3q-2 0
+            }
+            .lst-kix_fs1utsv21f33-6>li:before {
+                content:"-  "
+            }
+            ol.lst-kix_esog94ssfkm4-6.start {
+                counter-reset:lst-ctn-kix_esog94ssfkm4-6 0
+            }
+            ol.lst-kix_993w0gs5eab1-3.start {
+                counter-reset:lst-ctn-kix_993w0gs5eab1-3 0
+            }
+            .lst-kix_mc7zvu88fmwa-0>li:before {
+                content:"" counter(lst-ctn-kix_mc7zvu88fmwa-0, decimal)") "
+            }
+            ol.lst-kix_7j1kkc3xfjlq-3.start {
+                counter-reset:lst-ctn-kix_7j1kkc3xfjlq-3 0
+            }
+            ol.lst-kix_nyctxtjifx3q-0.start {
+                counter-reset:lst-ctn-kix_nyctxtjifx3q-0 0
+            }
+            ol.lst-kix_5hfm47220p7m-5.start {
+                counter-reset:lst-ctn-kix_5hfm47220p7m-5 0
+            }
+            ol.lst-kix_993w0gs5eab1-4.start {
+                counter-reset:lst-ctn-kix_993w0gs5eab1-4 0
+            }
+            .lst-kix_qa09h5s3llnm-4>li:before {
+                content:"-  "
+            }
+            ul.lst-kix_6qmejayq8ok-5 {
+                list-style-type:none
+            }
+            ul.lst-kix_6qmejayq8ok-6 {
+                list-style-type:none
+            }
+            ul.lst-kix_6qmejayq8ok-3 {
+                list-style-type:none
+            }
+            ul.lst-kix_6qmejayq8ok-4 {
+                list-style-type:none
+            }
+            ul.lst-kix_6qmejayq8ok-1 {
+                list-style-type:none
+            }
+            ul.lst-kix_6qmejayq8ok-2 {
+                list-style-type:none
+            }
+            .lst-kix_7j1kkc3xfjlq-6>li {
+                counter-increment:lst-ctn-kix_7j1kkc3xfjlq-6
+            }
+            .lst-kix_dgl7o571ifn4-4>li:before {
+                content:"" counter(lst-ctn-kix_dgl7o571ifn4-4, lower-roman)". "
+            }
+            ul.lst-kix_6qmejayq8ok-0 {
+                list-style-type:none
+            }
+            ol.lst-kix_8xaiykm0sunq-6.start {
+                counter-reset:lst-ctn-kix_8xaiykm0sunq-6 0
+            }
+            .lst-kix_esog94ssfkm4-3>li:before {
+                content:"" counter(lst-ctn-kix_esog94ssfkm4-3, lower-latin)". "
+            }
+            .lst-kix_dgl7o571ifn4-3>li {
+                counter-increment:lst-ctn-kix_dgl7o571ifn4-3
+            }
+            .lst-kix_esog94ssfkm4-0>li {
+                counter-increment:lst-ctn-kix_esog94ssfkm4-0
+            }
+            ol.lst-kix_993w0gs5eab1-7 {
+                list-style-type:none
+            }
+            ol.lst-kix_993w0gs5eab1-8 {
+                list-style-type:none
+            }
+            .lst-kix_tkmvkoz760w0-1>li:before {
+                content:"\0025cb  "
+            }
+            ol.lst-kix_57xehzgj0o0q-8 {
+                list-style-type:none
+            }
+            ol.lst-kix_993w0gs5eab1-5 {
+                list-style-type:none
+            }
+            ol.lst-kix_993w0gs5eab1-6 {
+                list-style-type:none
+            }
+            ol.lst-kix_57xehzgj0o0q-7 {
+                list-style-type:none
+            }
+            ol.lst-kix_993w0gs5eab1-3 {
+                list-style-type:none
+            }
+            ol.lst-kix_993w0gs5eab1-4 {
+                list-style-type:none
+            }
+            ol.lst-kix_57xehzgj0o0q-4 {
+                list-style-type:none
+            }
+            ol.lst-kix_993w0gs5eab1-1 {
+                list-style-type:none
+            }
+            ol.lst-kix_57xehzgj0o0q-3 {
+                list-style-type:none
+            }
+            ol.lst-kix_993w0gs5eab1-2 {
+                list-style-type:none
+            }
+            ol.lst-kix_57xehzgj0o0q-6 {
+                list-style-type:none
+            }
+            ol.lst-kix_57xehzgj0o0q-5 {
+                list-style-type:none
+            }
+            ol.lst-kix_993w0gs5eab1-0 {
+                list-style-type:none
+            }
+            ol.lst-kix_57xehzgj0o0q-1 {
+                list-style-type:none
+            }
+            ol.lst-kix_57xehzgj0o0q-2 {
+                list-style-type:none
+            }
+            ol.lst-kix_57xehzgj0o0q-0 {
+                list-style-type:none
+            }
+            ol.lst-kix_7j1kkc3xfjlq-3 {
+                list-style-type:none
+            }
+            ol.lst-kix_7j1kkc3xfjlq-2 {
+                list-style-type:none
+            }
+            .lst-kix_mc7zvu88fmwa-5>li:before {
+                content:"(" counter(lst-ctn-kix_mc7zvu88fmwa-5, lower-roman)") "
+            }
+            .lst-kix_5hfm47220p7m-5>li {
+                counter-increment:lst-ctn-kix_5hfm47220p7m-5
+            }
+            ol.lst-kix_7j1kkc3xfjlq-1 {
+                list-style-type:none
+            }
+            .lst-kix_nyctxtjifx3q-2>li {
+                counter-increment:lst-ctn-kix_nyctxtjifx3q-2
+            }
+            .lst-kix_tkmvkoz760w0-4>li:before {
+                content:"\0025cb  "
+            }
+            ol.lst-kix_7j1kkc3xfjlq-0 {
+                list-style-type:none
+            }
+            .lst-kix_nyctxtjifx3q-7>li:before {
+                content:"" counter(lst-ctn-kix_nyctxtjifx3q-7, lower-roman)". "
+            }
+            ol.lst-kix_mc7zvu88fmwa-4.start {
+                counter-reset:lst-ctn-kix_mc7zvu88fmwa-4 0
+            }
+            .lst-kix_nyctxtjifx3q-0>li:before {
+                content:"" counter(lst-ctn-kix_nyctxtjifx3q-0, lower-latin)". "
+            }
+            ol.lst-kix_5hfm47220p7m-3.start {
+                counter-reset:lst-ctn-kix_5hfm47220p7m-3 0
+            }
+            .lst-kix_nyctxtjifx3q-1>li:before {
+                content:"" counter(lst-ctn-kix_nyctxtjifx3q-1, lower-roman)". "
+            }
+            ol.lst-kix_dgl7o571ifn4-1.start {
+                counter-reset:lst-ctn-kix_dgl7o571ifn4-1 0
+            }
+            ol.lst-kix_5hfm47220p7m-6.start {
+                counter-reset:lst-ctn-kix_5hfm47220p7m-6 0
+            }
+            .lst-kix_7j1kkc3xfjlq-8>li {
+                counter-increment:lst-ctn-kix_7j1kkc3xfjlq-8
+            }
+            ol.lst-kix_7j1kkc3xfjlq-6 {
+                list-style-type:none
+            }
+            ol.lst-kix_7j1kkc3xfjlq-7 {
+                list-style-type:none
+            }
+            .lst-kix_38q91hcff1hy-8>li:before {
+                content:"-  "
+            }
+            ol.lst-kix_dgl7o571ifn4-2.start {
+                counter-reset:lst-ctn-kix_dgl7o571ifn4-2 0
+            }
+            ol.lst-kix_7j1kkc3xfjlq-4 {
+                list-style-type:none
+            }
+            ol.lst-kix_7j1kkc3xfjlq-5 {
+                list-style-type:none
+            }
+            ul.lst-kix_6qmejayq8ok-8 {
+                list-style-type:none
+            }
+            .lst-kix_38q91hcff1hy-5>li:before {
+                content:"-  "
+            }
+            ul.lst-kix_6qmejayq8ok-7 {
+                list-style-type:none
+            }
+            ol.lst-kix_7j1kkc3xfjlq-8 {
+                list-style-type:none
+            }
+            ol.lst-kix_nyctxtjifx3q-5.start {
+                counter-reset:lst-ctn-kix_nyctxtjifx3q-5 0
+            }
+            .lst-kix_57xehzgj0o0q-6>li:before {
+                content:"" counter(lst-ctn-kix_57xehzgj0o0q-6, lower-latin)". "
+            }
+            .lst-kix_mc7zvu88fmwa-6>li {
+                counter-increment:lst-ctn-kix_mc7zvu88fmwa-6
+            }
+            .lst-kix_nyctxtjifx3q-3>li:before {
+                content:"" counter(lst-ctn-kix_nyctxtjifx3q-3, lower-latin)". "
+            }
+            ol.lst-kix_7j1kkc3xfjlq-0.start {
+                counter-reset:lst-ctn-kix_7j1kkc3xfjlq-0 0
+            }
+            .lst-kix_5hfm47220p7m-8>li:before {
+                content:"" counter(lst-ctn-kix_5hfm47220p7m-8, decimal)". "
+            }
+            ol.lst-kix_dgl7o571ifn4-7.start {
+                counter-reset:lst-ctn-kix_dgl7o571ifn4-7 0
+            }
+            .lst-kix_5hfm47220p7m-3>li:before {
+                content:"" counter(lst-ctn-kix_5hfm47220p7m-3, lower-latin)". "
+            }
+            .lst-kix_8xaiykm0sunq-1>li:before {
+                content:"" counter(lst-ctn-kix_8xaiykm0sunq-1, lower-roman)". "
+            }
+            .lst-kix_dgl7o571ifn4-2>li {
+                counter-increment:lst-ctn-kix_dgl7o571ifn4-2
+            }
+            .lst-kix_qa09h5s3llnm-1>li:before {
+                content:"-  "
+            }
+            .lst-kix_mc7zvu88fmwa-8>li {
+                counter-increment:lst-ctn-kix_mc7zvu88fmwa-8
+            }
+            ol.lst-kix_nyctxtjifx3q-7.start {
+                counter-reset:lst-ctn-kix_nyctxtjifx3q-7 0
+            }
+            .lst-kix_8xaiykm0sunq-2>li:before {
+                content:"" counter(lst-ctn-kix_8xaiykm0sunq-2, decimal)". "
+            }
+            .lst-kix_fs1utsv21f33-3>li:before {
+                content:"-  "
+            }
+            .lst-kix_993w0gs5eab1-1>li:before {
+                content:"" counter(lst-ctn-kix_993w0gs5eab1-1, lower-roman)". "
+            }
+            .lst-kix_7j1kkc3xfjlq-3>li:before {
+                content:"" counter(lst-ctn-kix_7j1kkc3xfjlq-3, lower-latin)". "
+            }
+            .lst-kix_nyctxtjifx3q-3>li {
+                counter-increment:lst-ctn-kix_nyctxtjifx3q-3
+            }
+            ol.lst-kix_57xehzgj0o0q-5.start {
+                counter-reset:lst-ctn-kix_57xehzgj0o0q-5 0
+            }
+            .lst-kix_tkmvkoz760w0-6>li:before {
+                content:"\0025cf  "
+            }
+            .lst-kix_8xaiykm0sunq-7>li {
+                counter-increment:lst-ctn-kix_8xaiykm0sunq-7
+            }
+            .lst-kix_mc7zvu88fmwa-7>li:before {
+                content:"" counter(lst-ctn-kix_mc7zvu88fmwa-7, lower-latin)". "
+            }
+            .lst-kix_nyctxtjifx3q-4>li:before {
+                content:"" counter(lst-ctn-kix_nyctxtjifx3q-4, lower-roman)". "
+            }
+            ol.lst-kix_mc7zvu88fmwa-2.start {
+                counter-reset:lst-ctn-kix_mc7zvu88fmwa-2 0
+            }
+            .lst-kix_nyctxtjifx3q-8>li:before {
+                content:"" counter(lst-ctn-kix_nyctxtjifx3q-8, decimal)". "
+            }
+            .lst-kix_6qmejayq8ok-4>li:before {
+                content:"-  "
+            }
+            ol.lst-kix_mc7zvu88fmwa-1.start {
+                counter-reset:lst-ctn-kix_mc7zvu88fmwa-1 0
+            }
+            .lst-kix_qa09h5s3llnm-7>li:before {
+                content:"-  "
+            }
+            ol.lst-kix_993w0gs5eab1-2.start {
+                counter-reset:lst-ctn-kix_993w0gs5eab1-2 0
+            }
+            ol.lst-kix_57xehzgj0o0q-1.start {
+                counter-reset:lst-ctn-kix_57xehzgj0o0q-1 0
+            }
+            .lst-kix_57xehzgj0o0q-3>li {
+                counter-increment:lst-ctn-kix_57xehzgj0o0q-3
+            }
+            .lst-kix_7j1kkc3xfjlq-1>li:before {
+                content:"" counter(lst-ctn-kix_7j1kkc3xfjlq-1, lower-roman)". "
+            }
+            .lst-kix_mc7zvu88fmwa-4>li:before {
+                content:"(" counter(lst-ctn-kix_mc7zvu88fmwa-4, lower-latin)") "
+            }
+            .lst-kix_dgl7o571ifn4-0>li {
+                counter-increment:lst-ctn-kix_dgl7o571ifn4-0
+            }
+            .lst-kix_fs1utsv21f33-0>li:before {
+                content:"-  "
+            }
+            .lst-kix_lzy2fl49ovol-0>li:before {
+                content:"-  "
+            }
+            .lst-kix_fs1utsv21f33-1>li:before {
+                content:"-  "
+            }
+            .lst-kix_esog94ssfkm4-7>li:before {
+                content:"" counter(lst-ctn-kix_esog94ssfkm4-7, lower-roman)". "
+            }
+            .lst-kix_mc7zvu88fmwa-8>li:before {
+                content:"" counter(lst-ctn-kix_mc7zvu88fmwa-8, lower-roman)". "
+            }
+            ol {
+                margin:0;
+                padding:0
+            }
+            .c19 {
+                border-bottom-width:1pt;
+                border-top-style:solid;
+                width:115.5pt;
+                border-right-style:solid;
+                padding:5pt 5pt 5pt 5pt;
+                border-bottom-color:#000000;
+                border-top-width:1pt;
+                border-bottom-style:solid;
+                vertical-align:top;
+                border-top-color:#000000;
+                border-left-color:#000000;
+                border-right-color:#000000;
+                border-left-style:solid;
+                border-right-width:1pt;
+                border-left-width:1pt
+            }
+            .c0 {
+                border-bottom-width:1pt;
+                border-top-style:solid;
+                width:344.2pt;
+                border-right-style:solid;
+                padding:5pt 5pt 5pt 5pt;
+                border-bottom-color:#000000;
+                border-top-width:1pt;
+                border-bottom-style:solid;
+                vertical-align:top;
+                border-top-color:#000000;
+                border-left-color:#000000;
+                border-right-color:#000000;
+                border-left-style:solid;
+                border-right-width:1pt;
+                border-left-width:1pt
+            }
+            .c14 {
+                border-bottom-width:1pt;
+                border-top-style:solid;
+                width:117.8pt;
+                border-right-style:solid;
+                padding:5pt 5pt 5pt 5pt;
+                border-bottom-color:#000000;
+                border-top-width:1pt;
+                border-bottom-style:solid;
+                vertical-align:top;
+                border-top-color:#000000;
+                border-left-color:#000000;
+                border-right-color:#000000;
+                border-left-style:solid;
+                border-right-width:1pt;
+                border-left-width:1pt
+            }
+            .c15 {
+                border-bottom-width:1pt;
+                border-top-style:solid;
+                width:341.2pt;
+                border-right-style:solid;
+                padding:5pt 5pt 5pt 5pt;
+                border-bottom-color:#000000;
+                border-top-width:1pt;
+                border-bottom-style:solid;
+                vertical-align:top;
+                border-top-color:#000000;
+                border-left-color:#000000;
+                border-right-color:#000000;
+                border-left-style:solid;
+                border-right-width:1pt;
+                border-left-width:1pt
+            }
+            .c1 {
+                border-bottom-width:1pt;
+                border-top-style:solid;
+                width:118.5pt;
+                border-right-style:solid;
+                padding:5pt 5pt 5pt 5pt;
+                border-bottom-color:#000000;
+                border-top-width:1pt;
+                border-bottom-style:solid;
+                vertical-align:top;
+                border-top-color:#000000;
+                border-left-color:#000000;
+                border-right-color:#000000;
+                border-left-style:solid;
+                border-right-width:1pt;
+                border-left-width:1pt
+            }
+            .c4 {
+                vertical-align:baseline;
+                color:#000000;
+                font-size:11pt;
+                font-style:normal;
+                background-color:#ffffff;
+                font-family:"Arial";
+                text-decoration:none;
+                font-weight:normal
+            }
+            .c18 {
+                vertical-align:baseline;
+                color:#000000;
+                font-size:11pt;
+                font-style:normal;
+                font-family:"Arial";
+                text-decoration:none
+            }
+            .c16 {
+                vertical-align:baseline;
+                font-size:11pt;
+                font-style:normal;
+                font-family:"Arial";
+                text-decoration:none;
+                font-weight:normal
+            }
+            .c8 {
+                line-height:1.15;
+                padding-top:0pt;
+                height:11pt;
+                text-align:left;
+                padding-bottom:0pt
+            }
+            .c9 {
+                line-height:1.15;
+                padding-top:0pt;
+                text-align:left;
+                padding-bottom:0pt
+            }
+            .c31 {
+                margin-right:auto;
+                border-collapse:collapse
+            }
+            .c28 {
+                margin-right:auto;
+                border-collapse:collapse;
+                margin-left:0.8pt
+            }
+            .c2 {
+                widows:2;
+                orphans:2;
+                direction:ltr
+            }
+            .c27 {
+                padding-top:24pt;
+                padding-bottom:6pt;
+                page-break-after:avoid
+            }
+            .c25 {
+                padding-left:0pt;
+                margin-left:108pt
+            }
+            .c24 {
+                padding-left:0pt;
+                margin-left:36pt
+            }
+            .c7 {
+                color:inherit;
+                text-decoration:inherit
+            }
+            .c5 {
+                background-color:#ffffff;
+                font-weight:bold
+            }
+            .c11 {
+                color:#1155cc;
+                text-decoration:underline
+            }
+            .c21 {
+                max-width:612pt;
+                padding:0pt 0pt 0pt 0pt
+            }
+            .c22 {
+                font-size:23pt;
+                font-family:"Arial"
+            }
+            .c26 {
+                margin:0;
+                padding:0
+            }
+            .c3 {
+                height:0pt
+            }
+            .c13 {
+                color:#ff0000
+            }
+            .c23 {
+                height:25pt
+            }
+            .c12 {
+                height:11pt
+            }
+            .c10 {
+                background-color:#ffffff
+            }
+            .c17 {
+                text-indent:36pt
+            }
+            .c30 {
+                margin-left:-57.8pt
+            }
+            .c20 {
+                height:39pt
+            }
+            .c6 {
+                height:26pt
+            }
+            .c29 {
+                height:114pt
+            }
+            .title {
+                widows:2;
+                padding-top:0pt;
+                line-height:1.15;
+                orphans:2;
+                text-align:left;
+                color:#000000;
+                font-size:21pt;
+                font-family:"Trebuchet MS";
+                padding-bottom:0pt;
+                page-break-after:avoid
+            }
+            .subtitle {
+                widows:2;
+                padding-top:0pt;
+                line-height:1.15;
+                orphans:2;
+                text-align:left;
+                color:#666666;
+                font-style:italic;
+                font-size:13pt;
+                font-family:"Trebuchet MS";
+                padding-bottom:10pt;
+                page-break-after:avoid
+            }
+            li {
+                color:#000000;
+                font-size:11pt;
+                font-family:"Arial"
+            }
+            p {
+                color:#000000;
+                font-size:11pt;
+                margin:0;
+                font-family:"Arial"
+            }
+            h1 {
+                widows:2;
+                padding-top:10pt;
+                line-height:1.15;
+                orphans:2;
+                text-align:left;
+                color:#000000;
+                font-size:16pt;
+                font-family:"Trebuchet MS";
+                padding-bottom:0pt;
+                page-break-after:avoid
+            }
+            h2 {
+                widows:2;
+                padding-top:10pt;
+                line-height:1.15;
+                orphans:2;
+                text-align:left;
+                color:#000000;
+                font-size:13pt;
+                font-family:"Trebuchet MS";
+                font-weight:bold;
+                padding-bottom:0pt;
+                page-break-after:avoid
+            }
+            h3 {
+                widows:2;
+                padding-top:8pt;
+                line-height:1.15;
+                orphans:2;
+                text-align:left;
+                color:#666666;
+                font-size:12pt;
+                font-family:"Trebuchet MS";
+                font-weight:bold;
+                padding-bottom:0pt;
+                page-break-after:avoid
+            }
+            h4 {
+                widows:2;
+                padding-top:8pt;
+                line-height:1.15;
+                orphans:2;
+                text-align:left;
+                color:#666666;
+                font-size:11pt;
+                text-decoration:underline;
+                font-family:"Trebuchet MS";
+                padding-bottom:0pt;
+                page-break-after:avoid
+            }
+            h5 {
+                widows:2;
+                padding-top:8pt;
+                line-height:1.15;
+                orphans:2;
+                text-align:left;
+                color:#666666;
+                font-size:11pt;
+                font-family:"Trebuchet MS";
+                padding-bottom:0pt;
+                page-break-after:avoid
+            }
+            h6 {
+                widows:2;
+                padding-top:8pt;
+                line-height:1.15;
+                orphans:2;
+                text-align:left;
+                color:#666666;
+                font-style:italic;
+                font-size:11pt;
+                font-family:"Trebuchet MS";
+                padding-bottom:0pt;
+                page-break-after:avoid
+            }
+	</style>
+</head>
+<body class="c10 c21" style="cursor: auto;">
+<h1 class="c2 c27 c30"><a name="h.b0dgkiehxuco"></a><span class="c5 c22">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="c5 c22">Defini&ccedil;&atilde;o de Processo Padr&atilde;</span><span class="c5 c22">o</span></h1>
+
+<p class="c2"><span>Daniel de Oliveira Vasconcelos</span></p>
+
+<p class="c2"><span>L</span><span>ucas de Assis Rosa</span></p>
+
+<p class="c2"><span>Lucas Henrique Nonato de Oliveira</span></p>
+
+<p class="c2"><span>Marcos Vinicius Ribeiro Silva</span></p>
+
+<p class="c2"><span>Rafael Can&ecirc;do de Moraes Mereb</span></p>
+
+<p class="c2"><span>Yuri Matheus Dias Pereira</span></p>
+
+<p class="c2"><span>Guilherme Alves Rosa e Silva</span></p>
+
+<h1 class="c2 c27"><a name="h.xkd5isq9zact"></a><span class="c5 c22">Processo de manuten&ccedil;&atilde;o</span></h1>
+
+<p class="c2"><span class="c5">1) Prop&oacute;sito</span><span class="c10">&nbsp;</span></p>
+
+<p class="c2 c12">&nbsp;</p>
+
+<p class="c2"><span class="c10">Este processo de manuten&ccedil;&atilde;o possui o intento de controlar evolu&ccedil;&otilde;es pertinentes ao sistema, promovendo sua melhoria, otimiza&ccedil;&atilde;o e o repar de defeitos encontrados. Por meio de determinadas atividades atreladas ao ciclo de vida do software, procura-se formar um processo que garanta alta longevidade.</span></p>
+
+<p class="c2"><span class="c10">A organiza&ccedil;&atilde;o dever&aacute; estar ciente e assegurar conformidade com os seguintes objetivos:</span></p>
+
+<ul class="c26 lst-kix_1h24sy4wxziu-0 start">
+	<li class="c2 c24"><span>Garantir alta manutenibilidade de forma a diminuir os custos com manuten&ccedil;&atilde;o;</span></li>
+	<li class="c2 c24"><span>Definir a forma como as solicita&ccedil;&otilde;es de mudan&ccedil;a no software devem ocorrer, para manter a qualidade e o controle dos produtos de software da empresa. </span></li>
+	<li class="c2 c24"><span>Assegurar que evolu&ccedil;&otilde;es (novas vers&otilde;es) do software est&atilde;o sempre atendendo &agrave;s necessidades do cliente para assim prolongar a vida &uacute;til do software.</span></li>
+</ul>
+
+<p class="c2 c12">&nbsp;</p>
+
+<p class="c2"><span class="c5">2) Defini&ccedil;&otilde;es</span></p>
+
+<p class="c2"><span class="c10">Os seguintes termos e suas defini&ccedil;&otilde;es usadas neste processo s&atilde;o listados abaixo (defini&ccedil;&otilde;es de acordo com a norma ISO/IEC IEE 14764).</span></p>
+
+<p class="c2"><span class="c10">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.01) Manuten&ccedil;&atilde;o de Melhoria - Uma modifica&ccedil;&atilde;o em um produto de software para satisfazer um novo requisito.</span></p>
+
+<p class="c2"><span class="c10 c13">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="c10">2.02) Manuten&ccedil;&atilde;o Corretiva - A modifica&ccedil;&atilde;o reativa (ap&oacute;s o relato do problema) em um produto de software realizada ap&oacute;s a entrega para corrigir problemas descobertos.</span></p>
+
+<p class="c2 c17"><span class="c10">2.03) Manuten&ccedil;&atilde;o Preventiva - A modifica&ccedil;&atilde;o em um produto de software, ap&oacute;s a entrega, para detectar e corrigir defeitos latentes (que est&atilde;o na imin&ecirc;ncia de causar falhas).</span></p>
+
+<p class="c2"><span class="c13 c10">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="c10">2.08) Manutenibilidade - A capacidade de um produto de software de ser modificado. Modifica&ccedil;&otilde;es incluem corre&ccedil;&otilde;es, melhorias, mudan&ccedil;as no ambiente, mudan&ccedil;as em requisitos e em especifica&ccedil;&otilde;es funcionais (modelos de projeto).</span></p>
+
+<p class="c2"><span class="c13 c10">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="c10">2.09) Solicita&ccedil;&atilde;o de Mudan&ccedil;a - Documento para as modifica&ccedil;&otilde;es propostas &agrave; um produto de software que est&aacute; sendo mantido.</span></p>
+
+<p class="c2"><span class="c13 c10">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="c10">2.10) Relat&oacute;rio de Problema - Documento para identificar e descrever problemas detectados em um produto de software que est&aacute; sendo mantido.</span></p>
+
+<p class="c2"><span class="c13 c10">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="c10">2.11) An&aacute;lise de Impacto da Mudan&ccedil;a - &Eacute; a an&aacute;lise realizada para descobrir quais componentes/partes do sistema uma mudan&ccedil;a afetar&aacute; e como essa mudan&ccedil;a ir&aacute; afetar esses componentes.</span></p>
+
+<p class="c2"><span class="c13 c10">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="c10">2.12) Release -</span><span class="c13 c10">&nbsp;</span><span class="c10">&Eacute; uma vers&atilde;o aprovada e revisada do sistema que est&aacute; dispon&iacute;vel para uso.</span></p>
+
+<p class="c2"><span class="c13 c10">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="c10">2.13) Replica&ccedil;&atilde;o - Consiste na reprodu&ccedil;&atilde;o de um problema, na forma como ele foi detectado. Significa conseguir repetir o problema de forma controlada, identificando a causa desse problema.</span></p>
+
+<p class="c2"><span class="c10">&nbsp;</span></p>
+
+<p class="c2"><span class="c5">3) Escopo de Aplica&ccedil;&atilde;o</span><span class="c10">&nbsp;</span></p>
+
+<p class="c2"><span class="c10">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;O processo ir&aacute; agir na &aacute;rea de desenvolvimento de produto de software, de modo a apoiar a sua exist&ecirc;ncia no ambiente do usu&aacute;rio. Isto &eacute;, a partir do momento que o desenvolvimento de um produto de software &eacute; iniciado, tem-se a a&ccedil;&atilde;o da manuten&ccedil;&atilde;o de software, para acompanhar sua evolu&ccedil;&atilde;o. </span></p>
+
+<p class="c2 c17"><span class="c10">Ap&oacute;s a entrega de uma release, o processo de manuten&ccedil;&atilde;o ir&aacute; agir em funcionalidades do software que apresentem problemas para o usu&aacute;rio ou que precisam ser modificadas, ap&oacute;s an&aacute;lises pr&eacute;vias destas.</span></p>
+
+<p class="c2 c12 c17">&nbsp;</p>
+
+<p class="c2"><span class="c5">4) Pol&iacute;ticas. </span><span class="c10">As seguintes pol&iacute;ticas ser&atilde;o seguidas pelos envolvidos com o Processo de Manuten&ccedil;&atilde;o:</span></p>
+
+<ol class="c26 lst-kix_mc7zvu88fmwa-0 start" start="1">
+	<li class="c2 c25"><span class="c5">Conven&ccedil;&atilde;o de c&oacute;digo fonte.</span><span class="c10">&nbsp;O desenvolvimento de c&oacute;digo para implementa&ccedil;&atilde;o de uma modifica&ccedil;&atilde;o, assim como o c&oacute;digo anterior &agrave; modifica&ccedil;&atilde;o, deve seguir as conven&ccedil;&otilde;es de codifica&ccedil;&atilde;o da linguagem de programa&ccedil;&atilde;o utilizada (por exemplo, java code conventions), e ser corretamente comentado.</span></li>
+	<li class="c2 c25"><span class="c5">Utiliza&ccedil;&atilde;o de padr&otilde;es de projeto. </span><span class="c10">Modifica&ccedil;&otilde;es em c&oacute;digos-fonte que foram desenvolvidos e est&atilde;o organizados em padr&otilde;es de projeto detalhado devem, se poss&iacute;vel, respeitar as estruturas dos padr&otilde;es para continuar a implement&aacute;-los.</span></li>
+	<li class="c2 c25"><span class="c5">Atualiza&ccedil;&atilde;o de Documenta&ccedil;&atilde;o. </span><span class="c10">Qualquer documenta&ccedil;&atilde;o pr&eacute;-existente que for afetada durante a execu&ccedil;&atilde;o do Processo de Manuten&ccedil;&atilde;o de Software deve ser corretamente atualizada atrav&eacute;s do reposit&oacute;rio utilizado e uma ferramenta de controle de vers&atilde;o(por exemplo, via Git) durante o projeto em aberto. Novos documentos gerados tamb&eacute;m precisam entrar sobre o controle da ger&ecirc;ncia de configura&ccedil;&atilde;o.</span></li>
+</ol>
+
+<p class="c2 c12">&nbsp;</p>
+
+<p class="c2"><span class="c5">5) M&eacute;tricas</span><span class="c10">&nbsp;</span></p>
+
+<p class="c2"><span class="c10">Aqui ser&atilde;o definidos as formas para medir o qu&atilde;o bem o processo de manuten&ccedil;&atilde;o foi executado.</span></p>
+
+<ul class="c26 lst-kix_qa09h5s3llnm-0 start">
+	<li class="c2 c24"><span class="c10">O n&uacute;mero de erros encontrados com o uso do plugin Checkstyle para o Eclipse;</span></li>
+</ul>
+
+<ul class="c26 lst-kix_38q91hcff1hy-0 start">
+	<li class="c2 c24"><span class="c10">Quantidade de tempo gasto pelos mantenedores durante as etapas de entendimento e an&aacute;lise do produto de software a ser alterado;</span></li>
+	<li class="c2 c24"><span class="c10">Quantidade de problemas encontrados derivados de uma determinada mudan&ccedil;a;</span></li>
+	<li class="c2 c24"><span class="c10">Quantidade de componentes afetados pela mudan&ccedil;a identificada em um determinado componente;</span></li>
+</ul>
+
+<p class="c2 c12">&nbsp;</p>
+
+<p class="c2"><span class="c5">6) Macro Fluxo</span></p>
+
+<p class="c2"><span class="c10">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Clique </span><span class="c11 c10"><a class="c7" href="./imagens/processoBPMN.png">aqui</a></span><span class="c10">&nbsp;para ver a imagem do fluxo BPMN do processo de manuten&ccedil;&atilde;o de software.</span></p>
+
+<p class="c2 c12">&nbsp;</p>
+
+<p class="c2"><span class="c5">7) Defini&ccedil;&atilde;o de Atividades</span><span class="c10">&nbsp;</span></p>
+
+<table cellpadding="0" cellspacing="0" class="c31">
+	<tbody>
+		<tr class="c3">
+			<td class="c19" colspan="1" rowspan="1">
+			<p class="c9 c2"><span class="c5">Atividade</span></p>
+			</td>
+			<td class="c0" colspan="1" rowspan="1">
+			<p class="c9 c2"><span class="c4">Analisar problema e/ou modifica&ccedil;&atilde;o.</span></p>
+			</td>
+		</tr>
+		<tr class="c3">
+			<td class="c19" colspan="1" rowspan="4">
+			<p class="c9 c2"><span class="c5">Responsabilidades</span></p>
+			</td>
+			<td class="c0" colspan="1" rowspan="1">
+			<p class="c9 c2"><span class="c5">Realiza&ccedil;&atilde;o:</span><span class="c4">&nbsp;Presidente do Comit&ecirc; de Mudan&ccedil;a de Configura&ccedil;&atilde;o</span></p>
+			</td>
+		</tr>
+		<tr class="c6">
+			<td class="c0" colspan="1" rowspan="1">
+			<p class="c9 c2"><span class="c5">Aprova&ccedil;&atilde;o:</span><span class="c4">&nbsp;N&atilde;o se aplica.</span></p>
+			</td>
+		</tr>
+		<tr class="c3">
+			<td class="c0" colspan="1" rowspan="1">
+			<p class="c9 c2"><span class="c5">Colabora&ccedil;&atilde;o:</span><span class="c10">&nbsp;Membros do Comit&ecirc; de Mudan&ccedil;a de Configura&ccedil;&atilde;o</span></p>
+			</td>
+		</tr>
+		<tr class="c3">
+			<td class="c0" colspan="1" rowspan="1">
+			<p class="c9 c2"><span class="c5">Informa&ccedil;&atilde;o:</span><span class="c4">&nbsp;Todas as &aacute;reas afetadas pela mudan&ccedil;a.</span></p>
+			</td>
+		</tr>
+		<tr class="c3">
+			<td class="c19" colspan="1" rowspan="5">
+			<p class="c9 c2"><span class="c5">Tarefas</span></p>
+			</td>
+			<td class="c0" colspan="1" rowspan="1">
+			<p class="c9 c2"><span class="c5">1.</span><span class="c10">&nbsp;An&aacute;lise de solicita&ccedil;&atilde;o de mudan&ccedil;a ou problema. O procedimento para esta tarefa est&aacute; </span><span class="c11 c10"><a class="c7" href="./Procedimentos/ProcedimentoAnaliseDeSolicitacao.html">aqui</a></span> <span class="c10">.</span></p>
+			</td>
+		</tr>
+		<tr class="c3">
+			<td class="c0" colspan="1" rowspan="1">
+			<p class="c9 c2"><span class="c5">2.</span><span class="c10">&nbsp;Verifica&ccedil;&atilde;o da ocorr&ecirc;ncia do problema. Para se assegurar da validade das mudan&ccedil;as e do problema. Os procedimentos para essa tarefa est&aacute; </span> <span class="c11 c10"><a class="c7" href="./Procedimentos/ProcedimentoVerificacaoDoProblema.html">aqui</a> </span><span class="c10">.</span></p>
+			</td>
+		</tr>
+		<tr class="c3">
+			<td class="c0" colspan="1" rowspan="1">
+			<p class="c9 c2"><span class="c5">3.</span><span class="c10">&nbsp;Diferentes op&ccedil;&otilde;es s&atilde;o desenvolvidas para a implementa&ccedil;&atilde;o da mudan&ccedil;a. Os procedimentos para essa tarefa est&aacute; </span><span class="c11 c10"><a class="c7" href="./Procedimentos/ProcedimentoOpcoes.html">aqui</a></span> <span class="c4">.</span></p>
+			</td>
+		</tr>
+		<tr class="c3">
+			<td class="c0" colspan="1" rowspan="1">
+			<p class="c9 c2"><span class="c5">4.</span><span class="c10">&nbsp;Documenta&ccedil;&atilde;o dos artefatos. Os procedimentos para essa tarefa est&aacute; </span><span class="c11 c10"><a class="c7" href="./Procedimentos/ProcedimentoDocumentacao.html">aqui</a></span> <span class="c4">.</span></p>
+			</td>
+		</tr>
+		<tr class="c3">
+			<td class="c0" colspan="1" rowspan="1">
+			<p class="c9 c2"><span class="c5">5</span><span class="c5">.</span><span class="c10">&nbsp;Aprova&ccedil;&atilde;o para a mudan&ccedil;a selecionada deve ser obtida. Os procedimentos para essa tarefa est&aacute; </span><span class="c11 c10"><a class="c7" href="./Procedimentos/ProcedimentoAprovacaoDaMudanca.html">aqui</a></span> <span class="c10">.</span></p>
+			</td>
+		</tr>
+		<tr class="c3">
+			<td class="c19" colspan="1" rowspan="1">
+			<p class="c9 c2"><span class="c5">Pr&eacute;-Condi&ccedil;&otilde;es</span></p>
+			</td>
+			<td class="c0" colspan="1" rowspan="1">
+			<p class="c9 c2"><span class="c4">A solicita&ccedil;&atilde;o de mudan&ccedil;a ser recebida pelo Presidente do Comit&ecirc;, e este definir quem s&atilde;o os outros membros interessados do Comit&ecirc; de Mudan&ccedil;a.</span></p>
+			</td>
+		</tr>
+		<tr class="c3">
+			<td class="c19" colspan="1" rowspan="1">
+			<p class="c9 c2"><span class="c5">Entradas</span></p>
+			</td>
+			<td class="c0" colspan="1" rowspan="1">
+			<p class="c9 c2"><span class="c11 c10"><a class="c7" href="./Templates/TemplateSolicitacaodeMudanca.html">-Documento de Solicita&ccedil;&atilde;o de Mudan&ccedil;a;</a></span></p>
+
+			<p class="c9 c2"><span class="c10">-</span><span class="c11 c10"><a class="c7" href="./Templates/TemplateRelatoriodeProblema.html">Documento de Relat&oacute;rio de Problema;</a></span></p>
+
+			<p class="c9 c2"><span class="c4">-Baseline em que o problema/mudan&ccedil;a foi requisitado.</span></p>
+			</td>
+		</tr>
+		<tr class="c3">
+			<td class="c19" colspan="1" rowspan="1">
+			<p class="c9 c2"><span class="c5">Crit&eacute;rios de Sa&iacute;da</span></p>
+			</td>
+			<td class="c0" colspan="1" rowspan="1">
+			<p class="c9 c2"><span class="c4">A mudan&ccedil;a ou a corre&ccedil;&atilde;o do problema devem ter sido aprovados e sua an&aacute;lise de impacto deve ter tido sido feita, juntamente com diferentes op&ccedil;&otilde;es devem ter sido pesquisadas e uma op&ccedil;&atilde;o deve ter sido recomendada para a aprova&ccedil;&atilde;o.</span></p>
+			</td>
+		</tr>
+		<tr class="c20">
+			<td class="c19" colspan="1" rowspan="1">
+			<p class="c9 c2"><span class="c5">Produtos</span></p>
+			</td>
+			<td class="c0" colspan="1" rowspan="1">
+			<p class="c9 c2"><span class="c10">-</span><span class="c11 c10"><a class="c7" href="./Templates/TemplateAnalisedeImpacto.html">Documento de An&aacute;lise de Impacto e de Op&ccedil;&otilde;es de Modifica&ccedil;&atilde;o;</a></span></p>
+
+			<p class="c9 c2"><span class="c10">-Documenta&ccedil;&atilde;o do sistema atualizada com a mudan&ccedil;a.</span></p>
+			</td>
+		</tr>
+		<tr class="c3">
+			<td class="c19" colspan="1" rowspan="1">
+			<p class="c9 c2"><span class="c5">Infraestrutura</span></p>
+			</td>
+			<td class="c0" colspan="1" rowspan="1">
+			<p class="c9 c2"><span class="c4">-Uma sala de reuni&atilde;o para o Comit&ecirc; poder debater sobre as mudan&ccedil;as, com cadeiras e mesa para os membros, caso necess&aacute;rio reuni&otilde;es podem ser feitas de forma online;</span></p>
+
+			<p class="c9 c2"><span class="c4">-Computadores necess&aacute;rios para os ambientes utilizados e para os membros do comit&ecirc;.</span></p>
+			</td>
+		</tr>
+		<tr class="c3">
+			<td class="c19" colspan="1" rowspan="1">
+			<p class="c9 c2"><span class="c5">Ferramentas</span></p>
+			</td>
+			<td class="c0" colspan="1" rowspan="1">
+			<p class="c9 c2"><span class="c4">-Um software de controle de vers&atilde;o e de configura&ccedil;&atilde;o definido, como por exemplo o Git ou o SVN;</span></p>
+
+			<p class="c9 c2"><span class="c4">-Ferramentas de edi&ccedil;&atilde;o de texto para os v&aacute;rios documentos utilizados e modificados, como Microsoft Word ou LibreOffice Writer;</span></p>
+
+			<p class="c9 c2"><span class="c10">-Para comunica&ccedil;&atilde;o, pode ser utilizada uma lista de e-mails ou o ambiente Hangout para reuni&otilde;es online.</span></p>
+
+			<p class="c8 c2">&nbsp;</p>
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+<p class="c2 c12">&nbsp;</p>
+
+<p class="c2 c12">&nbsp;</p>
+
+<p class="c2 c12">&nbsp;</p>
+
+<table cellpadding="0" cellspacing="0" class="c31">
+	<tbody>
+		<tr class="c3">
+			<td class="c1" colspan="1" rowspan="1">
+			<p class="c9 c2"><span class="c5">Atividade</span></p>
+			</td>
+			<td class="c15" colspan="1" rowspan="1">
+			<p class="c9 c2"><span class="c4">Implementar modifica&ccedil;&atilde;o</span></p>
+			</td>
+		</tr>
+		<tr class="c3">
+			<td class="c1" colspan="1" rowspan="4">
+			<p class="c9 c2"><span class="c5">Responsabilidades</span></p>
+			</td>
+			<td class="c15" colspan="1" rowspan="1">
+			<p class="c9 c2"><span class="c5">Realiza&ccedil;&atilde;o:</span><span class="c4">&nbsp;L&iacute;der da equipe de manuten&ccedil;&atilde;o.</span></p>
+			</td>
+		</tr>
+		<tr class="c6">
+			<td class="c15" colspan="1" rowspan="1">
+			<p class="c9 c2"><span class="c5">Aprova&ccedil;&atilde;o:</span><span class="c4">&nbsp;Comit&ecirc; de Mudan&ccedil;a de Configura&ccedil;&atilde;o.</span></p>
+			</td>
+		</tr>
+		<tr class="c3">
+			<td class="c15" colspan="1" rowspan="1">
+			<p class="c9 c2"><span class="c5">Colabora&ccedil;&atilde;o:</span><span class="c4">&nbsp;Membros da equipe de manuten&ccedil;&atilde;o.</span></p>
+			</td>
+		</tr>
+		<tr class="c3">
+			<td class="c15" colspan="1" rowspan="1">
+			<p class="c9 c2"><span class="c5">Informa&ccedil;&atilde;o:</span><span class="c4">&nbsp;Todas as &aacute;reas afetadas pela mudan&ccedil;a, e o final da mudan&ccedil;a deve ser avisado ao Comit&ecirc; de Mudan&ccedil;a de Configura&ccedil;&atilde;o e ao Cliente que requisitou a mudan&ccedil;a.</span></p>
+			</td>
+		</tr>
+		<tr class="c3">
+			<td class="c1" colspan="1" rowspan="2">
+			<p class="c9 c2"><span class="c18 c5">Tarefas</span></p>
+			</td>
+			<td class="c15" colspan="1" rowspan="1">
+			<p class="c9 c2"><span class="c5">1.</span><span class="c10">&nbsp;An&aacute;lise de documenta&ccedil;&atilde;o e componentes. O procedimento para esta tarefa est&aacute; </span><span class="c11 c10"><a class="c7" href="./Procedimentos/ProcedimentoAnaliseDeDocumentacao.html">aqui</a></span> <span class="c10">.</span></p>
+			</td>
+		</tr>
+		<tr class="c3">
+			<td class="c15" colspan="1" rowspan="1">
+			<p class="c9 c2"><span class="c5">2.</span><span class="c4">&nbsp;Processo de desenvolvimento. Nesta tarefa ser&aacute; iniciado o processo de desenvolvimento para implementar as modifica&ccedil;&otilde;es.</span></p>
+			</td>
+		</tr>
+		<tr class="c3">
+			<td class="c1" colspan="1" rowspan="1">
+			<p class="c9 c2"><span class="c5">Pr&eacute;-Condi&ccedil;&otilde;es</span></p>
+			</td>
+			<td class="c15" colspan="1" rowspan="1">
+			<p class="c9 c2"><span class="c4">A Mudan&ccedil;a foi aprovada pelo Comit&ecirc; de Mudan&ccedil;a de Configura&ccedil;&atilde;o e foi escalada para ser desenvolvida.</span></p>
+			</td>
+		</tr>
+		<tr class="c3">
+			<td class="c1" colspan="1" rowspan="1">
+			<p class="c9 c2"><span class="c5">Entradas</span></p>
+			</td>
+			<td class="c15" colspan="1" rowspan="1">
+			<p class="c9 c2"><span class="c4">-A Baseline que ser&aacute; modificada;</span></p>
+
+			<p class="c9 c2"><span class="c4">-A aprova&ccedil;&atilde;o formal da Mudan&ccedil;a;</span></p>
+			</td>
+		</tr>
+		<tr class="c3">
+			<td class="c1" colspan="1" rowspan="1">
+			<p class="c9 c2"><span class="c5">Crit&eacute;rios de Sa&iacute;da</span></p>
+			</td>
+			<td class="c15" colspan="1" rowspan="1">
+			<p class="c9 c2"><span class="c4">A mudan&ccedil;a foi implementada e os testes foram feitos para garantir a integridade do sistema, com o Comit&ecirc; de Mudan&ccedil;a de Configura&ccedil;&atilde;o tendo avaliado o final da implementa&ccedil;&atilde;o da Mudan&ccedil;a.</span></p>
+			</td>
+		</tr>
+		<tr class="c20">
+			<td class="c1" colspan="1" rowspan="1">
+			<p class="c9 c2"><span class="c5">Produtos</span></p>
+			</td>
+			<td class="c15" colspan="1" rowspan="1">
+			<p class="c9 c2"><span class="c4">-Planos de Teste e Procedimentos atualizados;</span></p>
+
+			<p class="c9 c2"><span class="c4">-Documenta&ccedil;&atilde;o atualizada;</span></p>
+
+			<p class="c9 c2"><span class="c4">-Resultados dos testes feitos;</span></p>
+			</td>
+		</tr>
+		<tr class="c3">
+			<td class="c1" colspan="1" rowspan="1">
+			<p class="c9 c2"><span class="c5">Infraestrutura</span></p>
+			</td>
+			<td class="c15" colspan="1" rowspan="1">
+			<p class="c9 c2"><span class="c4">-Uma sala de reuni&atilde;o para o Comit&ecirc; poder debater sobre as mudan&ccedil;as, com cadeiras e mesa para os membros, caso necess&aacute;rio reuni&otilde;es podem ser feitas de forma online;</span></p>
+
+			<p class="c9 c2"><span class="c4">-Computadores necess&aacute;rios para os ambientes utilizados e para os membros do comit&ecirc;.</span></p>
+			</td>
+		</tr>
+		<tr class="c3">
+			<td class="c1" colspan="1" rowspan="1">
+			<p class="c9 c2"><span class="c5">Ferramentas</span></p>
+			</td>
+			<td class="c15" colspan="1" rowspan="1">
+			<p class="c9 c2"><span class="c4">-Um software de controle de vers&atilde;o e de configura&ccedil;&atilde;o definido, como por exemplo o Git ou o SVN;</span></p>
+
+			<p class="c9 c2"><span class="c4">-Ferramentas de edi&ccedil;&atilde;o de texto para os v&aacute;rios documentos utilizados e modificados, como Microsoft Word ou LibreOffice Writer;</span></p>
+
+			<p class="c9 c2"><span class="c4">-Para comunica&ccedil;&atilde;o, pode ser utilizada uma lista de e-mails ou o ambiente Hangout para reuni&otilde;es online.</span></p>
+
+			<p class="c8 c2">&nbsp;</p>
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+<p class="c2 c12">&nbsp;</p>
+
+<p class="c2 c12">&nbsp;</p>
+
+<table cellpadding="0" cellspacing="0" class="c28">
+	<tbody>
+		<tr class="c3">
+			<td class="c14" colspan="1" rowspan="1">
+			<p class="c9 c2"><span class="c5">Atividade</span></p>
+			</td>
+			<td class="c15" colspan="1" rowspan="1">
+			<p class="c9 c2"><span class="c4">Revisar manuten&ccedil;&atilde;o</span></p>
+			</td>
+		</tr>
+		<tr class="c3">
+			<td class="c14" colspan="1" rowspan="4">
+			<p class="c9 c2"><span class="c5">Responsabilidades</span></p>
+			</td>
+			<td class="c15" colspan="1" rowspan="1">
+			<p class="c9 c2"><span class="c5">Realiza&ccedil;&atilde;o:</span><span class="c4">&nbsp;L&iacute;der da equipe de manuten&ccedil;&atilde;o.</span></p>
+			</td>
+		</tr>
+		<tr class="c6">
+			<td class="c15" colspan="1" rowspan="1">
+			<p class="c9 c2"><span class="c5">Aprova&ccedil;&atilde;o:</span><span class="c4">&nbsp;Comit&ecirc; de Mudan&ccedil;a de Configura&ccedil;&atilde;o.</span></p>
+			</td>
+		</tr>
+		<tr class="c3">
+			<td class="c15" colspan="1" rowspan="1">
+			<p class="c9 c2"><span class="c5">Colabora&ccedil;&atilde;o:</span><span class="c4">&nbsp;Membros da equipe de manuten&ccedil;&atilde;o.</span></p>
+			</td>
+		</tr>
+		<tr class="c3">
+			<td class="c15" colspan="1" rowspan="1">
+			<p class="c9 c2"><span class="c5">Informa&ccedil;&atilde;o:</span><span class="c4">&nbsp;Comit&ecirc; de Mudan&ccedil;a de Configura&ccedil;&atilde;o e todas as &aacute;reas respons&aacute;veis pelos documentos onde foram encontradas n&atilde;o-conformidades. </span></p>
+			</td>
+		</tr>
+		<tr class="c3">
+			<td class="c14" colspan="1" rowspan="2">
+			<p class="c9 c2"><span class="c18 c5">Tarefas</span></p>
+			</td>
+			<td class="c15" colspan="1" rowspan="1">
+			<p class="c9 c2"><span class="c5">1.</span><span class="c10">&nbsp;Revis&otilde;es. O procedimento para esta tarefa est&aacute; </span><span class="c11 c10"><a class="c7" href="./Procedimentos/ProcedimentoRevisoes.html">aqui</a></span><span class="c10">.</span></p>
+			</td>
+		</tr>
+		<tr class="c3">
+			<td class="c15" colspan="1" rowspan="1">
+			<p class="c9 c2"><span class="c5">2.</span><span class="c10">&nbsp;Aprova&ccedil;&atilde;o da Manuten&ccedil;&atilde;o. Os procedimentos para essa tarefa est&atilde;o </span><span class="c11 c10"><a class="c7" href="./Procedimentos/ProcedimentoAprovacaoDaManutencao.html">aqui</a></span> <span class="c4">.</span></p>
+			</td>
+		</tr>
+		<tr class="c3">
+			<td class="c14" colspan="1" rowspan="1">
+			<p class="c9 c2"><span class="c5">Pr&eacute;-Condi&ccedil;&otilde;es</span></p>
+			</td>
+			<td class="c15" colspan="1" rowspan="1">
+			<p class="c9 c2"><span class="c4">A Mudan&ccedil;a foi implementada pelo time de manuten&ccedil;&atilde;o ap&oacute;s ter sido aprovada e testada.</span></p>
+			</td>
+		</tr>
+		<tr class="c3">
+			<td class="c14" colspan="1" rowspan="1">
+			<p class="c9 c2"><span class="c5">Entradas</span></p>
+			</td>
+			<td class="c15" colspan="1" rowspan="1">
+			<p class="c2 c9"><span class="c4">-O software modificado;</span></p>
+
+			<p class="c9 c2"><span class="c4">-Resultados dos testes da modifica&ccedil;&atilde;o.</span></p>
+			</td>
+		</tr>
+		<tr class="c3">
+			<td class="c14" colspan="1" rowspan="1">
+			<p class="c9 c2"><span class="c5">Crit&eacute;rios de Sa&iacute;da</span></p>
+			</td>
+			<td class="c15" colspan="1" rowspan="1">
+			<p class="c9 c2"><span class="c4">A mudan&ccedil;a foi aceita, com os testes formalmente realizados e uma nosa baseline com as mudan&ccedil;as aceitadas for liberada.</span></p>
+			</td>
+		</tr>
+		<tr class="c20">
+			<td class="c14" colspan="1" rowspan="1">
+			<p class="c9 c2"><span class="c5">Produtos</span></p>
+			</td>
+			<td class="c15" colspan="1" rowspan="1">
+			<p class="c9 c2"><span class="c4">-Nova baseline com as mudan&ccedil;as aceitas incorporadas;</span></p>
+
+			<p class="c9 c2"><span class="c4">-Mudan&ccedil;as rejeitadas;</span></p>
+
+			<p class="c9 c2"><span class="c10">-</span><span class="c10 c11"><a class="c7" href="./Templates/TemplateRelatoriodeRevisao.html">Relat&oacute;rio de Revis&atilde;o;</a></span></p>
+			</td>
+		</tr>
+		<tr class="c3">
+			<td class="c14" colspan="1" rowspan="1">
+			<p class="c9 c2"><span class="c5">Infraestrutura</span></p>
+			</td>
+			<td class="c15" colspan="1" rowspan="1">
+			<p class="c9 c2"><span class="c4">-Uma sala de reuni&atilde;o para o Comit&ecirc; poder debater sobre as mudan&ccedil;as, com cadeiras e mesa para os membros, caso necess&aacute;rio reuni&otilde;es podem ser feitas de forma online;</span></p>
+
+			<p class="c9 c2"><span class="c4">-Computadores necess&aacute;rios para os ambientes utilizados e para os membros do comit&ecirc;.</span></p>
+			</td>
+		</tr>
+		<tr class="c3">
+			<td class="c14" colspan="1" rowspan="1">
+			<p class="c9 c2"><span class="c5">Ferramentas</span></p>
+			</td>
+			<td class="c15" colspan="1" rowspan="1">
+			<p class="c9 c2"><span class="c4">-Um software de controle de vers&atilde;o e de configura&ccedil;&atilde;o definido, como por exemplo o Git ou o SVN;</span></p>
+
+			<p class="c9 c2"><span class="c4">-Ferramentas de edi&ccedil;&atilde;o de texto para os v&aacute;rios documentos utilizados e modificados, como Microsoft Word ou LibreOffice Writer;</span></p>
+
+			<p class="c9 c2"><span class="c4">-Para comunica&ccedil;&atilde;o, pode ser utilizada uma lista de e-mails ou o ambiente Hangout para reuni&otilde;es online.</span></p>
+
+			<p class="c8 c2">&nbsp;</p>
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+<p class="c2 c12">&nbsp;</p>
+
+<p class="c2 c12">&nbsp;</p>
+
+<table cellpadding="0" cellspacing="0" class="c28">
+	<tbody>
+		<tr class="c23">
+			<td class="c14" colspan="1" rowspan="1">
+			<p class="c9 c2"><span class="c5">Atividade</span></p>
+			</td>
+			<td class="c15" colspan="1" rowspan="1">
+			<p class="c9 c2"><span class="c4">Realizar Migra&ccedil;&atilde;o</span></p>
+			</td>
+		</tr>
+		<tr class="c3">
+			<td class="c14" colspan="1" rowspan="4">
+			<p class="c9 c2"><span class="c5">Responsabilidades</span></p>
+			</td>
+			<td class="c15" colspan="1" rowspan="1">
+			<p class="c9 c2"><span class="c5">Realiza&ccedil;&atilde;o:</span><span class="c4">&nbsp;L&iacute;der da equipe de manuten&ccedil;&atilde;o.</span></p>
+			</td>
+		</tr>
+		<tr class="c6">
+			<td class="c15" colspan="1" rowspan="1">
+			<p class="c9 c2"><span class="c5">Aprova&ccedil;&atilde;o:</span><span class="c4">&nbsp;Clientes.</span></p>
+			</td>
+		</tr>
+		<tr class="c3">
+			<td class="c15" colspan="1" rowspan="1">
+			<p class="c9 c2"><span class="c5">Colabora&ccedil;&atilde;o:</span><span class="c4">&nbsp;Membros da equipe de manuten&ccedil;&atilde;o.</span></p>
+			</td>
+		</tr>
+		<tr class="c3">
+			<td class="c15" colspan="1" rowspan="1">
+			<p class="c9 c2"><span class="c5">Informa&ccedil;&atilde;o: </span><span class="c4">Clientes e usu&aacute;rios do sistema em migra&ccedil;&atilde;o. Usu&aacute;rios do sistema em migra&ccedil;&atilde;o incluem outros sistemas.</span></p>
+			</td>
+		</tr>
+		<tr class="c3">
+			<td class="c14" colspan="1" rowspan="7">
+			<p class="c9 c2"><span class="c5 c18">Tarefas</span></p>
+			</td>
+			<td class="c15" colspan="1" rowspan="1">
+			<p class="c9 c2"><span class="c5">1.</span><span class="c10">&nbsp;Identificar todos os produtos de software ou dados que foram adicionados ou modificados dentre um software.</span></p>
+			</td>
+		</tr>
+		<tr class="c3">
+			<td class="c15" colspan="1" rowspan="1">
+			<p class="c9 c2"><span class="c5">2.</span><span class="c10">&nbsp;Um plano de migra&ccedil;&atilde;o deve ser desenvolvido, documentado e executado, cujo planejamento deve incluir os usu&aacute;rios do sistema.</span></p>
+			</td>
+		</tr>
+		<tr class="c3">
+			<td class="c15" colspan="1" rowspan="1">
+			<p class="c9 c2"><span class="c5">3.</span><span class="c10">&nbsp;Os usu&aacute;rios do sistema devem ser notificados do planejamento da migra&ccedil;&atilde;o e das atividades geradas pela migra&ccedil;&atilde;o antes dela acontecer.</span></p>
+			</td>
+		</tr>
+		<tr class="c3">
+			<td class="c15" colspan="1" rowspan="1">
+			<p class="c9 c2"><span class="c5">4.</span><span class="c10">&nbsp;As opera&ccedil;&otilde;es de implementa&ccedil;&atilde;o podem ser feitas em paralelo para garantir uma mudan&ccedil;a para o novo sistema mais suave, sendo que o treinamento necess&aacute;rio para os usu&aacute;rios do novo sistema deve ser providenciado como especificado no planejamento.</span></p>
+			</td>
+		</tr>
+		<tr class="c3">
+			<td class="c15" colspan="1" rowspan="1">
+			<p class="c9 c2"><span class="c5">5.</span><span class="c10">&nbsp;Quando a migra&ccedil;&atilde;o planejada for iniciada, uma notifica&ccedil;&atilde;o deve ser enviada a todos os que ser&atilde;o afetados pela mesma, com os dados do antigo sistema, como documentos, logs e c&oacute;digo, devem ser arquivados.</span></p>
+			</td>
+		</tr>
+		<tr class="c3">
+			<td class="c15" colspan="1" rowspan="1">
+			<p class="c9 c2"><span class="c5">6.</span><span class="c10">&nbsp;Uma revis&atilde;o de opera&ccedil;&atilde;o deve ser feita para calcular o impacto da mudan&ccedil;a de ambiente, sendo que os seus resultados devem ser enviados para as autoridades interessadas para informa&ccedil;&atilde;o, e para nortear as a&ccedil;&otilde;es feitas pelos mesmos.</span></p>
+			</td>
+		</tr>
+		<tr class="c3">
+			<td class="c15" colspan="1" rowspan="1">
+			<p class="c9 c2"><span class="c5">7.</span><span class="c10">&nbsp;Os dados associados ao sistema anterior devem ser acess&iacute;veis de acordo com os requisitos contratuais, para prote&ccedil;&atilde;o dos dados e de poss&iacute;vel audi&ccedil;&atilde;o dos dados.</span></p>
+			</td>
+		</tr>
+		<tr class="c3">
+			<td class="c14" colspan="1" rowspan="1">
+			<p class="c9 c2"><span class="c5">Pr&eacute;-Condi&ccedil;&otilde;es</span></p>
+			</td>
+			<td class="c15" colspan="1" rowspan="1">
+			<p class="c9 c2"><span class="c4">A Migra&ccedil;&atilde;o foi aprovada e analisada pelos interessados, e os usu&aacute;rios foram avisados da mudan&ccedil;a.</span></p>
+			</td>
+		</tr>
+		<tr class="c3">
+			<td class="c14" colspan="1" rowspan="1">
+			<p class="c9 c2"><span class="c5">Entradas</span></p>
+			</td>
+			<td class="c15" colspan="1" rowspan="1">
+			<p class="c9 c2"><span class="c4">-O ambiente antigo;</span></p>
+
+			<p class="c9 c2"><span class="c4">-O novo ambiente;</span></p>
+
+			<p class="c9 c2"><span class="c4">-A antiga baseline;</span></p>
+
+			<p class="c9 c2"><span class="c4">-A nova baseline;</span></p>
+			</td>
+		</tr>
+		<tr class="c3">
+			<td class="c14" colspan="1" rowspan="1">
+			<p class="c9 c2"><span class="c5">Crit&eacute;rios de Sa&iacute;da</span></p>
+			</td>
+			<td class="c15" colspan="1" rowspan="1">
+			<p class="c9 c2"><span class="c4">A migra&ccedil;&atilde;o foi aceita, planejada e uma notifica&ccedil;&atilde;o da migra&ccedil;&atilde;o foi enviada aos usu&aacute;rios atuais do sistema do que ir&aacute; acontecer, bem como os dados arquivados do software anterior ser&atilde;o guardados.</span></p>
+			</td>
+		</tr>
+		<tr class="c20">
+			<td class="c14" colspan="1" rowspan="1">
+			<p class="c9 c2"><span class="c5">Produtos</span></p>
+			</td>
+			<td class="c15" colspan="1" rowspan="1">
+			<p class="c9 c2"><span class="c4">-Plano de Migra&ccedil;&atilde;o;</span></p>
+
+			<p class="c9 c2"><span class="c4">-Ferramentas de migra&ccedil;&atilde;o;</span></p>
+
+			<p class="c9 c2"><span class="c4">-Notifica&ccedil;&atilde;o da Mudan&ccedil;a;</span></p>
+
+			<p class="c9 c2"><span class="c4">-Software Migrado;</span></p>
+
+			<p class="c9 c2"><span class="c4">-Notifica&ccedil;&atilde;o de migra&ccedil;&atilde;o;</span></p>
+
+			<p class="c9 c2"><span class="c4">-Dados arquivados.</span></p>
+			</td>
+		</tr>
+		<tr class="c3">
+			<td class="c14" colspan="1" rowspan="1">
+			<p class="c9 c2"><span class="c5">Infraestrutura</span></p>
+			</td>
+			<td class="c15" colspan="1" rowspan="1">
+			<p class="c9 c2"><span class="c4">-Uma sala de reuni&atilde;o para o Comit&ecirc; poder debater sobre as mudan&ccedil;as, com cadeiras e mesa para os membros, caso necess&aacute;rio reuni&otilde;es podem ser feitas de forma online;</span></p>
+
+			<p class="c9 c2"><span class="c4">-Computadores necess&aacute;rios para os ambientes utilizados e para os membros do comit&ecirc;.</span></p>
+			</td>
+		</tr>
+		<tr class="c29">
+			<td class="c14" colspan="1" rowspan="1">
+			<p class="c9 c2"><span class="c5">Ferramentas</span></p>
+			</td>
+			<td class="c15" colspan="1" rowspan="1">
+			<p class="c9 c2"><span class="c4">-Um software de controle de vers&atilde;o e de configura&ccedil;&atilde;o definido, como por exemplo o Git ou o SVN;</span></p>
+
+			<p class="c9 c2"><span class="c4">-Ferramentas de edi&ccedil;&atilde;o de texto para os v&aacute;rios documentos utilizados e modificados, como Microsoft Word ou LibreOffice Writer;</span></p>
+
+			<p class="c9 c2"><span class="c4">-Para comunica&ccedil;&atilde;o, pode ser utilizada uma lista de e-mails ou o ambiente Hangout para reuni&otilde;es online.</span></p>
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+<p class="c2 c12">&nbsp;</p>
+</body>
+</html>
