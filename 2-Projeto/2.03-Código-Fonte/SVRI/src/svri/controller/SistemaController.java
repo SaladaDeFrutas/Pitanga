@@ -14,10 +14,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
-import svri.auxiliares.Compra;
-import svri.auxiliares.StringAssento;
 import svri.entidades.Assento;
 import svri.entidades.Cliente;
 import svri.entidades.Filme;
@@ -35,6 +35,9 @@ import svri.interfaces.dao.InterfaceRegistroCompraDao;
 import svri.interfaces.dao.InterfaceSalaDao;
 import svri.interfaces.dao.InterfaceSessaoDao;
 import svri.interfaces.dao.InterfaceTipoIngressoDao;
+import svri.servicos.Compra;
+import svri.servicos.Notificacao;
+import svri.servicos.StringAssento;
 
 @Transactional
 @Controller
@@ -214,8 +217,8 @@ public class SistemaController {
 		return "mostrarLugares";
 	}
 	
-	@RequestMapping("finalizarCompra")
-	public String finalizaCompra(@RequestParam ArrayList<String> assentos,
+	@RequestMapping(value = "finalizarCompra")
+	public ModelAndView finalizaCompra(@RequestParam ArrayList<String> assentos,
 			@RequestParam String quantidadeIngresso,
 			@RequestParam String nomeTipoIngresso, Sessao umaSessao, HttpSession sessaoUsuario) {
 		
@@ -280,9 +283,8 @@ public class SistemaController {
 			novoRegistroCompra = novaCompra.calcularTotal(ingressos,novoRegistroCompra);
 			registroCompraDao.alterarRegistroCompra(novoRegistroCompra);
 			
-			// pega-se o retorno, o codigo da compra e utiliza-o
-			novaCompra.efetuarPagamento(ingressos, novoRegistroCompra, umCliente);
-			return "notFound";
+			return new ModelAndView("redirect:"+ novaCompra.efetuarPagamento(ingressos, novoRegistroCompra, umCliente));
+			
 	}
 	
 	/**
@@ -295,5 +297,32 @@ public class SistemaController {
 		return "notFound";
 	}
 
-
+	@RequestMapping("obrigado")
+	public String retornarPaginaObrigado() {
+		return "obrigado";
+	}
+	
+	@RequestMapping("notificacoes")
+	public void tratarNotificacao(@RequestParam String notificacao) {
+		System.out.println(notificacao);
+		
+		// pegar a notificacao completa via post e tratar para retirar o codigo da notificacao
+		// e passar para o receberNotificacaoCheckout
+		/**
+		 * O padrao da notificacao enviada pelo pagseguro para a nossa aplicacao eh o seguinte:
+		 * 
+		 * 	POST http://lojamodelo.com.br/notificacao HTTP/1.1
+			Host:pagseguro.uol.com.br
+			Content-Length:85
+			Content-Type:application/x-www-form-urlencoded
+			notificationCode=766B9C-AD4B044B04DA-77742F5FA653-E1AB24
+			notificationType=transaction
+			
+			
+		 */
+		Notificacao novaNotificacao = new Notificacao();
+		String[] respostaConsultaNotificacaoCheckout = novaNotificacao.receberNotificacaoCheckout(notificacao);
+	
+		// usar o respostaConsultaNotificacaoCheckout para atualizar corretamente o registrocompra
+	}
 }
