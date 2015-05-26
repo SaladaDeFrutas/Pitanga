@@ -49,10 +49,10 @@ public class PagamentoPagseguro implements InterfacePagamento{
 		// selecionando moeda
 		checkout.setCurrency(Currency.BRL);
 		
-		// colocando referencia para a transação
+		// colocando referencia para a transacao
 		checkout.setReference(String.valueOf(novoRegistroCompra.getIdCompra()));
 		
-		// URL para onde o comprador será redirecionado (GET) após o fluxo de pagamento 
+		// URL para onde o comprador sera redirecionado (GET) apos o fluxo de pagamento 
 		checkout.setRedirectURL("http://jbossews-svri.rhcloud.com/SVRI/obrigado"); 
 		
 		checkout.setNotificationURL("http://jbossews-svri.rhcloud.com/SVRI/notificacoes");

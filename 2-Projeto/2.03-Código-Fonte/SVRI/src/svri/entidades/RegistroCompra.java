@@ -27,6 +27,8 @@ public class RegistroCompra {
 	private double valor;
 	private boolean pagamentoAprovado;
 	
+	private String codigoTransacao;
+	
 	public int getIdCompra() {
 		return idRegistroCompra;
 	}
@@ -56,6 +58,12 @@ public class RegistroCompra {
 	}
 	public void setPagamentoAprovado(boolean pagamentoAprovado) {
 		this.pagamentoAprovado = pagamentoAprovado;
+	}
+	public String getCodigoTransacao() {
+		return codigoTransacao;
+	}
+	public void setCodigoTransacao(String codigoTransacao) {
+		this.codigoTransacao = codigoTransacao;
 	}
 	
 	

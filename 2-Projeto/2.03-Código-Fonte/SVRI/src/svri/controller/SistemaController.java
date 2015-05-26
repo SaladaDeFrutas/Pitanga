@@ -303,8 +303,8 @@ public class SistemaController {
 	}
 	
 	@RequestMapping("notificacoes")
-	public void tratarNotificacao(@RequestParam String notificacao) {
-		System.out.println(notificacao);
+	public void tratarNotificacao(String notificationCode, String notificationType) {
+		System.out.println(notificationCode);
 		
 		// pegar a notificacao completa via post e tratar para retirar o codigo da notificacao
 		// e passar para o receberNotificacaoCheckout
@@ -320,9 +320,18 @@ public class SistemaController {
 			
 			
 		 */
+		
 		Notificacao novaNotificacao = new Notificacao();
-		String[] respostaConsultaNotificacaoCheckout = novaNotificacao.receberNotificacaoCheckout(notificacao);
+		String[] respostaConsultaNotificacaoCheckout = novaNotificacao.receberNotificacaoCheckout(notificationCode);
 	
+		RegistroCompra registroCompra = registroCompraDao.buscarPorId(Integer.parseInt(respostaConsultaNotificacaoCheckout[0]));
+		
+		registroCompra.setCodigoTransacao(respostaConsultaNotificacaoCheckout[1]);
+		
+		//TODO: alterar status do RegistroCompra tambem
+		
+		registroCompraDao.alterarRegistroCompra(registroCompra);
 		// usar o respostaConsultaNotificacaoCheckout para atualizar corretamente o registrocompra
+	
 	}
 }

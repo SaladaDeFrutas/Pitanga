@@ -12,7 +12,7 @@ public class Notificacao {
 	 */
 	public String[] receberNotificacaoCheckout(String codigoNotificacao) {
 		// The notificationCode received by your system
-        String notificationCode = codigoNotificacao;
+
 
         Transaction transaction = null;
 
@@ -25,19 +25,21 @@ public class Notificacao {
 			 */
         	
             transaction = NotificationService.checkTransaction(PagSeguroConfig.getAccountCredentials(),
-                    notificationCode);
+                    codigoNotificacao);
 
         } catch (PagSeguroServiceException e) {
             System.err.println(e.getMessage());
         }
 
         if (transaction != null) {
+            System.out.println("referencia pro registro compra: (IdCompra)" + transaction.getReference());
             System.out.println("codigo da transacao: " + transaction.getCode());
-            System.out.println("referencia pro registro compra: " + transaction.getReference());
             System.out.println("status: " + transaction.getStatus());
             
-            String[] resposta = {String.valueOf(transaction.getStatus()),
-            		String.valueOf(transaction.getReference())
+            String[] resposta = { String.valueOf(transaction.getReference()),
+            		String.valueOf(transaction.getCode()),
+            		String.valueOf(transaction.getStatus()),
+            		
             		};
             return resposta;
         }
