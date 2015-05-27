@@ -14,10 +14,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import br.com.uol.pagseguro.domain.Transaction;
 import svri.entidades.Assento;
 import svri.entidades.Cliente;
 import svri.entidades.Filme;
@@ -36,7 +36,8 @@ import svri.interfaces.dao.InterfaceSalaDao;
 import svri.interfaces.dao.InterfaceSessaoDao;
 import svri.interfaces.dao.InterfaceTipoIngressoDao;
 import svri.servicos.Compra;
-import svri.servicos.Notificacao;
+import svri.servicos.NotificacaoPagseguro;
+import svri.servicos.PagamentoPagseguro;
 import svri.servicos.StringAssento;
 
 @Transactional
@@ -303,7 +304,7 @@ public class SistemaController {
 	}
 	
 	@RequestMapping("notificacoes")
-	public void tratarNotificacao(String notificationCode, String notificationType) {
+	public void tratarNotificacaoPagseguro(String notificationCode, String notificationType) {
 		System.out.println(notificationCode);
 		
 		// pegar a notificacao completa via post e tratar para retirar o codigo da notificacao
@@ -321,17 +322,53 @@ public class SistemaController {
 			
 		 */
 		
-		Notificacao novaNotificacao = new Notificacao();
-		String[] respostaConsultaNotificacaoCheckout = novaNotificacao.receberNotificacaoCheckout(notificationCode);
+		NotificacaoPagseguro novaNotificacao = new NotificacaoPagseguro();
+		Transaction respostaConsultaNotificacaoCheckout = novaNotificacao.
+				receberNotificacaoCheckout(notificationCode);
 	
-		RegistroCompra registroCompra = registroCompraDao.buscarPorId(Integer.parseInt(respostaConsultaNotificacaoCheckout[0]));
+		RegistroCompra registroCompra = registroCompraDao.buscarPorId(
+				Integer.parseInt(respostaConsultaNotificacaoCheckout.getReference()));
 		
-		registroCompra.setCodigoTransacao(respostaConsultaNotificacaoCheckout[1]);
+		// colocando o codigo da transacao no registro decompra
+		registroCompra.setCodigoTransacao(respostaConsultaNotificacaoCheckout.getCode());
+
+		boolean pagamentoAprovado = new PagamentoPagseguro().traduzirStatusTransacaoPagseguro(
+				Integer.parseInt(String.valueOf(
+						respostaConsultaNotificacaoCheckout.getStatus())));
 		
-		//TODO: alterar status do RegistroCompra tambem
+		// colocando no registro de compra se o pagamento foi aprovado 
+		registroCompra.setPagamentoAprovado(pagamentoAprovado);
 		
 		registroCompraDao.alterarRegistroCompra(registroCompra);
 		// usar o respostaConsultaNotificacaoCheckout para atualizar corretamente o registrocompra
 	
+	}
+	
+	@RequestMapping("minhasCompras")
+	public String retornarCompras(HttpSession sessaoUsuario, Model model){
+		Cliente cliente = (Cliente)sessaoUsuario.getAttribute("usuarioLogado");
+		List<RegistroCompra> registrosCompras = registroCompraDao.buscaPorCliente(cliente);
+		
+		model.addAttribute("registrosCompras", registrosCompras);
+		model.addAttribute("cliente", cliente);
+		
+		return "mostrarCompras";
+	}
+	
+	@RequestMapping("mostrarInformacoesCompra")
+	public String mostrarInformacoesCompra(RegistroCompra registroCompra, Model model) {
+		registroCompra = registroCompraDao.buscarPorId(
+				registroCompra.getIdCompra());
+		
+		Transaction transacaoCompra = new PagamentoPagseguro().consultarTransacao(
+				registroCompra.getCodigoTransacao());
+		
+		List<Ingresso> ingressosCompra = ingressoDao.buscaPorRegistroCompra(registroCompra);
+		
+		model.addAttribute("registroCompra", registroCompra);
+		model.addAttribute("transacaoCompra", transacaoCompra);
+		model.addAttribute("ingressosCompra", ingressosCompra);
+		
+		return "mostrarInformacoesCompra";
 	}
 }

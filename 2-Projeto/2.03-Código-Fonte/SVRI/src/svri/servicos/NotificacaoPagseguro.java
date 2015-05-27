@@ -5,12 +5,12 @@ import br.com.uol.pagseguro.exception.PagSeguroServiceException;
 import br.com.uol.pagseguro.properties.PagSeguroConfig;
 import br.com.uol.pagseguro.service.NotificationService;
 
-public class Notificacao {
+public class NotificacaoPagseguro {
 	/**
 	 * 
-	 * @return status e referencia do pagamento para salvar em RegistroCompra
+	 * @return transacao para salvar em RegistroCompra
 	 */
-	public String[] receberNotificacaoCheckout(String codigoNotificacao) {
+	public Transaction receberNotificacaoCheckout(String codigoNotificacao) {
 		// The notificationCode received by your system
 
 
@@ -36,12 +36,7 @@ public class Notificacao {
             System.out.println("codigo da transacao: " + transaction.getCode());
             System.out.println("status: " + transaction.getStatus());
             
-            String[] resposta = { String.valueOf(transaction.getReference()),
-            		String.valueOf(transaction.getCode()),
-            		String.valueOf(transaction.getStatus()),
-            		
-            		};
-            return resposta;
+            return transaction;
         }
         else
         	return null;
@@ -49,16 +44,6 @@ public class Notificacao {
         
 	}
 	
-	/**
-Código			Significado
-1	Aguardando pagamento: o comprador iniciou a transação, mas até o momento o PagSeguro não recebeu nenhuma informação sobre o pagamento.
-2	Em análise: o comprador optou por pagar com um cartão de crédito e o PagSeguro está analisando o risco da transação.
-3	Paga: a transação foi paga pelo comprador e o PagSeguro já recebeu uma confirmação da instituição financeira responsável pelo processamento.
-4	Disponível: a transação foi paga e chegou ao final de seu prazo de liberação sem ter sido retornada e sem que haja nenhuma disputa aberta.
-5	Em disputa: o comprador, dentro do prazo de liberação da transação, abriu uma disputa.
-6	Devolvida: o valor da transação foi devolvido para o comprador.
-7	Cancelada: a transação foi cancelada sem ter sido finalizada.
-8	Chargeback debitado: o valor da transação foi devolvido para o comprador.
-9	Em contestação: o comprador abriu uma solicitação 
-	 */
+
+	
 }
