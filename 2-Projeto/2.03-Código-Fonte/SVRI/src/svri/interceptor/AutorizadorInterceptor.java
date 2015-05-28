@@ -28,7 +28,8 @@ public class AutorizadorInterceptor extends HandlerInterceptorAdapter{
 						uri.endsWith("/SVRIPrivate") ||
 						uri.endsWith("cadastro") || 
 						uri.endsWith("mostrarAtracoes") ||
-						uri.endsWith("cadastrarCliente")) {
+						uri.endsWith("cadastrarCliente") ||
+						uri.endsWith("notificacoes")) {
 				if(uri.endsWith("login") && 
 					request.getSession().getAttribute("usuarioLogado") != null) {
 					response.sendRedirect("mostrarAtracoes");

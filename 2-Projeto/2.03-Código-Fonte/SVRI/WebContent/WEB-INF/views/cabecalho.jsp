@@ -55,6 +55,9 @@
                     <li>
                         <a href="login">Fazer Login</a>
                     </li>
+                     <li>
+                        <a href="minhasCompras">Minhas Compras</a>
+                    </li>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->

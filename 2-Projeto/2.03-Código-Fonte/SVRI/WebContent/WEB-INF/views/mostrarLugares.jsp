@@ -11,7 +11,7 @@
 
 <script type="text/javascript" src="resources/jquery/external/jquery/jquery.js"></script>
 
-<script type="text/javascript"> 
+<script type="text/javascript">
 		var quantidadeRestante = ${qntIngressos};
 		var maxAllowed;
 		var cnt;
@@ -52,6 +52,17 @@
 
 </script>
 
+<script type="text/javascript">
+function checarQuantidadeIngresso() {
+	if(quantidadeRestante != 0 ) {
+    	alert("Por favor, selecione a quantidade exata de ingressos disponiveis.");
+		return false;
+	}
+	else{
+		return confirm("Tem certeza que deseja finalizar a compra?");
+	}
+}
+</script>
 <!-- <script type="text/javascript">
 		function checarCheckbox() {
 			return $('#).is(':checked'))
@@ -115,7 +126,7 @@
 		<input type="hidden" name = "quantidadeIngresso" value="${quantidadeIngresso}"/>
 		<input type="hidden" name = "nomeTipoIngresso" value="${nomeTipoIngresso}"/>
 		<input type="hidden" name = "id" value="${umaSessao.id}"/> <br/>
-		<button type="submit" name = "idBotao" value ="" class="btn btn-default">Finalizar Compra
+		<button type="submit" name = "idBotao" value ="" class="btn btn-default" onClick="return checarQuantidadeIngresso()">Finalizar Compra
  		</button>
 </form>
 </div>

@@ -16,7 +16,9 @@
 		
 		<c:forEach items="${registrosCompras}" var = "registroCompra">
 			<b>Código da Compra:</b> ${registroCompra.idRegistroCompra} <br>
-			<b>Data da Compra: </b>${registroCompra.dataCompra} <br>
+			<b>Data da Compra: </b><fmt:formatDate	value = "${registroCompra.dataCompra.time}"
+									pattern="dd/MM HH:mm" />  <br>
+			
 			<b>Valor:</b>${registroCompra.valor} <br>
 			
 			<form action= "mostrarInformacoesCompra" method="post">

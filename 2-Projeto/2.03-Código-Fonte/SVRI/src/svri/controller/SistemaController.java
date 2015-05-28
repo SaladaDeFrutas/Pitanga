@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import br.com.uol.pagseguro.domain.Transaction;
+import br.com.uol.pagseguro.enums.TransactionStatus;
 import svri.entidades.Assento;
 import svri.entidades.Cliente;
 import svri.entidades.Filme;
@@ -181,6 +182,7 @@ public class SistemaController {
 		
 		for(Integer umValor : quantidadeIngresso)
 			 qntIngressos += umValor; 
+		
 		//Assentos invalidos
 		Assento assento1 = new Assento();
 		Assento assento2 = new Assento();
@@ -194,18 +196,25 @@ public class SistemaController {
 		assentosInvalidos.add(assento2);
 		
 		//Assentos ocupados
-		Assento assento3 = new Assento();
-		Assento assento4 = new Assento();
-		assento3.setColuna(0);
-		assento3.setFileira(0);
-		assento4.setColuna(12);
-		assento4.setFileira(5);
-				
-		ArrayList<Assento> assentosOcupados = new ArrayList<>();
-		assentosOcupados.add(assento3);
-		assentosOcupados.add(assento4);
+		//Assento assento3 = new Assento();
+		//Assento assento4 = new Assento();
+		//assento3.setColuna(0);
+		//assento3.setFileira(0);
+		//assento4.setColuna(12);
+		//assento4.setFileira(5);
+		ArrayList<Assento> assentosOcupados;
 		
-		//Fun��o para transformar string da sala e da sessao em arraylist de assentos
+		// converte se houver assentos ocupados na sessao
+		String assentosOcupadosTexto = umaSessao.getAssentosOcupados();
+		if(assentosOcupadosTexto.contains(";")){
+			//Funcao para transformar string da sala e da sessao em arraylist de assentos
+			assentosOcupados = new StringAssento().converterStringParaAssento(
+				umaSessao.getAssentosOcupados());
+		}
+		else
+			assentosOcupados = new ArrayList<Assento>();
+		
+		
 		
 		
 		model.addAttribute("sala",umaSala);
@@ -217,7 +226,15 @@ public class SistemaController {
 		model.addAttribute("umaSessao", umaSessao);
 		return "mostrarLugares";
 	}
-	
+	/**
+	 * 
+	 * @param assentos assentos escolhidos
+	 * @param quantidadeIngresso quantidade de ingressos
+	 * @param nomeTipoIngresso tipos dos ingressos escolhidos
+	 * @param umaSessao sessao do filme/peca escolhida
+	 * @param sessaoUsuario dados de sessao do usuario no sistema 
+	 * @return pagina para realizar a compra
+	 */
 	@RequestMapping(value = "finalizarCompra")
 	public ModelAndView finalizaCompra(@RequestParam ArrayList<String> assentos,
 			@RequestParam String quantidadeIngresso,
@@ -245,7 +262,12 @@ public class SistemaController {
 					nomeTipoIngressos.remove(i);
 				}
 			}
-			ArrayList<Assento> assentosEscolhidos = StringAssento.converterArrayStringParaArrayAssento(assentos);
+			
+			StringAssento stringAssento = new StringAssento();
+			ArrayList<Assento> assentosEscolhidos = stringAssento.converterArrayStringParaArrayAssento(assentos);
+			umaSessao.setAssentosOcupados(umaSessao.getAssentosOcupados() +
+					stringAssento.converterAssentoParaString(assentosEscolhidos));
+			
 			Cliente umCliente = (Cliente)sessaoUsuario.getAttribute("usuarioLogado");
 			umCliente = clienteDao.buscarPorId(umCliente.getEmail());
 			Calendar dataCompra = Calendar.getInstance();
@@ -298,11 +320,39 @@ public class SistemaController {
 		return "notFound";
 	}
 
+	/**
+	 * funcao chamada pelo pagseguro apos realizacao da compra
+	 * 
+	 * @param codigoTransacao
+	 * @return pagina de agradecimento apos a efetuacao da compra
+	 */
 	@RequestMapping("obrigado")
-	public String retornarPaginaObrigado() {
+	public String retornarPaginaObrigado(@RequestParam String codigoTransacao) {
+		//busca os dados da transacao pelo codigo
+		Transaction transacaoCompra = new PagamentoPagseguro().consultarTransacao(
+				codigoTransacao);
+		
+		// busca no BD o registro compra pelo id
+		// reference eh o idRegistroCompra do RegistroCompra relacionado
+		RegistroCompra registroCompra = registroCompraDao.buscarPorId(
+				Integer.parseInt(transacaoCompra.getReference()));
+		
+		//coloca o codigo da transacaono objeto registro compra
+		registroCompra.setCodigoTransacao(codigoTransacao);
+		
+		//atualiza no BD o registro da compra
+		registroCompraDao.alterarRegistroCompra(registroCompra);
+		
 		return "obrigado";
 	}
 	
+	/**
+	 * metodo de entrada chamado pela API do pagseguro para
+	 * notificar mudancas no status das transacoes dos clientes
+	 * 
+	 * @param notificationCode codigo da notificacao do pagseguro
+	 * @param notificationType tipo da notificacao
+	 */
 	@RequestMapping("notificacoes")
 	public void tratarNotificacaoPagseguro(String notificationCode, String notificationType) {
 		System.out.println(notificationCode);
@@ -331,10 +381,12 @@ public class SistemaController {
 		
 		// colocando o codigo da transacao no registro decompra
 		registroCompra.setCodigoTransacao(respostaConsultaNotificacaoCheckout.getCode());
-
+		
+		// pegando o status da transacao
+		TransactionStatus statusTransacao = respostaConsultaNotificacaoCheckout.getStatus();
+		
 		boolean pagamentoAprovado = new PagamentoPagseguro().traduzirStatusTransacaoPagseguro(
-				Integer.parseInt(String.valueOf(
-						respostaConsultaNotificacaoCheckout.getStatus())));
+				statusTransacao.getValue().intValue());
 		
 		// colocando no registro de compra se o pagamento foi aprovado 
 		registroCompra.setPagamentoAprovado(pagamentoAprovado);
@@ -344,9 +396,18 @@ public class SistemaController {
 	
 	}
 	
+	/**
+	 * chamado quando o cliente consulta as compras realizadas por ele
+	 * 
+	 * @param sessaoUsuario dados da sessao corrente do usuario
+	 * @param model adiciona os registros das compras daquele cliente
+	 * e os dados dele na pagina de retorno
+	 * @return pagina JSP com a lista das compras do cliente
+	 */
 	@RequestMapping("minhasCompras")
 	public String retornarCompras(HttpSession sessaoUsuario, Model model){
 		Cliente cliente = (Cliente)sessaoUsuario.getAttribute("usuarioLogado");
+		cliente = clienteDao.buscarPorId(cliente.getEmail());
 		List<RegistroCompra> registrosCompras = registroCompraDao.buscaPorCliente(cliente);
 		
 		model.addAttribute("registrosCompras", registrosCompras);
@@ -355,10 +416,17 @@ public class SistemaController {
 		return "mostrarCompras";
 	}
 	
+	/**
+	 * 
+	 * @param registroCompra registro da compra do cliente
+	 * @param model adiciona na pagina de retorno o registro, os ingressos e
+	 * a transacao do pagseguro
+	 * @return pagina jsp com as informacoes da compra
+	 */
 	@RequestMapping("mostrarInformacoesCompra")
 	public String mostrarInformacoesCompra(RegistroCompra registroCompra, Model model) {
 		registroCompra = registroCompraDao.buscarPorId(
-				registroCompra.getIdCompra());
+				registroCompra.getIdRegistroCompra());
 		
 		Transaction transacaoCompra = new PagamentoPagseguro().consultarTransacao(
 				registroCompra.getCodigoTransacao());

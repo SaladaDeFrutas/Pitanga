@@ -19,6 +19,7 @@
 		<class>svri.entidades.Sala</class>
 		<class>svri.entidades.TipoAssento</class>
 		<class>svri.entidades.RegistroCompra</class>
+		<class>br.com.uol.pagseguro.domain.Transaction</class>
 		
 		<properties>
 				

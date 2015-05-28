@@ -29,11 +29,11 @@ public class RegistroCompra {
 	
 	private String codigoTransacao;
 	
-	public int getIdCompra() {
+	public int getIdRegistroCompra() {
 		return idRegistroCompra;
 	}
-	public void setIdCompra(int idCompra) {
-		this.idRegistroCompra = idCompra;
+	public void setIdRegistroCompra(int idRegistroCompra) {
+		this.idRegistroCompra = idRegistroCompra;
 	}
 	public Calendar getDataCompra() {
 		return dataCompra;

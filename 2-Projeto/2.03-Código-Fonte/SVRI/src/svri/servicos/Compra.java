@@ -18,12 +18,7 @@ public class Compra {
 		novoRegistroCompra.setValor(valor);
 		return novoRegistroCompra;
 	}
-	
-	public void cancelarCompra(){
 		
-		
-	}
-	
 	public String efetuarPagamento(ArrayList<Ingresso> ingressos, RegistroCompra novoRegistroCompra, Cliente cliente){
 		tipoPagamento = new PagamentoPagseguro();
 		return tipoPagamento.realizaPagamento(ingressos, novoRegistroCompra, cliente);

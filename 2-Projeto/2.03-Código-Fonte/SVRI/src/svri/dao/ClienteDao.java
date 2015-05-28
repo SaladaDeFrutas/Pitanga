@@ -19,7 +19,7 @@ public class ClienteDao implements InterfaceClienteDao{
 
 	@Override
 	public void adicionarCliente(Cliente umCliente) {
-		umCliente.setSenha(FuncaoHash.gerarHash(umCliente.getSenha()));
+		umCliente.setSenha(new FuncaoHash().gerarHash(umCliente.getSenha()));
 		manager.persist(umCliente);
 	}
 
@@ -54,7 +54,7 @@ public class ClienteDao implements InterfaceClienteDao{
 		Cliente clienteBuscado = buscarPorId(cliente.getEmail());
 		if(null != clienteBuscado){
 			if (clienteBuscado.getEmail().equals(cliente.getEmail())){
-				if(clienteBuscado.getSenha().equals(FuncaoHash.gerarHash(cliente.getSenha()))){
+				if(clienteBuscado.getSenha().equals(new FuncaoHash().gerarHash(cliente.getSenha()))){
 					return true;
 				}
 			}

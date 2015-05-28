@@ -11,7 +11,7 @@ import java.security.NoSuchAlgorithmException;
  */
 public class FuncaoHash {
 
-	public static String gerarHash(String senha) {
+	public String gerarHash(String senha) {
 		try {
 			MessageDigest hashing = MessageDigest.getInstance("MD5");
 			hashing.update(senha.getBytes());

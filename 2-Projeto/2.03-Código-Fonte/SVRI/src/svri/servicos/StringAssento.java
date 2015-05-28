@@ -8,7 +8,7 @@ public class StringAssento {
 
 	/*Fun��o utilizada para converter uma string do banco de dados (Entidades sala e sessao)
 	 * em um arrayList de Assento. */
-	public static ArrayList<Assento> converterStringParaAssento(String string){
+	public ArrayList<Assento> converterStringParaAssento(String string){
 		ArrayList<Assento> assentos = new ArrayList<>();
 		
 		String[] paresDePosicoes = string.split(";");
@@ -22,7 +22,7 @@ public class StringAssento {
 		return  assentos;
 	}
 	
-	public static String converterAssentoParaString(ArrayList<Assento> assentos){
+	public String converterAssentoParaString(ArrayList<Assento> assentos){
 		String string = "";
 		
 		for (Assento assento : assentos) {
@@ -35,7 +35,7 @@ public class StringAssento {
 		return string;
 	}
 	
-	public static ArrayList<Assento> converterArrayStringParaArrayAssento(ArrayList<String> assentosString){
+	public ArrayList<Assento> converterArrayStringParaArrayAssento(ArrayList<String> assentosString){
 		ArrayList<Assento> assentos = new ArrayList<>();
 		
 		for(int i = 0; i < assentosString.size(); i+=2){

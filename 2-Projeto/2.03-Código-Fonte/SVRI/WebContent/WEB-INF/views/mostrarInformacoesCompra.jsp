@@ -6,22 +6,32 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link type="/text/css" href="resources/css/formatacaoPagina.css" rel="stylesheet" />
 <title>Informações da compra</title>
 </head>
-<body>
+<body class = pagina>
 	<c:import url="cabecalho.jsp"/>
 	
 	<form action= "gerarComprovante" method="post">
-	
-	ID da compra: ${transacaoCompra.reference}
+	<h3>Dados da Compra:</h3>
+	<b>ID da compra:</b> ${transacaoCompra.reference} <br>
 			
-	Data da compra: <fmt:formatDate	value = "${transacaoCompra.date.time}"
-							pattern="dd/MM HH:mm" /> 
+	<b>Data de recebimento da transação:</b> <fmt:formatDate	
+			value = "${transacaoCompra.date}"
+							pattern="dd/MM HH:mm" /> <br>
 			
-	Valor: ${transacaoCompra.netAmount} Em ${transacaoCompra.installmentCount} parcelas
+	<b>Valor: ${transacaoCompra.grossAmount}</b> <b> Dividido Em </b>${transacaoCompra.installmentCount}x
 	
 	<br> 
-		Status do pagamento: ${registroCompra.pagamentoAprovado}
+		<b>Status do pagamento:</b> <c:choose>
+										<c:when test="${registroCompra.pagamentoAprovado} == true">
+												<b>Aprovado</b>
+										</c:when>
+										<c:otherwise>
+												<b>Pendente</b>
+										</c:otherwise>
+									
+									</c:choose> 
 	<br> 
 	
 	<h3>Ingressos Comprados:</h3>
@@ -29,13 +39,14 @@
 	<table>
 		<c:forEach items = "${ingressosCompra}" var = "ingresso">
 		<tr>
-			<td>Tipo: ${ingresso.umTipoIngresso}</td>
+			<td><b>Tipo:</b> ${ingresso.umTipoIngresso.nome} </td>
+			<td><b>Preço:</b> ${ingresso.umTipoIngresso.preco} </td>
 		</tr>
 		</c:forEach>
-	</table>
-		 			<button type="submit" name = "gerarComprovante" value ="${registroCompra.idRegistroCompra}"
-		 				class="btn btn-default">Gerar Comprovante Compra
-		 			</button>
+	</table> <br>
+			<button type="submit" name = "gerarComprovante" value ="${registroCompra.idRegistroCompra}"
+				class="btn btn-default">Gerar Comprovante
+			</button>
 	</form>	
 	
 </body>

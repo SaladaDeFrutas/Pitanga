@@ -50,12 +50,12 @@ public class IngressoDao implements InterfaceIngressoDao{
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Ingresso> buscaPorCliente(Cliente umCliente) {
-		return manager.createQuery("from Ingresso as i where umCliente.email="+umCliente.getEmail()).getResultList();
+		return manager.createQuery("from Ingresso as i where umCliente.email='"+umCliente.getEmail()+"'").getResultList();
 	}
 	
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Ingresso> buscaPorRegistroCompra(RegistroCompra umRegistroCompra) {
-		return manager.createQuery("from Ingresso as i where registroCompra.idCompra="+umRegistroCompra.getIdCompra()).getResultList();
+		return manager.createQuery("from Ingresso as i where registroCompra.idRegistroCompra="+umRegistroCompra.getIdRegistroCompra()).getResultList();
 	}
 }
