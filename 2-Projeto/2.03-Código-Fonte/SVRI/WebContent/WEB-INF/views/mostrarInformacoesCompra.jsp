@@ -24,7 +24,7 @@
 	
 	<br> 
 		<b>Status do pagamento:</b> <c:choose>
-										<c:when test="${registroCompra.pagamentoAprovado} == true">
+										<c:when test="${registroCompra.pagamentoAprovado}">
 												<b>Aprovado</b>
 										</c:when>
 										<c:otherwise>
@@ -40,11 +40,12 @@
 		<c:forEach items = "${ingressosCompra}" var = "ingresso">
 		<tr>
 			<td><b>Tipo:</b> ${ingresso.umTipoIngresso.nome} </td>
+			<td><b></b></td>
 			<td><b>Preço:</b> ${ingresso.umTipoIngresso.preco} </td>
 		</tr>
 		</c:forEach>
 	</table> <br>
-			<button type="submit" name = "gerarComprovante" value ="${registroCompra.idRegistroCompra}"
+			<button type="submit" name = "idRegistroCompra" value ="${registroCompra.idRegistroCompra}"
 				class="btn btn-default">Gerar Comprovante
 			</button>
 	</form>	
