@@ -439,4 +439,64 @@ public class SistemaController {
 		
 		return "mostrarInformacoesCompra";
 	}
+	
+	@RequestMapping("gerarComprovante")
+	public String gerarComprovantePdf(RegistroCompra registroCompra) {
+		registroCompra.getIdRegistroCompra();
+		
+		registroCompra = registroCompraDao.buscarPorId(
+				registroCompra.getIdRegistroCompra());
+		
+		/**
+		 * itens a colocar no pdf
+		 */
+		// id da compra
+		registroCompra.getIdRegistroCompra();
+		
+		// data da compra
+		registroCompra.getDataCompra().getTime();
+		
+		//status da compra true ou false pro pagamento
+		registroCompra.isPagamentoAprovado();
+		
+		// nome do cliente
+		Cliente umCliente = clienteDao.buscarPorId(registroCompra.getUmCliente().getEmail());
+		umCliente.getNome();
+		
+		//ingressos da compra
+		List<Ingresso> ingressosCompra = ingressoDao.buscaPorRegistroCompra(registroCompra);
+		for (Ingresso ingresso : ingressosCompra) {
+			// tipo do ingresso
+			ingresso.getUmTipoIngresso();
+			
+			// sessao com data de exibicao
+			Sessao umaSessao = sessaoDao.buscarPorId(ingresso.getUmaSessao().getId());
+			umaSessao.getData().getTime();
+			
+			int idAtracao = umaSessao.getAtracao().getId();
+			Filme filme = filmeDao.buscarPorId(idAtracao);
+			if (filme != null)
+					// nome do filme
+					filme.getTitulo();
+			else {
+					// nome da peca
+					Peca peca = pecaDao.buscarPorId(idAtracao);
+					peca.getTitulo();
+			}
+			
+			// id da sala
+			umaSessao.getId();
+			
+			// fileira da sala pro ingresso
+			ingresso.getUmAssento().getFileira();
+			
+			// coluna da sala pro assento
+			ingresso.getUmAssento().getColuna();
+			
+			
+		}
+		
+		//retorna o pdf completo
+		return "";
+	}
 }
