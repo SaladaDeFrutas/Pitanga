@@ -34,7 +34,7 @@ public class GeraPDF {
 		Document documento = new Document();
 		PdfWriter.getInstance(documento, baos);
 		documento.open();
-		documento.addTitle("Ingresso");
+		//documento.addTitle("Ingresso");
 		Paragraph textoTicket = new Paragraph();
 		textoTicket.add("=====================================\n"+
 						"=================CINEMA SVRI=========\n"+
@@ -70,10 +70,9 @@ public class GeraPDF {
 		Document documento = new Document();
 		PdfWriter.getInstance(documento, baos);
 		documento.open();
-		documento.addTitle("Ingresso");
+		//documento.addTitle("Ingresso");
 		Paragraph textoTicket = new Paragraph();
-		textoTicket.add("=====================================\n"+
-						"===========CINEMA SVRI===============\n"+
+		textoTicket.add("Comprovate de Compra:\n"+
 						this.textoParaPDF);
 		documento.add(textoTicket);
 		documento.close();

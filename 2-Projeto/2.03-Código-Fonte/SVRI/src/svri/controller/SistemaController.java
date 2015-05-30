@@ -4,6 +4,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -487,7 +488,7 @@ public class SistemaController {
 	}
 
 	@RequestMapping("gerarComprovante")
-	public String gerarComprovantePdf(RegistroCompra registroCompra, HttpServletResponse response) {
+	public void gerarComprovantePdf(RegistroCompra registroCompra, HttpServletResponse response) {
 		GeraPDF geradorPDF = new GeraPDF();
 		registroCompra.getIdRegistroCompra();
 		
@@ -498,27 +499,36 @@ public class SistemaController {
 		 * itens a colocar no pdf
 		 */
 		// id da compra
-		geradorPDF.concatenaStringTexto("ID: "+ registroCompra.getIdRegistroCompra()+"\n");
+		geradorPDF.concatenaStringTexto("ID da Compra: "+ registroCompra.getIdRegistroCompra()+"\n");
 		
 		// data da compra
-		geradorPDF.concatenaStringTexto("Data: "+ registroCompra.getDataCompra().getTime()+"\n");
+		geradorPDF.concatenaStringTexto("Data: "+ new SimpleDateFormat("dd/MM/yy HH:mm").format(registroCompra.getDataCompra().getTime())+"\n");
 		
+		String status = "";
+		if(!registroCompra.isPagamentoAprovado())
+			status = "Não concluído";
+		else
+			status = "Concluído";
 		//status da compra true ou false pro pagamento
-		geradorPDF.concatenaStringTexto("Status da compra: "+ registroCompra.isPagamentoAprovado()+"\n");
+		geradorPDF.concatenaStringTexto("Status da compra: "+ status +"\n");
 		
 		// nome do cliente
 		Cliente umCliente = clienteDao.buscarPorId(registroCompra.getUmCliente().getEmail());
 		geradorPDF.concatenaStringTexto("Nome do Cliente: "+ umCliente.getNome()+"\n");
-		geradorPDF.concatenaStringTexto("\n=====INGRESSOS COMPRADOS=====\n"); 
+		geradorPDF.concatenaStringTexto("--------------------------------------------------------------"
+				+ "----------------------------------------------------\n");
+		geradorPDF.concatenaStringTexto("\nIngressos escolhidos:\n"); 
+		
 		//ingressos da compra
 		List<Ingresso> ingressosCompra = ingressoDao.buscaPorRegistroCompra(registroCompra);
 		for (Ingresso ingresso : ingressosCompra) {
 			// tipo do ingresso
-			geradorPDF.concatenaStringTexto("Tipo: "+ ingresso.getUmTipoIngresso()+"\n");
+			geradorPDF.concatenaStringTexto("Tipo: "+ ingresso.getUmTipoIngresso().getNome()+"\n");
 			
 			// sessao com data de exibicao
 			Sessao umaSessao = sessaoDao.buscarPorId(ingresso.getUmaSessao().getId());
-			geradorPDF.concatenaStringTexto("Data de Exibição: "+ umaSessao.getData().getTime()+"\n");
+			geradorPDF.concatenaStringTexto("Data de Exibição: "+ new SimpleDateFormat("dd/MM/yy HH:mm").format(
+											umaSessao.getData().getTime()) + "\n");
 			
 			int idAtracao = umaSessao.getAtracao().getId();
 			Filme filme = filmeDao.buscarPorId(idAtracao);
@@ -535,17 +545,17 @@ public class SistemaController {
 			geradorPDF.concatenaStringTexto("Sala: "+ umaSessao.getId()+"\n");
 			
 			// fileira e coluna da sala pro ingresso
-			geradorPDF.concatenaStringTexto("Assento: "+ ingresso.getUmAssento().getFileira() + ingresso.getUmAssento().getColuna()+ "\n");
+			geradorPDF.concatenaStringTexto("Assento: "+ (ingresso.getUmAssento().getFileira()+1) + (ingresso.getUmAssento().getColuna()+1)+ "\n\n");
 		}
+		//retorna o pdf completo
 		try {
 		     response.getOutputStream().write(geradorPDF.gerarPDFComprovante().toByteArray());
 		      response.setContentType("application/pdf");      
-		      response.setHeader("Content-Disposition", "attachment; filename="+registroCompra.getIdRegistroCompra()+".pdf");
+		      response.setHeader("Content-Disposition", "attachment; filename=ingresso"+registroCompra.getIdRegistroCompra()+".pdf");
 		      response.flushBuffer();
 		    } catch (IOException | DocumentException ex) {
 		      throw new RuntimeException("IOError writing file to output stream");
 		    }
-		//retorna o pdf completo
-		return "";
+		
 	}
 }
