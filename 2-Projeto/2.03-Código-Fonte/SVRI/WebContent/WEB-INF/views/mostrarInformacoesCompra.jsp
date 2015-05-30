@@ -45,9 +45,20 @@
 		</tr>
 		</c:forEach>
 	</table> <br>
-			<button type="submit" name = "idRegistroCompra" value ="${registroCompra.idRegistroCompra}"
-				class="btn btn-default">Gerar Comprovante
-			</button>
+			<c:choose>
+				<c:when test="${registroCompra.pagamentoAprovado}">
+						<button type="submit" name = "idRegistroCompra" value ="${registroCompra.idRegistroCompra}"
+						class="btn btn-default">Imprimir ingressos</button>
+						
+				</c:when>
+				<c:otherwise>
+						A compra ainda não foi concluída, o comprovante com status pendente não garante seus ingressos.<br>
+						<button type="submit" name = "idRegistroCompra" value ="${registroCompra.idRegistroCompra}"
+						class="btn btn-default">Gerar Comprovante</button>
+				</c:otherwise>
+			</c:choose> 
+			
+			
 	</form>	
 	
 </body>
