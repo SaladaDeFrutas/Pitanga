@@ -11,7 +11,7 @@ public class StringAssento {
 	public ArrayList<Assento> converterStringParaAssento(String string){
 		ArrayList<Assento> assentos = new ArrayList<>();
 		
-		String[] paresDePosicoes = string.split(";");
+		String[] paresDePosicoes = string.trim().split(";");
 		for(int i=0;i<paresDePosicoes.length;i++){
 			String[] numeros = paresDePosicoes[i].split(",");
 			Assento assento = new Assento();

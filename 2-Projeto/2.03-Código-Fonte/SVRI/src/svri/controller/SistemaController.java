@@ -214,13 +214,6 @@ public class SistemaController {
 		assentosInvalidos.add(assento1);
 		assentosInvalidos.add(assento2);
 
-		// Assentos ocupados
-		// Assento assento3 = new Assento();
-		// Assento assento4 = new Assento();
-		// assento3.setColuna(0);
-		// assento3.setFileira(0);
-		// assento4.setColuna(12);
-		// assento4.setFileira(5);
 		ArrayList<Assento> assentosOcupados;
 
 		// converte se houver assentos ocupados na sessao
