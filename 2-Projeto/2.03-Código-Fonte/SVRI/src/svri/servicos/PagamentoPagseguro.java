@@ -55,9 +55,9 @@ public class PagamentoPagseguro implements InterfacePagamento{
 		checkout.setReference(String.valueOf(novoRegistroCompra.getIdRegistroCompra()));
 		
 		// URL para onde o comprador sera redirecionado (GET) apos o fluxo de pagamento 
-		checkout.setRedirectURL("http://jbossews-svri.rhcloud.com/SVRI/obrigado"); 
+		checkout.setRedirectURL("http://svrideploy-svri.rhcloud.com/SVRI/obrigado"); 
 		
-		checkout.setNotificationURL("http://jbossews-svri.rhcloud.com/SVRI/notificacoes");
+		checkout.setNotificationURL("http://svrideploy-svri.rhcloud.com/SVRI/notificacoes");
 		
 		try {  
 			  

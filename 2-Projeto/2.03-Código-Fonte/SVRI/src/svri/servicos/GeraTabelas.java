@@ -37,19 +37,18 @@ public class GeraTabelas {
 		
 		Filme umFilme = new Filme();
 		//umFilme.setId(1);
-		umFilme.setTitulo("Projeto integrador.");
+		umFilme.setTitulo("Velozes e Furiosos 7");
 		umFilme.setIdioma("Pt-BR");
 		umFilme.setDuracao(120);
-		umFilme.setSinopse("Por via das duvidas responda 42.");
-		umFilme.setGenero("Conhecimento.");
+		umFilme.setSinopse("Com Paul Walker, Vin Diesel.");
+		umFilme.setGenero("Acao");
 		umFilme.setLegendado(true);
-		umFilme.setProdutora("UFG PRODUCTIONS");
+		umFilme.setProdutora("Paramount");
 		umFilme.setModoDeExibicao("3D");
 		umFilme.setDataEstreia(dataEstreia);
 		
 		Peca umaPeca = new Peca();
-		//umaPeca.setId(1);
-		umaPeca.setTitulo("Minha mae e uma pe�a.");
+		umaPeca.setTitulo("Fora do Normal");
 		umaPeca.setIdioma("Pt-br");
 		umaPeca.setDuracao(180);
 		umaPeca.setSinopse("Muito engracado.");
@@ -58,20 +57,16 @@ public class GeraTabelas {
 		
 		
 		TipoIngresso umTipoIngresso = new TipoIngresso();
-		//umTipoIngresso.setId(1);
 		umTipoIngresso.setNome("Inteira");
 		umTipoIngresso.setPreco(40.00);
 		TipoIngresso outroTipoIngresso = new TipoIngresso();
-		//outroTipoIngresso.setId(2);
 		outroTipoIngresso.setNome("Meia");
 		outroTipoIngresso.setPreco(20.00);
 		TipoIngresso maisUmTipoIngresso = new TipoIngresso();
-		//maisUmTipoIngresso.setId(3);
 		maisUmTipoIngresso.setNome("Meia-Itau");
-		maisUmTipoIngresso.setPreco(19.50);
+		maisUmTipoIngresso.setPreco(19);
 		TipoAssento umAssento = new TipoAssento();
 		umAssento.setDescricao("Assento especial do dia dos Namorados.");
-		//umAssento.setId(1);
 		umAssento.setNome("Lovers");
 		umAssento.setPreco(40.90);
 		
