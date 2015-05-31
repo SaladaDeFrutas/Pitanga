@@ -55,6 +55,11 @@
                     <li>
                         <a href="login">Fazer Login</a>
                     </li>
+                    
+                     <li>
+                        <a href="logout">Fazer Logout</a>
+                    </li>
+                    
                      <li>
                         <a href="minhasCompras">Minhas Compras</a>
                     </li>
