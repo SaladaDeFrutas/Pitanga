@@ -1,4 +1,4 @@
-package svri.interceptor;
+﻿package svri.interceptor;
 
 import java.io.IOException;
 
@@ -25,7 +25,7 @@ public class AutorizadorInterceptor extends HandlerInterceptorAdapter{
 			if(uri.endsWith("login") ||
 					uri.endsWith("efetuaLogin") ||
 						uri.contains("resources") || 
-						uri.endsWith("/SVRIPrivate") ||
+						uri.endsWith("/SVRI") ||
 						uri.endsWith("cadastro") || 
 						uri.endsWith("mostrarAtracoes") ||
 						uri.endsWith("cadastrarCliente") ||
@@ -45,7 +45,9 @@ public class AutorizadorInterceptor extends HandlerInterceptorAdapter{
 			if(request.getSession().getAttribute("usuarioLogado") != null) {
 				return true;
 			}
-			
+			if(uri.endsWith("Funcionarios"))
+				return true;			
+
 			/**
 			 * o usuario nao esta logado e esta tentando acessar uma pagina
 			 * restrita. logo, sera redirecionado para a pagina de login
