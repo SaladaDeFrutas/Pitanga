@@ -9,7 +9,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.validation.constraints.NotNull;
 
+import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
@@ -19,20 +21,38 @@ public abstract class Atracao {
 	@Id
 	@GeneratedValue(strategy = GenerationType.TABLE)
 	@Column(name = "idAtracao")
-	private int id;
+	private int idAtracao;
+	
+	@Column(length=100)
+	@NotEmpty(message = "O titulo deve ser preenchido.")
 	private String titulo;
+	
+	@Column(length=20)
+	@NotEmpty(message = "O email deve ser preenchido.")
 	private String idioma;
+	
+	@NotNull(message = "A duracao deve ser preenchida.")
 	private int duracao;
+	
+	@NotEmpty(message = "A sinopse deve ser preenchida.")
+	@Column(columnDefinition = "TEXT", length=500)
 	private String sinopse;
+	
+	@Column(length=30)
+	@NotEmpty(message = "O genero deve ser preenchido.")
 	private String genero;
+	
 	@DateTimeFormat(pattern="dd/MM/yyyy")
 	private Calendar dataEstreia;
+	
+	@NotNull(message = "A classificacao indicativa deve ser preenchida.")
+	private int classificacaoIndicativa;
 
-	public int getId() {
-		return id;
+	public int getIdAtracao() {
+		return idAtracao;
 	}
-	public void setId(int id) {
-		this.id = id;
+	public void setIdAtracao(int idAtracao) {
+		this.idAtracao = idAtracao;
 	}
 	public String getTitulo() {
 		return titulo;
@@ -70,4 +90,15 @@ public abstract class Atracao {
 	public void setDataEstreia(Calendar dataEstreia) {
 		this.dataEstreia = dataEstreia;
 	}
+	
+	public int getClassificacaoIndicativa() {
+		return classificacaoIndicativa;
+	}
+	
+	public void setClassificacaoIndicativa(int classificacaoIndicativa) {
+		this.classificacaoIndicativa = classificacaoIndicativa;
+	}
+	/**
+	 * 
+	 */
 }
