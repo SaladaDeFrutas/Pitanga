@@ -8,7 +8,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import svri.dao.ClienteDao;
+import svri.dao.FuncionarioDao;
 import svri.entidades.Cliente;
+import svri.entidades.Funcionario;
 
 @Controller
 public class LoginController {
@@ -18,6 +20,10 @@ public class LoginController {
 	@Qualifier("ClienteDao")
 	private ClienteDao clienteDao;
 
+	@Autowired
+	@Qualifier("FuncionarioDao")
+	private FuncionarioDao funcionarioDao;
+	
 	/**
 	 * 
 	 * @return a pagina de login do sistema
@@ -45,9 +51,39 @@ public class LoginController {
 			return "redirect:login";
 	}
 	
-	@RequestMapping("logout")
-	public String logout(HttpSession session) {
-		session.invalidate();
-		return "redirect:login";
+	/**
+	 * 
+	 * @param funcionario dados do funcionario com email e senha
+	 * @param session variavel de sessao para salvar o atributo de funcionario
+	 * logado na sessao corrente
+	 * 
+	 * @return pagina inicial do funcionario para realizar as funcoes restritas
+	 * ou a pagina de login para funcionarios para ele tentar logar novamente
+	 */
+	@RequestMapping("efetuaLoginFuncionarios")
+	public String efetuaLoginFuncionarios(Funcionario funcionario, HttpSession session){
+		if(funcionarioDao.checarFuncionario(funcionario)){
+			session.setAttribute("funcionarioLogado", funcionario);
+			return "indexFuncionarios";
+		}
+		else
+			//System.out.println("entrou!!!");
+			return "redirect:loginFuncionarios";
 	}
+	
+
+	/**
+	 * 
+	 * @return a pagina de login para funcionarios do sistema
+	 */
+	@RequestMapping("loginFuncionarios")
+	public String retornaPaginaLoginFuncionarios(){
+		return "loginFuncionarios";
+	}
+
+	@RequestMapping("logout")
+ 	public String logout(HttpSession session) {
+ 		session.invalidate();
+ 		return "redirect:login";
+ 	}
 }
