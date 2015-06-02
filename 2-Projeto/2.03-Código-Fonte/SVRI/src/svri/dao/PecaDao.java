@@ -23,7 +23,7 @@ public class PecaDao implements InterfacePecaDao{
 
 	@Override
 	public void removerPeca(Peca umaPeca) {
-		Peca pecaARemover = buscarPorId(umaPeca.getId());
+		Peca pecaARemover = buscarPorId(umaPeca.getIdAtracao());
 		manager.remove(pecaARemover);
 		
 	}

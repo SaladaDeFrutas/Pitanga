@@ -25,7 +25,7 @@ public class FilmeDao implements InterfaceFilmeDao{
 
 	@Override
 	public void removerFilme(Filme umFilme) {
-		Filme filmeARemover = buscarPorId(umFilme.getId());
+		Filme filmeARemover = buscarPorId(umFilme.getIdAtracao());
 		manager.remove(filmeARemover);
 		
 	}

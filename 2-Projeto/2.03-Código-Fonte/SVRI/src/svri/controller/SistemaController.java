@@ -95,7 +95,7 @@ public class SistemaController {
 	@RequestMapping("/mostrarFilme")
 	public String mostrarFilme(Filme umFilme, Model model) {
 		// filmeDao.adicionarFilme(umFilme);
-		Filme filmeEscolhido = filmeDao.buscarPorId(umFilme.getId());
+		Filme filmeEscolhido = filmeDao.buscarPorId(umFilme.getIdAtracao());
 		// List<Sessao> listaDeSessoes= ses
 		// @AutowiredsaoDao.buscarPorAtracao(umFilme.getId());
 		// System.out.println(filmeEscolhido.getTitulo());
@@ -519,7 +519,7 @@ public class SistemaController {
 			geradorPDF.concatenaStringTexto("Data de Exibição: "+ new SimpleDateFormat("dd/MM/yy HH:mm").format(
 											umaSessao.getData().getTime()) + "\n");
 			
-			int idAtracao = umaSessao.getAtracao().getId();
+			int idAtracao = umaSessao.getAtracao().getIdAtracao();
 			Filme filme = filmeDao.buscarPorId(idAtracao);
 			if (filme != null)
 					// nome do filme
