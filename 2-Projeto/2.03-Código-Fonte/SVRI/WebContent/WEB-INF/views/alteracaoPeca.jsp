@@ -1,6 +1,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix = "c" %>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <%@ taglib tagdir="/WEB-INF/tags" prefix="jsTag" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix = "fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,6 +9,8 @@
 <link type="/text/css" href="resources/jquery/jquery-ui.css" rel="stylesheet" />
 <script type="text/javascript" src="resources/jquery/external/jquery/jquery.js"></script>
 <script type="text/javascript" src="resources/jquery/jquery-ui.js"></script>
+<script type="text/javascript" src="resources/jquery/jquery.datetimepicker.js"></script>
+<script src="//code.jquery.com/jquery-1.10.2.js"></script>
 <link type="/text/css" href="resources/css/formatacaoPagina.css" rel="stylesheet" />
 <link type="/text/css" href="resources/css/rodapeFuncionarios.css" rel="stylesheet" />
 <link rel="stylesheet"
@@ -166,9 +169,10 @@
 		<form:errors path="peca.dataEstreia" /><br>
 		Data de Estreia: <br>
 		            <div class="form-group">
-		                <div class='input-group date' id='dataEstreia'>
+		                <div class='input-group date' id='dataEstreia-div'>
 		                    <input type='text' class="form-control" name="dataEstreia"
-		                    	 value="${peca.dataEstreia.time}"/>
+		                    	 value="<fmt:formatDate	value = "${peca.dataEstreia.time}"
+							pattern="dd/MM/yyyy" />"/>
 		                    <span class="input-group-addon">
 		                        <span class="glyphicon glyphicon-calendar"></span>
 		                    </span>
