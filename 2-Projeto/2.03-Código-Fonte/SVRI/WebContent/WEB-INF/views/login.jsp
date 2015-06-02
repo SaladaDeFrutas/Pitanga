@@ -6,10 +6,12 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <link type="/text/css" href="resources/css/formatacaoPagina.css" rel="stylesheet" />
+<link type="/text/css" href="resources/css/rodapeFuncionarios.css" rel="stylesheet" />
 <title>Login</title>
 </head>
 <body class = pagina>
 <c:import url="cabecalho.jsp" />
+	<div id="wrap">
 	<h3>Login</h3>
 	<form action = "efetuaLogin" method="post">
 		Email:
@@ -20,5 +22,13 @@
 		<br><button type="submit" class="btn btn-default">Fazer Login
  		</button>
 	</form>
+	<div id="push"></div>
+	</div>
+	
+	<div id="footer">
+	      <div class="container">
+	        <p class="func"> Acesso para <a href="indexFuncionarios">Funcionarios</a></p>
+	      </div>
+	</div>
 </body>
 </html>
