@@ -56,5 +56,8 @@
 	<bean id="SalaDao" class="svri.dao.SalaDao"/>
 	<bean id="RegistroCompraDao" class="svri.dao.RegistroCompraDao"/>
 	
-	<mvc:interceptors><bean class="svri.interceptor.AutorizadorInterceptor"/></mvc:interceptors>
+	<mvc:interceptors>
+		<bean class="svri.interceptor.AutorizadorInterceptorFuncionarios"/>
+		<bean class="svri.interceptor.AutorizadorInterceptor"/>
+	</mvc:interceptors>
 </beans>
