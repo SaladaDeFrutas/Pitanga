@@ -21,7 +21,7 @@ public class SessaoDao implements InterfaceSessaoDao{
 
 	@Override
 	public void removerSessao(Sessao umaSessao) {
-		Sessao sessaoARemover = buscarPorId(umaSessao.getId());
+		Sessao sessaoARemover = buscarPorId(umaSessao.getIdSessao());
 		manager.remove(sessaoARemover);
 		
 	}
@@ -46,7 +46,7 @@ public class SessaoDao implements InterfaceSessaoDao{
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Sessao> buscarPorAtracao(Atracao umaAtracao) {
-		return manager.createQuery("from Sessao as s where atracao.id="+umaAtracao.getId()).getResultList();
+		return manager.createQuery("from Sessao as s where atracao.id="+umaAtracao.getIdAtracao()).getResultList();
 
 	}
 
