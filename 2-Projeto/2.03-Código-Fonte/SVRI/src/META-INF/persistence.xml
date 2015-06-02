@@ -20,6 +20,8 @@
 		<class>svri.entidades.TipoAssento</class>
 		<class>svri.entidades.RegistroCompra</class>
 		<class>br.com.uol.pagseguro.domain.Transaction</class>
+		<class>svri.entidades.Funcionario</class>
+		<class>svri.entidades.Usuario</class>
 		
 		<properties>
 				
