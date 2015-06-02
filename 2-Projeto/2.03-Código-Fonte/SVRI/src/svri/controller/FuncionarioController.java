@@ -419,9 +419,9 @@ public class FuncionarioController {
 		
 		if(assentos != null){
 			System.out.println("array assentos:"+assentos.toString());
-
-			ArrayList<Assento> arrayAssentosInvalidos = StringAssento.converterArrayStringParaArrayAssento(assentos);
-			assentosInvalidos = StringAssento.converterAssentoParaString(arrayAssentosInvalidos);
+			StringAssento stringAssento = new StringAssento();
+			ArrayList<Assento> arrayAssentosInvalidos = stringAssento.converterArrayStringParaArrayAssento(assentos);
+			assentosInvalidos = stringAssento.converterAssentoParaString(arrayAssentosInvalidos);
 		}
 		else
 			assentosInvalidos = " ";
@@ -442,7 +442,8 @@ public class FuncionarioController {
 	@RequestMapping("alteracaoSalaFuncionarios")
 	public String alterarDadosSala(Sala sala, Model model){
 		sala = salaDao.buscarPorId(sala.getId());
-		ArrayList<Assento> assentosInvalidos = StringAssento.converterStringParaAssento(
+		StringAssento stringAssento = new StringAssento();
+		ArrayList<Assento> assentosInvalidos = stringAssento.converterStringParaAssento(
 				sala.getAssentosInvalidos());
 		
 		model.addAttribute("sala",sala);
@@ -460,13 +461,13 @@ public class FuncionarioController {
 		//System.out.println("ID da sala:"+sala.getId());
 		String assentosInvalidos;
 		if(assentos != null){
-			System.out.println("array assentos:"+assentos.toString());
-			ArrayList<Assento> arrayAssentosInvalidos = StringAssento.converterArrayStringParaArrayAssento(assentos);
-			assentosInvalidos = StringAssento.converterAssentoParaString(arrayAssentosInvalidos);
+			StringAssento stringAssento = new StringAssento();
+			ArrayList<Assento> arrayAssentosInvalidos = stringAssento.converterArrayStringParaArrayAssento(assentos);
+			assentosInvalidos = stringAssento.converterAssentoParaString(arrayAssentosInvalidos);
 		}
 		else
 			assentosInvalidos = " ";
-		System.out.println("String assentos invalidos:"+assentosInvalidos);
+		
 
 		sala.setAssentosInvalidos(assentosInvalidos);
 		

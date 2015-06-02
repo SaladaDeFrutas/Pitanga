@@ -16,7 +16,7 @@ public class FuncionarioDao implements InterfaceFuncionarioDao{
 
 	@Override
 	public void adicionarFuncionario(Funcionario umFuncionario) {
-		umFuncionario.setSenha(FuncaoHash.gerarHash(umFuncionario.getSenha()));
+		umFuncionario.setSenha(new FuncaoHash().gerarHash(umFuncionario.getSenha()));
 		manager.persist(umFuncionario);
 	}
 
@@ -47,7 +47,7 @@ public class FuncionarioDao implements InterfaceFuncionarioDao{
 		Funcionario funcionarioBuscado = buscarPorId(umFuncionario.getEmail());
 		if(null != funcionarioBuscado){
 			if (funcionarioBuscado.getEmail().equals(umFuncionario.getEmail())){
-				if(funcionarioBuscado.getSenha().equals(FuncaoHash.gerarHash((umFuncionario.getSenha())))){
+				if(funcionarioBuscado.getSenha().equals(new FuncaoHash().gerarHash((umFuncionario.getSenha())))){
 					return true;
 				}
 			}
@@ -64,7 +64,7 @@ public class FuncionarioDao implements InterfaceFuncionarioDao{
 		if(null != funcionarioBuscado){
 			if (funcionarioBuscado.getEmail().equals(umFuncionario.getEmail()) &&
 				funcionarioBuscado.getNivelAcesso() == Funcionario.ADMIN){
-				if(funcionarioBuscado.getSenha().equals(FuncaoHash.gerarHash((umFuncionario.getSenha())))){
+				if(funcionarioBuscado.getSenha().equals(new FuncaoHash().gerarHash((umFuncionario.getSenha())))){
 					return true;
 				}
 			}

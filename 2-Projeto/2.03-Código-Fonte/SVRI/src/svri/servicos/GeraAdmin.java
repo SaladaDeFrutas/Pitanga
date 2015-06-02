@@ -32,7 +32,7 @@ public class GeraAdmin {
 		umFuncionario.setDataDeNascimento(dataNasc);
 		umFuncionario.setEmail("lucasassis413@svri.com.br");
 		umFuncionario.setNome("Lucas de Assis Rosa");
-		umFuncionario.setSenha(FuncaoHash.gerarHash("admin123"));
+		umFuncionario.setSenha(new FuncaoHash().gerarHash("admin123"));
 		
 		umFuncionario.setFuncao("Administrador");
 		umFuncionario.setMatricula(131562);
@@ -41,7 +41,7 @@ public class GeraAdmin {
 		umCliente.setDataDeNascimento(dataNasc);
 		umCliente.setEmail("lucasassis413@gmail.com");
 		umCliente.setNome("Lucas de Assis Rosa");
-		umCliente.setSenha(FuncaoHash.gerarHash("admin123"));
+		umCliente.setSenha(new FuncaoHash().gerarHash("admin123"));
 		
 		EntityManagerFactory factory = Persistence.
 				createEntityManagerFactory("SVRIUnit");
