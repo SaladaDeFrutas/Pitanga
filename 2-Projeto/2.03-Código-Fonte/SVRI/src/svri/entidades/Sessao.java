@@ -11,6 +11,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -21,24 +22,37 @@ public class Sessao {
 	@Id
 	@GeneratedValue
 	@Column(name = "idSessao")
-	private int id;
+	private int idSessao;
+	
+	@NotNull (message="por favor, digite a data e hora de estreia.")
 	@DateTimeFormat(pattern="dd/MM/yyyy HH:mm")
 	private Calendar data;
-	@OneToOne(cascade = CascadeType.ALL)
+	
+	@NotNull(message="por favor, selecione a atracao")
+	@OneToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE,
+			CascadeType.DETACH, CascadeType.PERSIST, CascadeType.REFRESH
+	})
 	@JoinColumn(name = "idAtracao")
 	private Atracao atracao;
-	@OneToOne(cascade = CascadeType.ALL)
+	
+	@NotNull(message="por favor, selecione a sala")
+	@OneToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE,
+			CascadeType.DETACH, CascadeType.PERSIST, CascadeType.REFRESH
+	})
 	@JoinColumn(name = "idSala")
 	private Sala sala;
+	
 	@Lob
 	private String assentosOcupados;
 	
-	public int getId() {
-		return id;
+	public int getIdSessao() {
+		return idSessao;
 	}
-	public void setId(int id) {
-		this.id = id;
+	
+	public void setIdSessao(int idSessao) {
+		this.idSessao = idSessao;
 	}
+	
 	public Calendar getData() {
 		return data;
 	}

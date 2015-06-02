@@ -7,6 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name= "salas")
@@ -16,7 +17,10 @@ public class Sala {
 	@GeneratedValue
 	@Column(name = "idSala")
 	private int id;
+	
+	@NotNull(message = "A quantidade de fileiras deve ser preenchida.")
 	private int qntFileiras;
+	@NotNull(message = "A quantidade de colunas deve ser preenchida.")
 	private int qntColunas;
 	@Lob
 	private String assentosInvalidos;
