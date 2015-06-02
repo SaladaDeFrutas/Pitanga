@@ -194,7 +194,7 @@ public class SistemaController {
 			@RequestParam ArrayList<Integer> quantidadeIngresso,
 			@RequestParam ArrayList<String> nomeTipoIngresso) {
 
-		umaSessao = sessaoDao.buscarPorId(umaSessao.getId());
+		umaSessao = sessaoDao.buscarPorId(umaSessao.getIdSessao());
 		Sala umaSala = salaDao.buscarPorId(umaSessao.getSala().getId());
 
 		int qntIngressos = 0;
@@ -257,7 +257,7 @@ public class SistemaController {
 			@RequestParam String nomeTipoIngresso, Sessao umaSessao,
 			HttpSession sessaoUsuario) {
 
-		umaSessao = sessaoDao.buscarPorId(umaSessao.getId());
+		umaSessao = sessaoDao.buscarPorId(umaSessao.getIdSessao());
 
 		String[] quantidadeIngressoArray = quantidadeIngresso.replace("[", "")
 				.replace("]", "").replace(" ", "").split(",");
@@ -515,7 +515,7 @@ public class SistemaController {
 			geradorPDF.concatenaStringTexto("Tipo: "+ ingresso.getUmTipoIngresso().getNome()+"\n");
 			
 			// sessao com data de exibicao
-			Sessao umaSessao = sessaoDao.buscarPorId(ingresso.getUmaSessao().getId());
+			Sessao umaSessao = sessaoDao.buscarPorId(ingresso.getUmaSessao().getIdSessao());
 			geradorPDF.concatenaStringTexto("Data de Exibição: "+ new SimpleDateFormat("dd/MM/yy HH:mm").format(
 											umaSessao.getData().getTime()) + "\n");
 			
@@ -531,7 +531,7 @@ public class SistemaController {
 			}
 			
 			// id da sala
-			geradorPDF.concatenaStringTexto("Sala: "+ umaSessao.getId()+"\n");
+			geradorPDF.concatenaStringTexto("Sala: "+ umaSessao.getIdSessao()+"\n");
 			
 			// fileira e coluna da sala pro ingresso
 			geradorPDF.concatenaStringTexto("Assento: "+ (ingresso.getUmAssento().getFileira()+1) + (ingresso.getUmAssento().getColuna()+1)+ "\n\n");
