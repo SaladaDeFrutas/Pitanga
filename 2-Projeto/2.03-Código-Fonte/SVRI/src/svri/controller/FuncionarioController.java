@@ -16,7 +16,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import svri.entidades.Assento;
+import svri.entidades.Cliente;
 import svri.entidades.Filme;
+import svri.entidades.Funcionario;
 import svri.entidades.Peca;
 import svri.entidades.Sala;
 import svri.entidades.Sessao;
@@ -479,6 +481,22 @@ public class FuncionarioController {
 	public String excluirSala(Sala sala){
 		salaDao.removerSala(sala);
 		return "redirect:mostrarSalasFuncionarios";
+	}
+	
+	// Ao usar @Valid, nao usar redirect
+	@RequestMapping("cadastrarFuncionario")
+	public String cadastrarCliente(@Valid Funcionario umFuncionario,
+			BindingResult result) {
+		if (result.hasErrors()) {
+			return "cadastroFuncionario";
+		}
+		
+		return "redirect:loginFuncionarios";
+	}
+
+	@RequestMapping("useradm")
+	public String retornaPaginaCadastro() {
+		return "cadastroFuncionario";
 	}
 	
 }

@@ -30,6 +30,7 @@ public class AutorizadorInterceptor extends HandlerInterceptorAdapter{
 						uri.endsWith("mostrarAtracoes") ||
 						uri.endsWith("cadastrarCliente") ||
 						uri.endsWith("notificacoes")) {
+						
 				if(uri.endsWith("login") && 
 					request.getSession().getAttribute("usuarioLogado") != null) {
 					response.sendRedirect("mostrarAtracoes");
@@ -52,6 +53,7 @@ public class AutorizadorInterceptor extends HandlerInterceptorAdapter{
 			 * o usuario nao esta logado e esta tentando acessar uma pagina
 			 * restrita. logo, sera redirecionado para a pagina de login
 			 */
+			System.out.println("falhou");
 			response.sendRedirect("login");
 			return false;
 		
