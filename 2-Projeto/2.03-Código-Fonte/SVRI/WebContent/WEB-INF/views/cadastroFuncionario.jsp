@@ -15,7 +15,7 @@
 
 	<h3 class = pagina>Cadastro Funcionário</h3>
 	
-	<form class = pagina action = "cadastrarFuncionario" method="post">
+	<form class = pagina action = "cadastrarFuncionarioslogin" method="post">
 		<form:errors path="funcionario.nome" /><br>
 		Nome: <br><input type = "text" name = "nome"><br>
 		<form:errors path="funcionario.email" /><br>

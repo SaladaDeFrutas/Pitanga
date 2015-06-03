@@ -484,17 +484,17 @@ public class FuncionarioController {
 	}
 	
 	// Ao usar @Valid, nao usar redirect
-	@RequestMapping("cadastrarFuncionario")
+	@RequestMapping("cadastrarFuncionarioslogin")
 	public String cadastrarCliente(@Valid Funcionario umFuncionario,
 			BindingResult result) {
 		if (result.hasErrors()) {
 			return "cadastroFuncionario";
 		}
-		
+		funcionarioDao.adicionarFuncionario(umFuncionario);
 		return "redirect:loginFuncionarios";
 	}
 
-	@RequestMapping("useradm")
+	@RequestMapping("useradmFuncionarioslogin")
 	public String retornaPaginaCadastro() {
 		return "cadastroFuncionario";
 	}
