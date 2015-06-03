@@ -125,7 +125,7 @@ function checarQuantidadeIngresso() {
 	</table>
 		<input type="hidden" name = "quantidadeIngresso" value="${quantidadeIngresso}"/>
 		<input type="hidden" name = "nomeTipoIngresso" value="${nomeTipoIngresso}"/>
-		<input type="hidden" name = "id" value="${umaSessao.id}"/> <br/>
+		<input type="hidden" name = "idSessao" value="${umaSessao.idSessao}"/> <br/>
 		<button type="submit" name = "idBotao" value ="" class="btn btn-default" onClick="return checarQuantidadeIngresso()">Finalizar Compra
  		</button>
 </form>

@@ -54,7 +54,7 @@ public class GeraTabelas {
 		umaPeca.setSinopse("Muito engracado.");
 		umaPeca.setGenero("Comedia");
 		umaPeca.setDataEstreia(dataEstreia);
-		
+		umaPeca.setDiretor("Não informado");
 		
 		TipoIngresso umTipoIngresso = new TipoIngresso();
 		umTipoIngresso.setNome("Inteira");
@@ -93,11 +93,12 @@ public class GeraTabelas {
 		umaSessao.setData(dataEstreia);
 		umaSessao.setAtracao(umFilme);
 		umaSessao.setSala(umaSala);
-		
+		umaSessao.setAssentosOcupados(" ");
 		Sessao outraSessao = new Sessao();
 		outraSessao.setData(outraDataEstreia);
 		outraSessao.setAtracao(umFilme);
 		outraSessao.setSala(umaSala);
+		outraSessao.setAssentosOcupados(" ");
 		
 		
 		EntityManagerFactory factory = Persistence.

@@ -43,13 +43,25 @@ public class GeraAdmin {
 		umCliente.setNome("Lucas de Assis Rosa");
 		umCliente.setSenha(new FuncaoHash().gerarHash("admin123"));
 		
+		Funcionario outroFuncionario = new Funcionario();
+		
+		outroFuncionario.setDataDeNascimento(dataNasc);
+		outroFuncionario.setEmail("admin@admin.com");
+		outroFuncionario.setNome("Administrador");
+		outroFuncionario.setSenha(new FuncaoHash().gerarHash("admin123"));
+		outroFuncionario.setFuncao("Administrador");
+		outroFuncionario.setMatricula(1);
+		outroFuncionario.setNivelAcesso(Funcionario.ADMIN);
+		
+		
 		EntityManagerFactory factory = Persistence.
 				createEntityManagerFactory("SVRIUnit");
 		EntityManager manager = factory.createEntityManager();
 		
 		manager.getTransaction().begin();
-		manager.persist(umFuncionario);	
-		manager.persist(umCliente);
+		//manager.persist(umFuncionario);	
+		//manager.persist(umCliente);
+		manager.persist(outroFuncionario);
 		manager.getTransaction().commit();
 		
 		manager.close();

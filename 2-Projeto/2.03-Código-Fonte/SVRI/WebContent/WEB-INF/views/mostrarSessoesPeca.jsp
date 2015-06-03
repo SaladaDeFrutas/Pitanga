@@ -16,7 +16,7 @@
 		<h3>Sessões disponíveis para ${peca.titulo}</h3>
 		<c:forEach items="${sessoes}" var = "sessao">
 			<form action= "escolherIngressos" method="post">
- 			<button type="submit" name = "id" value ="${peca.id}" class="btn btn-default"><fmt:formatDate	value = "${sessao.data.time}"
+ 			<button type="submit" name = "idSessao" value ="${sessao.idSessao}" class="btn btn-default"><fmt:formatDate	value = "${sessao.data.time}"
 							pattern="dd/MM HH:mm" /></button>
 			</form><br>
 		</c:forEach>

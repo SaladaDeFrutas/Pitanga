@@ -20,7 +20,7 @@
 	<b>Duracao:</b>${filme.duracao} min.<br>
 	
 	<form action= "mostrarSessoesFilme" method="post">
- 			<button type="submit" name = "id" value ="${filme.id}" class="btn btn-default">Visualizar Sessões
+ 			<button type="submit" name = "idAtracao" value ="${filme.idAtracao}" class="btn btn-default">Visualizar Sessões
  	</button>
  	<input type = "hidden" name=titulo value="${filme.titulo}">
 	</form>
@@ -35,7 +35,7 @@
 	<b>Genero:</b>${peca.genero}<br>
 	<b>Duracao:</b>${peca.duracao} min.<br>
 	<form action= "mostrarSessoesPeca" method="post">
- 		<button type="submit" name = "id" value ="${peca.id}" class="btn btn-default">Visualizar Sessões
+ 		<button type="submit" name = "idAtracao" value ="${peca.idAtracao}" class="btn btn-default">Visualizar Sessões
  		</button>
  		<input type = "hidden" name=titulo value="${peca.titulo}">
 	</form>
