@@ -51,7 +51,7 @@
 	</c:forEach>
 </table>
 	<br><button type="submit" class="btn btn-default">Enviar</button>
-	<input type="hidden" name = "id" value = "${sessao.id}">
+	<input type="hidden" name = "idSessao" value = "${sessao.idSessao}">
 	
 </form>
 

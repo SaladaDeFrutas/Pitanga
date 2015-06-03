@@ -11,7 +11,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 
 
 @Entity
-@Table(name = "tiposIngresso")
+@Table(name = "tiposingresso")
 public class TipoIngresso {
 	@Id
 	@Column(name = "nomeTipoIngresso")
