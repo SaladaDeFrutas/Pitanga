@@ -55,7 +55,7 @@ public class LoginController {
 	 * 
 	 * @param funcionario dados do funcionario com email e senha
 	 * @param session variavel de sessao para salvar o atributo de funcionario
-	 * logado na sessao corrente
+	 * logado e/ou o de adminLogado na sessao corrente
 	 * 
 	 * @return pagina inicial do funcionario para realizar as funcoes restritas
 	 * ou a pagina de login para funcionarios para ele tentar logar novamente
@@ -64,6 +64,10 @@ public class LoginController {
 	public String efetuaLoginFuncionarios(Funcionario funcionario, HttpSession session){
 		if(funcionarioDao.checarFuncionario(funcionario)){
 			session.setAttribute("funcionarioLogado", funcionario);
+			
+			if(funcionarioDao.checarFuncionarioAdmin(funcionario))
+				session.setAttribute("adminLogado", funcionario);
+			
 			return "indexFuncionarios";
 		}
 		else
@@ -80,10 +84,48 @@ public class LoginController {
 	public String retornaPaginaLoginFuncionarios(){
 		return "loginFuncionarios";
 	}
+	
+	/**
+	 * 
+	 * @param funcionario dados do funcionario com email e senha
+	 * @param session variavel de sessao para salvar o atributo de funcionario
+	 * logado e/ou o de adminLogado na sessao corrente
+	 * 
+	 * @return pagina inicial do funcionario para realizar as funcoes restritas
+	 * ou a pagina de login para funcionarios para ele tentar logar novamente
+	 */
+	@RequestMapping("efetuaLoginAdminFuncionarios")
+	public String efetuaLoginAdminFuncionarios(Funcionario funcionario, HttpSession session){
+		if(funcionarioDao.checarFuncionarioAdmin(funcionario)){
+			// retira do login o funcionario anterior para estar logado como admin
+			session.removeAttribute("funcionarioLogado");
+			
+			session.setAttribute("adminLogado", funcionario);
+			session.setAttribute("funcionarioLogado", funcionario);
+		
+			
+			return "gerenciarFuncionarios";
+		}
+		else
+			//System.out.println("entrou!!!");
+			return "redirect:loginAdminFuncionarios";
+	}
+	
+
+	/**
+	 * 
+	 * @return a pagina de login para funcionarios do sistema
+	 */
+	@RequestMapping("loginAdminFuncionarios")
+	public String retornaPaginaLoginAdminFuncionarios(){
+		return "loginAdminFuncionarios";
+	}
 
 	@RequestMapping("logout")
  	public String logout(HttpSession session) {
  		session.invalidate();
+ 		//System.out.println(session.getAttribute("adminLogado"));
+ 		//System.out.println(session.getAttribute("funcionarioLogado"));
  		return "redirect:login";
  	}
 }

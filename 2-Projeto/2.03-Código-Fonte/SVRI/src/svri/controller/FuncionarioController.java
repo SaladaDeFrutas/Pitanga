@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import svri.entidades.Assento;
-import svri.entidades.Cliente;
 import svri.entidades.Filme;
 import svri.entidades.Funcionario;
 import svri.entidades.Peca;
@@ -484,19 +483,67 @@ public class FuncionarioController {
 	}
 	
 	// Ao usar @Valid, nao usar redirect
-	@RequestMapping("cadastrarFuncionarioslogin")
-	public String cadastrarCliente(@Valid Funcionario umFuncionario,
+	@RequestMapping("cadastrarFuncionarios")
+	public String cadastrarFuncionario(@Valid Funcionario umFuncionario,
 			BindingResult result) {
 		if (result.hasErrors()) {
 			return "cadastroFuncionario";
 		}
 		funcionarioDao.adicionarFuncionario(umFuncionario);
-		return "redirect:loginFuncionarios";
+		return "cadastroRestritoSucesso";
 	}
 
-	@RequestMapping("useradmFuncionarioslogin")
-	public String retornaPaginaCadastro() {
+	/**
+	 * 
+	 * @param model Usado para passar os niveis de acesso esperados para a pagina
+	 * JSP
+	 * @return pagina de cadastro de funcionarios
+	 */
+	@RequestMapping("cadastroFuncionarios")
+	public String retornaPaginaCadastroFuncionarios() {
 		return "cadastroFuncionario";
 	}
 	
+	@RequestMapping("mostrarFuncionarios")
+	public String retornaPaginaFuncionarios(Model model){
+			List<Funcionario> funcionarios = funcionarioDao.listarFuncionario();
+			Funcionario admin = null;
+			// retira o admin da lista buscada do BD para exibir apenas os que nao sao admin
+			for (Funcionario funcionario : funcionarios) {
+				if(funcionario.getNivelAcesso() == Funcionario.ADMIN){
+					admin = funcionario;
+				}
+			}
+			funcionarios.remove(admin);
+			
+			model.addAttribute("funcionarios",funcionarios);
+			return "mostrarFuncionarios";
+	}
+	
+	@RequestMapping("gerenciarFuncionarios")
+	public String retornaPaginaGerenciaFuncionarios(){
+		return "gerenciarFuncionarios";
+	}
+	
+	@RequestMapping("alteracaoFuncionarios")
+	public String alterarFuncionarios(Funcionario funcionario, Model model){
+		funcionario = funcionarioDao.buscarPorId(funcionario.getEmail());
+		model.addAttribute("funcionario", funcionario);
+		return "alteracaoFuncionario";
+	}
+	
+	@RequestMapping("alterarFuncionarios")
+	public String alterarDadosFuncionarios(@Valid Funcionario funcionario, BindingResult result){
+		if(result.hasErrors()){
+			return "alteracaoFuncionario";
+		}
+		funcionarioDao.alterarFuncionario(funcionario);
+		return "cadastroRestritoSucesso";
+	}
+	
+	@RequestMapping("exclusaoFuncionarios")
+	public String excluirFuncionario(Funcionario funcionario){
+		funcionarioDao.removerFuncionario(funcionario);
+		return "redirect:mostrarFuncionarios";
+	}
 }

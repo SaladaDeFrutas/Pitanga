@@ -44,6 +44,44 @@ public class AutorizadorInterceptorFuncionarios extends HandlerInterceptorAdapte
 				else
 					return true;
 			}
+			
+			/**
+			 * permite o acesso ao caminho de envio dos dados do administrador
+			 */
+			else if(uri.endsWith("efetuaLoginAdminFuncionarios"))
+				return true;	
+			/**
+			 * Caso a pagina de login de admin seja acessada por
+			 * um usuario admin logado, ele sera redirecionado para a gerencia de funcionarios
+			 * Caso seja acessada por um usuario funcionario, ele podera acessar
+			 */
+			else if(uri.endsWith("loginAdminFuncionarios")){
+				if(request.getSession().getAttribute("adminLogado") != null){
+					response.sendRedirect("gerenciarFuncionarios");
+					return false;
+				}
+				else
+					return true;
+			}
+			
+			/**
+			 * caso tente acessar a parte restrita sistema
+			 * destinada a administradores
+			 */
+			else if(uri.endsWith("gerenciarFuncionarios") ||
+					uri.endsWith("cadastrarFuncionarios") ||
+					uri.endsWith("cadastroFuncionarios") ||
+					uri.endsWith("mostrarFuncionarios") ||
+					uri.endsWith("alteracaoFuncionarios")||
+					uri.endsWith("alterarFuncionarios")||
+					uri.endsWith("exclusaoFuncionarios")){			
+					if(request.getSession().getAttribute("adminLogado") != null)
+						return true;
+					else{
+						response.sendRedirect("loginAdminFuncionarios");
+						return false;
+					}
+			}	
 			/**
 			 * caso tente acessar a parte restrita sistema
 			 * destinada a funcionarios

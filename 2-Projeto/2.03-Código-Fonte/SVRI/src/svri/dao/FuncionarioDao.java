@@ -22,7 +22,8 @@ public class FuncionarioDao implements InterfaceFuncionarioDao{
 
 	@Override
 	public void removerFuncionario(Funcionario umFuncionario) {
-		manager.remove(umFuncionario);
+		Funcionario funcionarioARemover = buscarPorId(umFuncionario.getEmail());
+		manager.remove(funcionarioARemover);
 		
 	}
 

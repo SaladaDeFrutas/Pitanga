@@ -58,6 +58,12 @@
                     <li>
                         <a href="gerenciarTipoIngressoFuncionarios">Gerenciar Tipos de Ingresso</a>
                     </li>
+                     <li>
+                        <a href="gerenciarFuncionarios">Gerenciar Funcionários</a>
+                    </li>
+                     <li>
+                        <a href="logout">Logout</a>
+                    </li>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
