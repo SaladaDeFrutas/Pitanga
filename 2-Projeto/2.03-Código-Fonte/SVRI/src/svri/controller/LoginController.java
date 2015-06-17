@@ -5,6 +5,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import svri.dao.ClienteDao;
@@ -42,13 +43,16 @@ public class LoginController {
 	 * ou nao esteja cadastrado
 	 */
 	@RequestMapping("efetuaLogin")
-	public String efetuaLogin(Cliente cliente, HttpSession session){
+	public String efetuaLogin(Cliente cliente, HttpSession session, Model model){
+		String statusLogin = "";
 		if(clienteDao.checarCliente(cliente)){
 			session.setAttribute("usuarioLogado", cliente);
 			return "redirect:mostrarAtracoes";
 		}
 		else
-			return "redirect:login";
+			statusLogin = "Email ou senha Incorretos.\n";
+			model.addAttribute("statusLogin", statusLogin);
+			return "login";
 	}
 	
 	/**
@@ -61,7 +65,8 @@ public class LoginController {
 	 * ou a pagina de login para funcionarios para ele tentar logar novamente
 	 */
 	@RequestMapping("efetuaLoginFuncionarios")
-	public String efetuaLoginFuncionarios(Funcionario funcionario, HttpSession session){
+	public String efetuaLoginFuncionarios(Funcionario funcionario, HttpSession session, Model model){
+		String statusLogin = "";
 		if(funcionarioDao.checarFuncionario(funcionario)){
 			session.setAttribute("funcionarioLogado", funcionario);
 			
@@ -71,8 +76,9 @@ public class LoginController {
 			return "indexFuncionarios";
 		}
 		else
-			//System.out.println("entrou!!!");
-			return "redirect:loginFuncionarios";
+			statusLogin = "Email ou senha Incorretos.\n";
+			model.addAttribute("statusLogin", statusLogin);
+			return "loginFuncionarios";
 	}
 	
 
@@ -95,7 +101,8 @@ public class LoginController {
 	 * ou a pagina de login para funcionarios para ele tentar logar novamente
 	 */
 	@RequestMapping("efetuaLoginAdminFuncionarios")
-	public String efetuaLoginAdminFuncionarios(Funcionario funcionario, HttpSession session){
+	public String efetuaLoginAdminFuncionarios(Funcionario funcionario, HttpSession session, Model model){
+		String statusLogin = "";
 		if(funcionarioDao.checarFuncionarioAdmin(funcionario)){
 			// retira do login o funcionario anterior para estar logado como admin
 			session.removeAttribute("funcionarioLogado");
@@ -107,8 +114,9 @@ public class LoginController {
 			return "gerenciarFuncionarios";
 		}
 		else
-			//System.out.println("entrou!!!");
-			return "redirect:loginAdminFuncionarios";
+			statusLogin = "Email ou senha Incorretos.\n";
+			model.addAttribute("statusLogin", statusLogin);
+			return "loginAdminFuncionarios";
 	}
 	
 
