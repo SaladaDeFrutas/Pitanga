@@ -8,6 +8,11 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <link type="/text/css" href="resources/css/formatacaoPagina.css" rel="stylesheet" />
 <link type="/text/css" href="resources/css/escolherIngresso.css" rel="stylesheet" />
+<script type="text/javascript" src="resources/jquery/external/jquery/jquery.js"></script>
+<script type="text/javascript" src="resources/jquery/jquery-ui.js"></script>
+<script type="text/javascript" src="resources/js/validaEscolherIngressos.js"></script>
+
+<script src="//code.jquery.com/jquery-1.10.2.js"></script>
 <link rel="stylesheet"
  href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.5/css/bootstrap-select.min.css">
 <script
@@ -36,7 +41,8 @@
 					${tipoIngresso.nome}
 				</td>				
 				<td class = tipoIngressos>
-				 	<select class="selectpicker" name = "quantidadeIngresso">
+				
+				 	<select class="form-control" name = "quantidadeIngresso" id="quantidadeIngresso${status.index }">
 						 <option value = "0">0</option>
 						 <option value = "1">1</option>
 						 <option value = "2">2</option>
@@ -50,7 +56,7 @@
 			</tr>
 	</c:forEach>
 </table>
-	<br><button type="submit" class="btn btn-default">Enviar</button>
+	<br><button type="submit" class="btn btn-default" onClick="return validaEscolherIngressos(${fn:length(tiposIngressos)})">Enviar</button>
 	<input type="hidden" name = "idSessao" value = "${sessao.idSessao}">
 	
 </form>
