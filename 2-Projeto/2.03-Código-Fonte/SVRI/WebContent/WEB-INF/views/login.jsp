@@ -5,21 +5,27 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<script type="text/javascript" src="resources/jquery/external/jquery/jquery.js"></script>
+<script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
 <link type="/text/css" href="resources/css/formatacaoPagina.css" rel="stylesheet" />
 <link type="/text/css" href="resources/css/rodapeFuncionarios.css" rel="stylesheet" />
-<title>Login</title>
+<script type="text/javascript" src="resources/js/validaLogin.js"></script>
+<title>Login</title>	
 </head>
 <body class = pagina>
 <c:import url="cabecalho.jsp" />
+	
 	<div id="wrap">
 	<h3>Login</h3>
+	
 	<form action = "efetuaLogin" method="post">
 		Email:
-		<br><input type = "text" name = "email"><br />
+		<br><input type = "text" name = "email" id="email"><br />
 		Senha:
-		<br><input type = "password" name = "senha"><br />
-		
-		<br><button type="submit" class="btn btn-default">Fazer Login
+		<br><input type = "password" name = "senha" id="senha"><br />
+		<div id="statLogin">${statusLogin}</div>
+		<br><button type="submit" class="btn btn-default" id="botaoLogin"
+			onClick="return validaLogin()">Fazer Login
  		</button>
 	</form>
 	<div id="push"></div>

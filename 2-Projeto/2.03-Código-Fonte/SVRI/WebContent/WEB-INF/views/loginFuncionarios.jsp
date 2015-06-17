@@ -6,6 +6,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <link type="/text/css" href="resources/css/formatacaoPagina.css" rel="stylesheet" />
+<script type="text/javascript" src="resources/js/validaLogin.js"></script>
 <title>Login Funcionários</title>
 </head>
 <body class = pagina>
@@ -16,8 +17,9 @@
 		<br><input type = "text" name = "email"><br />
 		Senha:
 		<br><input type = "password" name = "senha"><br />
-		
-		<br><button type="submit" class="btn btn-default">Fazer Login
+		<div id="statLogin">${statusLogin}</div>
+		<br><button type="submit" class="btn btn-default" id="loginFuncionarios"
+		onClick="return validaLogin()">Fazer Login
  		</button>
 	</form>
 </body>
