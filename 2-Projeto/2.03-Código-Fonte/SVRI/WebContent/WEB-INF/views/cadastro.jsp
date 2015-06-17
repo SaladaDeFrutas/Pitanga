@@ -10,6 +10,8 @@
 <link type="/text/css" href="resources/jquery/jquery-ui.css" rel="stylesheet" />
 <script type="text/javascript" src="resources/jquery/external/jquery/jquery.js"></script>
 <script type="text/javascript" src="resources/jquery/jquery-ui.js"></script>
+<script type="text/javascript" src="resources/js/validaSenha.js"></script>
+<script type="text/javascript" src="resources/js/validaDataDeNascimento.js"></script>
 <link type="/text/css" href="resources/css/formatacaoPagina.css" rel="stylesheet" />
 
 <title>Cadastrando conta</title>
@@ -29,10 +31,11 @@
 		Email: <br><input type = "text" name = "email"><br>
 		<form:errors path="cliente.senha" /><br>
 		Senha:
-		<br><input type = "password" name = "senha"><br>
+		<br><input type = "password" name = "senha" id="senha"><br>
 		<form:errors path="cliente.dataDeNascimento" /><br>
 		Data de Nascimento: <br><jsTag:campoData id="dataDeNascimento"/>
-		<br><br><button type="submit" class="btn btn-default">Enviar </button>
+		<br><br><button type="submit" class="btn btn-default" id="botaoCadastroCliente"
+		onClick="return (validaSenha() && validaDataDeNascimento())">Enviar </button>
 	</form>
 
 </body>

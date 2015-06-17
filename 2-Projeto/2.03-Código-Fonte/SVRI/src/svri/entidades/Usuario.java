@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.validation.constraints.Past;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
@@ -28,9 +29,14 @@ public abstract class Usuario {
 	@Pattern(regexp = ".+@.+\\.[a-z]+", message = "Email no formato incorreto.")
 	@Id
 	private String email;
+	
 	@DateTimeFormat(pattern="dd/MM/yyyy")
+	@Past(message= "Por favor, informe a data de nascimento adequadamente no formato"
+			+ "dd/MM/yyyy(Ex: 12/02/1994). Sera permitida apenas idade minima de 13 anos e maxima"
+			+ "de 130 anos.")
 	private Calendar dataDeNascimento;
-	@Size(min=6, message = "A senha deve conter pelo menos 6 caracteres.")
+	
+	@Size(min=6, message="A senha deve conter pelo menos 6 caracteres.")
 	private String senha;
 	
 	public String getNome() {
