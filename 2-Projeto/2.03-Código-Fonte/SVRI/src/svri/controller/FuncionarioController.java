@@ -284,6 +284,20 @@ public class FuncionarioController {
 		if(result.hasFieldErrors("data")){
 			return "redirect:cadastroSessoesPecaFuncionarios";
 		}
+		
+		List<Sessao> sessoes= sessaoDao.listarSessoes();
+		
+		/* checa se ja existe uma sessao cadastrada com o mesmo horario 
+		 * para a mesma atracao e para a mesma sala*/
+		for (Sessao se : sessoes) {
+			if( se.getData().compareTo(umaSessao.getData()) == 0) {
+				if(umaSessao.getSala().getId() == se.getSala().getId()) {
+					return "redirect:sessoesPecaFuncionarios?idAtracao="+ umaSessao.getAtracao().getIdAtracao();
+				}
+			}
+				
+		}
+		
 		sessaoDao.adicionarSessao(umaSessao);
 		return "cadastroRestritoSucesso";
 	}
@@ -303,6 +317,19 @@ public class FuncionarioController {
 		
 		if(result.hasFieldErrors("data")){
 			return "redirect:cadastroSessoesFilmeFuncionarios";
+		}
+		
+		List<Sessao> sessoes= sessaoDao.listarSessoes();
+		
+		/* checa se ja existe uma sessao cadastrada com o mesmo horario 
+		 * para a mesma atracao e para a mesma sala*/
+		for (Sessao se : sessoes) {
+			if( se.getData().compareTo(umaSessao.getData()) == 0) {
+				if(umaSessao.getSala().getId() == se.getSala().getId()) {
+					return "redirect:sessoesFilmeFuncionarios?idAtracao="+ umaSessao.getAtracao().getIdAtracao();
+				}
+			}
+				
 		}
 		sessaoDao.adicionarSessao(umaSessao);
 		return "cadastroRestritoSucesso";

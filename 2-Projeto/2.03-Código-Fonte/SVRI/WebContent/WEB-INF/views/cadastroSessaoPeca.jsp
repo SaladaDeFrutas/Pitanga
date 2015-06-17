@@ -20,6 +20,7 @@
  src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.5/js/bootstrap-select.min.js"></script>
 <link type="/text/css" href="resources/css/formatacaoPagina.css" rel="stylesheet" />
 <link type="/text/css" href="resources/css/rodapeFuncionarios.css" rel="stylesheet" />
+<script type="text/javascript" src="resources/js/validaDataHora.js"></script>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 
 <title>Atrações e Sessões</title>
@@ -52,22 +53,12 @@
 					</select>
 					<br> <br>
 					<h4>Na data e hora:</h4>
-					<div class="container">
-					    <div class="row">
-					                <div class='input-group date' id='data'>
-					                	<form:errors path="sessao.data" />
-					                    <jsTag:campoData name="data" id="data"/>
-					                </div>
-					        <script type="text/javascript">
-					            $(function () {  
-					                $('#data').datetimepicker();
-					            });
-					        </script>
-					    </div>
-					</div>
-					<br>
+					<form:errors path="sessao.data" />
+	                    <input type="text" name="data" id="data" value="11/11/1111 22:22"/>
+					<br><br>
 			
-					<button type="submit" class="btn btn-default"> Cadastrar Sessão </button>
+					<button type="submit" class="btn btn-default" id="botaoCadastrarSessaoPeca"
+					onClick="return validaDataHora()"> Cadastrar Sessão </button>
 				</c:if>
 		</c:if>
 			
