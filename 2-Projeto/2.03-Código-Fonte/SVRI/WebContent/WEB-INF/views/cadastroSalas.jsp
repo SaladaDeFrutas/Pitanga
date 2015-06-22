@@ -13,6 +13,7 @@
 <script type="text/javascript" src="resources/jquery/jquery-ui.js"></script>
 <link type="/text/css" href="resources/css/formatacaoPagina.css" rel="stylesheet" />
 <link type="/text/css" href="resources/css/rodapeFuncionarios.css" rel="stylesheet" />
+<script type="text/javascript" src="resources/js/validaCadastroSalas.js"></script>
 
 <title>Cadastro de Salas</title>
 
@@ -24,10 +25,13 @@
 	
 	<form class = pagina action = "dimensoesSalaFuncionarios" method="post">
 		<form:errors path="sala.qntFileiras" /><br>
-		<b>Quantidade de Fileiras:</b> <br><input type = "text" name = "qntFileiras"><br>
+		<b>Quantidade de Fileiras:</b> <br><input type = "text" name = "qntFileiras"
+		id="qntFileiras"><br>
 		<form:errors path="sala.qntColunas" /><br>
-		<b>Quantidade de Colunas:</b> <br><input type = "text" name = "qntColunas"><br>
-		<br><br><button type="submit" class="btn btn-default"> Formatar Sala </button>
+		<b>Quantidade de Colunas:</b> <br><input type = "text" name = "qntColunas"
+		id="qntColunas"><br>
+		<br><br><button type="submit" class="btn btn-default" id="botaoEnviarCadastroSalas"
+		onClick="return validaCadastroSalas()"> Formatar Sala </button>
 	</form>
 	
 	<div id="wrap">
