@@ -28,6 +28,6 @@
 		</c:forEach>
 		</c:if>
 		
-		<c:if test="${empty sessoes}"><h3>Não há sessões cadastradas para este filme.</h3></c:if>														
+		<c:if test="${empty sessoes}"><h3>Não há sessões cadastradas para esta peça.</h3></c:if>														
 </body>
 </html>

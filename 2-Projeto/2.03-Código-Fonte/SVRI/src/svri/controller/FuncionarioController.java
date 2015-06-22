@@ -351,6 +351,20 @@ public class FuncionarioController {
 		Sessao umaSessao = sessaoDao.buscarPorId(sessao.getIdSessao());
 		//System.out.println(filme.getIdAtracao());
 		//System.out.println(sessao.getIdSessao());
+		
+		List<Sessao> sessoes= sessaoDao.listarSessoes();
+		
+		/* checa se ja existe uma sessao cadastrada com o mesmo horario 
+		 * para a mesma atracao e para a mesma sala*/
+		for (Sessao se : sessoes) {
+			if( se.getData().compareTo(umaSessao.getData()) == 0) {
+				if(umaSessao.getSala().getId() == se.getSala().getId()) {
+					return "redirect:sessoesFilmeFuncionarios?idAtracao="+ umaSessao.getAtracao().getIdAtracao();
+				}
+			}
+				
+		}
+		
 		umaSessao.setSala(
 				salaDao.buscarPorId(sessao.getSala().getId()));
 		
@@ -362,6 +376,7 @@ public class FuncionarioController {
 		if(result.hasFieldErrors("data")){
 			return "redirect:alteracaoSessaoFilmeFuncionarios";
 		}
+		
 		sessaoDao.alterarSessao(umaSessao);
 		return "cadastroRestritoSucesso";
 	}
@@ -372,6 +387,20 @@ public class FuncionarioController {
 		//criado para adicionar um objeto sem id
 		Sessao umaSessao = sessaoDao.buscarPorId(sessao.getIdSessao());
 		//System.out.println(peca.getIdAtracao());
+		
+		List<Sessao> sessoes= sessaoDao.listarSessoes();
+		
+		/* checa se ja existe uma sessao cadastrada com o mesmo horario 
+		 * para a mesma atracao e para a mesma sala*/
+		for (Sessao se : sessoes) {
+			if( se.getData().compareTo(umaSessao.getData()) == 0) {
+				if(umaSessao.getSala().getId() == se.getSala().getId()) {
+					return "redirect:sessoesPecaFuncionarios?idAtracao="+ umaSessao.getAtracao().getIdAtracao();
+				}
+			}
+				
+		}
+		
 		umaSessao.setSala(
 				salaDao.buscarPorId(sessao.getSala().getId()));
 		
@@ -383,6 +412,7 @@ public class FuncionarioController {
 		if(result.hasFieldErrors("data")){
 			return "redirect:alteracaoSessaoPecaFuncionarios";
 		}
+		
 		sessaoDao.alterarSessao(umaSessao);
 		return "cadastroRestritoSucesso";
 	}
