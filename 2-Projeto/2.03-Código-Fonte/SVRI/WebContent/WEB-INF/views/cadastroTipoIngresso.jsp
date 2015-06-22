@@ -13,6 +13,7 @@
 <script type="text/javascript" src="resources/jquery/jquery-ui.js"></script>
 <link type="/text/css" href="resources/css/formatacaoPagina.css" rel="stylesheet" />
 <link type="/text/css" href="resources/css/rodapeFuncionarios.css" rel="stylesheet" />
+<script type="text/javascript" src="resources/js/validaCadastroTipoIngresso.js"></script>
 
 <title>Cadastro de Tipo de Ingresso</title>
 
@@ -24,10 +25,11 @@
 	
 	<form class = pagina action = "cadastrarTipoIngressoFuncionarios" method="post">
 		<form:errors path="tipoIngresso.nome" /><br>
-		Nome do tipo de ingresso <br><input type = "text" name = "nome"><br>
+		Nome do tipo de ingresso <br><input type = "text" name = "nome" id="nome"><br>
 		<form:errors path="tipoIngresso.preco" /><br>
-		Preco <br><input type = "text" name = "preco"><br>
-		<br><br><button type="submit" class="btn btn-default">Enviar </button>
+		Preco <br><input type = "text" name = "preco" id="preco"><br>
+		<br><br><button type="submit" class="btn btn-default" id="botaoEnviarCadastroTipoIngresso"
+			onClick="return validaCadastroTipoIngresso()">Enviar </button>
 	</form>
 	
 	<div id="wrap">
