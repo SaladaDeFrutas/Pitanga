@@ -17,6 +17,7 @@
  src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.5/js/bootstrap-select.min.js"></script>
 <link type="/text/css" href="resources/css/formatacaoPagina.css" rel="stylesheet" />
 <link type="/text/css" href="resources/css/rodapeFuncionarios.css" rel="stylesheet" />
+<script type="text/javascript" src="resources/js/validaCadastroFilme.js"></script>
 <title>Cadastrando Filmes</title>
 <style> 
 	d{right: 0px;}
@@ -69,25 +70,7 @@
 		
 		<form:errors path="filme.dataEstreia" /><br>
 		Data de Estreia: <br>
-		<div class="container">
-		    <div class="row">
-		        <div class='col-sm-6'>
-		            <div class="form-group">
-		                <div class='input-group date' id='dataEstreia'>
-		                    <input type='text' class="form-control" name="dataEstreia" value="11/11/1111" />
-		                    <span class="input-group-addon">
-		                        <span class="glyphicon glyphicon-calendar"></span>
-		                    </span>
-		                </div>
-		            </div>
-		        </div>
-		        <script type="text/javascript">
-		            $(function () {  
-		                $('#dataEstreia').datetimepicker();
-		            });
-		        </script>
-		    </div>
-		</div>
+		 <input type="text" name="dataEstreia" id="dataEstreia" value="11/11/1111"/>
 		<br>
 		
 		<form:errors path="filme.legendado" /><br>
@@ -104,7 +87,8 @@
 		<form:errors path="filme.produtora" /><br>
 		Produtora:<br><input type = "text" name = "produtora"><br>
 		
-		<br><br><button type="submit" class="btn btn-default">Enviar </button>
+		<br><br><button type="submit" class="btn btn-default"
+		onClick="return validaCadastroFilme()">Enviar </button>
 	</form>
 
 	<div id="wrap">
