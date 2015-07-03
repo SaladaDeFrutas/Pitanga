@@ -17,6 +17,8 @@
  src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.5/js/bootstrap-select.min.js"></script>
 <link type="/text/css" href="resources/css/formatacaoPagina.css" rel="stylesheet" />
 <link type="/text/css" href="resources/css/rodapeFuncionarios.css" rel="stylesheet" />
+<script type="text/javascript" src="resources/js/validaCadastroPeca.js"></script>
+
 <title>Cadastrando Peças</title>
 <style> 
 	d{right: 0px;}
@@ -37,7 +39,7 @@
       	<input type="text" id="idioma" name="idioma"> <br>
 		
 		<form:errors path="peca.duracao" /><br>
-		Duração (em minutos):<br><input type = "text" name = "duracao"><br>
+		Duração (em minutos):<br><input type = "text" name = "duracao" id="duracao"><br>
 		
 		<form:errors path="peca.sinopse" /><br>
 		<br><label for="sinopse">Sinopse:</label>
@@ -70,29 +72,14 @@
 		
 		
 		Data de Estreia: <br>
-		<div class="container">
-		    <div class="row">
-		        <div class='col-sm-6'>
-		            <div class="form-group">
-		                <div class='input-group date' id='dataEstreia'>
-		                    <form:errors path="peca.dataEstreia" /><br>
-		                    <jsTag:campoData id="dataEstreia" value="11/11/1111"/>
-		                </div>
-		            </div>
-		        </div>
-		        <script type="text/javascript">
-		            $(function () {  
-		                $('#dataEstreia').datetimepicker();
-		            });
-		        </script>
-		    </div>
-		</div>
+		 <input type="text" name="dataEstreia" id="dataEstreia" value="11/11/1111"/>
 		<br>
 		
 		<form:errors path="peca.diretor" /><br>
-		Diretor:<br><input type = "text" name = "diretor"><br>	
+		Diretor:<br><input type = "text" name = "diretor" id="diretor"><br>	
 		
-		<br><br><button type="submit" class="btn btn-default">Enviar </button>
+		<br><br><button type="submit" class="btn btn-default"
+		onClick="return validaCadastroPeca()">Enviar </button>
 	</form>
 
 	<div id="wrap">

@@ -30,15 +30,15 @@
 	
 	<form class = pagina action = "cadastrarFilmeFuncionarios" method="post">
 		<form:errors path="filme.titulo" /><br>
-		<label for="usr">Título:</label>
-      	<input type="text" id="titulo" name="titulo">
+		<label for="usr">Título:</label><br>
+      	<input type="text" id="titulo" name="titulo"> <br>
 		
 		<form:errors path="filme.idioma" /><br>
-		 <label for="usr">Idioma:</label>
-      	<input type="text" id="idioma" name="idioma">
+		 <label for="usr">Idioma:</label><br>
+      	<input type="text" id="idioma" name="idioma"> <br>
 		
 		<form:errors path="filme.duracao" /><br>
-		Duração (em minutos):<br><input type = "text" name = "duracao"><br>
+		Duração (em minutos):<br><input type = "text" name = "duracao" id="duracao"><br>
 		
 		<form:errors path="filme.sinopse" /><br>
 		<br><label for="sinopse">Sinopse:</label>
@@ -82,10 +82,11 @@
 		<br>
 		
 		<form:errors path="filme.modoDeExibicao" /><br>
-		Modo de Exibição:<br><input type = "text" name = "modoDeExibicao"><br>
+		Modo de Exibição:<br><input type = "text" name = "modoDeExibicao" 
+		id="modoDeExibicao"><br>
 		
 		<form:errors path="filme.produtora" /><br>
-		Produtora:<br><input type = "text" name = "produtora"><br>
+		Produtora:<br><input type = "text" name = "produtora" id="produtora"><br>
 		
 		<br><br><button type="submit" class="btn btn-default"
 		onClick="return validaCadastroFilme()">Enviar </button>

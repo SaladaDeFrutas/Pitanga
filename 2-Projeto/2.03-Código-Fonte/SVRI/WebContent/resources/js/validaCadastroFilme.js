@@ -11,14 +11,14 @@ function validaCadastroFilme(){
     var data = document.getElementById('dataEstreia').value
     var duracao = document.getElementById('duracao').value
     
-    var pattLetrasNumeros = new RegExp("^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ0-9\- ]{2,60}$")
+    var pattLetrasNumeros = new RegExp("^[\-A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ0-9 ]{2,60}$")
     
-    var pattLetras = new RegExp("^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ\- ]{2,60}$")
+    var pattLetras = new RegExp("^[\-A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]{2,60}$")
     
     var pattDuracao = new RegExp("^[0-9]+$")
     
     if(pattLetrasNumeros.test( titulo ) == false) {
-       alert('O titulo deve conter apenas letras maiusculas, minusculas, hifen e numeros, sem caracteres especiais.');
+       alert("O titulo deve conter apenas letras maiusculas, minusculas, hifen e numeros, sem caracteres especiais.");
        return false;
     }	
     
@@ -28,12 +28,12 @@ function validaCadastroFilme(){
      }
     
     if(pattLetrasNumeros.test( modoDeExibicao ) == false) {
-        alert('O modo de exibição deve conter apenas letras maiusculas, minusculas, hifen e numeros, sem caracteres especiais.');
+        alert('O modo de exibicao deve conter apenas letras maiusculas, minusculas, hifen e numeros, sem caracteres especiais.');
         return false;
      }
     
     if(pattLetrasNumeros.test( produtora ) == false) {
-        alert('A descrição da produtora deve conter apenas letras maiusculas, minusculas, hifen e numeros, sem caracteres especiais.');
+        alert('A descricao da produtora deve conter apenas letras maiusculas, minusculas, hifen e numeros, sem caracteres especiais.');
         return false;
      }
     
@@ -42,7 +42,7 @@ function validaCadastroFilme(){
     	return false
     }
     
-    return (true && validaData(data));
+    return validaData(data);
  }
 
 function validaData(data){
