@@ -1,5 +1,5 @@
 
-![Pitanga](https://s14.postimg.org/r9ox4cam9/pitangaicon.png) Pitanga
+![Pitanga](https://s4.postimg.org/rcys06dcd/pitangaicon.png) Pitanga
 =================================================================================================
 
 Sistema de venda e reserva de ingresso de cinema/teatro
