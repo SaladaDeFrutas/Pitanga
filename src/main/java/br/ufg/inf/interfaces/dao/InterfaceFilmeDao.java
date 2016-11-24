@@ -1,11 +1,8 @@
 package br.ufg.inf.interfaces.dao;
 
 import br.ufg.inf.entidades.Filme;
-import org.springframework.stereotype.Repository;
-
 import java.util.List;
 
-@Repository
 public interface InterfaceFilmeDao {
 
 	 public void adicionarFilme(Filme umFilme);

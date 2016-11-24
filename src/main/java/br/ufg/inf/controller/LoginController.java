@@ -1,28 +1,24 @@
 package br.ufg.inf.controller;
 
-import javax.servlet.http.HttpSession;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-
 import br.ufg.inf.dao.ClienteDao;
 import br.ufg.inf.dao.FuncionarioDao;
 import br.ufg.inf.entidades.Cliente;
 import br.ufg.inf.entidades.Funcionario;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import javax.servlet.http.HttpSession;
 
 @Controller
 public class LoginController {
 
 
 	@Autowired
-	@Qualifier("ClienteDao")
 	private ClienteDao clienteDao;
 
 	@Autowired
-	@Qualifier("FuncionarioDao")
 	private FuncionarioDao funcionarioDao;
 	
 	/**

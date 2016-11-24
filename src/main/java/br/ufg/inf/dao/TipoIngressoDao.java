@@ -2,12 +2,13 @@ package br.ufg.inf.dao;
 
 import br.ufg.inf.entidades.TipoIngresso;
 import br.ufg.inf.interfaces.dao.InterfaceTipoIngressoDao;
+import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.util.List;
 
-
+@Repository
 public class TipoIngressoDao implements InterfaceTipoIngressoDao {
 	@PersistenceContext
 	private EntityManager manager;

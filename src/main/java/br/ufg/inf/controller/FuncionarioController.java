@@ -20,29 +20,23 @@ import java.util.List;
 @Transactional
 @Controller
 public class FuncionarioController {
+
 	@Autowired
-	@Qualifier("FilmeDao")
 	private InterfaceFilmeDao filmeDao;
-	//private final SessaoDao sessaoDao;
-	
+
 	@Autowired
-	@Qualifier("FuncionarioDao")
 	private InterfaceFuncionarioDao funcionarioDao;	
 	
 	@Autowired
-	@Qualifier("PecaDao")
 	private InterfacePecaDao pecaDao;
 	
 	@Autowired
-	@Qualifier("SessaoDao")
 	private InterfaceSessaoDao sessaoDao;
 	
 	@Autowired
-	@Qualifier("TipoIngressoDao")
 	private InterfaceTipoIngressoDao tipoIngressoDao;
 	
 	@Autowired
-	@Qualifier("SalaDao")
 	private InterfaceSalaDao salaDao;
 	
 	

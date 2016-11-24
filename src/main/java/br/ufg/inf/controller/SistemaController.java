@@ -7,7 +7,6 @@ import br.ufg.inf.interfaces.dao.*;
 import br.ufg.inf.servicos.*;
 import com.lowagie.text.DocumentException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
@@ -38,37 +37,35 @@ public class SistemaController {
 	 * injecao de dependencia pelo Spring
 	 */
 	@Autowired
-	@Qualifier("FilmeDao")
 	private InterfaceFilmeDao filmeDao;
 	// private final SessaoDao sessaoDao;
 
 	@Autowired
-	@Qualifier("ClienteDao")
 	private InterfaceClienteDao clienteDao;
 
 	@Autowired
-	@Qualifier("PecaDao")
 	private InterfacePecaDao pecaDao;
 
 	@Autowired
-	@Qualifier("SessaoDao")
 	private InterfaceSessaoDao sessaoDao;
 
 	@Autowired
-	@Qualifier("TipoIngressoDao")
 	private InterfaceTipoIngressoDao tipoIngressoDao;
 
 	@Autowired
-	@Qualifier("SalaDao")
 	private InterfaceSalaDao salaDao;
 
 	@Autowired
-	@Qualifier("RegistroCompraDao")
 	private InterfaceRegistroCompraDao registroCompraDao;
 
 	@Autowired
-	@Qualifier("IngressoDao")
 	private InterfaceIngressoDao ingressoDao;
+
+
+    @RequestMapping("/")
+    public String index(){
+        return "index";
+    }
 
 	@RequestMapping("/mostrarFilme")
 	public String mostrarFilme(Filme umFilme, Model model) {
@@ -100,7 +97,7 @@ public class SistemaController {
 	}
 
 	/**
-	 * 
+	 *
 	 * @param model
 	 *            adiciona atributos para a pagina JSP que sera retornada
 	 * @return pagina JSP de atracoes
@@ -116,7 +113,7 @@ public class SistemaController {
 	}
 
 	/**
-	 * 
+	 *
 	 * @param umFilme
 	 *            ID e titulo do filme
 	 * @param model
@@ -140,7 +137,7 @@ public class SistemaController {
 	}
 
 	/**
-	 * 
+	 *
 	 * @param umaSessao
 	 *            recebe o ID da sessao
 	 * @param model
@@ -158,7 +155,7 @@ public class SistemaController {
 	}
 
 	/**
-	 * 
+	 *
 	 * @param umaSessao
 	 *            o ID da sessao
 	 * @param model
@@ -215,7 +212,7 @@ public class SistemaController {
 	}
 
 	/**
-	 * 
+	 *
 	 * @param assentos
 	 *            assentos escolhidos
 	 * @param quantidadeIngresso
@@ -312,7 +309,7 @@ public class SistemaController {
 	}
 
 	/**
-	 * 
+	 *
 	 * @return caso a requisicao n encontre pagina retorna uma pagina de 404
 	 *         para o usuario
 	 */
@@ -323,7 +320,7 @@ public class SistemaController {
 
 	/**
 	 * funcao chamada pelo pagseguro apos realizacao da compra
-	 * 
+	 *
 	 * @param codigoTransacao
 	 * @return pagina de agradecimento apos a efetuacao da compra
 	 */
@@ -350,7 +347,7 @@ public class SistemaController {
 	/**
 	 * metodo de entrada chamado pela API do pagseguro para notificar mudancas
 	 * no status das transacoes dos clientes
-	 * 
+	 *
 	 * @param notificationCode
 	 *            codigo da notificacao do pagseguro
 	 * @param notificationType
@@ -367,7 +364,7 @@ public class SistemaController {
 		/**
 		 * O padrao da notificacao enviada pelo pagseguro para a nossa aplicacao
 		 * eh o seguinte:
-		 * 
+		 *
 		 * POST http://lojamodelo.com.br/notificacao HTTP/1.1
 		 * Host:pagseguro.uol.com.br Content-Length:85
 		 * Content-Type:application/x-www-form-urlencoded
@@ -405,7 +402,7 @@ public class SistemaController {
 
 	/**
 	 * chamado quando o cliente consulta as compras realizadas por ele
-	 * 
+	 *
 	 * @param sessaoUsuario
 	 *            dados da sessao corrente do usuario
 	 * @param model
@@ -427,7 +424,7 @@ public class SistemaController {
 	}
 
 	/**
-	 * 
+	 *
 	 * @param registroCompra
 	 *            registro da compra do cliente
 	 * @param model
@@ -458,19 +455,19 @@ public class SistemaController {
 	public void gerarComprovantePdf(RegistroCompra registroCompra, HttpServletResponse response) {
 		GeraPDF geradorPDF = new GeraPDF();
 		registroCompra.getIdRegistroCompra();
-		
+
 		registroCompra = registroCompraDao.buscarPorId(
 				registroCompra.getIdRegistroCompra());
-		
+
 		/**
 		 * itens a colocar no pdf
 		 */
 		// id da compra
 		geradorPDF.concatenaStringTexto("ID da Compra: "+ registroCompra.getIdRegistroCompra()+"\n");
-		
+
 		// data da compra
 		geradorPDF.concatenaStringTexto("Data: "+ new SimpleDateFormat("dd/MM/yy HH:mm").format(registroCompra.getDataCompra().getTime())+"\n");
-		
+
 		String status = "";
 		if(!registroCompra.isPagamentoAprovado())
 			status = "Não concluído";
@@ -478,25 +475,25 @@ public class SistemaController {
 			status = "Concluído";
 		//status da compra true ou false pro pagamento
 		geradorPDF.concatenaStringTexto("Status da compra: "+ status +"\n");
-		
+
 		// nome do cliente
 		Cliente umCliente = clienteDao.buscarPorId(registroCompra.getUmCliente().getEmail());
 		geradorPDF.concatenaStringTexto("Nome do Cliente: "+ umCliente.getNome()+"\n");
 		geradorPDF.concatenaStringTexto("--------------------------------------------------------------"
 				+ "----------------------------------------------------\n");
-		geradorPDF.concatenaStringTexto("\nIngressos escolhidos:\n"); 
-		
+		geradorPDF.concatenaStringTexto("\nIngressos escolhidos:\n");
+
 		//ingressos da compra
 		List<Ingresso> ingressosCompra = ingressoDao.buscaPorRegistroCompra(registroCompra);
 		for (Ingresso ingresso : ingressosCompra) {
 			// tipo do ingresso
 			geradorPDF.concatenaStringTexto("Tipo: "+ ingresso.getUmTipoIngresso().getNome()+"\n");
-			
+
 			// sessao com data de exibicao
 			Sessao umaSessao = sessaoDao.buscarPorId(ingresso.getUmaSessao().getIdSessao());
 			geradorPDF.concatenaStringTexto("Data de Exibição: "+ new SimpleDateFormat("dd/MM/yy HH:mm").format(
 											umaSessao.getData().getTime()) + "\n");
-			
+
 			int idAtracao = umaSessao.getAtracao().getIdAtracao();
 			Filme filme = filmeDao.buscarPorId(idAtracao);
 			if (filme != null)
@@ -507,22 +504,22 @@ public class SistemaController {
 					Peca peca = pecaDao.buscarPorId(idAtracao);
 					geradorPDF.concatenaStringTexto("Peça: "+ peca.getTitulo()+"\n");
 			}
-			
+
 			// id da sala
 			geradorPDF.concatenaStringTexto("Sala: "+ umaSessao.getIdSessao()+"\n");
-			
+
 			// fileira e coluna da sala pro ingresso
 			geradorPDF.concatenaStringTexto("Assento: "+ (ingresso.getUmAssento().getFileira()+1) + (ingresso.getUmAssento().getColuna()+1)+ "\n\n");
 		}
 		//retorna o pdf completo
 		try {
 		     response.getOutputStream().write(geradorPDF.gerarPDFComprovante().toByteArray());
-		      response.setContentType("application/pdf");      
+		      response.setContentType("application/pdf");
 		      response.setHeader("Content-Disposition", "attachment; filename=ingresso"+registroCompra.getIdRegistroCompra()+".pdf");
 		      response.flushBuffer();
 		    } catch (IOException | DocumentException ex) {
 		      throw new RuntimeException("IOError writing file to output stream");
 		    }
-		
+
 	}
 }
