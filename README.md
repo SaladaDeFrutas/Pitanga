@@ -3,3 +3,7 @@
 =================================================================================================
 
 Sistema de venda e reserva de ingresso de cinema/teatro
+
+# Sonar
+
+Análises com o SonarQube são feitas utilizando o [repositório público do Sonar](https://sonarqube.com/dashboard?id=br.ufg.inf.pitanga%3APitanga)
