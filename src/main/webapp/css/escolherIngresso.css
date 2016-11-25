@@ -1,0 +1,32 @@
+@CHARSET "ISO-8859-1";
+
+.quantidadeIngresso {
+    position: relative;
+    padding-left: 50%;
+    color: blue;
+}
+
+.quantidadeIngressosTexto {
+    position: relative;
+    padding-left: 40px;
+}
+
+.tipoIngressos {
+    position: relative;
+    padding-left: 50px;
+}
+
+.botaoEnviar {
+    position: relative;
+    padding-left: 10px;
+}
+
+.posicaoCadeira {
+    position: relative;
+    padding-left: 10px;
+}
+
+.posicaoSala {
+    position: relative;
+    padding-left: 20%;
+}
