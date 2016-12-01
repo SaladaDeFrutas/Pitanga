@@ -2,10 +2,27 @@ language: java
 jdk:
 - oraclejdk8
 addons:
- sonarqube: true
+  sonarqube: true
+sonarqube:
+  branches:
+  - master
+  - issue_45
+  - develop
+cache:
+  directories:
+  - $HOME/.m2/repository
+  - $HOME/.sonar
 script:
-- mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar -Dsonar.login=$SONAR_TOKEN
-- mvn package -B -e
+- mvn clean -e -B
+- export SONARQUBE_SKIPPED=false
+- mvn -e -B org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar
+  -Dsonar.login=$SONAR_TOKEN
+  -Dsonar.branch=$TRAVIS_BRANCH
+  -Dsonar.github.oauth=$GITHUB_OAUTH
+  -Dsonar.github.pullrequest=$TRAVIS_PULL_REQUEST_BRANCH
+- echo "PRB:$TRAVIS_PULL_REQUEST_BRANCH PR:$TRAVIS_PULL_REQUEST"
+- mvn package -e -B
 env:
   global:
-    secure: LJ9xR29ve3yUVwqahZGPePVtpf7hafxEKRrONuolGEUnG1egsx2Hny8pVaWrWwBV0TlvDtroytWMZw/e7fAuyd3g407E4LlXzSCJBaWgeaTQlPgp3vpEOUlixQTzy05fNWfbkC5pPJKJsWU53X3OIpQDDiqjNjXTbloZ1J6sqV8lBNHSMLnTwzjbeOQS/uQhzdk8iYeXgh7q4VTSpcOO6J7kIZgCIkKgBfo1CcVgzvIdLJwdCXxdoMcqeiI8VoneriZzrVLXxW27Q53jOd/+UupykdGWy5ebw2+WSN+P07OoTakww/6BgcBuwHn2AfvmfyKdHLp8HOfz4x/lGs77uvr8D8xtGj5IkNsx3rLJHLRVWfLFnnvGXG4SHOPtfAjhlYmnnkpopFtqUHz+5NuJKEa1NSSszpAQQfTm9Ofuax5C7lZdQg4/Yxn/2rcKaqxiw0Q6KTw5O5aNbmmLh+rwNOib+WFhFjr/OMu3crHkM4tJXlnJdMSprrz13vWOLkvcf6W+ZYUMWj9qnNRYv7LojLyvIAjC8Ef6WuyHQ8lODAaEn8mlaO96Y9JK2GCVlnAamYMnfDb40h0nuKpoHJZDXMyXVUWLfPCnLA192se9KhQwXFopfTv4547EJrajugWumsYX61i5zjWFyYphojB7mcSrr1nC6mUiRc0k05b50RU=
+  - secure: LJ9xR29ve3yUVwqahZGPePVtpf7hafxEKRrONuolGEUnG1egsx2Hny8pVaWrWwBV0TlvDtroytWMZw/e7fAuyd3g407E4LlXzSCJBaWgeaTQlPgp3vpEOUlixQTzy05fNWfbkC5pPJKJsWU53X3OIpQDDiqjNjXTbloZ1J6sqV8lBNHSMLnTwzjbeOQS/uQhzdk8iYeXgh7q4VTSpcOO6J7kIZgCIkKgBfo1CcVgzvIdLJwdCXxdoMcqeiI8VoneriZzrVLXxW27Q53jOd/+UupykdGWy5ebw2+WSN+P07OoTakww/6BgcBuwHn2AfvmfyKdHLp8HOfz4x/lGs77uvr8D8xtGj5IkNsx3rLJHLRVWfLFnnvGXG4SHOPtfAjhlYmnnkpopFtqUHz+5NuJKEa1NSSszpAQQfTm9Ofuax5C7lZdQg4/Yxn/2rcKaqxiw0Q6KTw5O5aNbmmLh+rwNOib+WFhFjr/OMu3crHkM4tJXlnJdMSprrz13vWOLkvcf6W+ZYUMWj9qnNRYv7LojLyvIAjC8Ef6WuyHQ8lODAaEn8mlaO96Y9JK2GCVlnAamYMnfDb40h0nuKpoHJZDXMyXVUWLfPCnLA192se9KhQwXFopfTv4547EJrajugWumsYX61i5zjWFyYphojB7mcSrr1nC6mUiRc0k05b50RU=
+  - secure: g0PX9HDUVgz25k3WJ2J6HPQ9SFoZ11kZkrY64V/k/sQtbQP0fct8w2La6guQNHAnUN2bYvFHzt8c+7onzmP0LjBr2GM5dBxgiHVQcIO2guotud6VbFsMYe1+Z8wqfCoHh3dd3qLJTzRQkuJaX7804bEG1ibWTuTSgmsTQjbXPoTP9mUcOSbudjR96Up2OuGlL4ccp3wHNxPT99k31/vBsMksMfzlFEdR5uDOfGcGBcHlMHBTUFnpVFrWv5PQ8WB8WTPI2aS06gwTT0aicPqlqVI5Mym65pujYZxGxo1rEeZBIwUnA1SgfGnww2AmEqo36/lhPcTKfzSzRvvE0CW7m5LvEsIZoZ6iw1OaLuA6FrO9wOdVg5ZOpSAka22BxEtu+TosCQjUZRSIZhD2L0cha7vBKG2GPdjGC/QrXf0VxCc46kqVFzo6quWWWe6Ne2ffgdNXEdSmqovj6Q+OpsKSnLXHUub7LsPV2M+woGbLEsn1UXtMXL3pvO0aASNqyY2pDiCeFJ4ZO8LV2TFk7keGhVyoLbPwzu2nk1d0WHOnK8/TsWcVjikQuHK3w8yhlT/4K78/FzYCxSxOhUnQSFBb5mB/HSeSc9pMgPxCWbsPei7Q7Nv9PD9Ee+g5f41P0tclCNN+o0CUuWJJyoUYpZlbv868cdsi3TJvcpQbW4L/bR8=
