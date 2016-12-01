@@ -41,6 +41,10 @@ public abstract class Atracao {
     @NotNull(message = "A classificacao indicativa deve ser preenchida.")
     private int classificacaoIndicativa;
 
+    public Object somethingToBeDone(){
+        return null;
+    }
+
     public int getIdAtracao() {
         return idAtracao;
     }
