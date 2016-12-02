@@ -15,16 +15,16 @@
     <c:when test="${not empty registrosCompras}">
         <h3>Compras de ${cliente.nome}:</h3>
 
-        <c:forEach items="${registrosCompras}" var="registroCompra">
-            <b>Código da Compra:</b> ${registroCompra.idRegistroCompra} <br>
-            <b>Data da Compra: </b><fmt:formatDate value="${registroCompra.dataCompra.time}"
+        <c:forEach items="${registrosCompras}" var="compra">
+            <b>Código da Compra:</b> ${compra.id} <br>
+            <b>Data da Compra: </b><fmt:formatDate value="${compra.dataCompra.time}"
                                                    pattern="dd/MM HH:mm"/> <br>
 
-            <b>Valor:</b>${registroCompra.valor} <br>
+            <b>Valor:</b>${compra.valor} <br>
 
             <form action="mostrarInformacoesCompra" method="post">
                 <button type="submit" name="idRegistroCompra"
-                        value="${registroCompra.idRegistroCompra}"
+                        value="${compra.id}"
                         class="btn btn-default">Visualizar Compra
                 </button>
             </form>

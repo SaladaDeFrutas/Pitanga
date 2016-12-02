@@ -7,11 +7,11 @@ import java.util.Calendar;
 
 @Entity
 @Table(name = "registroscompra")
-public class RegistroCompra {
+public class Compra {
 
     @Id
     @GeneratedValue
-    private int idRegistroCompra;
+    private int id;
     @DateTimeFormat(pattern = "dd/MM/yyyy HH:mm")
     private Calendar dataCompra;
     @OneToOne(cascade = CascadeType.ALL)
@@ -22,12 +22,12 @@ public class RegistroCompra {
 
     private String codigoTransacao;
 
-    public int getIdRegistroCompra() {
-        return idRegistroCompra;
+    public int getId() {
+        return id;
     }
 
-    public void setIdRegistroCompra(int idRegistroCompra) {
-        this.idRegistroCompra = idRegistroCompra;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public Calendar getDataCompra() {

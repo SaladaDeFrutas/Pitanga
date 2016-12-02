@@ -23,14 +23,14 @@ public class Ingresso {
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "idRegistroCompra")
-    private RegistroCompra registroCompra;
+    private Compra compra;
 
-    public RegistroCompra getRegistroCompra() {
-        return registroCompra;
+    public Compra getCompra() {
+        return compra;
     }
 
-    public void setRegistroCompra(RegistroCompra registroCompra) {
-        this.registroCompra = registroCompra;
+    public void setCompra(Compra compra) {
+        this.compra = compra;
     }
 
     public int getId() {

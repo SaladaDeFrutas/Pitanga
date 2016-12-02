@@ -56,7 +56,7 @@ public class SistemaController {
     private InterfaceSalaDao salaDao;
 
     @Autowired
-    private InterfaceRegistroCompraDao registroCompraDao;
+    private InterfaceCompraDao compraDao;
 
     @Autowired
     private InterfaceIngressoDao ingressoDao;
@@ -249,12 +249,12 @@ public class SistemaController {
             .getAttribute("usuarioLogado");
         umCliente = clienteDao.buscarPorId(umCliente.getEmail());
         Calendar dataCompra = Calendar.getInstance();
-        RegistroCompra novoRegistroCompra = new RegistroCompra();
-        novoRegistroCompra.setDataCompra(dataCompra);
-        novoRegistroCompra.setPagamentoAprovado(false);
-        novoRegistroCompra.setUmCliente(umCliente);
-        novoRegistroCompra.setValor(0);
-        registroCompraDao.adicionarRegistroCompra(novoRegistroCompra);
+        Compra novoCompra = new Compra();
+        novoCompra.setDataCompra(dataCompra);
+        novoCompra.setPagamentoAprovado(false);
+        novoCompra.setUmCliente(umCliente);
+        novoCompra.setValor(0);
+        compraDao.adicionarCompra(novoCompra);
 
         ArrayList<Ingresso> ingressos = new ArrayList<>();
         ArrayList<TipoIngresso> tiposIngressos = new ArrayList<>();
@@ -275,18 +275,18 @@ public class SistemaController {
             umIngresso.setUmAssento(umAssento);
             umIngresso.setUmTipoIngresso(tiposIngressos.get(i));
             umIngresso.setUmCliente(umCliente);
-            umIngresso.setRegistroCompra(novoRegistroCompra);
+            umIngresso.setCompra(novoCompra);
             ingressoDao.adicionarIngresso(umIngresso);
             ingressos.add(umIngresso);
 
         }
-        Compra novaCompra = new Compra();
-        novoRegistroCompra = novaCompra.calcularTotal(ingressos,
-            novoRegistroCompra);
-        registroCompraDao.alterarRegistroCompra(novoRegistroCompra);
+        CompraServico novaCompraServico = new CompraServico();
+        novoCompra = novaCompraServico.calcularTotal(ingressos,
+            novoCompra);
+        compraDao.alterarCompra(novoCompra);
 
         return new ModelAndView("redirect:"
-            + novaCompra.efetuarPagamento(ingressos, novoRegistroCompra,
+            + novaCompraServico.efetuarPagamento(ingressos, novoCompra,
             umCliente));
 
     }
@@ -313,15 +313,15 @@ public class SistemaController {
             .consultarTransacao(codigoTransacao);
 
         // busca no BD o registro compra pelo id
-        // reference eh o idRegistroCompra do RegistroCompra relacionado
-        RegistroCompra registroCompra = registroCompraDao.buscarPorId(Integer
+        // reference eh o idRegistroCompra do Compra relacionado
+        Compra compra = compraDao.buscarPorId(Integer
             .parseInt(transacaoCompra.getReference()));
 
         // coloca o codigo da transacaono objeto registro compra
-        registroCompra.setCodigoTransacao(codigoTransacao);
+        compra.setCodigoTransacao(codigoTransacao);
 
         // atualiza no BD o registro da compra
-        registroCompraDao.alterarRegistroCompra(registroCompra);
+        compraDao.alterarCompra(compra);
 
         return "obrigado";
     }
@@ -356,11 +356,11 @@ public class SistemaController {
         Transaction respostaConsultaNotificacaoCheckout = novaNotificacao
             .receberNotificacaoCheckout(notificationCode);
 
-        RegistroCompra registroCompra = registroCompraDao.buscarPorId(Integer
+        Compra compra = compraDao.buscarPorId(Integer
             .parseInt(respostaConsultaNotificacaoCheckout.getReference()));
 
         // colocando o codigo da transacao no registro decompra
-        registroCompra.setCodigoTransacao(respostaConsultaNotificacaoCheckout
+        compra.setCodigoTransacao(respostaConsultaNotificacaoCheckout
             .getCode());
 
         // pegando o status da transacao
@@ -372,9 +372,9 @@ public class SistemaController {
                 .intValue());
 
         // colocando no registro de compra se o pagamento foi aprovado
-        registroCompra.setPagamentoAprovado(pagamentoAprovado);
+        compra.setPagamentoAprovado(pagamentoAprovado);
 
-        registroCompraDao.alterarRegistroCompra(registroCompra);
+        compraDao.alterarCompra(compra);
         // usar o respostaConsultaNotificacaoCheckout para atualizar
         // corretamente o registrocompra
 
@@ -392,7 +392,7 @@ public class SistemaController {
     public String retornarCompras(HttpSession sessaoUsuario, Model model) {
         Cliente cliente = (Cliente) sessaoUsuario.getAttribute("usuarioLogado");
         cliente = clienteDao.buscarPorId(cliente.getEmail());
-        List<RegistroCompra> registrosCompras = registroCompraDao
+        List<Compra> registrosCompras = compraDao
             .buscaPorCliente(cliente);
 
         model.addAttribute("registrosCompras", registrosCompras);
@@ -402,24 +402,24 @@ public class SistemaController {
     }
 
     /**
-     * @param registroCompra registro da compra do cliente
+     * @param compra registro da compra do cliente
      * @param model          adiciona na pagina de retorno o registro, os ingressos e a
      *                       transacao do pagseguro
      * @return pagina jsp com as informacoes da compra
      */
     @RequestMapping("mostrarInformacoesCompra")
-    public String mostrarInformacoesCompra(RegistroCompra registroCompra,
+    public String mostrarInformacoesCompra(Compra compra,
                                            Model model) {
-        registroCompra = registroCompraDao.buscarPorId(registroCompra
-            .getIdRegistroCompra());
+        compra = compraDao.buscarPorId(compra
+            .getId());
 
         Transaction transacaoCompra = new PagamentoPagseguro()
-            .consultarTransacao(registroCompra.getCodigoTransacao());
+            .consultarTransacao(compra.getCodigoTransacao());
 
         List<Ingresso> ingressosCompra = ingressoDao
-            .buscaPorRegistroCompra(registroCompra);
+            .buscaPorRegistroCompra(compra);
 
-        model.addAttribute("registroCompra", registroCompra);
+        model.addAttribute("registroCompra", compra);
         model.addAttribute("transacaoCompra", transacaoCompra);
         model.addAttribute("ingressosCompra", ingressosCompra);
 
@@ -427,24 +427,24 @@ public class SistemaController {
     }
 
     @RequestMapping("gerarComprovante")
-    public void gerarComprovantePdf(RegistroCompra registroCompra, HttpServletResponse response) {
+    public void gerarComprovantePdf(Compra compra, HttpServletResponse response) {
         GeraPDF geradorPDF = new GeraPDF();
-        registroCompra.getIdRegistroCompra();
+        compra.getId();
 
-        registroCompra = registroCompraDao.buscarPorId(
-            registroCompra.getIdRegistroCompra());
+        compra = compraDao.buscarPorId(
+            compra.getId());
 
         /**
          * itens a colocar no pdf
          */
         // id da compra
-        geradorPDF.concatenaStringTexto("ID da Compra: " + registroCompra.getIdRegistroCompra() + "\n");
+        geradorPDF.concatenaStringTexto("ID da CompraServico: " + compra.getId() + "\n");
 
         // data da compra
-        geradorPDF.concatenaStringTexto("Data: " + new SimpleDateFormat("dd/MM/yy HH:mm").format(registroCompra.getDataCompra().getTime()) + "\n");
+        geradorPDF.concatenaStringTexto("Data: " + new SimpleDateFormat("dd/MM/yy HH:mm").format(compra.getDataCompra().getTime()) + "\n");
 
         String status = "";
-        if (!registroCompra.isPagamentoAprovado())
+        if (!compra.isPagamentoAprovado())
             status = "Não concluído";
         else
             status = "Concluído";
@@ -452,14 +452,14 @@ public class SistemaController {
         geradorPDF.concatenaStringTexto("Status da compra: " + status + "\n");
 
         // nome do cliente
-        Cliente umCliente = clienteDao.buscarPorId(registroCompra.getUmCliente().getEmail());
+        Cliente umCliente = clienteDao.buscarPorId(compra.getUmCliente().getEmail());
         geradorPDF.concatenaStringTexto("Nome do Cliente: " + umCliente.getNome() + "\n");
         geradorPDF.concatenaStringTexto("--------------------------------------------------------------"
             + "----------------------------------------------------\n");
         geradorPDF.concatenaStringTexto("\nIngressos escolhidos:\n");
 
         //ingressos da compra
-        List<Ingresso> ingressosCompra = ingressoDao.buscaPorRegistroCompra(registroCompra);
+        List<Ingresso> ingressosCompra = ingressoDao.buscaPorRegistroCompra(compra);
         for (Ingresso ingresso : ingressosCompra) {
             // tipo do ingresso
             geradorPDF.concatenaStringTexto("Tipo: " + ingresso.getUmTipoIngresso().getNome() + "\n");
@@ -490,7 +490,7 @@ public class SistemaController {
         try {
             response.getOutputStream().write(geradorPDF.gerarPDFComprovante().toByteArray());
             response.setContentType("application/pdf");
-            response.setHeader("Content-Disposition", "attachment; filename=ingresso" + registroCompra.getIdRegistroCompra() + ".pdf");
+            response.setHeader("Content-Disposition", "attachment; filename=ingresso" + compra.getId() + ".pdf");
             response.flushBuffer();
         } catch (IOException | DocumentException ex) {
             throw new RuntimeException("IOError writing file to output stream");

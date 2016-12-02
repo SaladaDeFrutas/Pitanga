@@ -8,7 +8,7 @@ import br.com.uol.pagseguro.properties.PagSeguroConfig;
 import br.com.uol.pagseguro.service.TransactionSearchService;
 import br.ufg.inf.pitanga.entidades.Cliente;
 import br.ufg.inf.pitanga.entidades.Ingresso;
-import br.ufg.inf.pitanga.entidades.RegistroCompra;
+import br.ufg.inf.pitanga.entidades.Compra;
 
 import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
@@ -18,7 +18,7 @@ public class PagamentoPagseguro implements InterfacePagamento {
 
     @Override
     public String realizaPagamento(ArrayList<Ingresso> ingressos,
-                                   RegistroCompra novoRegistroCompra, Cliente cliente) {
+                                   Compra novaCompra, Cliente cliente) {
         Checkout checkout = new Checkout();
         SimpleDateFormat sDformat = new SimpleDateFormat("dd/MM/yyyy");
         //adicionar aqui cada ingresso usando o while
@@ -51,7 +51,7 @@ public class PagamentoPagseguro implements InterfacePagamento {
         checkout.setCurrency(Currency.BRL);
 
         // colocando referencia para a transacao
-        checkout.setReference(String.valueOf(novoRegistroCompra.getIdRegistroCompra()));
+        checkout.setReference(String.valueOf(novaCompra.getId()));
 
         // URL para onde o comprador sera redirecionado (GET) apos o fluxo de pagamento
         checkout.setRedirectURL("http://svrideploy-svri.rhcloud.com/SVRI/obrigado");

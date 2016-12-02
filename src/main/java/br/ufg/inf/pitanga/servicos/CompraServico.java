@@ -1,27 +1,27 @@
 package br.ufg.inf.pitanga.servicos;
 
 import br.ufg.inf.pitanga.entidades.Cliente;
+import br.ufg.inf.pitanga.entidades.Compra;
 import br.ufg.inf.pitanga.entidades.Ingresso;
-import br.ufg.inf.pitanga.entidades.RegistroCompra;
 
 import java.util.ArrayList;
 
-public class Compra {
+public class CompraServico {
     InterfacePagamento tipoPagamento;
 
-    public RegistroCompra calcularTotal(ArrayList<Ingresso> ingressos, RegistroCompra novoRegistroCompra) {
+    public Compra calcularTotal(ArrayList<Ingresso> ingressos, Compra novaCompra) {
         double valor = 0;
 
         for (Ingresso umIngresso : ingressos) {
             valor += umIngresso.getUmTipoIngresso().getPreco();
         }
-        novoRegistroCompra.setValor(valor);
-        return novoRegistroCompra;
+        novaCompra.setValor(valor);
+        return novaCompra;
     }
 
-    public String efetuarPagamento(ArrayList<Ingresso> ingressos, RegistroCompra novoRegistroCompra, Cliente cliente) {
+    public String efetuarPagamento(ArrayList<Ingresso> ingressos, Compra novaCompra, Cliente cliente) {
         tipoPagamento = new PagamentoPagseguro();
-        return tipoPagamento.realizaPagamento(ingressos, novoRegistroCompra, cliente);
+        return tipoPagamento.realizaPagamento(ingressos, novaCompra, cliente);
 
     }
 
