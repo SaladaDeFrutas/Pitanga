@@ -26,11 +26,10 @@ public class Funcionario extends Usuario {
         super();
     }
 
-    public Funcionario(TipoFuncionario nivelAcesso, int matricula, String funcao) {
+    public Funcionario(TipoFuncionario nivelAcesso, int matricula) {
         super();
-        this.nivelAcesso = nivelAcesso;
-        this.matricula = matricula;
-        this.funcao = funcao;
+        setNivelAcesso(nivelAcesso);
+        setMatricula(matricula);
     }
 
     public TipoFuncionario getNivelAcesso() {
@@ -48,13 +47,5 @@ public class Funcionario extends Usuario {
     public void setMatricula(int matricula) {
         this.matricula = matricula;
     }
-
-    public String getFuncao() {
-        return funcao;
-    }
-
-    public void setFuncao(String funcao) {
-        this.funcao = funcao;
-    }
-
+    
 }

@@ -26,8 +26,7 @@ public class FuncionarioTest {
     @Before
     public void setUp() {
         int matricula = 123456;
-        String funcao = "Gerente geral";
-        funcionarioTeste = new Funcionario(TipoFuncionario.GERENTE, matricula, funcao);
+        funcionarioTeste = new Funcionario(TipoFuncionario.GERENTE, matricula);
     }
 
     @After
@@ -60,20 +59,6 @@ public class FuncionarioTest {
         int matricula = 987654;
         funcionarioTeste.setMatricula(matricula);
         assertEquals(matricula, funcionarioTeste.getMatricula());
-    }
-
-    @Test
-    public void testGetFuncao() {
-        String resultadoEsperado = "Gerente geral";
-        String resultado = funcionarioTeste.getFuncao();
-        assertEquals(resultadoEsperado, resultado);
-    }
-
-    @Test
-    public void testSetFuncao() {
-        String funcao = "Gerente de Vendas";
-        funcionarioTeste.setFuncao(funcao);
-        assertEquals(funcao, funcionarioTeste.getFuncao());
     }
 
 }
