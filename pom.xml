@@ -11,7 +11,9 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <sonar.language>java</sonar.language>
         <sonar.host.url>https://sonarqube.com</sonar.host.url>
+        <sonar.github.pullRequest>54</sonar.github.pullRequest>
         <sonar.github.repository>SaladaDeFrutas/Pitanga</sonar.github.repository>
+        <sonar.github.oauth>f2a555d9c2014e0527ea2a15093224775a0291ab</sonar.github.oauth>
     </properties>
 
     <dependencies>
