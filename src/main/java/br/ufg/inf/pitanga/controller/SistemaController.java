@@ -80,17 +80,6 @@ public class SistemaController {
         return "informacoesFilme";
     }
 
-    // Ao usar @Valid, nao usar redirect
-    @RequestMapping("cadastrarCliente")
-    public String cadastrarCliente(@Valid Cliente umCliente,
-                                   BindingResult result) {
-        if (result.hasErrors()) {
-            return "cadastro";
-        }
-        clienteDao.adicionarCliente(umCliente);
-        return "cadastroSucesso";
-    }
-
     @RequestMapping("cadastro")
     public String retornaPaginaCadastro() {
         return "cadastro";
