@@ -19,6 +19,17 @@ public class CadastroUsuario {
     @Autowired
     private InterfaceClienteDao clienteDao;
 
+
+    /**
+     * Função que retorna o nome da página de cadastro
+     *
+     * @return nome da página de cadastro.
+     */
+    @RequestMapping("cadastro")
+    public String retornaPaginaCadastro() {
+        return "cadastro";
+    }
+
     /**
      * Função para cadastrar clientes
      *

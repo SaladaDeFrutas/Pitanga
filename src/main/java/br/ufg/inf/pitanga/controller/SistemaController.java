@@ -80,11 +80,6 @@ public class SistemaController {
         return "informacoesFilme";
     }
 
-    @RequestMapping("cadastro")
-    public String retornaPaginaCadastro() {
-        return "cadastro";
-    }
-
     /**
      * @param model adiciona atributos para a pagina JSP que sera retornada
      * @return pagina JSP de atracoes
