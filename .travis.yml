@@ -14,7 +14,7 @@ cache:
 script:
 - mvn clean -e -B
 - mvn -e -B org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar -Dsonar.login=$SONAR_TOKEN
-  -Dsonar.branch=$TRAVIS_BRANCH -Dsonar.github.oauth=$SONAR_GITHUB_TOKEN -Dsonar.github.pullrequest=$TRAVIS_PULL_REQUEST_BRANCH
+  -Dsonar.branch=$TRAVIS_PULL_REQUEST_BRANCH -Dsonar.github.oauth=$SONAR_GITHUB_TOKEN -Dsonar.github.pullrequest=$TRAVIS_PULL_REQUEST
 - echo "PRB:$TRAVIS_PULL_REQUEST_BRANCH PR:$TRAVIS_PULL_REQUEST"
 - mvn package -e -B
 env:
