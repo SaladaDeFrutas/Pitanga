@@ -73,5 +73,4 @@ public class Ingresso {
         this.umTipoIngresso = umTipoIngresso;
     }
 
-
 }

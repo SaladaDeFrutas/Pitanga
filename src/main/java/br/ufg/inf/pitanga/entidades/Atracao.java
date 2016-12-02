@@ -104,7 +104,5 @@ public abstract class Atracao {
     public void setClassificacaoIndicativa(int classificacaoIndicativa) {
         this.classificacaoIndicativa = classificacaoIndicativa;
     }
-    /**
-     *
-     */
+
 }
