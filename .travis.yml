@@ -14,6 +14,7 @@ cache:
 script:
 - mvn clean -e -B
 - export SONARQUBE_SKIPPED=false
+- executa_analise_sonar.sh
 - mvn -e -B org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar
   -Dsonar.login=$SONAR_TOKEN
   -Dsonar.branch=$TRAVIS_BRANCH
