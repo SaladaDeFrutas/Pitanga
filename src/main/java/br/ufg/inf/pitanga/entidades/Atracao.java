@@ -15,12 +15,6 @@ public abstract class Atracao {
     @GeneratedValue(strategy = GenerationType.TABLE)
     @Column(name = "idAtracao")
     private int idAtracao;
-    //Something wrong
-
-    //Something very wrong
-    private static String Something="" ;
-
-    public void oi(){}
 
     @Column(length = 100)
     @NotEmpty(message = "O titulo deve ser preenchido.")
