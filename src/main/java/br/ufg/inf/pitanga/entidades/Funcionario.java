@@ -1,5 +1,6 @@
 package br.ufg.inf.pitanga.entidades;
 
+import br.ufg.inf.pitanga.entidades.enums.TipoFuncionario;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.Column;
@@ -10,13 +11,9 @@ import javax.validation.constraints.NotNull;
 @Entity
 @Table(name = "funcionarios")
 public class Funcionario extends Usuario {
-    public static final int ADMIN = 3;
-    public static final int GERENTE = 2;
-    public static final int ATENDENTE = 4;
-    public static final int AUXILIAR = 5;
 
     @NotNull(message = "Um nivel de acesso deve ser atribuido.")
-    private int nivelAcesso;
+    private TipoFuncionario nivelAcesso;
 
     @NotNull(message = "A matricula deve ser preenchida.")
     private int matricula;
@@ -25,11 +22,22 @@ public class Funcionario extends Usuario {
     @Column(length = 30)
     private String funcao;
 
-    public int getNivelAcesso() {
+    public Funcionario() {
+        super();
+    }
+
+    public Funcionario(TipoFuncionario nivelAcesso, int matricula, String funcao) {
+        super();
+        this.nivelAcesso = nivelAcesso;
+        this.matricula = matricula;
+        this.funcao = funcao;
+    }
+
+    public TipoFuncionario getNivelAcesso() {
         return nivelAcesso;
     }
 
-    public void setNivelAcesso(int nivelAcesso) {
+    public void setNivelAcesso(TipoFuncionario nivelAcesso) {
         this.nivelAcesso = nivelAcesso;
     }
 

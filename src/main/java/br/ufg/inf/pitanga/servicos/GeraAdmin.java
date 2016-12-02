@@ -2,6 +2,7 @@ package br.ufg.inf.pitanga.servicos;
 
 import br.ufg.inf.pitanga.entidades.Cliente;
 import br.ufg.inf.pitanga.entidades.Funcionario;
+import br.ufg.inf.pitanga.entidades.enums.TipoFuncionario;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -33,7 +34,7 @@ public class GeraAdmin {
 
         umFuncionario.setFuncao("Administrador");
         umFuncionario.setMatricula(131562);
-        umFuncionario.setNivelAcesso(Funcionario.ADMIN);
+        umFuncionario.setNivelAcesso(TipoFuncionario.ADMINISTRADOR);
 
         umCliente.setDataDeNascimento(dataNasc);
         umCliente.setEmail("lucasassis413@gmail.com");
@@ -48,7 +49,7 @@ public class GeraAdmin {
         outroFuncionario.setSenha(new FuncaoHash().gerarHash("admin123"));
         outroFuncionario.setFuncao("Administrador");
         outroFuncionario.setMatricula(1);
-        outroFuncionario.setNivelAcesso(Funcionario.ADMIN);
+        outroFuncionario.setNivelAcesso(TipoFuncionario.ADMINISTRADOR);
 
 
         EntityManagerFactory factory = Persistence.

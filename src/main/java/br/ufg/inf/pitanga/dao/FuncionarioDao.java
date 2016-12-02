@@ -1,6 +1,7 @@
 package br.ufg.inf.pitanga.dao;
 
 import br.ufg.inf.pitanga.entidades.Funcionario;
+import br.ufg.inf.pitanga.entidades.enums.TipoFuncionario;
 import br.ufg.inf.pitanga.interfaces.dao.InterfaceFuncionarioDao;
 import br.ufg.inf.pitanga.servicos.FuncaoHash;
 import org.springframework.stereotype.Repository;
@@ -65,7 +66,7 @@ public class FuncionarioDao implements InterfaceFuncionarioDao {
 
         if (null != funcionarioBuscado) {
             if (funcionarioBuscado.getEmail().equals(umFuncionario.getEmail()) &&
-                funcionarioBuscado.getNivelAcesso() == Funcionario.ADMIN) {
+                funcionarioBuscado.getNivelAcesso() == TipoFuncionario.ADMINISTRADOR) {
                 if (funcionarioBuscado.getSenha().equals(new FuncaoHash().gerarHash((umFuncionario.getSenha())))) {
                     return true;
                 }
