@@ -19,6 +19,8 @@ public class GeraAdmin {
 
     public static void main(String[] args) {
 
+        String senha = "admin123";
+        
         Cliente umCliente = new Cliente();
         Funcionario umFuncionario = new Funcionario();
 
@@ -30,7 +32,7 @@ public class GeraAdmin {
         umFuncionario.setDataDeNascimento(dataNasc);
         umFuncionario.setEmail("lucasassis413@svri.com.br");
         umFuncionario.setNome("Lucas de Assis Rosa");
-        umFuncionario.setSenha(new FuncaoHash().gerarHash("admin123"));
+        umFuncionario.setSenha(new FuncaoHash().gerarHash(senha));
 
         umFuncionario.setMatricula(131562);
         umFuncionario.setNivelAcesso(TipoFuncionario.   ADMINISTRADOR);
@@ -38,14 +40,14 @@ public class GeraAdmin {
         umCliente.setDataDeNascimento(dataNasc);
         umCliente.setEmail("lucasassis413@gmail.com");
         umCliente.setNome("Lucas de Assis Rosa");
-        umCliente.setSenha(new FuncaoHash().gerarHash("admin123"));
+        umCliente.setSenha(new FuncaoHash().gerarHash(senha));
 
         Funcionario outroFuncionario = new Funcionario();
 
         outroFuncionario.setDataDeNascimento(dataNasc);
         outroFuncionario.setEmail("admin@admin.com");
         outroFuncionario.setNome("Administrador");
-        outroFuncionario.setSenha(new FuncaoHash().gerarHash("admin123"));
+        outroFuncionario.setSenha(new FuncaoHash().gerarHash(senha));
         outroFuncionario.setMatricula(1);
         outroFuncionario.setNivelAcesso(TipoFuncionario.ADMINISTRADOR);
 

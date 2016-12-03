@@ -64,16 +64,12 @@ public class FuncionarioDao implements InterfaceFuncionarioDao {
     public boolean checarFuncionarioAdmin(Funcionario umFuncionario) {
         Funcionario funcionarioBuscado = buscarPorId(umFuncionario.getEmail());
 
-        if (null != funcionarioBuscado) {
-            if (funcionarioBuscado.getEmail().equals(umFuncionario.getEmail()) &&
-                funcionarioBuscado.getNivelAcesso() == TipoFuncionario.ADMINISTRADOR) {
-                if (funcionarioBuscado.getSenha().equals(new FuncaoHash().gerarHash((umFuncionario.getSenha())))) {
-                    return true;
-                }
-            }
-
+        if (null != funcionarioBuscado &&
+                funcionarioBuscado.getEmail().equals(umFuncionario.getEmail()) &&
+                funcionarioBuscado.getNivelAcesso() == TipoFuncionario.ADMINISTRADOR &&
+                funcionarioBuscado.getSenha().equals(new FuncaoHash().gerarHash(umFuncionario.getSenha()))) {
+            return true;
         }
-
         return false;
     }
 
