@@ -14,7 +14,7 @@ public abstract class Atracao {
     @Id
     @GeneratedValue(strategy = GenerationType.TABLE)
     @Column(name = "idAtracao")
-    private int idAtracao;
+    private long idAtracao;
 
     @Column(length = 100)
     @NotEmpty(message = "O titulo deve ser preenchido.")
@@ -41,11 +41,11 @@ public abstract class Atracao {
     @NotNull(message = "A classificacao indicativa deve ser preenchida.")
     private int classificacaoIndicativa;
 
-    public int getIdAtracao() {
+    public long getIdAtracao() {
         return idAtracao;
     }
 
-    public void setIdAtracao(int idAtracao) {
+    public void setIdAtracao(long idAtracao) {
         this.idAtracao = idAtracao;
     }
 

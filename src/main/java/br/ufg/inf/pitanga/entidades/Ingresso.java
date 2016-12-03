@@ -8,7 +8,7 @@ public class Ingresso {
 
     @Id
     @GeneratedValue
-    private int id;
+    private long id;
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "email")
     private Cliente umCliente;
@@ -33,12 +33,12 @@ public class Ingresso {
         this.registroCompra = registroCompra;
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setId(long idIngresso) {
+        this.id = idIngresso;
     }
 
     public Cliente getUmCliente() {
