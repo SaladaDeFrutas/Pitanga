@@ -11,6 +11,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <sonar.language>java</sonar.language>
         <sonar.host.url>https://sonarqube.com</sonar.host.url>
+        <sonar.github.repository>SaladaDeFrutas/Pitanga</sonar.github.repository>
     </properties>
 
     <dependencies>
@@ -78,6 +79,13 @@
             <groupId>jstl</groupId>
             <artifactId>jstl</artifactId>
             <version>1.2</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-data-jpa -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+            <version>1.4.2.RELEASE</version>
         </dependency>
 
     </dependencies>
