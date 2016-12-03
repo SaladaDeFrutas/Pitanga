@@ -51,10 +51,14 @@ public abstract class Usuario {
     }
 
     public void setNome(String nome) {
-        if (nome == null || nome.trim().equals("")) {
+        if (nome == null) {
             throw new InvalidParameterException(MENSAGEM_NOME_VAZIO);
         } else {
-            this.nome = nome.trim();
+            String nomeAparado = nome.trim();
+            if("".equals(nomeAparado)){
+                throw new InvalidParameterException(MENSAGEM_NOME_VAZIO);
+            }
+            this.nome = nomeAparado;
         }
 
     }
@@ -64,12 +68,16 @@ public abstract class Usuario {
     }
 
     public void setEmail(String email) {
-        if (email == null || email.trim().equals("")) {
+        if (email == null) {
             throw new InvalidParameterException(MENSAGEM_EMAIL_VAZIO);
-        } else if (!email.matches(FORMATO_EMAIL)) {
-            throw new InvalidParameterException(MENSAGEM_EMAIL_INVALIDO);
         } else {
-            this.email = email.trim();
+            String emailAparado = email.trim();
+            if("".equals(emailAparado)){
+                throw new InvalidParameterException(MENSAGEM_EMAIL_VAZIO);
+            } else if(!emailAparado.matches(FORMATO_EMAIL)) {
+                throw new InvalidParameterException(MENSAGEM_EMAIL_INVALIDO);
+            }
+            this.email = emailAparado;
         }
     }
 
@@ -80,13 +88,10 @@ public abstract class Usuario {
     public void setDataDeNascimento(Calendar dataDeNascimento) {
         Calendar dataLimite = Calendar.getInstance();
         dataLimite.add(Calendar.YEAR, -IDADE_MINIMA);
-        if (dataDeNascimento == null) {
+        if (dataDeNascimento == null || dataDeNascimento.after(dataLimite)) {
             throw new InvalidParameterException(MENSAGEM_DATA_NASCIMENTO_INVALIDA);
-        } else if (dataDeNascimento.after(dataLimite)) {
-            throw new InvalidParameterException(MENSAGEM_DATA_NASCIMENTO_INVALIDA);
-        } else {
-            this.dataDeNascimento = dataDeNascimento;
         }
+        this.dataDeNascimento = dataDeNascimento;
     }
 
     public String getSenha() {
@@ -94,14 +99,14 @@ public abstract class Usuario {
     }
 
     public void setSenha(String senha) {
-        if (senha == null || senha.trim().equals("")) {
+        if (senha == null) {
             throw new InvalidParameterException(MENSAGEM_SENHA_VAZIA);
         } else {
-            senha = senha.trim();
-            if (senha.length() < TAMANHO_MINIMO_SENHA) {
+            String senhaAparada = senha.trim();
+            if("".equals(senhaAparada) || senhaAparada.length() < TAMANHO_MINIMO_SENHA) {
                 throw new InvalidParameterException(MENSAGEM_SENHA_VAZIA);
             } else {
-                this.senha = senha.trim();
+                this.senha = senhaAparada;
             }
         }
     }
