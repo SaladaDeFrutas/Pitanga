@@ -1,9 +1,7 @@
 package br.ufg.inf.pitanga.entidades;
 
 import br.ufg.inf.pitanga.entidades.enums.TipoFuncionario;
-import org.hibernate.validator.constraints.NotEmpty;
-
-import javax.persistence.Column;
+import java.security.InvalidParameterException;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
@@ -12,15 +10,14 @@ import javax.validation.constraints.NotNull;
 @Table(name = "funcionarios")
 public class Funcionario extends Usuario {
 
-    @NotNull(message = "Um nivel de acesso deve ser atribuido.")
+    protected static final String MENSAGEM_NIVEL_ACESSO_VAZIO = "Um nivel de acesso deve ser atribuido.";
+    protected static final String MENSAGEM_MATRICULA_VAZIA = "A matricula deve ser preenchida.";
+
+    @NotNull(message = Funcionario.MENSAGEM_NIVEL_ACESSO_VAZIO)
     private TipoFuncionario nivelAcesso;
 
-    @NotNull(message = "A matricula deve ser preenchida.")
+    @NotNull(message = MENSAGEM_MATRICULA_VAZIA)
     private int matricula;
-
-    @NotEmpty(message = "A funcao deve ser preenchida.")
-    @Column(length = 30)
-    private String funcao;
 
     public Funcionario() {
         super();
@@ -37,7 +34,11 @@ public class Funcionario extends Usuario {
     }
 
     public void setNivelAcesso(TipoFuncionario nivelAcesso) {
-        this.nivelAcesso = nivelAcesso;
+        if (nivelAcesso == null) {
+            throw new InvalidParameterException(MENSAGEM_NIVEL_ACESSO_VAZIO);
+        } else {
+            this.nivelAcesso = nivelAcesso;
+        }
     }
 
     public int getMatricula() {
@@ -47,5 +48,5 @@ public class Funcionario extends Usuario {
     public void setMatricula(int matricula) {
         this.matricula = matricula;
     }
-    
+
 }

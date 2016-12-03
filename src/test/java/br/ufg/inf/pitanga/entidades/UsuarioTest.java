@@ -11,11 +11,12 @@ import org.junit.Rule;
 import org.junit.rules.ExpectedException;
 
 public class UsuarioTest {
+
     @Rule
     public ExpectedException excecaoEsperada = ExpectedException.none();
-            
+
     private Usuario usuario;
-    
+
     @Before
     public void setUp() throws ParseException {
         usuario = new UsuarioImpl();
@@ -34,14 +35,14 @@ public class UsuarioTest {
         String resultado = usuario.getNome();
         assertEquals(resultadoEsperado, resultado);
     }
-    
+
     @Test
     public void testGetNomeIncorreto() {
         String resultadoEsperado = "Usuario Apenas";
         String resultado = usuario.getNome();
         assertNotEquals(resultadoEsperado, resultado);
     }
-    
+
     @Test
     public void testGetNomeNull() {
         String resultadoEsperado = null;
@@ -56,33 +57,33 @@ public class UsuarioTest {
         String resultado = usuario.getNome();
         assertEquals(nome, resultado);
     }
-        
+
     @Test
     public void testSetNomeNull() {
         excecaoEsperada.expect(InvalidParameterException.class);
         excecaoEsperada.expectMessage(Usuario.MENSAGEM_NOME_VAZIO);
-        
-        String nome = null; 
+
+        String nome = null;
         usuario.setNome(nome);
         fail();
     }
-    
+
     @Test
     public void testSetNomeVazio() {
         excecaoEsperada.expect(InvalidParameterException.class);
         excecaoEsperada.expectMessage(Usuario.MENSAGEM_NOME_VAZIO);
-        
-        String nome = ""; 
+
+        String nome = "";
         usuario.setNome(nome);
         fail();
     }
-    
+
     @Test
     public void testSetNomeSoEspacos() {
         excecaoEsperada.expect(InvalidParameterException.class);
         excecaoEsperada.expectMessage(Usuario.MENSAGEM_NOME_VAZIO);
-        
-        String nome = "     "; 
+
+        String nome = "     ";
         usuario.setNome(nome);
         fail();
     }
@@ -93,7 +94,7 @@ public class UsuarioTest {
         String result = usuario.getEmail();
         assertEquals(expResult, result);
     }
-    
+
     @Test
     public void testGetEmailIncorreto() {
         String expResult = "outro.usuario@teste.com";
@@ -107,46 +108,43 @@ public class UsuarioTest {
         usuario.setEmail(email);
         assertEquals(email, usuario.getEmail());
     }
-    
+
     @Test
     public void testSetEmailNull() {
         excecaoEsperada.expect(InvalidParameterException.class);
         excecaoEsperada.expectMessage(Usuario.MENSAGEM_EMAIL_VAZIO);
-        
-        String email = null; 
+
+        String email = null;
         usuario.setEmail(email);
         fail();
     }
-    
-    
+
     @Test
     public void testSetEmailVazio() {
         excecaoEsperada.expect(InvalidParameterException.class);
         excecaoEsperada.expectMessage(Usuario.MENSAGEM_EMAIL_VAZIO);
-        
-        String email = ""; 
+
+        String email = "";
         usuario.setEmail(email);
         fail();
     }
-    
-    
+
     @Test
     public void testSetEmailSoEspacos() {
         excecaoEsperada.expect(InvalidParameterException.class);
         excecaoEsperada.expectMessage(Usuario.MENSAGEM_EMAIL_VAZIO);
-        
-        String email = "     "; 
+
+        String email = "     ";
         usuario.setEmail(email);
         fail();
     }
-    
-    
+
     @Test
     public void testSetEmailInvalido() {
         excecaoEsperada.expect(InvalidParameterException.class);
         excecaoEsperada.expectMessage(Usuario.MENSAGEM_EMAIL_INVALIDO);
-        
-        String email = "email.nao.valido"; 
+
+        String email = "email.nao.valido";
         usuario.setEmail(email);
         fail();
     }
@@ -159,7 +157,7 @@ public class UsuarioTest {
         Calendar resultado = usuario.getDataDeNascimento();
         assertEquals(resultadoEsperado, resultado);
     }
-    
+
     @Test
     public void testGetDataDeNascimentoIncorreta() {
         Calendar resultadoEsperado = Calendar.getInstance();
@@ -173,15 +171,15 @@ public class UsuarioTest {
         Calendar dataDeNascimento = Calendar.getInstance();
         dataDeNascimento.add(Calendar.YEAR, -idadeAnos);
         usuario.setDataDeNascimento(dataDeNascimento);
-        
+
         assertEquals(dataDeNascimento, usuario.getDataDeNascimento());
     }
-    
+
     @Test
     public void testSetDataDeNascimentoNull() {
         excecaoEsperada.expect(InvalidParameterException.class);
         excecaoEsperada.expectMessage(Usuario.MENSAGEM_DATA_NASCIMENTO_INVALIDA);
-        
+
         Calendar dataDeNascimento = null;
         usuario.setDataDeNascimento(dataDeNascimento);
         fail();
@@ -191,45 +189,44 @@ public class UsuarioTest {
     public void testSetDataDeNascimentoMenorMinimo() {
         excecaoEsperada.expect(InvalidParameterException.class);
         excecaoEsperada.expectMessage(Usuario.MENSAGEM_DATA_NASCIMENTO_INVALIDA);
-        
+
         Calendar dataDeNascimento = Calendar.getInstance();
         dataDeNascimento.add(Calendar.YEAR, -Usuario.IDADE_MINIMA);
         dataDeNascimento.add(Calendar.DAY_OF_MONTH, 1);
-        
+
         usuario.setDataDeNascimento(dataDeNascimento);
         fail();
     }
-    
+
     @Test
     public void testSetDataDeNascimentoIgualMinimo() {
         Calendar dataDeNascimento = Calendar.getInstance();
         dataDeNascimento.add(Calendar.YEAR, -Usuario.IDADE_MINIMA);
-        
+
         usuario.setDataDeNascimento(dataDeNascimento);
-        
+
         assertFalse(usuario.getDataDeNascimento().after(dataDeNascimento));
     }
-    
+
     @Test
     public void testSetDataDeNascimentoMaiorMinimo() {
         Calendar dataLimite = Calendar.getInstance();
         dataLimite.add(Calendar.YEAR, -Usuario.IDADE_MINIMA);
         Calendar dataNascimento = (Calendar) dataLimite.clone();
         dataNascimento.add(Calendar.DAY_OF_MONTH, -1);
-        
+
         usuario.setDataDeNascimento(dataNascimento);
-        
+
         assertTrue(usuario.getDataDeNascimento().before(dataLimite));
     }
-    
-    
+
     @Test
     public void testGetSenhaCorreta() {
         String resultadoEsperado = "minhasenha";
         String resultado = usuario.getSenha();
         assertEquals(resultadoEsperado, resultado);
     }
-    
+
     @Test
     public void testGetSenhaIncorreta() {
         String resultadoEsperado = "outrasenha";
@@ -241,62 +238,59 @@ public class UsuarioTest {
     public void testSetSenha() {
         String senha = "novasenha";
         usuario.setSenha(senha);
-        
+
         assertEquals(senha, usuario.getSenha());
     }
-    
-     @Test
+
+    @Test
     public void testSetSenhaNull() {
         excecaoEsperada.expect(InvalidParameterException.class);
         excecaoEsperada.expectMessage(Usuario.MENSAGEM_SENHA_VAZIA);
-        
-        String senha = null; 
+
+        String senha = null;
         usuario.setSenha(senha);
         fail();
     }
-    
-    
-     @Test
+
+    @Test
     public void testSetSenhaVazia() {
         excecaoEsperada.expect(InvalidParameterException.class);
         excecaoEsperada.expectMessage(Usuario.MENSAGEM_SENHA_VAZIA);
-        
-        String senha = ""; 
+
+        String senha = "";
         usuario.setSenha(senha);
         fail();
     }
-    
-    
-     @Test
+
+    @Test
     public void testSetSenhaSoEspacos() {
         excecaoEsperada.expect(InvalidParameterException.class);
         excecaoEsperada.expectMessage(Usuario.MENSAGEM_SENHA_VAZIA);
-        
-        String senha = "     "; 
+
+        String senha = "     ";
         usuario.setSenha(senha);
         fail();
     }
-    
-    
-     @Test
+
+    @Test
     public void testSetSenhaTamanhoMenor() {
         excecaoEsperada.expect(InvalidParameterException.class);
         excecaoEsperada.expectMessage(Usuario.MENSAGEM_SENHA_VAZIA);
-        
-        String senha = "minha"; 
+
+        String senha = "minha";
         usuario.setSenha(senha);
         fail();
     }
-    
-    
-     @Test
+
+    @Test
     public void testSetSenhaTamanhoMinimo() {
-        String senha = "minhas"; 
+        String senha = "minhas";
         usuario.setSenha(senha);
-        
-         assertEquals(senha, usuario.getSenha());
+
+        assertEquals(senha, usuario.getSenha());
     }
 
-    public class UsuarioImpl extends Usuario {}
-    
+    public class UsuarioImpl extends Usuario {
+    }
+
 }
