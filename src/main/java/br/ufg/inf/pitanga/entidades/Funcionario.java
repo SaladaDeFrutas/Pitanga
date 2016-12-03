@@ -26,9 +26,11 @@ public class Funcionario extends Usuario {
     }
 
     public Funcionario(TipoFuncionario nivelAcesso, int matricula) {
-        this();
+        super();
+        this.nivelAcesso = nivelAcesso;
+        this.matricula = matricula;
+        
         setNivelAcesso(nivelAcesso);
-        setMatricula(matricula);
     }
 
     public TipoFuncionario getNivelAcesso() {
