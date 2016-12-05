@@ -3,6 +3,7 @@ package br.ufg.inf.pitanga.entidades;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 import java.util.Calendar;
 
 @Entity
@@ -11,23 +12,19 @@ public class Compra {
 
     @Id
     @GeneratedValue
-    private int id;
+    private Long id;
     @DateTimeFormat(pattern = "dd/MM/yyyy HH:mm")
     private Calendar dataCompra;
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne
     @JoinColumn(name = "idCliente")
-    private Cliente umCliente;
-    private double valor;
+    private Cliente cliente;
+    private BigDecimal valor;
     private boolean pagamentoAprovado;
 
     private String codigoTransacao;
 
-    public int getId() {
+    public Long getId() {
         return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public Calendar getDataCompra() {
@@ -38,19 +35,19 @@ public class Compra {
         this.dataCompra = dataCompra;
     }
 
-    public Cliente getUmCliente() {
-        return umCliente;
+    public Cliente getCliente() {
+        return cliente;
     }
 
-    public void setUmCliente(Cliente umCliente) {
-        this.umCliente = umCliente;
+    public void setCliente(Cliente umCliente) {
+        this.cliente = umCliente;
     }
 
-    public double getValor() {
+    public BigDecimal getValor() {
         return valor;
     }
 
-    public void setValor(double valor) {
+    public void setValor(BigDecimal valor) {
         this.valor = valor;
     }
 
@@ -69,6 +66,4 @@ public class Compra {
     public void setCodigoTransacao(String codigoTransacao) {
         this.codigoTransacao = codigoTransacao;
     }
-
-
 }

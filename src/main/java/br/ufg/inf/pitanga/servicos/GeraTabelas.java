@@ -5,6 +5,7 @@ import br.ufg.inf.pitanga.entidades.*;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import java.math.BigDecimal;
 import java.util.Calendar;
 
 /**
@@ -51,13 +52,13 @@ public class GeraTabelas {
 
         TipoIngresso umTipoIngresso = new TipoIngresso();
         umTipoIngresso.setNome("Inteira");
-        umTipoIngresso.setPreco(40.00);
+        umTipoIngresso.setPreco(new BigDecimal(40.00));
         TipoIngresso outroTipoIngresso = new TipoIngresso();
         outroTipoIngresso.setNome("Meia");
-        outroTipoIngresso.setPreco(20.00);
+        outroTipoIngresso.setPreco(new BigDecimal(20.00));
         TipoIngresso maisUmTipoIngresso = new TipoIngresso();
         maisUmTipoIngresso.setNome("Meia-Itau");
-        maisUmTipoIngresso.setPreco(19);
+        maisUmTipoIngresso.setPreco(new BigDecimal(19.00));
         TipoAssento umAssento = new TipoAssento();
         umAssento.setDescricao("Assento especial do dia dos Namorados.");
         umAssento.setNome("Lovers");

@@ -16,7 +16,7 @@ public interface InterfaceCompraDao {
 
     public void alterarCompra(Compra compra);
 
-    public Compra buscarPorId(int Id);
+    public Compra buscarPorId(Long Id);
 
     public List<Compra> buscaPorCliente(Cliente cliente);
 }

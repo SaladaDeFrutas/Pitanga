@@ -41,7 +41,7 @@ public class CompraDao implements InterfaceCompraDao {
     }
 
     @Override
-    public Compra buscarPorId(int id) {
+    public Compra buscarPorId(Long id) {
         return manager.find(Compra.class, id);
     }
 
