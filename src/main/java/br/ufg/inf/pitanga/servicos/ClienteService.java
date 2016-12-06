@@ -2,7 +2,6 @@ package br.ufg.inf.pitanga.servicos;
 
 import br.ufg.inf.pitanga.dao.ClienteDao;
 import br.ufg.inf.pitanga.entidades.Cliente;
-import com.sun.deploy.util.SessionState;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
