@@ -1,6 +1,7 @@
 package br.ufg.inf.pitanga.controller;
 
 import br.ufg.inf.pitanga.entidades.*;
+import br.ufg.inf.pitanga.entidades.enums.TipoFuncionario;
 import br.ufg.inf.pitanga.interfaces.dao.*;
 import br.ufg.inf.pitanga.servicos.StringAssento;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -543,7 +544,7 @@ public class FuncionarioController {
         Funcionario admin = null;
         // retira o admin da lista buscada do BD para exibir apenas os que nao sao admin
         for (Funcionario funcionario : funcionarios) {
-            if (funcionario.getNivelAcesso() == Funcionario.ADMIN) {
+            if (funcionario.getNivelAcesso() == TipoFuncionario.ADMINISTRADOR) {
                 admin = funcionario;
             }
         }
