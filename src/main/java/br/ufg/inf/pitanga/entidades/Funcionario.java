@@ -1,8 +1,7 @@
 package br.ufg.inf.pitanga.entidades;
 
-import org.hibernate.validator.constraints.NotEmpty;
-
-import javax.persistence.Column;
+import br.ufg.inf.pitanga.entidades.enums.TipoFuncionario;
+import java.security.InvalidParameterException;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
@@ -10,27 +9,39 @@ import javax.validation.constraints.NotNull;
 @Entity
 @Table(name = "funcionarios")
 public class Funcionario extends Usuario {
-    public static final int ADMIN = 3;
-    public static final int GERENTE = 2;
-    public static final int ATENDENTE = 4;
-    public static final int AUXILIAR = 5;
 
-    @NotNull(message = "Um nivel de acesso deve ser atribuido.")
-    private int nivelAcesso;
+    protected static final String MENSAGEM_NIVEL_ACESSO_VAZIO = "Um nivel de acesso deve ser atribuido.";
+    protected static final String MENSAGEM_MATRICULA_VAZIA = "A matricula deve ser preenchida.";
 
-    @NotNull(message = "A matricula deve ser preenchida.")
+    @NotNull(message = Funcionario.MENSAGEM_NIVEL_ACESSO_VAZIO)
+    private TipoFuncionario nivelAcesso;
+
+    @NotNull(message = MENSAGEM_MATRICULA_VAZIA)
     private int matricula;
 
-    @NotEmpty(message = "A funcao deve ser preenchida.")
-    @Column(length = 30)
-    private String funcao;
+    public Funcionario() {
+        super();
+        nivelAcesso = TipoFuncionario.AUXILIAR;
+        matricula = 0;
+    }
 
-    public int getNivelAcesso() {
+    public Funcionario(TipoFuncionario nivelAcesso, int matricula) {
+        this();
+        
+        setNivelAcesso(nivelAcesso);
+        setMatricula(matricula);
+    }
+
+    public TipoFuncionario getNivelAcesso() {
         return nivelAcesso;
     }
 
-    public void setNivelAcesso(int nivelAcesso) {
-        this.nivelAcesso = nivelAcesso;
+    public void setNivelAcesso(TipoFuncionario nivelAcesso) {
+        if (nivelAcesso == null) {
+            throw new InvalidParameterException(MENSAGEM_NIVEL_ACESSO_VAZIO);
+        } else {
+            this.nivelAcesso = nivelAcesso;
+        }
     }
 
     public int getMatricula() {
@@ -39,14 +50,6 @@ public class Funcionario extends Usuario {
 
     public void setMatricula(int matricula) {
         this.matricula = matricula;
-    }
-
-    public String getFuncao() {
-        return funcao;
-    }
-
-    public void setFuncao(String funcao) {
-        this.funcao = funcao;
     }
 
 }
