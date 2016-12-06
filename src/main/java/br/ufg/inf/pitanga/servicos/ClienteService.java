@@ -53,9 +53,8 @@ public class ClienteService {
         clienteDao.removerCliente(cliente);
         if (clienteDao.buscarPorId(email) == null) {
             return true;
-        } else {
-            return false;
         }
+        return false;
     }
 
     /**
@@ -94,15 +93,13 @@ public class ClienteService {
      * @return True para email válido e False para email ínvalido.
      */
     private static Boolean validacaoEmail(String email){
-        if (email.indexOf('@') > 0) {
-            if (email.indexOf(".com") > 0) {
+        if (email.indexOf('@') != -1){
+            if (email.indexOf(".com") != -1){
                 return true;
-            } else {
-                return false;
             }
-        } else {
             return false;
         }
+        return false;
     }
 
     /**
@@ -115,7 +112,7 @@ public class ClienteService {
     private static Boolean validacaoDataDeNascimento(Calendar dataNascimento){
         Calendar calendar = new GregorianCalendar().getInstance();
 
-        if ((dataNascimento.YEAR < 1900 || dataNascimento.YEAR >= calendar.YEAR)){
+        if ((dataNascimento.YEAR < 1900) || (dataNascimento.YEAR >= calendar.YEAR)){
             return false;
         }
 
