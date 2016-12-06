@@ -15,5 +15,5 @@ public interface InterfacePecaDao {
 
     public void alterarPeca(Peca umaPeca);
 
-    public Peca buscarPorId(int id);
+    public Peca buscarPorId(Long id);
 }

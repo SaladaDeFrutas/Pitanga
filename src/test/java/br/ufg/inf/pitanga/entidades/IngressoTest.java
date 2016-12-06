@@ -1,13 +1,9 @@
-package br.ufg.inf.test;
+package br.ufg.inf.pitanga.entidades;
 
-import br.ufg.inf.pitanga.entidades.*;
-import org.testng.annotations.Test;
+import org.junit.Test;
 
-import static org.testng.AssertJUnit.assertEquals;
+import static org.junit.Assert.assertEquals;
 
-/**
- * Created by gleibson on 02/12/16.
- */
 public class IngressoTest {
 
     private Ingresso ingresso = new Ingresso();
@@ -28,14 +24,14 @@ public class IngressoTest {
 
     @Test
     public void getIdTest(){
-        long idIngresso = 898098;
+        Long idIngresso = 898098L;
         ingresso.setId(idIngresso);
         assertEquals(idIngresso, ingresso.getId());
     }
 
     @Test
     public void setIdTest(){
-        long idIngresso = 894378;
+        Long idIngresso = 894378L;
         ingresso.setId(idIngresso);
         assertEquals(idIngresso, ingresso.getId());
     }
