@@ -36,7 +36,7 @@ public class CompraServiceTest {
         Cliente cliente = criarCliente();
         String dataCompra = "04/12/2016";
 
-        Compra compra = adicionarCompraParaClinte(cliente, dataCompra);
+        Compra compra = adicionarCompraParaCliente(cliente, dataCompra);
         CompraDTO compraDTO = compraServico.obtenhaComprasDoCliente(cliente.getEmail()).get(0);
 
         assertEquals(compraDTO.getDataCompra(), dataCompra);
@@ -52,7 +52,7 @@ public class CompraServiceTest {
         return clienteRepository.save(cliente);
     }
 
-    private Compra adicionarCompraParaClinte(Cliente cliente, String dataCompra) {
+    private Compra adicionarCompraParaCliente(Cliente cliente, String dataCompra) {
         String codigoTransacao = "12345";
         BigDecimal valor = new BigDecimal("35.99");
         Calendar data = converteStringParaCalendar(dataCompra, "dd/MM/yyyy");
