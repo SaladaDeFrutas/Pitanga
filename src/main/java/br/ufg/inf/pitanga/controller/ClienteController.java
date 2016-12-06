@@ -24,7 +24,8 @@ public class ClienteController {
      */
     @RequestMapping("cadastro")
     public String retornaPaginaCadastro() {
-        return "cadastro";
+        String cadastro = "Cadastro";
+        return cadastro;
     }
 
     /**

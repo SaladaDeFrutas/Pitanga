@@ -75,7 +75,7 @@ public class ClienteService {
      * @param nome Nome do usuário.
      * @return True para nome válido e False para nome ínvalido.
      */
-    private Boolean validacaoNome(String nome){
+    private static Boolean validacaoNome(String nome){
         if (nome.length() > 255) {
             return false;
         }
@@ -93,7 +93,7 @@ public class ClienteService {
      * @param email Email para validação.
      * @return True para email válido e False para email ínvalido.
      */
-    private Boolean validacaoEmail(String email){
+    private static Boolean validacaoEmail(String email){
         if (email.indexOf('@') > 0) {
             if (email.indexOf(".com") > 0) {
                 return true;
@@ -112,7 +112,7 @@ public class ClienteService {
      * @param dataNascimento Data de Nascimento do usuário.
      * @return True para data de nascimento válido e False para data de nascimento ínvalido.
      */
-    private Boolean validacaoDataDeNascimento(Calendar dataNascimento){
+    private static Boolean validacaoDataDeNascimento(Calendar dataNascimento){
         Calendar calendar = new GregorianCalendar().getInstance();
 
         if ((dataNascimento.YEAR < 1900 || dataNascimento.YEAR >= calendar.YEAR)){
