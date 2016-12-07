@@ -25,7 +25,7 @@ public class Assento {
         this.sala = sala;
     }
 
-    public Assento(){
+    public Assento() {
 
     }
 
@@ -34,6 +34,9 @@ public class Assento {
     }
 
     public void setSala(Sala sala) {
+        if (sala == null)
+            throw new IllegalArgumentException();
+
         this.sala = sala;
     }
 
@@ -42,6 +45,9 @@ public class Assento {
     }
 
     public void setFila(int fila) {
+        if (fila <= 0)
+            throw new IllegalArgumentException();
+
         this.fila = fila;
     }
 
@@ -50,6 +56,9 @@ public class Assento {
     }
 
     public void setColuna(int coluna) {
+        if (coluna <= 0)
+            throw new IllegalArgumentException();
+
         this.coluna = coluna;
     }
 
@@ -74,6 +83,9 @@ public class Assento {
     }
 
     public void setId(Long id) {
+        if (id != null && id < 0)
+            throw new IllegalArgumentException();
+
         this.id = id;
     }
 }
