@@ -4,8 +4,10 @@ import br.ufg.inf.pitanga.CalendarHelperTest;
 import br.ufg.inf.pitanga.entidades.Cliente;
 import br.ufg.inf.pitanga.entidades.Compra;
 import br.ufg.inf.pitanga.entidades.CompraDTO;
+import br.ufg.inf.pitanga.entidades.Ingresso;
 import br.ufg.inf.pitanga.repository.ClienteRepository;
 import br.ufg.inf.pitanga.repository.CompraRepository;
+import br.ufg.inf.pitanga.repository.IngressoRepository;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +32,9 @@ public class CompraServiceTest {
 
     @Autowired
     private CompraRepository compraRepository;
+
+    @Autowired
+    private IngressoRepository ingressoRepository;
 
     @Test
     public void testaObtenhaComprasDeUmClienteComSucesso() {
@@ -63,7 +68,9 @@ public class CompraServiceTest {
         compra.setValorTotal(valor);
         compra.setPagamentoAprovado(false);
         compra.setDataCompra(data);
-        compra.setIngressos(new ArrayList<>());
+        compra.setIngressos(new ArrayList<Ingresso>() {{
+            add(ingressoRepository.save(new Ingresso()));
+        }});
 
         return compraRepository.save(compra);
     }

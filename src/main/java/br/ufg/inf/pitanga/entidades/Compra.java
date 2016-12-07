@@ -57,7 +57,11 @@ public class Compra {
     }
 
     public void setDataCompra(Calendar dataCompra) {
-        this.dataCompra = dataCompra;
+        if (dataCompra == null) {
+            throw new IllegalArgumentException();
+        } else {
+            this.dataCompra = dataCompra;
+        }
     }
 
     public Cliente getCliente() {
@@ -74,7 +78,7 @@ public class Compra {
 
     public void setValorTotal(BigDecimal valor) {
         if (valor == null) {
-            throw new IllegalArgumentException("O valor total de uma compra não pode ser nulo");
+            throw new IllegalArgumentException();
         } else {
             this.valorTotal = valor;
         }
@@ -93,7 +97,11 @@ public class Compra {
     }
 
     public void setCodigoTransacao(String codigoTransacao) {
-        this.codigoTransacao = codigoTransacao;
+        if (codigoTransacao == null || "".equals(codigoTransacao)) {
+            throw new IllegalArgumentException();
+        } else {
+            this.codigoTransacao = codigoTransacao;
+        }
     }
 
     public List<Ingresso> getIngressos() {
@@ -101,6 +109,10 @@ public class Compra {
     }
 
     public void setIngressos(List<Ingresso> ingressos) {
-        this.ingressos = ingressos;
+        if (ingressos == null || ingressos.isEmpty()) {
+            throw new IllegalArgumentException();
+        } else {
+            this.ingressos = ingressos;
+        }
     }
 }

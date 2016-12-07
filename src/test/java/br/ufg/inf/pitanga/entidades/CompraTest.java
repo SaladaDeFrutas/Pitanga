@@ -57,6 +57,48 @@ public class CompraTest {
         assertEquals(dataCompra, simpleDateFormat.format(compra.getDataCompra().getTime()));
     }
 
+    @Test(expected = IllegalArgumentException.class)
+    public void testaSetDataCompraComValorNuloLancaExcecao() {
+        compra.setDataCompra(null);
+    }
+
+    @Test
+    public void testaSetCodigoTransacaoComSucesso() {
+        String codigoTransacao = "A12DB";
+        compra.setCodigoTransacao(codigoTransacao);
+        assertEquals(codigoTransacao, compra.getCodigoTransacao());
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testaSetCodigoTransacaoComValorNuloLancaExcecao() {
+        compra.setCodigoTransacao(null);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testaSetCodigoTransacaoComStringVaziaLancaExcecao() {
+        compra.setCodigoTransacao("");
+    }
+
+    @Test
+    public void testaSetIngressoComSucesso() {
+        List<Ingresso> ingressos = new ArrayList<Ingresso>(){{
+            add(new Ingresso());
+        }};
+        compra.setIngressos(ingressos);
+        assertEquals(1, compra.getIngressos().size());
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testaSetIngressoComValorNuloLancaExcecao(){
+        compra.setIngressos(null);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testaSetIngressoComListaVaziaLancaExcecao(){
+        compra.setIngressos(new ArrayList<>());
+    }
+
+
     private Cliente criaClienteParaTeste() {
         return new Cliente();
     }
