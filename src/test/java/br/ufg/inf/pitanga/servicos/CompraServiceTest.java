@@ -14,6 +14,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import java.math.BigDecimal;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 
 import static org.junit.Assert.assertEquals;
@@ -63,6 +64,7 @@ public class CompraServiceTest {
         compra.setValorTotal(valor);
         compra.setPagamentoAprovado(false);
         compra.setDataCompra(data);
+        compra.setIngressos(new ArrayList<>());
 
         return compraRepository.save(compra);
     }

@@ -95,4 +95,12 @@ public class Compra {
     public void setCodigoTransacao(String codigoTransacao) {
         this.codigoTransacao = codigoTransacao;
     }
+
+    public List<Ingresso> getIngressos() {
+        return ingressos;
+    }
+
+    public void setIngressos(List<Ingresso> ingressos) {
+        this.ingressos = ingressos;
+    }
 }
