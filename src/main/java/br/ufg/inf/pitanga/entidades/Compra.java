@@ -9,7 +9,7 @@ import java.util.Calendar;
 import java.util.List;
 
 @Entity
-@Table(name = "registroscompra")
+@Table(name = "compra")
 public class Compra {
 
     @Id
@@ -24,8 +24,7 @@ public class Compra {
     private BigDecimal valorTotal;
 
     @NotNull
-    @OneToMany
-    @JoinColumn(name = "id")
+    @OneToMany(cascade = CascadeType.PERSIST)
     private List<Ingresso> ingressos;
     private boolean pagamentoAprovado;
     private String codigoTransacao;

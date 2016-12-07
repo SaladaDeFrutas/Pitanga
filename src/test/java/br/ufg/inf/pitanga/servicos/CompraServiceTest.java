@@ -1,10 +1,7 @@
 package br.ufg.inf.pitanga.servicos;
 
 import br.ufg.inf.pitanga.CalendarHelperTest;
-import br.ufg.inf.pitanga.entidades.Cliente;
-import br.ufg.inf.pitanga.entidades.Compra;
-import br.ufg.inf.pitanga.entidades.CompraDTO;
-import br.ufg.inf.pitanga.entidades.Ingresso;
+import br.ufg.inf.pitanga.entidades.*;
 import br.ufg.inf.pitanga.repository.ClienteRepository;
 import br.ufg.inf.pitanga.repository.CompraRepository;
 import br.ufg.inf.pitanga.repository.IngressoRepository;
@@ -17,6 +14,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 
@@ -68,11 +66,21 @@ public class CompraServiceTest {
         compra.setValorTotal(valor);
         compra.setPagamentoAprovado(false);
         compra.setDataCompra(data);
-        compra.setIngressos(new ArrayList<Ingresso>() {{
-            add(ingressoRepository.save(new Ingresso()));
-        }});
+        List<Ingresso> ingressos = criaListaDeIngressos(compra);
+        compra.setIngressos(ingressos);
 
         return compraRepository.save(compra);
+    }
+
+    private List<Ingresso> criaListaDeIngressos(Compra compra) {
+        Ingresso ingresso = new Ingresso();
+
+        Assento assento = new Assento();
+        assento.setColuna(0);
+        ingresso.setUmAssento(assento);
+        return new ArrayList<Ingresso>() {{
+            add(ingresso);
+        }};
     }
 
 }

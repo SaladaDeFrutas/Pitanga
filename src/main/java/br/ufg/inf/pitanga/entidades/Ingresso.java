@@ -9,10 +9,10 @@ public class Ingresso {
     @Id
     @GeneratedValue
     private int id;
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne
     @JoinColumn(name = "email")
     private Cliente umCliente;
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne
     @JoinColumn(name = "idSessao")
     private Sessao umaSessao;
     @Embedded
@@ -20,18 +20,6 @@ public class Ingresso {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "nomeTipoIngresso")
     private TipoIngresso umTipoIngresso;
-
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "idRegistroCompra")
-    private Compra compra;
-
-    public Compra getCompra() {
-        return compra;
-    }
-
-    public void setCompra(Compra compra) {
-        this.compra = compra;
-    }
 
     public int getId() {
         return id;
@@ -72,6 +60,5 @@ public class Ingresso {
     public void setUmTipoIngresso(TipoIngresso umTipoIngresso) {
         this.umTipoIngresso = umTipoIngresso;
     }
-
 
 }

@@ -214,7 +214,6 @@ public class CompraController {
             umIngresso.setUmAssento(umAssento);
             umIngresso.setUmTipoIngresso(tiposIngressos.get(i));
             umIngresso.setUmCliente(umCliente);
-            umIngresso.setCompra(novoCompra);
             ingressoDao.adicionarIngresso(umIngresso);
             ingressos.add(umIngresso);
 
