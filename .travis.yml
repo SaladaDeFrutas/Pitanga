@@ -11,6 +11,11 @@ cache:
   directories:
   - "$HOME/.m2/repository"
   - "$HOME/.sonar"
+services:
+  - postgresql
+before_script:
+  - psql -c 'create user pitanga with password "pitaga"'
+  - psql -c 'create database pitanga;' -U pitanga
 script:
 - mvn clean -e -B
 - mvn -e -B org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar -Dsonar.login=$SONAR_TOKEN
