@@ -464,7 +464,6 @@ public class FuncionarioController {
             assentosInvalidos = " ";
 
         System.out.println("String assentos invalidos:" + assentosInvalidos);
-        sala.setAssentosInvalidos(assentosInvalidos);
         salaDao.adicionarSala(sala);
         return "cadastroRestritoSucesso";
     }
@@ -480,12 +479,7 @@ public class FuncionarioController {
     public String alterarDadosSala(Sala sala, Model model) {
         sala = salaDao.buscarPorId(sala.getId());
         StringAssento stringAssento = new StringAssento();
-        ArrayList<Assento> assentosInvalidos = stringAssento.converterStringParaAssento(
-            sala.getAssentosInvalidos());
-
         model.addAttribute("sala", sala);
-        model.addAttribute("assentosInvalidos", assentosInvalidos);
-
         return "alteracaoSala";
     }
 
@@ -503,9 +497,6 @@ public class FuncionarioController {
             assentosInvalidos = stringAssento.converterAssentoParaString(arrayAssentosInvalidos);
         } else
             assentosInvalidos = " ";
-
-
-        sala.setAssentosInvalidos(assentosInvalidos);
 
         salaDao.alterarSala(sala);
         return "cadastroRestritoSucesso";
