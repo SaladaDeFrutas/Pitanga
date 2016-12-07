@@ -55,7 +55,7 @@ public class GeradorPDFController {
         // data da compra
         geradorPDF.concatenaStringTexto("Data: " + new SimpleDateFormat("dd/MM/yy HH:mm").format(compra.getDataCompra().getTime()) + "\n");
 
-        String status = "";
+        String status;
         if (!compra.isPagamentoAprovado())
             status = "Não concluído";
         else
