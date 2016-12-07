@@ -81,7 +81,7 @@ public class CompraTest {
 
     @Test
     public void testaSetIngressoComSucesso() {
-        List<Ingresso> ingressos = new ArrayList<Ingresso>(){{
+        List<Ingresso> ingressos = new ArrayList<Ingresso>() {{
             add(new Ingresso());
         }};
         compra.setIngressos(ingressos);
@@ -89,15 +89,26 @@ public class CompraTest {
     }
 
     @Test(expected = IllegalArgumentException.class)
-    public void testaSetIngressoComValorNuloLancaExcecao(){
+    public void testaSetIngressoComValorNuloLancaExcecao() {
         compra.setIngressos(null);
     }
 
     @Test(expected = IllegalArgumentException.class)
-    public void testaSetIngressoComListaVaziaLancaExcecao(){
+    public void testaSetIngressoComListaVaziaLancaExcecao() {
         compra.setIngressos(new ArrayList<>());
     }
 
+    @Test
+    public void testaSetValorTotalComSucesso() {
+        BigDecimal valorTotal = new BigDecimal("23.55");
+        compra.setValorTotal(valorTotal);
+        assertEquals(valorTotal, compra.getValorTotal());
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testaSetValorTotalComValorNuloLancaExcecao() {
+        compra.setValorTotal(null);
+    }
 
     private Cliente criaClienteParaTeste() {
         return new Cliente();
