@@ -110,17 +110,17 @@ public class ClienteService {
      * @return True para data de nascimento válido e False para data de nascimento ínvalido.
      */
     private static Boolean validacaoDataDeNascimento(Calendar dataNascimento){
-        Calendar calendar = new GregorianCalendar().getInstance();
+        Calendar calendar = Calendar.getInstance();
 
-        if ((dataNascimento.YEAR < 1900) || (dataNascimento.YEAR >= calendar.YEAR)){
+        if ((dataNascimento.get(Calendar.YEAR) < 1900) || (dataNascimento.get(Calendar.YEAR) >= calendar.get(Calendar.YEAR))){
             return false;
         }
 
-        if ((dataNascimento.MONTH <= 0) || (dataNascimento.MONTH > 12)){
+        if ((dataNascimento.get(Calendar.MONTH) <= 0) || (dataNascimento.get(Calendar.MONTH) > 12)){
             return false;
         }
 
-        if ((dataNascimento.DAY_OF_MONTH <= 0) || (dataNascimento.DAY_OF_MONTH > 31)){
+        if ((dataNascimento.get(Calendar.DAY_OF_MONTH) <= 0) || (dataNascimento.get(Calendar.DAY_OF_MONTH) > 31)){
             return false;
         }
 
