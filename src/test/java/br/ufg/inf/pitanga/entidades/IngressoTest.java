@@ -9,84 +9,70 @@ public class IngressoTest {
     private Ingresso ingresso = new Ingresso();
 
     @Test
-    public void getRegistroCompraTest(){
-        RegistroCompra registroCompra = new RegistroCompra();
-        ingresso.setRegistroCompra(registroCompra);
-        assertEquals(registroCompra, ingresso.getRegistroCompra());
-    }
-
-    @Test
-    public void setRegistroCompraTest(){
-        RegistroCompra registroCompra = new RegistroCompra();
-        ingresso.setRegistroCompra(registroCompra);
-        assertEquals(registroCompra, ingresso.getRegistroCompra());
-    }
-
-    @Test
-    public void getIdTest(){
+    public void getIdTest() {
         Long idIngresso = 898098L;
         ingresso.setId(idIngresso);
         assertEquals(idIngresso, ingresso.getId());
     }
 
     @Test
-    public void setIdTest(){
+    public void setIdTest() {
         Long idIngresso = 894378L;
         ingresso.setId(idIngresso);
         assertEquals(idIngresso, ingresso.getId());
     }
 
     @Test
-    public void getUmClienteTest(){
+    public void getUmClienteTest() {
         Cliente cliente = new Cliente();
         ingresso.setUmCliente(cliente);
         assertEquals(cliente, ingresso.getUmCliente());
     }
 
     @Test
-    public void setUmClienteTest(){
+    public void setUmClienteTest() {
         Cliente cliente = new Cliente();
         ingresso.setUmCliente(cliente);
         assertEquals(cliente, ingresso.getUmCliente());
     }
 
     @Test
-    public void getUmaSessaoTest(){
+    public void getUmaSessaoTest() {
         Sessao sessao = new Sessao();
         ingresso.setUmaSessao(sessao);
         assertEquals(sessao, ingresso.getUmaSessao());
     }
 
     @Test
-    public void setUmaSessaoTest(){
+    public void setUmaSessaoTest() {
         Sessao sessao = new Sessao();
         ingresso.setUmaSessao(sessao);
         assertEquals(sessao, ingresso.getUmaSessao());
     }
 
     @Test
-    public void getUmAssentoTest(){
+    public void getUmAssentoTest() {
         Assento assento = new Assento();
         ingresso.setUmAssento(assento);
         assertEquals(assento, ingresso.getUmAssento());
     }
 
     @Test
-    public void setUmAssentoTest(){
+    public void setUmAssentoTest() {
         Assento assento = new Assento();
         ingresso.setUmAssento(assento);
         assertEquals(assento, ingresso.getUmAssento());
     }
 
     @Test
-    public void getUmTipoIngressoTest(){
+    public void getUmTipoIngressoTest() {
         TipoIngresso tipoIngresso = new TipoIngresso();
         ingresso.setUmTipoIngresso(tipoIngresso);
         assertEquals(tipoIngresso, ingresso.getUmTipoIngresso());
     }
 
     @Test
-    public void setUmTipoIngressoTest(){
+    public void setUmTipoIngressoTest() {
         TipoIngresso tipoIngresso = new TipoIngresso();
         ingresso.setUmTipoIngresso(tipoIngresso);
         assertEquals(tipoIngresso, ingresso.getUmTipoIngresso());

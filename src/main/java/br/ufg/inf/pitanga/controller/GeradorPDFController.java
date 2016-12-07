@@ -81,7 +81,7 @@ public class GeradorPDFController {
             geradorPDF.concatenaStringTexto("Data de Exibição: " + new SimpleDateFormat("dd/MM/yy HH:mm").format(
                 umaSessao.getData().getTime()) + "\n");
 
-            int idAtracao = umaSessao.getAtracao().getIdAtracao();
+            Long idAtracao = umaSessao.getAtracao().getId();
             Filme filme = filmeDao.buscarPorId(idAtracao);
             if (filme != null)
                 // nome do filme

@@ -26,7 +26,7 @@ public class AtracaoController {
     @RequestMapping("/mostrarFilme")
     public String mostrarFilme(Filme umFilme, Model model) {
         // filmeDao.adicionarFilme(umFilme);
-        Filme filmeEscolhido = filmeDao.buscarPorId(umFilme.getIdAtracao());
+        Filme filmeEscolhido = filmeDao.buscarPorId(umFilme.getId());
         // List<Sessao> listaDeSessoes= ses
         // @AutowiredsaoDao.buscarPorAtracao(umFilme.getId());
         // System.out.println(filmeEscolhido.getTitulo());
