@@ -1,35 +1,48 @@
 package br.ufg.inf.pitanga.entidades;
 
+import javax.persistence.*;
 
-import org.springframework.beans.factory.annotation.Autowired;
-
-import javax.persistence.CascadeType;
-import javax.persistence.Embeddable;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
-
-@Embeddable
+@Entity
+@Table(name = "assento")
 public class Assento {
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "idTipoAssento")
+    @Id
+    @GeneratedValue
+    @Column(name = "idAssento")
+    private Long id;
+
     private TipoAssento tipoAssento;
 
+    @ManyToOne
+    @JoinColumn(name = "idSala")
+    private Sala sala;
 
     private int coluna;
-    private int fileira;
+    private int fila;
+    private String nome;
 
-    @Autowired
-    public Assento() {
+    public Assento(Sala sala) {
+        this.sala = sala;
+    }
+
+    public Assento(){
 
     }
 
-    public int getFileira() {
-        return fileira;
+    public Sala getSala() {
+        return sala;
     }
 
-    public void setFileira(int fileira) {
-        this.fileira = fileira;
+    public void setSala(Sala sala) {
+        this.sala = sala;
+    }
+
+    public int getFila() {
+        return fila;
+    }
+
+    public void setFila(int fila) {
+        this.fila = fila;
     }
 
     public int getColuna() {
@@ -48,4 +61,19 @@ public class Assento {
         this.tipoAssento = tipoAssento;
     }
 
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 }

@@ -1,56 +1,73 @@
 package br.ufg.inf.pitanga.entidades;
 
-
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
-@Table(name = "salas")
+@Table(name = "sala")
 public class Sala {
 
     @Id
     @GeneratedValue
     @Column(name = "idSala")
-    private int id;
+    private Long id;
 
-    @NotNull(message = "A quantidade de fileiras deve ser preenchida.")
-    private int qntFileiras;
-    @NotNull(message = "A quantidade de colunas deve ser preenchida.")
-    private int qntColunas;
-    @Lob
-    private String assentosInvalidos;
 
-    public int getId() {
+    private int filas;
+    private int colunas;
+
+    @OneToMany
+    @JoinColumn(name = "idAssento")
+    private List<Assento> assentos;
+
+    @OneToMany
+    @JoinColumn(name = "idSessao")
+    private List<Sessao> sessoes;
+
+
+    public Sala() {
+        this.assentos = new ArrayList<>();
+        this.sessoes = new ArrayList<>();
+    }
+
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
-    public int getQntFileiras() {
-        return qntFileiras;
+    public List<Assento> getAssentos() {
+        return assentos;
     }
 
-    public void setQntFileiras(int qntFileiras) {
-        this.qntFileiras = qntFileiras;
+    public void setAssentos(List<Assento> assentos) {
+        this.assentos = assentos;
     }
 
-    public int getQntColunas() {
-        return qntColunas;
+    public List<Sessao> getSessoes() {
+        return sessoes;
     }
 
-    public void setQntColunas(int qntColunas) {
-        this.qntColunas = qntColunas;
+    public void setSessoes(List<Sessao> sessoes) {
+        this.sessoes = sessoes;
     }
 
-    public String getAssentosInvalidos() {
-        return assentosInvalidos;
+    public int getFilas() {
+        return filas;
     }
 
-    public void setAssentosInvalidos(String assentosInvalidos) {
-        this.assentosInvalidos = assentosInvalidos;
+    public void setFilas(int filas) {
+        this.filas = filas;
     }
 
+    public int getColunas() {
+        return colunas;
+    }
 
+    public void setColunas(int colunas) {
+        this.colunas = colunas;
+    }
 }
