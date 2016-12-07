@@ -69,14 +69,8 @@ public class SistemaController {
 
     @RequestMapping("/mostrarFilme")
     public String mostrarFilme(Filme umFilme, Model model) {
-        // filmeDao.adicionarFilme(umFilme);
         Filme filmeEscolhido = filmeDao.buscarPorId(umFilme.getId());
-        // List<Sessao> listaDeSessoes= ses
-        // @AutowiredsaoDao.buscarPorAtracao(umFilme.getId());
-        // System.out.println(filmeEscolhido.getTitulo());
         model.addAttribute("filme", filmeEscolhido);
-        // model.addAtribute("listaDeSessoes",listaDeSessoes);
-        // model.addAttribute("filme",umFilme);
         return "informacoesFilme";
     }
 

@@ -5,7 +5,6 @@ import org.hibernate.validator.constraints.NotEmpty;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
-import java.util.Calendar;
 
 @Entity
 @Table(name = "filmes")
@@ -21,11 +20,14 @@ public class Filme extends Atracao {
     @NotEmpty(message = "A produtora deve ser preenchido.")
     private String produtora;
 
+    /**
+     * Método construtor padrão.
+     */
+    public Filme() {
+    }
+    
     public Boolean getLegendado() {
         return legendado;
-    }
-
-    public Filme() {
     }
 
     public void setLegendado(Boolean legendado) {

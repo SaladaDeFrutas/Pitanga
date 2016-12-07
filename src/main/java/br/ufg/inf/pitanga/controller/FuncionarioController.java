@@ -167,8 +167,8 @@ public class FuncionarioController {
     public String mostrarSessoesFilme(Filme umFilme, Model model) {
         List<Sessao> sessoes = sessaoDao.buscarPorAtracao(umFilme);
         model.addAttribute("sessoes", sessoes);
-        umFilme = filmeDao.buscarPorId(umFilme.getId());
-        model.addAttribute("filme", umFilme);
+        Filme filmeBuscado = filmeDao.buscarPorId(umFilme.getId());
+        model.addAttribute("filme", filmeBuscado);
         return "mostrarSessoesFilmeFuncionarios";
     }
 
@@ -176,8 +176,8 @@ public class FuncionarioController {
     public String mostrarSessoesPeca(Peca umaPeca, Model model) {
         List<Sessao> sessoes = sessaoDao.buscarPorAtracao(umaPeca);
         model.addAttribute("sessoes", sessoes);
-        umaPeca = pecaDao.buscarPorId(umaPeca.getId());
-        model.addAttribute("peca", umaPeca);
+        Peca pecaBuscada = pecaDao.buscarPorId(umaPeca.getId());
+        model.addAttribute("peca", pecaBuscada);
         return "mostrarSessoesPecaFuncionarios";
     }
 
@@ -304,10 +304,9 @@ public class FuncionarioController {
 		/* checa se ja existe uma sessao cadastrada com o mesmo horario 
 		 * para a mesma atracao e para a mesma sala*/
         for (Sessao se : sessoes) {
-            if (se.getData().compareTo(umaSessao.getData()) == 0) {
-                if (umaSessao.getSala().getId() == se.getSala().getId()) {
-                    return "redirect:sessoesFilmeFuncionarios?idAtracao=" + umaSessao.getAtracao().getId();
-                }
+            if (se.getData().compareTo(umaSessao.getData()) == 0
+                    && umaSessao.getSala().getId() == se.getSala().getId()) {
+                return "redirect:sessoesFilmeFuncionarios?idAtracao=" + umaSessao.getAtracao().getId();
             }
 
         }
@@ -337,10 +336,9 @@ public class FuncionarioController {
 		/* checa se ja existe uma sessao cadastrada com o mesmo horario 
 		 * para a mesma atracao e para a mesma sala*/
         for (Sessao se : sessoes) {
-            if (se.getData().compareTo(umaSessao.getData()) == 0) {
-                if (umaSessao.getSala().getId() == se.getSala().getId()) {
-                    return "redirect:sessoesFilmeFuncionarios?idAtracao=" + umaSessao.getAtracao().getId();
-                }
+            if (se.getData().compareTo(umaSessao.getData()) == 0
+                    && umaSessao.getSala().getId() == se.getSala().getId()) {
+                return "redirect:sessoesFilmeFuncionarios?idAtracao=" + umaSessao.getAtracao().getId();
             }
 
         }
@@ -373,10 +371,9 @@ public class FuncionarioController {
 		/* checa se ja existe uma sessao cadastrada com o mesmo horario 
 		 * para a mesma atracao e para a mesma sala*/
         for (Sessao se : sessoes) {
-            if (se.getData().compareTo(umaSessao.getData()) == 0) {
-                if (umaSessao.getSala().getId() == se.getSala().getId()) {
-                    return "redirect:sessoesPecaFuncionarios?idAtracao=" + umaSessao.getAtracao().getId();
-                }
+            if (se.getData().compareTo(umaSessao.getData()) == 0 
+                    && umaSessao.getSala().getId() == se.getSala().getId()) {
+                return "redirect:sessoesPecaFuncionarios?idAtracao=" + umaSessao.getAtracao().getId();
             }
 
         }
