@@ -54,12 +54,6 @@ public class SalaTest {
         sala.setFilas(tamanho);
     }
 
-    @Test(expected = IllegalArgumentException.class)
-    public void testaSetQuantidadeDeFileirasComValorNuloELancaIllegalArgumentException() {
-        Integer tamanho = null;
-        sala.setFilas(tamanho);
-    }
-
     @Test
     public void testaGetESetQuantidadeDeColunasComValorValidoComSucesso() {
         int tamanho = 6;
@@ -70,12 +64,6 @@ public class SalaTest {
     @Test(expected = IllegalArgumentException.class)
     public void testaSetQuantidadeDeColunasComValorInvalidoELancaIllegalArgumentException() {
         int tamanho = -6;
-        sala.setColunas(tamanho);
-    }
-
-    @Test(expected = IllegalArgumentException.class)
-    public void testaSetQuantidadeDeColunasComValorNuloELancaIllegalArgumentException() {
-        Integer tamanho = null;
         sala.setColunas(tamanho);
     }
 

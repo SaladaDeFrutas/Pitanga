@@ -1,5 +1,7 @@
 package br.ufg.inf.pitanga.entidades;
 
+import br.ufg.inf.pitanga.excecao.ExcecaoAssentoForaDoTamanhoDaSala;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -36,6 +38,9 @@ public class Sala {
     }
 
     public void setId(Long id) {
+        if (id != null && id < 0)
+            throw new IllegalArgumentException();
+
         this.id = id;
     }
 
@@ -44,6 +49,10 @@ public class Sala {
     }
 
     public void setAssentos(List<Assento> assentos) {
+        for (Assento assento : assentos) {
+            if (assento.getFila() > this.getFilas() || assento.getColuna() > this.getColunas())
+                throw new ExcecaoAssentoForaDoTamanhoDaSala();
+        }
         this.assentos = assentos;
     }
 
@@ -60,6 +69,9 @@ public class Sala {
     }
 
     public void setFilas(int filas) {
+        if (filas <= 0)
+            throw new IllegalArgumentException();
+
         this.filas = filas;
     }
 
@@ -68,6 +80,9 @@ public class Sala {
     }
 
     public void setColunas(int colunas) {
+        if (colunas <= 0)
+            throw new IllegalArgumentException();
+
         this.colunas = colunas;
     }
 }
