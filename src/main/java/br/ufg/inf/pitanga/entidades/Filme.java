@@ -25,9 +25,6 @@ public class Filme extends Atracao {
         return legendado;
     }
 
-    public Filme() {
-    }
-
     public void setLegendado(Boolean legendado) {
         if(legendado == null) {
             throw new IllegalArgumentException(MENSAGEM_ATRIBUTO_INVALIDO);
