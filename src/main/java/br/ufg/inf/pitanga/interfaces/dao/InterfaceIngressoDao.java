@@ -17,7 +17,7 @@ public interface InterfaceIngressoDao {
 
     public void alterarIngresso(Ingresso umIngresso);
 
-    public Ingresso buscarPorId(int Id);
+    public Ingresso buscarPorId(Long Id);
 
     public List<Ingresso> buscaPorCliente(Cliente umCliente);
 

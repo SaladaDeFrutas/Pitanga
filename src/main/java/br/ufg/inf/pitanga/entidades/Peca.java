@@ -16,7 +16,11 @@ public class Peca extends Atracao {
     }
 
     public void setDiretor(String diretor) {
-        this.diretor = diretor;
+        if(diretor == null || "".equals(diretor)){
+            throw new IllegalArgumentException(MENSAGEM_ATRIBUTO_INVALIDO);
+        } else {
+            this.diretor = diretor;
+        }
     }
 
 }

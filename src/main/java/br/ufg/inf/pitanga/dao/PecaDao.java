@@ -21,15 +21,13 @@ public class PecaDao implements InterfacePecaDao {
 
     @Override
     public void removerPeca(Peca umaPeca) {
-        Peca pecaARemover = buscarPorId(umaPeca.getIdAtracao());
+        Peca pecaARemover = buscarPorId(umaPeca.getId());
         manager.remove(pecaARemover);
-
     }
 
     @SuppressWarnings("unchecked")
     @Override
     public List<Peca> listarPecas() {
-
         return manager.createQuery("from Peca").getResultList();
     }
 
@@ -39,7 +37,7 @@ public class PecaDao implements InterfacePecaDao {
     }
 
     @Override
-    public Peca buscarPorId(int id) {
+    public Peca buscarPorId(Long id) {
         return manager.find(Peca.class, id);
     }
 
