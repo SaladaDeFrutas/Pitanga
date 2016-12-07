@@ -1,5 +1,6 @@
 package br.ufg.inf.pitanga.servicos;
 
+import br.ufg.inf.pitanga.CalendarHelperTest;
 import br.ufg.inf.pitanga.entidades.Cliente;
 import br.ufg.inf.pitanga.entidades.Compra;
 import br.ufg.inf.pitanga.entidades.CompraDTO;
@@ -12,8 +13,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.math.BigDecimal;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 
@@ -56,7 +55,7 @@ public class CompraServiceTest {
     private Compra adicionarCompraParaCliente(Cliente cliente, String dataCompra) {
         String codigoTransacao = "12345";
         BigDecimal valor = new BigDecimal("35.99");
-        Calendar data = converteStringParaCalendar(dataCompra, "dd/MM/yyyy");
+        Calendar data = CalendarHelperTest.converteStringParaCalendar(dataCompra, "dd/MM/yyyy");
 
         Compra compra = new Compra();
         compra.setCodigoTransacao(codigoTransacao);
@@ -69,14 +68,4 @@ public class CompraServiceTest {
         return compraRepository.save(compra);
     }
 
-    private Calendar converteStringParaCalendar(String data, String formato) {
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(formato);
-        Calendar dataCalendar = Calendar.getInstance();
-        try {
-            dataCalendar.setTime(simpleDateFormat.parse(data));
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-        return dataCalendar;
-    }
 }
