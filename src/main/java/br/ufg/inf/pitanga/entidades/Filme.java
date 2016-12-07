@@ -5,6 +5,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
+import java.util.Calendar;
 
 @Entity
 @Table(name = "filmes")
@@ -24,8 +25,15 @@ public class Filme extends Atracao {
         return legendado;
     }
 
+    public Filme() {
+    }
+
     public void setLegendado(Boolean legendado) {
-        this.legendado = legendado;
+        if(legendado == null) {
+            throw new IllegalArgumentException(MENSAGEM_ATRIBUTO_INVALIDO);
+        } else {
+            this.legendado = legendado;
+        }
     }
 
     public String getModoDeExibicao() {
@@ -33,7 +41,11 @@ public class Filme extends Atracao {
     }
 
     public void setModoDeExibicao(String modoDeExibicao) {
-        this.modoDeExibicao = modoDeExibicao;
+        if (modoDeExibicao == null || "".equals(modoDeExibicao)){
+            throw new IllegalArgumentException(MENSAGEM_ATRIBUTO_INVALIDO);
+        } else {
+            this.modoDeExibicao = modoDeExibicao;
+        }
     }
 
     public String getProdutora() {
@@ -41,8 +53,10 @@ public class Filme extends Atracao {
     }
 
     public void setProdutora(String produtora) {
-        this.produtora = produtora;
+        if (produtora == null || "".equals(produtora)){
+            throw new IllegalArgumentException(MENSAGEM_ATRIBUTO_INVALIDO);
+        } else {
+            this.produtora = produtora;
+        }
     }
-
-
 }

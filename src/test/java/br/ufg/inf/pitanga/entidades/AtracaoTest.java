@@ -1,14 +1,22 @@
 package br.ufg.inf.pitanga.entidades;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import java.util.Calendar;
 
 import static org.junit.Assert.assertEquals;
 
-public class AtracaoTest {
+public abstract class AtracaoTest {
 
-    private Atracao atracao = new Filme();
+    protected Atracao atracao;
+
+    @Before
+    public void instaciaAtracao(){
+        this.atracao = obtenhaAtracao();
+    };
+
+    protected abstract Atracao obtenhaAtracao();
 
     @Test
     public void getIdAtracaoTest() {
