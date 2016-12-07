@@ -167,7 +167,7 @@ public class FuncionarioController {
     public String mostrarSessoesFilme(Filme umFilme, Model model) {
         List<Sessao> sessoes = sessaoDao.buscarPorAtracao(umFilme);
         model.addAttribute("sessoes", sessoes);
-        umFilme = filmeDao.buscarPorId(umFilme.getIdAtracao());
+        umFilme = filmeDao.buscarPorId(umFilme.getId());
         model.addAttribute("filme", umFilme);
         return "mostrarSessoesFilmeFuncionarios";
     }
@@ -176,14 +176,14 @@ public class FuncionarioController {
     public String mostrarSessoesPeca(Peca umaPeca, Model model) {
         List<Sessao> sessoes = sessaoDao.buscarPorAtracao(umaPeca);
         model.addAttribute("sessoes", sessoes);
-        umaPeca = pecaDao.buscarPorId(umaPeca.getIdAtracao());
+        umaPeca = pecaDao.buscarPorId(umaPeca.getId());
         model.addAttribute("peca", umaPeca);
         return "mostrarSessoesPecaFuncionarios";
     }
 
     @RequestMapping("alteracaoFilmeFuncionarios")
     public String alterarDadosFilme(Filme umFilme, Model model) {
-        Filme filme = filmeDao.buscarPorId(umFilme.getIdAtracao());
+        Filme filme = filmeDao.buscarPorId(umFilme.getId());
         model.addAttribute("filme", filme);
         return "alteracaoFilme";
     }
@@ -206,7 +206,7 @@ public class FuncionarioController {
 
     @RequestMapping("alteracaoPecaFuncionarios")
     public String alterarDadosPeca(Peca umaPeca, Model model) {
-        Peca peca = pecaDao.buscarPorId(umaPeca.getIdAtracao());
+        Peca peca = pecaDao.buscarPorId(umaPeca.getId());
         model.addAttribute("peca", peca);
         return "alteracaoPeca";
     }
@@ -256,7 +256,7 @@ public class FuncionarioController {
         umaSessao.setSala(
             salaDao.buscarPorId(sessao.getSala().getId()));
         umaSessao.setAtracao(
-            pecaDao.buscarPorId(peca.getIdAtracao()));
+            pecaDao.buscarPorId(peca.getId()));
         umaSessao.setData(sessao.getData());
 
         umaSessao.setAssentosOcupados(" ");
@@ -272,7 +272,7 @@ public class FuncionarioController {
         for (Sessao se : sessoes) {
             if (se.getData().compareTo(umaSessao.getData()) == 0) {
                 if (umaSessao.getSala().getId() == se.getSala().getId()) {
-                    return "redirect:sessoesPecaFuncionarios?idAtracao=" + umaSessao.getAtracao().getIdAtracao();
+                    return "redirect:sessoesPecaFuncionarios?idAtracao=" + umaSessao.getAtracao().getId();
                 }
             }
 
@@ -291,7 +291,7 @@ public class FuncionarioController {
         umaSessao.setSala(
             salaDao.buscarPorId(sessao.getSala().getId()));
         umaSessao.setAtracao(
-            filmeDao.buscarPorId(filme.getIdAtracao()));
+            filmeDao.buscarPorId(filme.getId()));
         umaSessao.setData(sessao.getData());
         umaSessao.setAssentosOcupados(" ");
 
@@ -306,7 +306,7 @@ public class FuncionarioController {
         for (Sessao se : sessoes) {
             if (se.getData().compareTo(umaSessao.getData()) == 0) {
                 if (umaSessao.getSala().getId() == se.getSala().getId()) {
-                    return "redirect:sessoesFilmeFuncionarios?idAtracao=" + umaSessao.getAtracao().getIdAtracao();
+                    return "redirect:sessoesFilmeFuncionarios?idAtracao=" + umaSessao.getAtracao().getId();
                 }
             }
 
@@ -339,7 +339,7 @@ public class FuncionarioController {
         for (Sessao se : sessoes) {
             if (se.getData().compareTo(umaSessao.getData()) == 0) {
                 if (umaSessao.getSala().getId() == se.getSala().getId()) {
-                    return "redirect:sessoesFilmeFuncionarios?idAtracao=" + umaSessao.getAtracao().getIdAtracao();
+                    return "redirect:sessoesFilmeFuncionarios?idAtracao=" + umaSessao.getAtracao().getId();
                 }
             }
 
@@ -349,7 +349,7 @@ public class FuncionarioController {
             salaDao.buscarPorId(sessao.getSala().getId()));
 
         umaSessao.setAtracao(
-            filmeDao.buscarPorId(filme.getIdAtracao()));
+            filmeDao.buscarPorId(filme.getId()));
 
         umaSessao.setData(sessao.getData());
 
@@ -375,7 +375,7 @@ public class FuncionarioController {
         for (Sessao se : sessoes) {
             if (se.getData().compareTo(umaSessao.getData()) == 0) {
                 if (umaSessao.getSala().getId() == se.getSala().getId()) {
-                    return "redirect:sessoesPecaFuncionarios?idAtracao=" + umaSessao.getAtracao().getIdAtracao();
+                    return "redirect:sessoesPecaFuncionarios?idAtracao=" + umaSessao.getAtracao().getId();
                 }
             }
 
@@ -385,7 +385,7 @@ public class FuncionarioController {
             salaDao.buscarPorId(sessao.getSala().getId()));
 
         umaSessao.setAtracao(
-            pecaDao.buscarPorId(peca.getIdAtracao()));
+            pecaDao.buscarPorId(peca.getId()));
 
         umaSessao.setData(sessao.getData());
 

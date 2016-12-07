@@ -41,7 +41,7 @@ public class IngressoDao implements InterfaceIngressoDao {
     }
 
     @Override
-    public Ingresso buscarPorId(int id) {
+    public Ingresso buscarPorId(Long id) {
         return manager.find(Ingresso.class, id);
     }
 

@@ -28,7 +28,7 @@ public class PagamentoPagseguroServico implements InterfacePagamento {
         SimpleDateFormat sDformat = new SimpleDateFormat("dd/MM/yyyy");
         for (Ingresso ingresso : ingressos) {
             checkout.addItem(
-                Integer.toString(ingresso.getId()), // id
+                Long.toString(ingresso.getId()), // id
                 ingresso.getUmaSessao().getAtracao().getTitulo() + ", " +// descricao
                     sDformat.format(ingresso.getUmaSessao().getData().getTime()), // descricao
                 Integer.valueOf(1), // quantidade

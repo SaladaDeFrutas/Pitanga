@@ -8,11 +8,11 @@ public class Ingresso {
 
     @Id
     @GeneratedValue
-    private int id;
+    private Long id;
     @OneToOne
     @JoinColumn(name = "email")
     private Cliente umCliente;
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "idSessao")
     private Sessao umaSessao;
     @Embedded
@@ -21,11 +21,11 @@ public class Ingresso {
     @JoinColumn(name = "nomeTipoIngresso")
     private TipoIngresso umTipoIngresso;
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
