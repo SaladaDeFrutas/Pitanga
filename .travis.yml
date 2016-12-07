@@ -15,7 +15,7 @@ services:
   - postgresql
 before_script:
   - psql -c "create user pitanga with password 'pitaga';" -U postgres
-  - psql -c 'create database pitanga;' -U pitanga
+  - psql -c 'create database pitanga owner pitanga;' -U postgres
 script:
 - mvn clean -e -B
 - mvn -e -B org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar -Dsonar.login=$SONAR_TOKEN
