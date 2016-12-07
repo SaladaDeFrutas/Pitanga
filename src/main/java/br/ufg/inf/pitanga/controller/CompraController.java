@@ -192,7 +192,7 @@ public class CompraController {
         novoCompra.setDataCompra(dataCompra);
         novoCompra.setPagamentoAprovado(false);
         novoCompra.setCliente(umCliente);
-        novoCompra.setValor(BigDecimal.ZERO);
+        novoCompra.setValorTotal(BigDecimal.ZERO);
         compraDao.adicionarCompra(novoCompra);
 
         ArrayList<Ingresso> ingressos = new ArrayList<>();
@@ -220,8 +220,8 @@ public class CompraController {
 
         }
         CompraServico novaCompraServico = new CompraServico();
-        novoCompra = novaCompraServico.calcularTotal(ingressos,
-            novoCompra);
+//        novoCompra = novaCompraServico.calcularTotal(ingressos,
+//            novoCompra);
         compraDao.alterarCompra(novoCompra);
 
         return new ModelAndView("redirect:"

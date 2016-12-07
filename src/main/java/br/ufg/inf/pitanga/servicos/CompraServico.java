@@ -10,7 +10,6 @@ import br.ufg.inf.pitanga.repository.CompraRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -33,16 +32,6 @@ public class CompraServico {
 
     InterfacePagamento tipoPagamento;
 
-    public Compra calcularTotal(ArrayList<Ingresso> ingressos, Compra novaCompra) {
-        BigDecimal valor = BigDecimal.ZERO;
-
-        for (Ingresso umIngresso : ingressos) {
-            valor = valor.add(umIngresso.getUmTipoIngresso().getPreco());
-        }
-        novaCompra.setValor(valor);
-        return novaCompra;
-    }
-
     public String efetuarPagamento(ArrayList<Ingresso> ingressos, Compra novaCompra, Cliente cliente) {
         tipoPagamento = new PagamentoPagseguroServico();
         return tipoPagamento.realizaPagamento(ingressos, novaCompra, cliente);
@@ -57,7 +46,7 @@ public class CompraServico {
 
         for (Compra compra : compras) {
             String dataCompra = formatarDataDaCompra(compra.getDataCompra());
-            compraDTOS.add(new CompraDTO(nomeCliente, compra.getId(), dataCompra, compra.getValor()));
+            compraDTOS.add(new CompraDTO(nomeCliente, compra.getId(), dataCompra, compra.getValorTotal()));
         }
 
         return compraDTOS;

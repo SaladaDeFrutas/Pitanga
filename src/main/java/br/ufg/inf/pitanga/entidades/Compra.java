@@ -3,8 +3,10 @@ package br.ufg.inf.pitanga.entidades;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import java.util.Calendar;
+import java.util.List;
 
 @Entity
 @Table(name = "registroscompra")
@@ -18,10 +20,33 @@ public class Compra {
     @OneToOne
     @JoinColumn(name = "idCliente")
     private Cliente cliente;
-    private BigDecimal valor;
-    private boolean pagamentoAprovado;
+    @NotNull
+    private BigDecimal valorTotal;
 
+    @NotNull
+    @OneToMany
+    @JoinColumn(name = "id")
+    private List<Ingresso> ingressos;
+    private boolean pagamentoAprovado;
     private String codigoTransacao;
+
+    public Compra() {
+    }
+
+    public Compra(Cliente cliente, List<Ingresso> ingressos) {
+        this.cliente = cliente;
+        this.ingressos = ingressos;
+        this.valorTotal = calcularTotal(ingressos);
+    }
+
+    private BigDecimal calcularTotal(List<Ingresso> ingressos) {
+        BigDecimal valor = BigDecimal.ZERO;
+
+        for (Ingresso ingresso : ingressos) {
+            valor = valor.add(ingresso.getUmTipoIngresso().getPreco());
+        }
+        return valor;
+    }
 
     public Long getId() {
         return id;
@@ -43,12 +68,16 @@ public class Compra {
         this.cliente = umCliente;
     }
 
-    public BigDecimal getValor() {
-        return valor;
+    public BigDecimal getValorTotal() {
+        return valorTotal;
     }
 
-    public void setValor(BigDecimal valor) {
-        this.valor = valor;
+    public void setValorTotal(BigDecimal valor) {
+        if (valor == null) {
+            throw new IllegalArgumentException("O valor total de uma compra não pode ser nulo");
+        } else {
+            this.valorTotal = valor;
+        }
     }
 
     public boolean isPagamentoAprovado() {

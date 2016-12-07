@@ -42,7 +42,7 @@ public class CompraServiceTest {
         assertEquals(compraDTO.getDataCompra(), dataCompra);
         assertEquals(compraDTO.getNomeCliente(), compra.getCliente().getNome());
         assertEquals(compraDTO.getIdCompra(), compra.getId());
-        assertEquals(compraDTO.getValorCompra(), compra.getValor());
+        assertEquals(compraDTO.getValorCompra(), compra.getValorTotal());
     }
 
     private Cliente criarCliente() {
@@ -60,7 +60,7 @@ public class CompraServiceTest {
         Compra compra = new Compra();
         compra.setCodigoTransacao(codigoTransacao);
         compra.setCliente(cliente);
-        compra.setValor(valor);
+        compra.setValorTotal(valor);
         compra.setPagamentoAprovado(false);
         compra.setDataCompra(data);
 
