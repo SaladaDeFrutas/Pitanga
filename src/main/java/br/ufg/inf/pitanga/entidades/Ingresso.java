@@ -9,29 +9,17 @@ public class Ingresso {
     @Id
     @GeneratedValue
     private Long id;
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne
     @JoinColumn(name = "email")
     private Cliente umCliente;
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "idSessao")
     private Sessao umaSessao;
-    @Embedded
+    @OneToOne
     private Assento umAssento;
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "nomeTipoIngresso")
     private TipoIngresso umTipoIngresso;
-
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "idRegistroCompra")
-    private RegistroCompra registroCompra;
-
-    public RegistroCompra getRegistroCompra() {
-        return registroCompra;
-    }
-
-    public void setRegistroCompra(RegistroCompra registroCompra) {
-        this.registroCompra = registroCompra;
-    }
 
     public Long getId() {
         return id;

@@ -47,7 +47,7 @@ public class Assento {
     }
 
     public void setFila(int fila) {
-        if (fila <= 0)
+        if (fila < 0)
             throw new IllegalArgumentException();
 
         this.fila = fila;
@@ -58,7 +58,7 @@ public class Assento {
     }
 
     public void setColuna(int coluna) {
-        if (coluna <= 0)
+        if (coluna < 0)
             throw new IllegalArgumentException();
 
         this.coluna = coluna;

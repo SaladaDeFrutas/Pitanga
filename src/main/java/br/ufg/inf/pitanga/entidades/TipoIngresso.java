@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
+import java.math.BigDecimal;
 
 
 @Entity
@@ -18,13 +19,13 @@ public class TipoIngresso {
     private String nome;
 
     @NotNull(message = "O preco deve ser preenchido.")
-    private double preco;
+    private BigDecimal preco;
 
-    public double getPreco() {
+    public BigDecimal getPreco() {
         return preco;
     }
 
-    public void setPreco(double preco) {
+    public void setPreco(BigDecimal preco) {
         this.preco = preco;
     }
 
