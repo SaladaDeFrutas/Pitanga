@@ -8,12 +8,12 @@ import com.lowagie.text.pdf.PdfWriter;
 
 import java.io.ByteArrayOutputStream;
 
-public class GeraPDF {
+public class GeraPDFServico {
 
     //public static final String RESULT = "C://developer//hello_memory.pdf";
     private String textoParaPDF;
 
-    public GeraPDF() {
+    public GeraPDFServico() {
         this.textoParaPDF = new String();
         this.textoParaPDF = "";
     }

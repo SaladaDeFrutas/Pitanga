@@ -32,6 +32,10 @@ public class CompraServico {
 
     InterfacePagamento tipoPagamento;
 
+    public Compra buscarPorId(Long id){
+        return compraRepository.findOne(id);
+    }
+
     public String efetuarPagamento(ArrayList<Ingresso> ingressos, Compra novaCompra, Cliente cliente) {
         tipoPagamento = new PagamentoPagseguroServico();
         return tipoPagamento.realizaPagamento(ingressos, novaCompra, cliente);
