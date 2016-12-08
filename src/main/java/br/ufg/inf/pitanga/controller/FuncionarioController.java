@@ -281,7 +281,7 @@ public class FuncionarioController {
 		 * para a mesma atracao e para a mesma sala*/
         for (Sessao se : sessoes) {
             if (se.getData().compareTo(umaSessao.getData()) == 0
-                    && umaSessao.getSala().getId() == se.getSala().getId()) {
+                    && umaSessao.getSala().getId().equals(se.getSala().getId())) {
                 return COMPLEMENTO_PAGINA_REDIRECT + Paginas.SESSOES_PECA_FUNCIONARIOS + "?idAtracao=" 
                         + umaSessao.getAtracao().getId();
             }
@@ -315,7 +315,7 @@ public class FuncionarioController {
 		 * para a mesma atracao e para a mesma sala*/
         for (Sessao se : sessoes) {
             if (se.getData().compareTo(umaSessao.getData()) == 0
-                    && umaSessao.getSala().getId() == se.getSala().getId()) {
+                    && umaSessao.getSala().getId().equals(se.getSala().getId())) {
                 return COMPLEMENTO_PAGINA_REDIRECT + Paginas.SESSOES_FILME_FUNCIONARIOS + "?idAtracao=" 
                         + umaSessao.getAtracao().getId();
             }
@@ -345,7 +345,7 @@ public class FuncionarioController {
         // checa se ja existe uma sessao cadastrada com o mesmo horario para a mesma atracao e para a mesma sala
         for (Sessao se : sessoes) {
             if (se.getData().compareTo(sessaoBuscada.getData()) == 0
-                    && sessaoBuscada.getSala().getId() == se.getSala().getId()) {
+                    && sessaoBuscada.getSala().getId().equals(se.getSala().getId())) {
                 return COMPLEMENTO_PAGINA_REDIRECT + Paginas.SESSOES_FILME_FUNCIONARIOS + "?idAtracao=" 
                         + sessaoBuscada.getAtracao().getId();
             }
@@ -379,7 +379,7 @@ public class FuncionarioController {
         // checa se ja existe uma sessao cadastrada com o mesmo horario para a mesma atracao e para a mesma sala
         for (Sessao se : sessoes) {
             if (se.getData().compareTo(sessaoBuscada.getData()) == 0
-                    && sessaoBuscada.getSala().getId() == se.getSala().getId()) {
+                    && sessaoBuscada.getSala().getId().equals(se.getSala().getId())) {
                 return COMPLEMENTO_PAGINA_REDIRECT + Paginas.SESSOES_PECA_FUNCIONARIOS + "?idAtracao=" 
                         + sessaoBuscada.getAtracao().getId();
             }
