@@ -21,9 +21,9 @@ import java.util.List;
 @Controller
 public class FuncionarioController {
     
-    private final String ATRIBUTO_FILMES = "filmes";
-    private final String ATRIBUTO_PECAS = "pecas";
-    private final String ATRIBUTO_SALAS = "salas";
+    private static final String ATRIBUTO_FILMES = "filmes";
+    private static final String ATRIBUTO_PECAS = "pecas";
+    private static final String ATRIBUTO_SALAS = "salas";
 
     @Autowired
     private InterfaceFilmeDao filmeDao;
