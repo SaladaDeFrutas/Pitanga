@@ -21,18 +21,18 @@ import java.util.List;
 @Controller
 public class FuncionarioController {
 
-    private static final String ATRIBUTO_FILME = "filme";
-    private static final String ATRIBUTO_FILMES = "filmes";
-    private static final String ATRIBUTO_PECA = "peca";
-    private static final String ATRIBUTO_PECAS = "pecas";
-    private static final String ATRIBUTO_SALA = "sala";
-    private static final String ATRIBUTO_SALAS = "salas";
-    private static final String ATRIBUTO_SESSAO = "sessao";
-    private static final String ATRIBUTO_SESSOES = "sessoes";
-    private static final String ATRIBUTO_FUNCIONARIO = "funcionario";
-    private static final String ATRIBUTO_FUNCIONARIOS = "funcionarios";
-    private static final String ATRIBUTO_TIPO_INGRESSO = "tipoIngresso";
-    private static final String ATRIBUTO_TIPOS_INGRESSO = "tiposIngresso";
+    private static final String ATRIBUTO_MODAL_FILME = "filme";
+    private static final String ATRIBUTO_MODAL_FILMES = "filmes";
+    private static final String ATRIBUTO_MODAL_PECA = "peca";
+    private static final String ATRIBUTO_MODAL_PECAS = "pecas";
+    private static final String ATRIBUTO_MODAL_SALA = "sala";
+    private static final String ATRIBUTO_MODAL_SALAS = "salas";
+    private static final String ATRIBUTO_MODAL_SESSAO = "sessao";
+    private static final String ATRIBUTO_MODAL_SESSOES = "sessoes";
+    private static final String ATRIBUTO_MODAL_FUNCIONARIO = "funcionario";
+    private static final String ATRIBUTO_MODAL_FUNCIONARIOS = "funcionarios";
+    private static final String ATRIBUTO_MODAL_TIPO_INGRESSO = "tipoIngresso";
+    private static final String ATRIBUTO_MODAL_TIPOS_INGRESSO = "tiposIngresso";
     
     private static final String COMPLEMENTO_PAGINA_REDIRECT = "redirect:";
 
@@ -136,8 +136,8 @@ public class FuncionarioController {
         List<Filme> filmesBuscados = filmeDao.listarFilmes();
         List<Peca> pecasBuscadas = pecaDao.listarPecas();
 
-        model.addAttribute(ATRIBUTO_FILMES, filmesBuscados);
-        model.addAttribute(ATRIBUTO_PECAS, pecasBuscadas);
+        model.addAttribute(ATRIBUTO_MODAL_FILMES, filmesBuscados);
+        model.addAttribute(ATRIBUTO_MODAL_PECAS, pecasBuscadas);
         return Paginas.MOSTRAR_ATRACOES_FUNCIONARIOS;
     }
 
@@ -150,8 +150,8 @@ public class FuncionarioController {
         List<Filme> filmesBuscados = filmeDao.listarFilmes();
         List<Peca> pecasBuscadas = pecaDao.listarPecas();
 
-        model.addAttribute(ATRIBUTO_FILMES, filmesBuscados);
-        model.addAttribute(ATRIBUTO_PECAS, pecasBuscadas);
+        model.addAttribute(ATRIBUTO_MODAL_FILMES, filmesBuscados);
+        model.addAttribute(ATRIBUTO_MODAL_PECAS, pecasBuscadas);
         return Paginas.ATRACOES_SESSOES_FUNCIONARIOS;
     }
 
@@ -160,8 +160,8 @@ public class FuncionarioController {
         List<Filme> filmesBuscados = filmeDao.listarFilmes();
         List<Sala> salasBuscadas = salaDao.listarSalas();
 
-        model.addAttribute(ATRIBUTO_FILMES, filmesBuscados);
-        model.addAttribute(ATRIBUTO_SALAS, salasBuscadas);
+        model.addAttribute(ATRIBUTO_MODAL_FILMES, filmesBuscados);
+        model.addAttribute(ATRIBUTO_MODAL_SALAS, salasBuscadas);
         return Paginas.CADASTRO_SESSAO_FILME;
     }
 
@@ -170,33 +170,33 @@ public class FuncionarioController {
         List<Peca> pecas = pecaDao.listarPecas();
         List<Sala> salas = salaDao.listarSalas();
 
-        model.addAttribute(ATRIBUTO_PECAS, pecas);
-        model.addAttribute(ATRIBUTO_SALAS, salas);
+        model.addAttribute(ATRIBUTO_MODAL_PECAS, pecas);
+        model.addAttribute(ATRIBUTO_MODAL_SALAS, salas);
         return Paginas.CADASTRO_SESSAO_PECA;
     }
 
     @RequestMapping(Paginas.SESSOES_FILME_FUNCIONARIOS)
     public String mostrarSessoesFilme(Filme filme, Model model) {
         List<Sessao> sessoesBuscadas = sessaoDao.buscarPorAtracao(filme);
-        model.addAttribute(ATRIBUTO_SESSOES, sessoesBuscadas);
+        model.addAttribute(ATRIBUTO_MODAL_SESSOES, sessoesBuscadas);
         Filme filmeBuscado = filmeDao.buscarPorId(filme.getId());
-        model.addAttribute(ATRIBUTO_FILME, filmeBuscado);
+        model.addAttribute(ATRIBUTO_MODAL_FILME, filmeBuscado);
         return Paginas.MOSTRAR_SESSOES_FILME_FUNCIONARIOS;
     }
 
     @RequestMapping(Paginas.SESSOES_PECA_FUNCIONARIOS)
     public String mostrarSessoesPeca(Peca peca, Model model) {
         List<Sessao> sessoesBuscadas = sessaoDao.buscarPorAtracao(peca);
-        model.addAttribute(ATRIBUTO_SESSOES, sessoesBuscadas);
+        model.addAttribute(ATRIBUTO_MODAL_SESSOES, sessoesBuscadas);
         Peca pecaBuscada = pecaDao.buscarPorId(peca.getId());
-        model.addAttribute(ATRIBUTO_PECA, pecaBuscada);
+        model.addAttribute(ATRIBUTO_MODAL_PECA, pecaBuscada);
         return Paginas.MOSTRAR_SESSOES_PECA_FUNCIONARIOS;
     }
 
     @RequestMapping(Paginas.ALTERACAO_FILME_FUNCIONARIOS)
     public String alterarDadosFilme(Filme filme, Model model) {
         Filme filmeBuscado = filmeDao.buscarPorId(filme.getId());
-        model.addAttribute(ATRIBUTO_FILME, filmeBuscado);
+        model.addAttribute(ATRIBUTO_MODAL_FILME, filmeBuscado);
         return Paginas.ALTERACAO_FILME;
     }
 
@@ -218,7 +218,7 @@ public class FuncionarioController {
     @RequestMapping(Paginas.ALTERACAO_PECA_FUNCIONARIOS)
     public String alterarDadosPeca(Peca peca, Model model) {
         Peca pecaBuscada = pecaDao.buscarPorId(peca.getId());
-        model.addAttribute(ATRIBUTO_PECA, pecaBuscada);
+        model.addAttribute(ATRIBUTO_MODAL_PECA, pecaBuscada);
         return Paginas.ALTERACAO_PECA;
     }
 
@@ -229,9 +229,9 @@ public class FuncionarioController {
         List<Filme> filmes = filmeDao.listarFilmes();
         List<Sala> salas = salaDao.listarSalas();
 
-        model.addAttribute(ATRIBUTO_FILMES, filmes);
-        model.addAttribute(ATRIBUTO_SALAS, salas);
-        model.addAttribute(ATRIBUTO_SESSAO, sessaoBuscada);
+        model.addAttribute(ATRIBUTO_MODAL_FILMES, filmes);
+        model.addAttribute(ATRIBUTO_MODAL_SALAS, salas);
+        model.addAttribute(ATRIBUTO_MODAL_SESSAO, sessaoBuscada);
 
         return Paginas.ALTERACAO_SESSAO_FILME;
     }
@@ -243,9 +243,9 @@ public class FuncionarioController {
         List<Peca> pecas = pecaDao.listarPecas();
         List<Sala> salas = salaDao.listarSalas();
 
-        model.addAttribute(ATRIBUTO_PECAS, pecas);
-        model.addAttribute(ATRIBUTO_SALAS, salas);
-        model.addAttribute(ATRIBUTO_SESSAO, sessaoBuscada);
+        model.addAttribute(ATRIBUTO_MODAL_PECAS, pecas);
+        model.addAttribute(ATRIBUTO_MODAL_SALAS, salas);
+        model.addAttribute(ATRIBUTO_MODAL_SESSAO, sessaoBuscada);
 
         return Paginas.ALTERACAO_SESSAO_PECA;
     }
@@ -253,7 +253,7 @@ public class FuncionarioController {
     @RequestMapping(Paginas.ALTERACAO_TIPO_INGRESSO_FUNCIONARIOS)
     public String alterarDadosPeca(TipoIngresso umTipoIngresso, Model model) {
         TipoIngresso tipoIngressoBuscado = tipoIngressoDao.buscarPorNome(umTipoIngresso.getNome());
-        model.addAttribute(ATRIBUTO_TIPO_INGRESSO, tipoIngressoBuscado);
+        model.addAttribute(ATRIBUTO_MODAL_TIPO_INGRESSO, tipoIngressoBuscado);
         return Paginas.ALTERACAO_TIPO_INGRESSO;
     }
 
@@ -282,7 +282,8 @@ public class FuncionarioController {
         for (Sessao se : sessoes) {
             if (se.getData().compareTo(umaSessao.getData()) == 0
                     && umaSessao.getSala().getId() == se.getSala().getId()) {
-                return "redirect:sessoesPecaFuncionarios?idAtracao=" + umaSessao.getAtracao().getId();
+                return COMPLEMENTO_PAGINA_REDIRECT + Paginas.SESSOES_PECA_FUNCIONARIOS + "?idAtracao=" 
+                        + umaSessao.getAtracao().getId();
             }
 
         }
@@ -315,7 +316,8 @@ public class FuncionarioController {
         for (Sessao se : sessoes) {
             if (se.getData().compareTo(umaSessao.getData()) == 0
                     && umaSessao.getSala().getId() == se.getSala().getId()) {
-                return "redirect:sessoesFilmeFuncionarios?idAtracao=" + umaSessao.getAtracao().getId();
+                return COMPLEMENTO_PAGINA_REDIRECT + Paginas.SESSOES_FILME_FUNCIONARIOS + "?idAtracao=" 
+                        + umaSessao.getAtracao().getId();
             }
 
         }
@@ -344,7 +346,8 @@ public class FuncionarioController {
         for (Sessao se : sessoes) {
             if (se.getData().compareTo(sessaoBuscada.getData()) == 0
                     && sessaoBuscada.getSala().getId() == se.getSala().getId()) {
-                return "redirect:sessoesFilmeFuncionarios?idAtracao=" + sessaoBuscada.getAtracao().getId();
+                return COMPLEMENTO_PAGINA_REDIRECT + Paginas.SESSOES_FILME_FUNCIONARIOS + "?idAtracao=" 
+                        + sessaoBuscada.getAtracao().getId();
             }
 
         }
@@ -358,7 +361,7 @@ public class FuncionarioController {
         sessaoBuscada.setData(sessao.getData());
 
         if (result.hasFieldErrors("data")) {
-            return "redirect:alteracaoSessaoFilmeFuncionarios";
+            return COMPLEMENTO_PAGINA_REDIRECT + Paginas.ALTERACAO_SESSAO_FILME_FUNCIONARIOS;
         }
 
         sessaoDao.alterarSessao(sessaoBuscada);
@@ -377,7 +380,8 @@ public class FuncionarioController {
         for (Sessao se : sessoes) {
             if (se.getData().compareTo(sessaoBuscada.getData()) == 0
                     && sessaoBuscada.getSala().getId() == se.getSala().getId()) {
-                return "redirect:sessoesPecaFuncionarios?idAtracao=" + sessaoBuscada.getAtracao().getId();
+                return COMPLEMENTO_PAGINA_REDIRECT + Paginas.SESSOES_PECA_FUNCIONARIOS + "?idAtracao=" 
+                        + sessaoBuscada.getAtracao().getId();
             }
 
         }
@@ -391,7 +395,7 @@ public class FuncionarioController {
         sessaoBuscada.setData(sessao.getData());
 
         if (result.hasFieldErrors("data")) {
-            return "redirect:alteracaoSessaoPecaFuncionarios";
+            return COMPLEMENTO_PAGINA_REDIRECT + Paginas.ALTERACAO_SESSAO_PECA_FUNCIONARIOS;
         }
 
         sessaoDao.alterarSessao(sessaoBuscada);
@@ -428,7 +432,7 @@ public class FuncionarioController {
     @RequestMapping(Paginas.MOSTRAR_TIPO_INGRESSO_FUNCIONARIOS)
     public String retornaPaginaTipoIngresso(Model model) {
         List<TipoIngresso> tiposIngresso = tipoIngressoDao.listarTipoIngresso();
-        model.addAttribute(ATRIBUTO_TIPOS_INGRESSO, tiposIngresso);
+        model.addAttribute(ATRIBUTO_MODAL_TIPOS_INGRESSO, tiposIngresso);
         return Paginas.MOSTRAR_TIPO_INGRESSO_FUNCIONARIOS;
     }
 
@@ -446,7 +450,7 @@ public class FuncionarioController {
         if (result.hasErrors()) {
             return Paginas.CADASTRO_SALAS;
         }
-        model.addAttribute(ATRIBUTO_SALA, sala);
+        model.addAttribute(ATRIBUTO_MODAL_SALA, sala);
         return Paginas.FORMATAR_SALA;
     }
 
@@ -457,7 +461,8 @@ public class FuncionarioController {
 
         if (assentos != null) {
             StringAssento stringAssento = new StringAssento();
-            ArrayList<Assento> arrayAssentosInvalidos = stringAssento.converterArrayStringParaArrayAssento((ArrayList<String>) assentos);
+            ArrayList<Assento> arrayAssentosInvalidos = stringAssento.converterArrayStringParaArrayAssento(
+                    (ArrayList<String>) assentos);
             assentosInvalidos = stringAssento.converterAssentoParaString(arrayAssentosInvalidos);
         } else {
             assentosInvalidos = " ";
@@ -470,14 +475,14 @@ public class FuncionarioController {
     @RequestMapping(Paginas.MOSTRAR_SALAS_FUNCIONARIOS)
     public String retornaPaginaSalas(Model model) {
         List<Sala> salas = salaDao.listarSalas();
-        model.addAttribute(ATRIBUTO_SALAS, salas);
+        model.addAttribute(ATRIBUTO_MODAL_SALAS, salas);
         return Paginas.MOSTRAR_SALAS_FUNCIONARIOS;
     }
 
     @RequestMapping(Paginas.ALTERACAO_SALA_FUNCIONARIOS)
     public String alterarDadosSala(Sala sala, Model model) {
         Sala salaBuscada = salaDao.buscarPorId(sala.getId());
-        model.addAttribute(ATRIBUTO_SALA, salaBuscada);
+        model.addAttribute(ATRIBUTO_MODAL_SALA, salaBuscada);
         return Paginas.ALTERACAO_SALA;
     }
 
@@ -490,7 +495,8 @@ public class FuncionarioController {
         String assentosInvalidos;
         if (assentos != null) {
             StringAssento stringAssento = new StringAssento();
-            ArrayList<Assento> arrayAssentosInvalidos = stringAssento.converterArrayStringParaArrayAssento((ArrayList<String>) assentos);
+            ArrayList<Assento> arrayAssentosInvalidos = stringAssento.converterArrayStringParaArrayAssento(
+                    (ArrayList<String>) assentos);
             assentosInvalidos = stringAssento.converterAssentoParaString(arrayAssentosInvalidos);
         } else {
             assentosInvalidos = " ";
@@ -537,7 +543,7 @@ public class FuncionarioController {
         }
         funcionarios.remove(admin);
 
-        model.addAttribute(ATRIBUTO_FUNCIONARIOS, funcionarios);
+        model.addAttribute(ATRIBUTO_MODAL_FUNCIONARIOS, funcionarios);
         return Paginas.MOSTRAR_FUNCIONARIOS;
     }
 
@@ -549,7 +555,7 @@ public class FuncionarioController {
     @RequestMapping(Paginas.ALTERACAO_FUNCIONARIOS)
     public String alterarFuncionarios(Funcionario funcionario, Model model) {
         Funcionario funcionarioBuscado = funcionarioDao.buscarPorId(funcionario.getEmail());
-        model.addAttribute(ATRIBUTO_FUNCIONARIO, funcionarioBuscado);
+        model.addAttribute(ATRIBUTO_MODAL_FUNCIONARIO, funcionarioBuscado);
         return Paginas.ALTERACAO_FUNCIONARIO;
     }
 
