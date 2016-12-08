@@ -8,23 +8,25 @@ import br.com.uol.pagseguro.properties.PagSeguroConfig;
 import br.com.uol.pagseguro.service.TransactionSearchService;
 import br.ufg.inf.pitanga.entidades.Cliente;
 import br.ufg.inf.pitanga.entidades.Ingresso;
-import br.ufg.inf.pitanga.entidades.RegistroCompra;
+import br.ufg.inf.pitanga.entidades.Compra;
+import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
-public class PagamentoPagseguro implements InterfacePagamento {
+@Service
+public class PagamentoPagseguroServico implements InterfacePagamento {
+
+        private static final String PAGINA_REDIRECT_URL = "http://svrideploy-svri.rhcloud.com/SVRI/obrigado";
+        private static final String PAGINA_NOTIFICACAO_URL = "http://svrideploy-svri.rhcloud.com/SVRI/notificacoes";
 
     @Override
     public String realizaPagamento(ArrayList<Ingresso> ingressos,
-                                   RegistroCompra novoRegistroCompra, Cliente cliente) {
+                                   Compra novaCompra, Cliente cliente) {
         Checkout checkout = new Checkout();
         SimpleDateFormat sDformat = new SimpleDateFormat("dd/MM/yyyy");
-        //adicionar aqui cada ingresso usando o while
         for (Ingresso ingresso : ingressos) {
-
-
             checkout.addItem(
                 Long.toString(ingresso.getId()), // id
                 ingresso.getUmaSessao().getAtracao().getTitulo() + ", " +// descricao
@@ -41,39 +43,20 @@ public class PagamentoPagseguro implements InterfacePagamento {
             );
         }
 
-        // colocando dados do comprador
-		/*checkout.setSender(
-			cliente.getNome(), // nome
-			cliente.getEmail() //email
-		);*/
-
-        // selecionando moeda
         checkout.setCurrency(Currency.BRL);
-
-        // colocando referencia para a transacao
-        checkout.setReference(String.valueOf(novoRegistroCompra.getIdRegistroCompra()));
-
-        // URL para onde o comprador sera redirecionado (GET) apos o fluxo de pagamento
-        checkout.setRedirectURL("http://svrideploy-svri.rhcloud.com/SVRI/obrigado");
-
-        checkout.setNotificationURL("http://svrideploy-svri.rhcloud.com/SVRI/notificacoes");
+        checkout.setReference(String.valueOf(novaCompra.getId()));
+        checkout.setRedirectURL(PAGINA_REDIRECT_URL);
+        checkout.setNotificationURL(PAGINA_NOTIFICACAO_URL);
 
         try {
-
             boolean onlyCheckoutCode = false;
             String response = checkout.register(PagSeguroConfig.getAccountCredentials(), onlyCheckoutCode);
-
-            System.out.println(response);
-
             return response;
-
         } catch (PagSeguroServiceException e) {
-
             System.err.println(e.getMessage());
         }
 
         return "notFound";
-
     }
 
     public Transaction consultarTransacao(String codigoTransacao) {
@@ -98,7 +81,6 @@ public class PagamentoPagseguro implements InterfacePagamento {
         return null;
     }
 
-
     /**
      * Código	Significado
      * 1	Aguardando pagamento: o comprador iniciou a transação, mas até o momento o PagSeguro não recebeu nenhuma informação sobre o pagamento.
@@ -116,5 +98,9 @@ public class PagamentoPagseguro implements InterfacePagamento {
             return true;
         else
             return false;
+    }
+
+    public Transaction obtenhaTransacao(String codigoTransacao) {
+        return consultarTransacao(codigoTransacao);
     }
 }
