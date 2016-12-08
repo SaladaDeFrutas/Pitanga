@@ -34,7 +34,7 @@ public class ClienteServiceTest {
         cliente.setSenha("123");
 
         clienteService.cadastrarCliente(cliente);
-        assertEquals(clienteService.cadastrarCliente(cliente), clienteDao.buscarPorId(cliente.getEmail()));
+        assertEquals(clienteService.cadastrarCliente(cliente), clienteDao.buscarPorId(cliente.getEmail()))
     }
 
 }
