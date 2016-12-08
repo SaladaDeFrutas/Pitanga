@@ -11,10 +11,12 @@ import java.util.Calendar;
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public abstract class Atracao {
 
+    public static String MENSAGEM_ATRIBUTO_INVALIDO = "O valor do atributo não pode ser nulo";
+
     @Id
     @GeneratedValue(strategy = GenerationType.TABLE)
-    @Column(name = "idAtracao")
-    private int idAtracao;
+    @Column(name = "id")
+    private Long id;
 
     @Column(length = 100)
     @NotEmpty(message = "O titulo deve ser preenchido.")
@@ -41,12 +43,12 @@ public abstract class Atracao {
     @NotNull(message = "A classificacao indicativa deve ser preenchida.")
     private int classificacaoIndicativa;
 
-    public int getIdAtracao() {
-        return idAtracao;
+    public Long getId() {
+        return id;
     }
 
-    public void setIdAtracao(int idAtracao) {
-        this.idAtracao = idAtracao;
+    public void setId(Long idAtracao) {
+        this.id = idAtracao;
     }
 
     public String getTitulo() {
@@ -104,7 +106,5 @@ public abstract class Atracao {
     public void setClassificacaoIndicativa(int classificacaoIndicativa) {
         this.classificacaoIndicativa = classificacaoIndicativa;
     }
-    /**
-     *
-     */
+
 }

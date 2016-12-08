@@ -26,7 +26,7 @@ public class PagamentoPagseguro implements InterfacePagamento {
 
 
             checkout.addItem(
-                Integer.toString(ingresso.getId()), // id
+                Long.toString(ingresso.getId()), // id
                 ingresso.getUmaSessao().getAtracao().getTitulo() + ", " +// descricao
                     sDformat.format(ingresso.getUmaSessao().getData().getTime()), // descricao
                 Integer.valueOf(1), // quantidade
