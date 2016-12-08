@@ -1,5 +1,7 @@
 package br.ufg.inf.pitanga.entidades;
 
+import br.ufg.inf.pitanga.entidades.enums.TipoAssento;
+
 import javax.persistence.*;
 
 @Entity
@@ -26,7 +28,7 @@ public class Assento {
     }
 
     public Assento() {
-
+        //Necessário para o JPA instanciar o objeto
     }
 
     public Sala getSala() {

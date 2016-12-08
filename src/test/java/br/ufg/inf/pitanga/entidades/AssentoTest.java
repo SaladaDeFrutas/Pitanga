@@ -1,5 +1,6 @@
 package br.ufg.inf.pitanga.entidades;
 
+import br.ufg.inf.pitanga.entidades.enums.TipoAssento;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;

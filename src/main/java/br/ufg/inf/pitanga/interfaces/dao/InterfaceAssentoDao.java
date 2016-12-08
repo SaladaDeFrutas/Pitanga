@@ -1,6 +1,6 @@
 package br.ufg.inf.pitanga.interfaces.dao;
 
-import br.ufg.inf.pitanga.entidades.TipoAssento;
+import br.ufg.inf.pitanga.entidades.enums.TipoAssento;
 
 import java.util.List;
 
