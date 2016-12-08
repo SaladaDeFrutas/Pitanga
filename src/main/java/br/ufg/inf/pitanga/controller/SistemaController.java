@@ -22,19 +22,6 @@ public class SistemaController {
         return "index";
     }
 
-<<<<<<< HEAD
-    @RequestMapping("/mostrarFilme")
-    public String mostrarFilme(Filme umFilme, Model model) {
-        // filmeDao.adicionarFilme(umFilme);
-        Filme filmeEscolhido = filmeDao.buscarPorId(umFilme.getIdAtracao());
-        // List<Sessao> listaDeSessoes= ses
-        // @AutowiredsaoDao.buscarPorAtracao(umFilme.getId());
-        // System.out.println(filmeEscolhido.getTitulo());
-        model.addAttribute("filme", filmeEscolhido);
-        // model.addAtribute("listaDeSessoes",listaDeSessoes);
-        // model.addAttribute("filme",umFilme);
-        return "informacoesFilme";
-=======
     @RequestMapping("cadastrarCliente")
     public String cadastrarCliente(@Valid Cliente umCliente,
                                    BindingResult result) {
@@ -48,7 +35,6 @@ public class SistemaController {
     @RequestMapping("cadastro")
     public String retornaPaginaCadastro() {
         return "cadastro";
->>>>>>> master
     }
 
     /**
