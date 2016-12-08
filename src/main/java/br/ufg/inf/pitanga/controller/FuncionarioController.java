@@ -51,7 +51,7 @@ public class FuncionarioController {
             return "cadastroFilme";
         }
         filmeDao.adicionarFilme(umFilme);
-        return "cadastroRestritoSucesso";
+        return Paginas.CADASTRO_RESTRITO_SUCESSO;
     }
 
     @RequestMapping("cadastrarPecaFuncionarios")
@@ -60,7 +60,7 @@ public class FuncionarioController {
             return "cadastroPeca";
         }
         pecaDao.adicionarPeca(umaPeca);
-        return "cadastroRestritoSucesso";
+        return Paginas.CADASTRO_RESTRITO_SUCESSO;
     }
 
     @RequestMapping("gerenciarAtracoesFuncionarios")
@@ -195,7 +195,7 @@ public class FuncionarioController {
         }
         //System.out.println(umFilme.getId());
         filmeDao.alterarFilme(umFilme);
-        return "cadastroRestritoSucesso";
+        return Paginas.CADASTRO_RESTRITO_SUCESSO;
     }
 
     @RequestMapping("exclusaoFilmeFuncionarios")
@@ -279,7 +279,7 @@ public class FuncionarioController {
         }
 
         sessaoDao.adicionarSessao(umaSessao);
-        return "cadastroRestritoSucesso";
+        return Paginas.CADASTRO_RESTRITO_SUCESSO;
     }
 
     @RequestMapping("cadastrarSessaoFilmeFuncionarios")
@@ -311,7 +311,7 @@ public class FuncionarioController {
 
         }
         sessaoDao.adicionarSessao(umaSessao);
-        return "cadastroRestritoSucesso";
+        return Paginas.CADASTRO_RESTRITO_SUCESSO;
     }
 
     @RequestMapping("alterarPecaFuncionarios")
@@ -320,7 +320,7 @@ public class FuncionarioController {
             return "alteracaoPeca";
         }
         pecaDao.alterarPeca(umaPeca);
-        return "cadastroRestritoSucesso";
+        return Paginas.CADASTRO_RESTRITO_SUCESSO;
     }
 
     @RequestMapping("alterarSessaoFilmeFuncionarios")
@@ -356,7 +356,7 @@ public class FuncionarioController {
         }
 
         sessaoDao.alterarSessao(umaSessao);
-        return "cadastroRestritoSucesso";
+        return Paginas.CADASTRO_RESTRITO_SUCESSO;
     }
 
     @RequestMapping("alterarSessaoPecaFuncionarios")
@@ -391,7 +391,7 @@ public class FuncionarioController {
         }
 
         sessaoDao.alterarSessao(umaSessao);
-        return "cadastroRestritoSucesso";
+        return Paginas.CADASTRO_RESTRITO_SUCESSO;
     }
 
     @RequestMapping("alterarTipoIngressoFuncionarios")
@@ -400,7 +400,7 @@ public class FuncionarioController {
             return "alteracaoTipoIngresso";
         }
         tipoIngressoDao.alterarTipoIngresso(umTipoIngresso);
-        return "cadastroRestritoSucesso";
+        return Paginas.CADASTRO_RESTRITO_SUCESSO;
     }
 
     @RequestMapping("exclusaoSessaoFuncionarios")
@@ -435,7 +435,7 @@ public class FuncionarioController {
             return "cadastroTipoIngresso";
         }
         tipoIngressoDao.adicionarTipoIngresso(umTipoIngresso);
-        return "cadastroRestritoSucesso";
+        return Paginas.CADASTRO_RESTRITO_SUCESSO;
     }
 
     @RequestMapping("dimensoesSalaFuncionarios")
@@ -462,7 +462,7 @@ public class FuncionarioController {
 
         System.out.println("String assentos invalidos:" + assentosInvalidos);
         salaDao.adicionarSala(sala);
-        return "cadastroRestritoSucesso";
+        return Paginas.CADASTRO_RESTRITO_SUCESSO;
     }
 
     @RequestMapping("mostrarSalasFuncionarios")
@@ -496,7 +496,7 @@ public class FuncionarioController {
             assentosInvalidos = " ";
 
         salaDao.alterarSala(sala);
-        return "cadastroRestritoSucesso";
+        return Paginas.CADASTRO_RESTRITO_SUCESSO;
     }
 
     @RequestMapping("exclusaoSalaFuncionarios")
@@ -513,7 +513,7 @@ public class FuncionarioController {
             return "cadastroFuncionario";
         }
         funcionarioDao.adicionarFuncionario(umFuncionario);
-        return "cadastroRestritoSucesso";
+        return Paginas.CADASTRO_RESTRITO_SUCESSO;
     }
 
     /**
@@ -560,7 +560,7 @@ public class FuncionarioController {
             return "alteracaoFuncionario";
         }
         funcionarioDao.alterarFuncionario(funcionario);
-        return "cadastroRestritoSucesso";
+        return Paginas.CADASTRO_RESTRITO_SUCESSO;
     }
 
     @RequestMapping("exclusaoFuncionarios")
