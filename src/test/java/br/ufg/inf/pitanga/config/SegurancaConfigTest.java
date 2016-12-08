@@ -44,21 +44,7 @@ public class SegurancaConfigTest {
     @Test
     public void apiSecurityProdutosInvalid() throws Exception {
         mvc
-            .perform(get("/api/produtos").with(httpBasicAuthenticationInvalid()))
-            .andExpect(unauthenticated());
-    }
-
-    @Test
-    public void apiSecurityCategoria() throws Exception {
-        mvc
-            .perform(get("/api/categorias").with(httpBasicAuthenticationValid()))
-            .andExpect(authenticated());
-    }
-
-    @Test
-    public void apiSecurityCategoriaInvalid() throws Exception {
-        mvc
-            .perform(get("/api/categorias").with(httpBasicAuthenticationInvalid()))
+            .perform(get("/").with(httpBasicAuthenticationInvalid()))
             .andExpect(unauthenticated());
     }
 
@@ -77,15 +63,17 @@ public class SegurancaConfigTest {
             .andExpect(redirectedUrl("/login?error"));
     }
 
-    private SecurityMockMvcRequestBuilders.FormLoginRequestBuilder login(){
+    private SecurityMockMvcRequestBuilders.FormLoginRequestBuilder login() {
         return SecurityMockMvcRequestBuilders
             .formLogin("/login");
     }
-    private RequestPostProcessor httpBasicAuthenticationValid(){
+
+    private RequestPostProcessor httpBasicAuthenticationValid() {
         return httpBasic("user", "password");
     }
 
-    private RequestPostProcessor httpBasicAuthenticationInvalid(){
+    private RequestPostProcessor httpBasicAuthenticationInvalid() {
         return httpBasic("notUser", "password");
     }
+
 }
