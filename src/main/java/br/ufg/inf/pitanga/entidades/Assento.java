@@ -1,32 +1,56 @@
 package br.ufg.inf.pitanga.entidades;
 
-
-import org.springframework.beans.factory.annotation.Autowired;
+import br.ufg.inf.pitanga.entidades.enums.TipoAssento;
 
 import javax.persistence.*;
 
-@Embeddable
+@Entity
+@Table(name = "assento")
 public class Assento {
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "idTipoAssento")
+    @Id
+    @GeneratedValue
+    @Column(name = "idAssento")
+    private Long id;
+
     private TipoAssento tipoAssento;
 
+    @ManyToOne
+    @JoinColumn(name = "idSala")
+    private Sala sala;
 
     private int coluna;
-    private int fileira;
+    private int fila;
+    private String nome;
 
-    @Autowired
+    public Assento(Sala sala) {
+        this.sala = sala;
+    }
+
     public Assento() {
-
+        //Necessário para o JPA instanciar o objeto
     }
 
-    public int getFileira() {
-        return fileira;
+    public Sala getSala() {
+        return sala;
     }
 
-    public void setFileira(int fileira) {
-        this.fileira = fileira;
+    public void setSala(Sala sala) {
+        if (sala == null)
+            throw new IllegalArgumentException();
+
+        this.sala = sala;
+    }
+
+    public int getFila() {
+        return fila;
+    }
+
+    public void setFila(int fila) {
+        if (fila <= 0)
+            throw new IllegalArgumentException();
+
+        this.fila = fila;
     }
 
     public int getColuna() {
@@ -34,6 +58,9 @@ public class Assento {
     }
 
     public void setColuna(int coluna) {
+        if (coluna <= 0)
+            throw new IllegalArgumentException();
+
         this.coluna = coluna;
     }
 
@@ -45,4 +72,22 @@ public class Assento {
         this.tipoAssento = tipoAssento;
     }
 
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        if (id != null && id < 0)
+            throw new IllegalArgumentException();
+
+        this.id = id;
+    }
 }

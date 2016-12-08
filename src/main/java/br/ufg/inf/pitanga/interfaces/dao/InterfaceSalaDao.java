@@ -15,5 +15,5 @@ public interface InterfaceSalaDao {
 
     public void alterarSala(Sala umaSala);
 
-    public Sala buscarPorId(int Id);
+    public Sala buscarPorId(Long Id);
 }

@@ -39,7 +39,7 @@ public class SalaDao implements InterfaceSalaDao {
     }
 
     @Override
-    public Sala buscarPorId(int id) {
+    public Sala buscarPorId(Long id) {
         return manager.find(Sala.class, id);
     }
 
