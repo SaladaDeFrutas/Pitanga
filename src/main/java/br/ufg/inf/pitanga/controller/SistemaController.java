@@ -161,12 +161,12 @@ public class SistemaController {
             qntIngressos += umValor;
 
         // Assentos invalidos
-        Assento assento1 = new Assento();
-        Assento assento2 = new Assento();
+        Assento assento1 = new Assento(umaSala);
+        Assento assento2 = new Assento(umaSala);
         assento1.setColuna(2);
-        assento1.setFileira(0);
+        assento1.setFila(0);
         assento2.setColuna(18);
-        assento2.setFileira(3);
+        assento2.setFila(3);
 
         ArrayList<Assento> assentosInvalidos = new ArrayList<>();
         assentosInvalidos.add(assento1);
@@ -478,7 +478,7 @@ public class SistemaController {
             geradorPDF.concatenaStringTexto("Sala: " + umaSessao.getIdSessao() + "\n");
 
             // fileira e coluna da sala pro ingresso
-            geradorPDF.concatenaStringTexto("Assento: " + (ingresso.getUmAssento().getFileira() + 1) + (ingresso.getUmAssento().getColuna() + 1) + "\n\n");
+            geradorPDF.concatenaStringTexto("Assento: " + (ingresso.getUmAssento().getFila() + 1) + (ingresso.getUmAssento().getColuna() + 1) + "\n\n");
         }
         //retorna o pdf completo
         try {
