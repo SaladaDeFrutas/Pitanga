@@ -1,6 +1,6 @@
 package br.ufg.inf.pitanga.entidades;
 
-import br.ufg.inf.pitanga.excecao.ExcecaoAssentoForaDoTamanhoDaSala;
+import br.ufg.inf.pitanga.excecao.AssentoForaDoTamanhoDaSalaExcecao;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -51,7 +51,7 @@ public class Sala {
     public void setAssentos(List<Assento> assentos) {
         for (Assento assento : assentos) {
             if (assento.getFila() > this.getFilas() || assento.getColuna() > this.getColunas())
-                throw new ExcecaoAssentoForaDoTamanhoDaSala();
+                throw new AssentoForaDoTamanhoDaSalaExcecao();
         }
         this.assentos = assentos;
     }

@@ -1,8 +1,8 @@
 package br.ufg.inf.pitanga.excecao;
 
-public class ExcecaoSessaoInexistente extends RuntimeException {
+public class SessaoInexistenteExcecao extends RuntimeException {
 
-    public ExcecaoSessaoInexistente(){
+    public SessaoInexistenteExcecao(){
         super("Já existe uma sessão com esse Id nessa sala");
     }
 }

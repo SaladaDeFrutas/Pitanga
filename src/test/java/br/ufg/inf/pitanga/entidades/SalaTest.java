@@ -1,9 +1,6 @@
 package br.ufg.inf.pitanga.entidades;
 
-import br.ufg.inf.pitanga.entidades.Assento;
-import br.ufg.inf.pitanga.entidades.Sala;
-import br.ufg.inf.pitanga.entidades.Sessao;
-import br.ufg.inf.pitanga.excecao.ExcecaoAssentoForaDoTamanhoDaSala;
+import br.ufg.inf.pitanga.excecao.AssentoForaDoTamanhoDaSalaExcecao;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -85,7 +82,7 @@ public class SalaTest {
         Assert.assertEquals(2, sala.getAssentos().size());
     }
 
-    @Test(expected = ExcecaoAssentoForaDoTamanhoDaSala.class)
+    @Test(expected = AssentoForaDoTamanhoDaSalaExcecao.class)
     public void testaSetAssentoForaDoTamanhoDaSalaELancaExcecaoAssentoForaDoTamanhoDaSala() {
         Assento assento1 = new Assento(sala);
         assento1.setColuna(7);
