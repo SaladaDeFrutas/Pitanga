@@ -34,6 +34,7 @@ public class FuncionarioController {
     private static final String ATRIBUTO_MODAL_TIPO_INGRESSO = "tipoIngresso";
     private static final String ATRIBUTO_MODAL_TIPOS_INGRESSO = "tiposIngresso";
     
+    private static final String ARGUMENTO_URL_ID_ATRACAO = "idAtracao=";
     private static final String COMPLEMENTO_PAGINA_REDIRECT = "redirect:";
 
     @Autowired
@@ -282,7 +283,7 @@ public class FuncionarioController {
         for (Sessao se : sessoes) {
             if (se.getData().compareTo(umaSessao.getData()) == 0
                     && umaSessao.getSala().getId().equals(se.getSala().getId())) {
-                return COMPLEMENTO_PAGINA_REDIRECT + Paginas.SESSOES_PECA_FUNCIONARIOS + "?idAtracao=" 
+                return COMPLEMENTO_PAGINA_REDIRECT + Paginas.SESSOES_PECA_FUNCIONARIOS + "?" + ARGUMENTO_URL_ID_ATRACAO 
                         + umaSessao.getAtracao().getId();
             }
 
@@ -316,7 +317,7 @@ public class FuncionarioController {
         for (Sessao se : sessoes) {
             if (se.getData().compareTo(umaSessao.getData()) == 0
                     && umaSessao.getSala().getId().equals(se.getSala().getId())) {
-                return COMPLEMENTO_PAGINA_REDIRECT + Paginas.SESSOES_FILME_FUNCIONARIOS + "?idAtracao=" 
+                return COMPLEMENTO_PAGINA_REDIRECT + Paginas.SESSOES_FILME_FUNCIONARIOS + "?" + ARGUMENTO_URL_ID_ATRACAO 
                         + umaSessao.getAtracao().getId();
             }
 
@@ -346,7 +347,7 @@ public class FuncionarioController {
         for (Sessao se : sessoes) {
             if (se.getData().compareTo(sessaoBuscada.getData()) == 0
                     && sessaoBuscada.getSala().getId().equals(se.getSala().getId())) {
-                return COMPLEMENTO_PAGINA_REDIRECT + Paginas.SESSOES_FILME_FUNCIONARIOS + "?idAtracao=" 
+                return COMPLEMENTO_PAGINA_REDIRECT + Paginas.SESSOES_FILME_FUNCIONARIOS + "?" + ARGUMENTO_URL_ID_ATRACAO 
                         + sessaoBuscada.getAtracao().getId();
             }
 
@@ -380,7 +381,7 @@ public class FuncionarioController {
         for (Sessao se : sessoes) {
             if (se.getData().compareTo(sessaoBuscada.getData()) == 0
                     && sessaoBuscada.getSala().getId().equals(se.getSala().getId())) {
-                return COMPLEMENTO_PAGINA_REDIRECT + Paginas.SESSOES_PECA_FUNCIONARIOS + "?idAtracao=" 
+                return COMPLEMENTO_PAGINA_REDIRECT + Paginas.SESSOES_PECA_FUNCIONARIOS + "?" + ARGUMENTO_URL_ID_ATRACAO 
                         + sessaoBuscada.getAtracao().getId();
             }
 
