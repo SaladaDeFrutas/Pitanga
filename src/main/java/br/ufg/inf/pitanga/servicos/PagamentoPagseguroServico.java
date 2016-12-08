@@ -9,6 +9,8 @@ import br.com.uol.pagseguro.service.TransactionSearchService;
 import br.ufg.inf.pitanga.entidades.Cliente;
 import br.ufg.inf.pitanga.entidades.Compra;
 import br.ufg.inf.pitanga.entidades.Ingresso;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
@@ -19,6 +21,7 @@ public class PagamentoPagseguroServico implements InterfacePagamento {
 
     private static final String PAGINA_REDIRECT_URL = "obrigado";
     private static final String PAGINA_NOTIFICACAO_URL = "http://svrideploy-svri.rhcloud.com/SVRI/notificacoes";
+    private final Logger log = LoggerFactory.getLogger(this.getClass());
 
     @Override
     public void realizaPagamento(Compra novaCompra, Cliente cliente) {
@@ -32,7 +35,7 @@ public class PagamentoPagseguroServico implements InterfacePagamento {
             boolean onlyCheckoutCode = false;
             checkout.register(PagSeguroConfig.getAccountCredentials(), onlyCheckoutCode);
         } catch (PagSeguroServiceException e) {
-            System.err.println(e.getMessage());
+            log.error(e.getMessage());
         }
     }
 
