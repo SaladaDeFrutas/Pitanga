@@ -20,6 +20,10 @@ import java.util.List;
 @Transactional
 @Controller
 public class FuncionarioController {
+    
+    private final String ATRIBUTO_FILMES = "filmes";
+    private final String ATRIBUTO_PECAS = "pecas";
+    private final String ATRIBUTO_SALAS = "salas";
 
     @Autowired
     private InterfaceFilmeDao filmeDao;
@@ -123,8 +127,8 @@ public class FuncionarioController {
         List<Filme> filmes = filmeDao.listarFilmes();
         List<Peca> pecas = pecaDao.listarPecas();
 
-        model.addAttribute("filmes", filmes);
-        model.addAttribute("pecas", pecas);
+        model.addAttribute(ATRIBUTO_FILMES, filmes);
+        model.addAttribute(ATRIBUTO_PECAS, pecas);
         return "mostrarAtracoesFuncionarios";
     }
 
@@ -138,8 +142,8 @@ public class FuncionarioController {
         List<Filme> filmes = filmeDao.listarFilmes();
         List<Peca> pecas = pecaDao.listarPecas();
 
-        model.addAttribute("filmes", filmes);
-        model.addAttribute("pecas", pecas);
+        model.addAttribute(ATRIBUTO_FILMES, filmes);
+        model.addAttribute(ATRIBUTO_PECAS, pecas);
         return "atracoesSessoesFuncionarios";
     }
 
@@ -148,8 +152,8 @@ public class FuncionarioController {
         List<Filme> filmes = filmeDao.listarFilmes();
         List<Sala> salas = salaDao.listarSalas();
 
-        model.addAttribute("filmes", filmes);
-        model.addAttribute("salas", salas);
+        model.addAttribute(ATRIBUTO_FILMES, filmes);
+        model.addAttribute(ATRIBUTO_SALAS, salas);
         return "cadastroSessaoFilme";
     }
 
@@ -158,8 +162,8 @@ public class FuncionarioController {
         List<Peca> pecas = pecaDao.listarPecas();
         List<Sala> salas = salaDao.listarSalas();
 
-        model.addAttribute("pecas", pecas);
-        model.addAttribute("salas", salas);
+        model.addAttribute(ATRIBUTO_PECAS, pecas);
+        model.addAttribute(ATRIBUTO_SALAS, salas);
         return "cadastroSessaoPeca";
     }
 
@@ -217,8 +221,8 @@ public class FuncionarioController {
         List<Filme> filmes = filmeDao.listarFilmes();
         List<Sala> salas = salaDao.listarSalas();
 
-        model.addAttribute("filmes", filmes);
-        model.addAttribute("salas", salas);
+        model.addAttribute(ATRIBUTO_FILMES, filmes);
+        model.addAttribute(ATRIBUTO_SALAS, salas);
         model.addAttribute("sessao", sessao);
 
         return "alteracaoSessaoFilme";
@@ -231,8 +235,8 @@ public class FuncionarioController {
         List<Peca> pecas = pecaDao.listarPecas();
         List<Sala> salas = salaDao.listarSalas();
 
-        model.addAttribute("pecas", pecas);
-        model.addAttribute("salas", salas);
+        model.addAttribute(ATRIBUTO_PECAS, pecas);
+        model.addAttribute(ATRIBUTO_SALAS, salas);
         model.addAttribute("sessao", sessao);
 
         return "alteracaoSessaoPeca";
@@ -459,7 +463,7 @@ public class FuncionarioController {
     @RequestMapping("mostrarSalasFuncionarios")
     public String retornaPaginaSalas(Model model) {
         List<Sala> salas = salaDao.listarSalas();
-        model.addAttribute("salas", salas);
+        model.addAttribute(ATRIBUTO_SALAS, salas);
         return "mostrarSalasFuncionarios";
     }
 
