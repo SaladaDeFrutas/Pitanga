@@ -11,8 +11,8 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 @EnableWebSecurity
 public class SegurancaConfig extends WebSecurityConfigurerAdapter {
 
-    public static final String PARAMETRO_USERNAME = "email";
-    public static final String PARAMETRO_PASSWORD = "senha";
+    public static final String PARAMETRO_USUARIO = "email";
+    public static final String PARAMETRO_SENHA = "senha";
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -21,8 +21,8 @@ public class SegurancaConfig extends WebSecurityConfigurerAdapter {
             .permitAll()
             .anyRequest().authenticated();
         http.formLogin()
-            .usernameParameter(PARAMETRO_USERNAME)
-            .passwordParameter(PARAMETRO_PASSWORD)
+            .usernameParameter(PARAMETRO_USUARIO)
+            .passwordParameter(PARAMETRO_SENHA)
             .loginPage("/login").permitAll().defaultSuccessUrl("/");
         http.logout().permitAll();
         http.csrf().disable();

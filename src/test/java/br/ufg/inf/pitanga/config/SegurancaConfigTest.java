@@ -90,8 +90,8 @@ public class SegurancaConfigTest {
     private SecurityMockMvcRequestBuilders.FormLoginRequestBuilder login() {
         return SecurityMockMvcRequestBuilders
             .formLogin("/login")
-            .userParameter(SegurancaConfig.PARAMETRO_USERNAME)
-            .passwordParam(SegurancaConfig.PARAMETRO_PASSWORD);
+            .userParameter(SegurancaConfig.PARAMETRO_USUARIO)
+            .passwordParam(SegurancaConfig.PARAMETRO_SENHA);
     }
 
     private void verificaSeNaoEstaLogado() throws Exception {
