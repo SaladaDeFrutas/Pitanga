@@ -133,11 +133,11 @@ public class FuncionarioController {
      */
     @RequestMapping(Paginas.MOSTRAR_ATRACOES_FUNCIONARIOS)
     public String retornaPaginaAtracoes(Model model) {
-        List<Filme> filmes = filmeDao.listarFilmes();
-        List<Peca> pecas = pecaDao.listarPecas();
+        List<Filme> filmesBuscados = filmeDao.listarFilmes();
+        List<Peca> pecasBuscadas = pecaDao.listarPecas();
 
-        model.addAttribute(ATRIBUTO_FILMES, filmes);
-        model.addAttribute(ATRIBUTO_PECAS, pecas);
+        model.addAttribute(ATRIBUTO_FILMES, filmesBuscados);
+        model.addAttribute(ATRIBUTO_PECAS, pecasBuscadas);
         return Paginas.MOSTRAR_ATRACOES_FUNCIONARIOS;
     }
 
@@ -147,21 +147,21 @@ public class FuncionarioController {
      */
     @RequestMapping(Paginas.MOSTRAR_SESSOES_FUNCIONARIOS)
     public String retornaPaginaAtracoesSessoes(Model model) {
-        List<Filme> filmes = filmeDao.listarFilmes();
-        List<Peca> pecas = pecaDao.listarPecas();
+        List<Filme> filmesBuscados = filmeDao.listarFilmes();
+        List<Peca> pecasBuscadas = pecaDao.listarPecas();
 
-        model.addAttribute(ATRIBUTO_FILMES, filmes);
-        model.addAttribute(ATRIBUTO_PECAS, pecas);
+        model.addAttribute(ATRIBUTO_FILMES, filmesBuscados);
+        model.addAttribute(ATRIBUTO_PECAS, pecasBuscadas);
         return Paginas.ATRACOES_SESSOES_FUNCIONARIOS;
     }
 
     @RequestMapping(Paginas.CADASTRO_SESSOES_FILME_FUNCIONARIOS)
     public String retornaPaginaCadastroSessaoFilme(Model model) {
-        List<Filme> filmes = filmeDao.listarFilmes();
-        List<Sala> salas = salaDao.listarSalas();
+        List<Filme> filmesBuscados = filmeDao.listarFilmes();
+        List<Sala> salasBuscadas = salaDao.listarSalas();
 
-        model.addAttribute(ATRIBUTO_FILMES, filmes);
-        model.addAttribute(ATRIBUTO_SALAS, salas);
+        model.addAttribute(ATRIBUTO_FILMES, filmesBuscados);
+        model.addAttribute(ATRIBUTO_SALAS, salasBuscadas);
         return Paginas.CADASTRO_SESSAO_FILME;
     }
 
@@ -176,27 +176,27 @@ public class FuncionarioController {
     }
 
     @RequestMapping(Paginas.SESSOES_FILME_FUNCIONARIOS)
-    public String mostrarSessoesFilme(Filme umFilme, Model model) {
-        List<Sessao> sessoes = sessaoDao.buscarPorAtracao(umFilme);
-        model.addAttribute(ATRIBUTO_SESSOES, sessoes);
-        Filme filmeBuscado = filmeDao.buscarPorId(umFilme.getId());
+    public String mostrarSessoesFilme(Filme filme, Model model) {
+        List<Sessao> sessoesBuscadas = sessaoDao.buscarPorAtracao(filme);
+        model.addAttribute(ATRIBUTO_SESSOES, sessoesBuscadas);
+        Filme filmeBuscado = filmeDao.buscarPorId(filme.getId());
         model.addAttribute(ATRIBUTO_FILME, filmeBuscado);
         return Paginas.MOSTRAR_SESSOES_FILME_FUNCIONARIOS;
     }
 
     @RequestMapping(Paginas.SESSOES_PECA_FUNCIONARIOS)
-    public String mostrarSessoesPeca(Peca umaPeca, Model model) {
-        List<Sessao> sessoes = sessaoDao.buscarPorAtracao(umaPeca);
-        model.addAttribute(ATRIBUTO_SESSOES, sessoes);
-        Peca pecaBuscada = pecaDao.buscarPorId(umaPeca.getId());
+    public String mostrarSessoesPeca(Peca peca, Model model) {
+        List<Sessao> sessoesBuscadas = sessaoDao.buscarPorAtracao(peca);
+        model.addAttribute(ATRIBUTO_SESSOES, sessoesBuscadas);
+        Peca pecaBuscada = pecaDao.buscarPorId(peca.getId());
         model.addAttribute(ATRIBUTO_PECA, pecaBuscada);
         return Paginas.MOSTRAR_SESSOES_PECA_FUNCIONARIOS;
     }
 
     @RequestMapping(Paginas.ALTERACAO_FILME_FUNCIONARIOS)
-    public String alterarDadosFilme(Filme umFilme, Model model) {
-        Filme filme = filmeDao.buscarPorId(umFilme.getId());
-        model.addAttribute(ATRIBUTO_FILME, filme);
+    public String alterarDadosFilme(Filme filme, Model model) {
+        Filme filmeBuscado = filmeDao.buscarPorId(filme.getId());
+        model.addAttribute(ATRIBUTO_FILME, filmeBuscado);
         return Paginas.ALTERACAO_FILME;
     }
 
@@ -216,9 +216,9 @@ public class FuncionarioController {
     }
 
     @RequestMapping(Paginas.ALTERACAO_PECA_FUNCIONARIOS)
-    public String alterarDadosPeca(Peca umaPeca, Model model) {
-        Peca peca = pecaDao.buscarPorId(umaPeca.getId());
-        model.addAttribute(ATRIBUTO_PECA, peca);
+    public String alterarDadosPeca(Peca peca, Model model) {
+        Peca pecaBuscada = pecaDao.buscarPorId(peca.getId());
+        model.addAttribute(ATRIBUTO_PECA, pecaBuscada);
         return Paginas.ALTERACAO_PECA;
     }
 
@@ -336,32 +336,32 @@ public class FuncionarioController {
     public String alterarSessaoFilme(@Valid Sessao sessao, BindingResult result,
             Filme filme) {
         //criado para adicionar um objeto sem id
-        Sessao umaSessao = sessaoDao.buscarPorId(sessao.getIdSessao());
+        Sessao sessaoBuscada = sessaoDao.buscarPorId(sessao.getIdSessao());
 
         List<Sessao> sessoes = sessaoDao.listarSessoes();
 
         // checa se ja existe uma sessao cadastrada com o mesmo horario para a mesma atracao e para a mesma sala
         for (Sessao se : sessoes) {
-            if (se.getData().compareTo(umaSessao.getData()) == 0
-                    && umaSessao.getSala().getId() == se.getSala().getId()) {
-                return "redirect:sessoesFilmeFuncionarios?idAtracao=" + umaSessao.getAtracao().getId();
+            if (se.getData().compareTo(sessaoBuscada.getData()) == 0
+                    && sessaoBuscada.getSala().getId() == se.getSala().getId()) {
+                return "redirect:sessoesFilmeFuncionarios?idAtracao=" + sessaoBuscada.getAtracao().getId();
             }
 
         }
 
-        umaSessao.setSala(
+        sessaoBuscada.setSala(
                 salaDao.buscarPorId(sessao.getSala().getId()));
 
-        umaSessao.setAtracao(
+        sessaoBuscada.setAtracao(
                 filmeDao.buscarPorId(filme.getId()));
 
-        umaSessao.setData(sessao.getData());
+        sessaoBuscada.setData(sessao.getData());
 
         if (result.hasFieldErrors("data")) {
             return "redirect:alteracaoSessaoFilmeFuncionarios";
         }
 
-        sessaoDao.alterarSessao(umaSessao);
+        sessaoDao.alterarSessao(sessaoBuscada);
         return Paginas.CADASTRO_RESTRITO_SUCESSO;
     }
 
@@ -369,32 +369,32 @@ public class FuncionarioController {
     public String alterarSessaoPeca(@Valid Sessao sessao, BindingResult result,
             Peca peca) {
         //criado para adicionar um objeto sem id
-        Sessao umaSessao = sessaoDao.buscarPorId(sessao.getIdSessao());
+        Sessao sessaoBuscada = sessaoDao.buscarPorId(sessao.getIdSessao());
 
         List<Sessao> sessoes = sessaoDao.listarSessoes();
 
         // checa se ja existe uma sessao cadastrada com o mesmo horario para a mesma atracao e para a mesma sala
         for (Sessao se : sessoes) {
-            if (se.getData().compareTo(umaSessao.getData()) == 0
-                    && umaSessao.getSala().getId() == se.getSala().getId()) {
-                return "redirect:sessoesPecaFuncionarios?idAtracao=" + umaSessao.getAtracao().getId();
+            if (se.getData().compareTo(sessaoBuscada.getData()) == 0
+                    && sessaoBuscada.getSala().getId() == se.getSala().getId()) {
+                return "redirect:sessoesPecaFuncionarios?idAtracao=" + sessaoBuscada.getAtracao().getId();
             }
 
         }
 
-        umaSessao.setSala(
+        sessaoBuscada.setSala(
                 salaDao.buscarPorId(sessao.getSala().getId()));
 
-        umaSessao.setAtracao(
+        sessaoBuscada.setAtracao(
                 pecaDao.buscarPorId(peca.getId()));
 
-        umaSessao.setData(sessao.getData());
+        sessaoBuscada.setData(sessao.getData());
 
         if (result.hasFieldErrors("data")) {
             return "redirect:alteracaoSessaoPecaFuncionarios";
         }
 
-        sessaoDao.alterarSessao(umaSessao);
+        sessaoDao.alterarSessao(sessaoBuscada);
         return Paginas.CADASTRO_RESTRITO_SUCESSO;
     }
 
@@ -476,8 +476,8 @@ public class FuncionarioController {
 
     @RequestMapping(Paginas.ALTERACAO_SALA_FUNCIONARIOS)
     public String alterarDadosSala(Sala sala, Model model) {
-        sala = salaDao.buscarPorId(sala.getId());
-        model.addAttribute(ATRIBUTO_SALA, sala);
+        Sala salaBuscada = salaDao.buscarPorId(sala.getId());
+        model.addAttribute(ATRIBUTO_SALA, salaBuscada);
         return Paginas.ALTERACAO_SALA;
     }
 
