@@ -4,6 +4,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 @Entity
@@ -34,6 +35,7 @@ public class Sessao {
     private Sala sala;
 
     @Lob
+    @Deprecated
     private String assentosOcupados;
 
     public long getIdSessao() {
@@ -76,4 +78,14 @@ public class Sessao {
         this.assentosOcupados = assentosOcupados;
     }
 
+    public String obtenhaDescricao() {
+        String tituloAtracao = getAtracao().getTitulo();
+        String dataSessao = formataData(getData());
+        return tituloAtracao + " : " + dataSessao;
+    }
+
+    private String formataData(Calendar data) {
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        return sdf.format(data.getTime());
+    }
 }

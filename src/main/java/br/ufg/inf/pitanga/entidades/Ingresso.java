@@ -1,6 +1,9 @@
 package br.ufg.inf.pitanga.entidades;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 @Entity
 @Table(name = "ingressos")
@@ -20,6 +23,17 @@ public class Ingresso {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "nomeTipoIngresso")
     private TipoIngresso umTipoIngresso;
+
+    public Ingresso(Cliente umCliente, Sessao umaSessao, Assento umAssento, TipoIngresso umTipoIngresso) {
+        this.umCliente = umCliente;
+        this.umaSessao = umaSessao;
+        this.umAssento = umAssento;
+        this.umTipoIngresso = umTipoIngresso;
+    }
+
+    public Ingresso() {
+        //Necessário para o JPA instanciar o objeto
+    }
 
     public Long getId() {
         return id;
@@ -59,6 +73,10 @@ public class Ingresso {
 
     public void setUmTipoIngresso(TipoIngresso umTipoIngresso) {
         this.umTipoIngresso = umTipoIngresso;
+    }
+
+    public BigDecimal getValor() {
+        return getUmTipoIngresso().getPreco().setScale(2, BigDecimal.ROUND_CEILING);
     }
 
 }
