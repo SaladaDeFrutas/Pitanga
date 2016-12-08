@@ -22,7 +22,7 @@ public class GeraPDF {
      * Gera um Document com as informações do ingresso em PDF
      * Utilizando a API Itext 1.3.1
      *
-     * @param Ingresso
+     * @param ingresso
      * @throws DocumentException
      */
     public static Document gerarPDFIngresso(Ingresso ingresso) throws DocumentException {
@@ -37,7 +37,7 @@ public class GeraPDF {
             "Atração: " + ingresso.getUmaSessao().getAtracao().getTitulo() + "\n" +
             "Data: " + ingresso.getUmaSessao().getData() + "\n" +
             "Sala: " + ingresso.getUmaSessao().getSala() +
-            " Assento:" + ingresso.getUmAssento().getFileira() + ingresso.getUmAssento().getColuna() +
+            " Assento:" + ingresso.getUmAssento().getFila() + ingresso.getUmAssento().getColuna() +
             "Tipo: " + ingresso.getUmTipoIngresso().getNome());
         documento.add(textoTicket);
         documento.close();
@@ -59,7 +59,6 @@ public class GeraPDF {
      * Gera um Document com as informações do ingresso em PDF
      * Utilizando a API Itext 1.3.1
      *
-     * @param Ingresso
      * @throws DocumentException
      */
     public ByteArrayOutputStream gerarPDFComprovante() throws DocumentException {
