@@ -5,6 +5,7 @@ set -euo pipefail
 export MAVEN_OPTS="-Xmx1G -Xms128m"
 MAVEN_OPTIONS="-B -e -V"
 
+echo "$TRAVIS_BRANCH, $TRAVIS_PULL_REQUEST"
 if [ "$TRAVIS_BRANCH" == "master" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
     echo 'Analyse master branch'
 
