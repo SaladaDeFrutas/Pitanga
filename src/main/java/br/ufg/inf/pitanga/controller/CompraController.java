@@ -109,9 +109,9 @@ public class CompraController {
         Assento assento1 = new Assento();
         Assento assento2 = new Assento();
         assento1.setColuna(2);
-        assento1.setFileira(0);
+        assento1.setFila(0);
         assento2.setColuna(18);
-        assento2.setFileira(3);
+        assento2.setFila(3);
 
         ArrayList<Assento> assentosInvalidos = new ArrayList<>();
         assentosInvalidos.add(assento1);
