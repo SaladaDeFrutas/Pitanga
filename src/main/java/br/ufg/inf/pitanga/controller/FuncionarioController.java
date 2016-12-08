@@ -33,6 +33,8 @@ public class FuncionarioController {
     private static final String ATRIBUTO_FUNCIONARIOS = "funcionarios";
     private static final String ATRIBUTO_TIPO_INGRESSO = "tipoIngresso";
     private static final String ATRIBUTO_TIPOS_INGRESSO = "tiposIngresso";
+    
+    private static final String COMPLEMENTO_PAGINA_REDIRECT = "redirect:";
 
     @Autowired
     private InterfaceFilmeDao filmeDao;
@@ -210,7 +212,7 @@ public class FuncionarioController {
     @RequestMapping(Paginas.EXCLUSAO_FILME_FUNCIONARIOS)
     public String excluirDadosFilme(Filme umFilme) {
         filmeDao.removerFilme(umFilme);
-        return "redirect:" + Paginas.MOSTRAR_ATRACOES_FUNCIONARIOS;
+        return COMPLEMENTO_PAGINA_REDIRECT + Paginas.MOSTRAR_ATRACOES_FUNCIONARIOS;
     }
 
     @RequestMapping(Paginas.ALTERACAO_PECA_FUNCIONARIOS)
@@ -270,7 +272,7 @@ public class FuncionarioController {
         umaSessao.setAssentosOcupados(" ");
 
         if (result.hasFieldErrors("data")) {
-            return "redirect:" + Paginas.CADASTRO_SESSOES_PECA_FUNCIONARIOS;
+            return COMPLEMENTO_PAGINA_REDIRECT + Paginas.CADASTRO_SESSOES_PECA_FUNCIONARIOS;
         }
 
         List<Sessao> sessoes = sessaoDao.listarSessoes();
@@ -303,7 +305,7 @@ public class FuncionarioController {
         umaSessao.setAssentosOcupados(" ");
 
         if (result.hasFieldErrors("data")) {
-            return "redirect:" + Paginas.CADASTRO_SESSOES_FILME_FUNCIONARIOS;
+            return COMPLEMENTO_PAGINA_REDIRECT + Paginas.CADASTRO_SESSOES_FILME_FUNCIONARIOS;
         }
 
         List<Sessao> sessoes = sessaoDao.listarSessoes();
@@ -408,19 +410,19 @@ public class FuncionarioController {
     @RequestMapping(Paginas.EXCLUSAO_SESSAO_FUNCIONARIOS)
     public String excluirDadosSessao(Sessao sessao) {
         sessaoDao.removerSessao(sessao);
-        return "redirect:" + Paginas.GERENCIAR_SESSOES_FUNCIONARIOS;
+        return COMPLEMENTO_PAGINA_REDIRECT + Paginas.GERENCIAR_SESSOES_FUNCIONARIOS;
     }
 
     @RequestMapping(Paginas.EXCLUSAO_TIPO_INGRESSO_FUNCIONARIOS)
     public String excluirDadosTipoIngresso(TipoIngresso umTipoIngresso) {
         tipoIngressoDao.removerTipoIngresso(umTipoIngresso);
-        return "redirect:" + Paginas.MOSTRAR_TIPO_INGRESSO_FUNCIONARIOS;
+        return COMPLEMENTO_PAGINA_REDIRECT + Paginas.MOSTRAR_TIPO_INGRESSO_FUNCIONARIOS;
     }
 
     @RequestMapping(Paginas.EXCLUSAO_PECA_FUNCIONARIOS)
     public String excluirDadosPeca(Peca umaPeca) {
         pecaDao.removerPeca(umaPeca);
-        return "redirect:" + Paginas.MOSTRAR_ATRACOES_FUNCIONARIOS;
+        return COMPLEMENTO_PAGINA_REDIRECT + Paginas.MOSTRAR_ATRACOES_FUNCIONARIOS;
     }
 
     @RequestMapping(Paginas.MOSTRAR_TIPO_INGRESSO_FUNCIONARIOS)
@@ -450,12 +452,12 @@ public class FuncionarioController {
 
     @RequestMapping(Paginas.CADASTRAR_SALA_FUNCIONARIOS)
     public String cadastrarSalaFuncionarios(Sala sala,
-            @RequestParam ArrayList<String> assentos) {
+            @RequestParam List<String> assentos) {
         String assentosInvalidos;
 
         if (assentos != null) {
             StringAssento stringAssento = new StringAssento();
-            ArrayList<Assento> arrayAssentosInvalidos = stringAssento.converterArrayStringParaArrayAssento(assentos);
+            ArrayList<Assento> arrayAssentosInvalidos = stringAssento.converterArrayStringParaArrayAssento((ArrayList<String>) assentos);
             assentosInvalidos = stringAssento.converterAssentoParaString(arrayAssentosInvalidos);
         } else {
             assentosInvalidos = " ";
@@ -481,14 +483,14 @@ public class FuncionarioController {
 
     @RequestMapping(Paginas.ALTERAR_SALA_FUNCIONARIOS)
     public String alterarSala(@Valid Sala sala, BindingResult result,
-            @RequestParam ArrayList<String> assentos) {
+            @RequestParam List<String> assentos) {
         if (result.hasErrors()) {
             return Paginas.ALTERACAO_SALA;
         }
         String assentosInvalidos;
         if (assentos != null) {
             StringAssento stringAssento = new StringAssento();
-            ArrayList<Assento> arrayAssentosInvalidos = stringAssento.converterArrayStringParaArrayAssento(assentos);
+            ArrayList<Assento> arrayAssentosInvalidos = stringAssento.converterArrayStringParaArrayAssento((ArrayList<String>) assentos);
             assentosInvalidos = stringAssento.converterAssentoParaString(arrayAssentosInvalidos);
         } else {
             assentosInvalidos = " ";
@@ -501,7 +503,7 @@ public class FuncionarioController {
     @RequestMapping(Paginas.EXCLUSAO_SALA_FUNCIONARIOS)
     public String excluirSala(Sala sala) {
         salaDao.removerSala(sala);
-        return "redirect:" + Paginas.MOSTRAR_SALAS_FUNCIONARIOS;
+        return COMPLEMENTO_PAGINA_REDIRECT + Paginas.MOSTRAR_SALAS_FUNCIONARIOS;
     }
 
     // Ao usar @Valid, nao usar redirect
@@ -546,8 +548,8 @@ public class FuncionarioController {
 
     @RequestMapping(Paginas.ALTERACAO_FUNCIONARIOS)
     public String alterarFuncionarios(Funcionario funcionario, Model model) {
-        funcionario = funcionarioDao.buscarPorId(funcionario.getEmail());
-        model.addAttribute(ATRIBUTO_FUNCIONARIO, funcionario);
+        Funcionario funcionarioBuscado = funcionarioDao.buscarPorId(funcionario.getEmail());
+        model.addAttribute(ATRIBUTO_FUNCIONARIO, funcionarioBuscado);
         return Paginas.ALTERACAO_FUNCIONARIO;
     }
 
@@ -563,6 +565,6 @@ public class FuncionarioController {
     @RequestMapping(Paginas.EXCLUSAO_FUNCIONARIOS)
     public String excluirFuncionario(Funcionario funcionario) {
         funcionarioDao.removerFuncionario(funcionario);
-        return "redirect:" + Paginas.MOSTRAR_FUNCIONARIOS;
+        return COMPLEMENTO_PAGINA_REDIRECT + Paginas.MOSTRAR_FUNCIONARIOS;
     }
 }
