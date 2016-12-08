@@ -458,17 +458,6 @@ public class FuncionarioController {
     @RequestMapping(Paginas.CADASTRAR_SALA_FUNCIONARIOS)
     public String cadastrarSalaFuncionarios(Sala sala,
             @RequestParam List<String> assentos) {
-        String assentosInvalidos;
-
-        if (assentos != null) {
-            StringAssento stringAssento = new StringAssento();
-            ArrayList<Assento> arrayAssentosInvalidos = stringAssento.converterArrayStringParaArrayAssento(
-                    (ArrayList<String>) assentos);
-            assentosInvalidos = stringAssento.converterAssentoParaString(arrayAssentosInvalidos);
-        } else {
-            assentosInvalidos = " ";
-        }
-
         salaDao.adicionarSala(sala);
         return Paginas.CADASTRO_RESTRITO_SUCESSO;
     }
@@ -493,16 +482,6 @@ public class FuncionarioController {
         if (result.hasErrors()) {
             return Paginas.ALTERACAO_SALA;
         }
-        String assentosInvalidos;
-        if (assentos != null) {
-            StringAssento stringAssento = new StringAssento();
-            ArrayList<Assento> arrayAssentosInvalidos = stringAssento.converterArrayStringParaArrayAssento(
-                    (ArrayList<String>) assentos);
-            assentosInvalidos = stringAssento.converterAssentoParaString(arrayAssentosInvalidos);
-        } else {
-            assentosInvalidos = " ";
-        }
-
         salaDao.alterarSala(sala);
         return Paginas.CADASTRO_RESTRITO_SUCESSO;
     }
