@@ -4,7 +4,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
-public class CalendarHelperTest {
+public class CalendarHelper {
 
     public static Calendar converteStringParaCalendar(String data, String formato) {
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat(formato);

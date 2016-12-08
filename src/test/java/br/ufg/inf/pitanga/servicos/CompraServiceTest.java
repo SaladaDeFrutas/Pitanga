@@ -1,10 +1,10 @@
 package br.ufg.inf.pitanga.servicos;
 
-import br.ufg.inf.pitanga.CalendarHelperTest;
+import br.ufg.inf.pitanga.CalendarHelper;
 import br.ufg.inf.pitanga.entidades.*;
 import br.ufg.inf.pitanga.repository.ClienteRepository;
 import br.ufg.inf.pitanga.repository.CompraRepository;
-import br.ufg.inf.pitanga.repository.IngressoRepository;
+import br.ufg.inf.pitanga.repository.SalaRepository;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,7 +32,7 @@ public class CompraServiceTest {
     private CompraRepository compraRepository;
 
     @Autowired
-    private IngressoRepository ingressoRepository;
+    private SalaRepository salaRepository;
 
     @Test
     public void testaObtenhaComprasDeUmClienteComSucesso() {
@@ -58,7 +58,7 @@ public class CompraServiceTest {
     private Compra adicionarCompraParaCliente(Cliente cliente, String dataCompra) {
         String codigoTransacao = "12345";
         BigDecimal valor = new BigDecimal("35.99");
-        Calendar data = CalendarHelperTest.converteStringParaCalendar(dataCompra, "dd/MM/yyyy");
+        Calendar data = CalendarHelper.converteStringParaCalendar(dataCompra, "dd/MM/yyyy");
 
         Compra compra = new Compra();
         compra.setCodigoTransacao(codigoTransacao);
@@ -74,13 +74,21 @@ public class CompraServiceTest {
 
     private List<Ingresso> criaListaDeIngressos(Compra compra) {
         Ingresso ingresso = new Ingresso();
-
-        Assento assento = new Assento();
-        assento.setColuna(0);
+        Assento assento = criaAssentoEmUmaSala();
         ingresso.setUmAssento(assento);
         return new ArrayList<Ingresso>() {{
             add(ingresso);
         }};
+    }
+
+    private Assento criaAssentoEmUmaSala() {
+        Sala sala = new Sala();
+        Assento assento = new Assento(sala);
+        sala.setAssentos(new ArrayList<Assento>() {{
+            add(assento);
+        }});
+        salaRepository.save(sala);
+        return assento;
     }
 
 }

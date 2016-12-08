@@ -96,7 +96,7 @@ public class GeradorPDFController {
             geradorPDF.concatenaStringTexto("Sala: " + umaSessao.getIdSessao() + "\n");
 
             // fileira e coluna da sala pro ingresso
-            geradorPDF.concatenaStringTexto("Assento: " + (ingresso.getUmAssento().getFileira() + 1) + (ingresso.getUmAssento().getColuna() + 1) + "\n\n");
+            geradorPDF.concatenaStringTexto("Assento: " + (ingresso.getUmAssento().getFila() + 1) + (ingresso.getUmAssento().getColuna() + 1) + "\n\n");
         }
         //retorna o pdf completo
         try {

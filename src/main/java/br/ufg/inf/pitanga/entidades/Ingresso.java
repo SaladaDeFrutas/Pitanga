@@ -15,7 +15,7 @@ public class Ingresso {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "idSessao")
     private Sessao umaSessao;
-    @Embedded
+    @OneToOne
     private Assento umAssento;
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "nomeTipoIngresso")
