@@ -25,6 +25,8 @@ public class TipoIngresso {
     }
 
     public void setPreco(double preco) {
+        if (preco < 0)
+            throw new IllegalArgumentException();
         this.preco = preco;
     }
 
@@ -33,6 +35,9 @@ public class TipoIngresso {
     }
 
     public void setNome(String nome) {
+        if (nome == null || nome.isEmpty() || !nome.matches("[a-zA-Z]+"))
+            throw new IllegalArgumentException();
+
         this.nome = nome;
     }
 
