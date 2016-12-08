@@ -17,9 +17,6 @@ import java.util.*;
 public class CompraServico {
 
     @Autowired
-    private PagamentoPagseguroServico pagamentoPagseguroServico;
-
-    @Autowired
     private ClienteRepository clienteRepository;
 
     @Autowired
