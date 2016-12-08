@@ -44,78 +44,77 @@ public class FuncionarioController {
     private InterfaceSalaDao salaDao;
 
 
-    @RequestMapping("indexFuncionarios")
+    @RequestMapping(Paginas.INDEX_FUNCIONARIOS)
     public String retornaPaginaIndex() {
-        return "indexFuncionarios";
+        return Paginas.INDEX_FUNCIONARIOS;
     }
 
     @RequestMapping("cadastrarFilmeFuncionarios")
     public String cadastrarFilme(@Valid Filme umFilme, BindingResult result) {
         if (result.hasErrors()) {
-            return "cadastroFilme";
+            return Paginas.CADASTRO_FILME;
         }
         filmeDao.adicionarFilme(umFilme);
         return Paginas.CADASTRO_RESTRITO_SUCESSO;
     }
-
+    
     @RequestMapping("cadastrarPecaFuncionarios")
     public String cadastrarPeca(@Valid Peca umaPeca, BindingResult result) {
         if (result.hasErrors()) {
-            return "cadastroPeca";
+            return Paginas.CADASTRO_PECA;
         }
         pecaDao.adicionarPeca(umaPeca);
         return Paginas.CADASTRO_RESTRITO_SUCESSO;
     }
-
+    
     @RequestMapping("gerenciarAtracoesFuncionarios")
     public String retornaPaginaGerenciaAtracoes() {
-        return "gerenciarAtracoes";
+        return Paginas.GERENCIAR_ATRACOES;
     }
 
     @RequestMapping("gerenciarSessoesFuncionarios")
     public String retornaPaginaGerenciaSessoes() {
-        return "gerenciarSessoes";
+        return Paginas.GERENCIAR_SESSOES;
     }
-
+    
     @RequestMapping("gerenciarSalasFuncionarios")
     public String retornaPaginaGerenciaSalas() {
-        return "gerenciarSalas";
+        return Paginas.GERENCIAR_SALAS;
     }
-
-
+    
     @RequestMapping("cadastroAtracoesFuncionarios")
     public String retornaPaginaCadastroAtracoes() {
-        return "cadastroAtracoes";
+        return Paginas.CADASTRO_ATRACOES;
     }
-
+    
     @RequestMapping("cadastroFilmeFuncionarios")
     public String retornaPaginaCadastroFilme() {
-        return "cadastroFilme";
+        return Paginas.CADASTRO_FILME;
     }
 
     @RequestMapping("cadastroPecaFuncionarios")
     public String retornaPaginaCadastroPeca() {
-        return "cadastroPeca";
+        return Paginas.CADASTRO_PECA;
     }
 
     @RequestMapping("cadastroSessoesFuncionarios")
     public String retornaPaginaCadastroSessoes() {
-        return "cadastroSessoes";
+        return Paginas.CADASTRO_SESSOES;
     }
-
+    
     @RequestMapping("cadastroSalasFuncionarios")
     public String retornaPaginaCadastroSalas() {
-        return "cadastroSalas";
+        return Paginas.CADASTRO_SALAS;
     }
-
+    
     @RequestMapping("gerenciarTipoIngressoFuncionarios")
     public String retornaPaginaGerenciaTipoIngresso() {
-        return "gerenciarTipoIngresso";
+        return Paginas.GERENCIAR_TIPO_INGRESSO;
     }
-
+    
     @RequestMapping("cadastroTipoIngressoFuncionarios")
     public String retornaPaginaCadastroTipoIngresso() {
-        return "cadastroTipoIngresso";
+        return Paginas.CADASTRO_TIPO_INGRESSO;
     }
 
     /**
