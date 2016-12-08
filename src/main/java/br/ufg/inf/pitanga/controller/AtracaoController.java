@@ -25,21 +25,11 @@ public class AtracaoController {
 
     @RequestMapping("/mostrarFilme")
     public String mostrarFilme(Filme umFilme, Model model) {
-        // filmeDao.adicionarFilme(umFilme);
         Filme filmeEscolhido = filmeDao.buscarPorId(umFilme.getId());
-        // List<Sessao> listaDeSessoes= ses
-        // @AutowiredsaoDao.buscarPorAtracao(umFilme.getId());
-        // System.out.println(filmeEscolhido.getTitulo());
         model.addAttribute("filme", filmeEscolhido);
-        // model.addAtribute("listaDeSessoes",listaDeSessoes);
-        // model.addAttribute("filme",umFilme);
         return "informacoesFilme";
     }
 
-    /**
-     * @param model adiciona atributos para a pagina JSP que sera retornada
-     * @return pagina JSP de atracoes
-     */
     @RequestMapping("mostrarAtracoes")
     public String retornaPaginaAtracoes(Model model) {
         List<Filme> filmes = filmeDao.listarFilmes();
@@ -50,11 +40,6 @@ public class AtracaoController {
         return "mostrarAtracoes";
     }
 
-    /**
-     * @param umFilme ID e titulo do filme
-     * @param model   adiciona o ID e titulo do filme e a lista de sessoes
-     * @return
-     */
     @RequestMapping("mostrarSessoesFilme")
     public String mostrarSessoesFilme(Filme umFilme, Model model) {
         List<Sessao> sessoes = sessaoDao.buscarPorAtracao(umFilme);
