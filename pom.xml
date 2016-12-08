@@ -158,6 +158,7 @@
                 <version>0.7.7.201606060606</version>
                 <executions>
                     <execution>
+                        <id>report-report-agent</id>
                         <goals>
                             <goal>prepare-agent</goal>
                         </goals>
