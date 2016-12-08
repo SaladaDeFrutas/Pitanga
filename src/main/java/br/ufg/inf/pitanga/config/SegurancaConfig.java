@@ -11,27 +11,29 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 @EnableWebSecurity
 public class SegurancaConfig extends WebSecurityConfigurerAdapter {
 
+    public static final String PARAMETRO_USERNAME = "email";
+    public static final String PARAMETRO_PASSWORD = "senha";
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-            .antMatchers("/css/**", "/js/**", "/imagens/**", "/fonts/**", "/recuperaConta").permitAll()
-            .anyRequest().authenticated()
-            .and()
-            .formLogin().loginPage("/login").permitAll().defaultSuccessUrl("/")
-            .and()
-            .logout().permitAll()
-            .and()
-            .csrf().disable();
+            .antMatchers("/css/**", "/js/**", "/images/**", "/fonts/**", "/jquery/**", "/resources/**")
+            .permitAll()
+            .anyRequest().authenticated();
+        http.formLogin()
+            .usernameParameter(PARAMETRO_USERNAME)
+            .passwordParameter(PARAMETRO_PASSWORD)
+            .loginPage("/login").permitAll().defaultSuccessUrl("/");
+        http.logout().permitAll();
+        http.csrf().disable();
     }
 
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-        auth
-            .inMemoryAuthentication()
-            .withUser("user")
-            .password("password")
-            .roles("USER")
-            .and().withUser("gitanio").password("gitanio").roles("USER");
+        auth.inMemoryAuthentication()
+            .withUser("pitanga")
+            .password("pitanga")
+            .roles("USER");
     }
 
 }

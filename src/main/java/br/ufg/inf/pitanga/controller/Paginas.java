@@ -82,6 +82,8 @@ public class Paginas {
     public static final String ALTERAR_FUNCIONARIOS = "alterarFuncionarios";
     public static final String EXCLUSAO_FUNCIONARIOS = "exclusaoFuncionarios";
 
+    public static final String LOGIN = "login";
+
     private Paginas() {
         //Classe de utilidade
     }
