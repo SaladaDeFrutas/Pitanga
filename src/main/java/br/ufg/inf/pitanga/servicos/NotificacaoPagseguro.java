@@ -7,7 +7,7 @@ import br.com.uol.pagseguro.service.NotificationService;
 
 public class NotificacaoPagseguro {
     /**
-     * @return transacao para salvar em RegistroCompra
+     * @return transacao para salvar em Compra
      */
     public Transaction receberNotificacaoCheckout(String codigoNotificacao) {
         // The notificationCode received by your system

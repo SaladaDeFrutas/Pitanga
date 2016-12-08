@@ -19,8 +19,7 @@ public class Sala {
     private int filas;
     private int colunas;
 
-    @OneToMany
-    @JoinColumn(name = "idAssento")
+    @OneToMany(cascade = CascadeType.PERSIST)
     private List<Assento> assentos;
 
     @OneToMany

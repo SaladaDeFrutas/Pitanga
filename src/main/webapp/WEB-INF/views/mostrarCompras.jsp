@@ -12,19 +12,18 @@
 <body class=pagina>
 <c:import url="cabecalho.jsp"/>
 <c:choose>
-    <c:when test="${not empty registrosCompras}">
-        <h3>Compras de ${cliente.nome}:</h3>
+    <c:when test="${not empty compras}">
+        <h3>Compras de ${compras.nome}:</h3>
 
-        <c:forEach items="${registrosCompras}" var="registroCompra">
-            <b>Código da Compra:</b> ${registroCompra.idRegistroCompra} <br>
-            <b>Data da Compra: </b><fmt:formatDate value="${registroCompra.dataCompra.time}"
-                                                   pattern="dd/MM HH:mm"/> <br>
+        <c:forEach items="${compras}" var="compra">
+            <b>Código da Compra:</b> ${compra.id} <br>
+            <b>Data da Compra: </b>${compra.dataCompra}<br>
 
-            <b>Valor:</b>${registroCompra.valor} <br>
+            <b>Valor:</b>${compra.valor} <br>
 
             <form action="mostrarInformacoesCompra" method="post">
                 <button type="submit" name="idRegistroCompra"
-                        value="${registroCompra.idRegistroCompra}"
+                        value="${compra.id}"
                         class="btn btn-default">Visualizar Compra
                 </button>
             </form>
