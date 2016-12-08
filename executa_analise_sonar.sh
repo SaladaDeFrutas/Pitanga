@@ -20,7 +20,7 @@ if [ "$TRAVIS_BRANCH" == "master" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ]; th
           $MAVEN_OPTIONS \
           -Dsonar.login=$SONAR_TOKEN
 
-elif [ "$TRAVIS_PULL_REQUEST" != "false" ] && [ -n "${GITHUB_TOKEN:-}" ]; then
+elif [ "$TRAVIS_PULL_REQUEST" != "false" ]; then
     echo 'Internal pull request: trigger QA and analysis'
 
     mvn org.jacoco:jacoco-maven-plugin:prepare-agent package sonar:sonar \
