@@ -29,5 +29,11 @@ elif [ "$TRAVIS_PULL_REQUEST" != "false" ] && [ -n "${GITHUB_TOKEN:-}" ]; then
         -Dsonar.github.pullRequest=$TRAVIS_PULL_REQUEST \
         -Dsonar.github.oauth=$SONAR_GITHUB_TOKEN \
         -Dsonar.login=$SONAR_TOKEN
+
+else
+    echo 'Normal push, just executing tests'
+
+    mvn package \
+        $MAVEN_OPTIONS
 fi
 
