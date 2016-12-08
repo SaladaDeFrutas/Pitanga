@@ -193,7 +193,6 @@ public class FuncionarioController {
         if (result.hasErrors()) {
             return "alteracaoFilme";
         }
-        //System.out.println(umFilme.getId());
         filmeDao.alterarFilme(umFilme);
         return Paginas.CADASTRO_RESTRITO_SUCESSO;
     }
@@ -270,10 +269,9 @@ public class FuncionarioController {
 		/* checa se ja existe uma sessao cadastrada com o mesmo horario 
 		 * para a mesma atracao e para a mesma sala*/
         for (Sessao se : sessoes) {
-            if (se.getData().compareTo(umaSessao.getData()) == 0) {
-                if (umaSessao.getSala().getId() == se.getSala().getId()) {
-                    return "redirect:sessoesPecaFuncionarios?idAtracao=" + umaSessao.getAtracao().getId();
-                }
+            if (se.getData().compareTo(umaSessao.getData()) == 0 
+                    && umaSessao.getSala().getId() == se.getSala().getId()) {
+                return "redirect:sessoesPecaFuncionarios?idAtracao=" + umaSessao.getAtracao().getId();
             }
 
         }
@@ -328,13 +326,10 @@ public class FuncionarioController {
                                      Filme filme) {
         //criado para adicionar um objeto sem id
         Sessao umaSessao = sessaoDao.buscarPorId(sessao.getIdSessao());
-        //System.out.println(filme.getIdAtracao());
-        //System.out.println(sessao.getIdSessao());
 
         List<Sessao> sessoes = sessaoDao.listarSessoes();
 		
-		/* checa se ja existe uma sessao cadastrada com o mesmo horario 
-		 * para a mesma atracao e para a mesma sala*/
+        // checa se ja existe uma sessao cadastrada com o mesmo horario para a mesma atracao e para a mesma sala
         for (Sessao se : sessoes) {
             if (se.getData().compareTo(umaSessao.getData()) == 0
                     && umaSessao.getSala().getId() == se.getSala().getId()) {
@@ -364,12 +359,10 @@ public class FuncionarioController {
                                     Peca peca) {
         //criado para adicionar um objeto sem id
         Sessao umaSessao = sessaoDao.buscarPorId(sessao.getIdSessao());
-        //System.out.println(peca.getIdAtracao());
 
         List<Sessao> sessoes = sessaoDao.listarSessoes();
 		
-		/* checa se ja existe uma sessao cadastrada com o mesmo horario 
-		 * para a mesma atracao e para a mesma sala*/
+        // checa se ja existe uma sessao cadastrada com o mesmo horario para a mesma atracao e para a mesma sala
         for (Sessao se : sessoes) {
             if (se.getData().compareTo(umaSessao.getData()) == 0 
                     && umaSessao.getSala().getId() == se.getSala().getId()) {
@@ -405,7 +398,6 @@ public class FuncionarioController {
 
     @RequestMapping("exclusaoSessaoFuncionarios")
     public String excluirDadosSessao(Sessao sessao) {
-        //System.out.println(sessao.getIdSessao());
         sessaoDao.removerSessao(sessao);
         return "redirect:gerenciarSessoesFuncionarios";
     }
@@ -453,7 +445,6 @@ public class FuncionarioController {
         String assentosInvalidos;
 
         if (assentos != null) {
-            System.out.println("array assentos:" + assentos.toString());
             StringAssento stringAssento = new StringAssento();
             ArrayList<Assento> arrayAssentosInvalidos = stringAssento.converterArrayStringParaArrayAssento(assentos);
             assentosInvalidos = stringAssento.converterAssentoParaString(arrayAssentosInvalidos);
