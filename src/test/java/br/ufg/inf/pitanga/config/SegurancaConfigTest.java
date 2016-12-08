@@ -5,51 +5,87 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.mock.web.MockFilterChain;
-import org.springframework.mock.web.MockHttpServletRequest;
-import org.springframework.mock.web.MockHttpServletResponse;
-import org.springframework.security.crypto.codec.Base64;
-import org.springframework.security.web.FilterChainProxy;
+import org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestBuilders;
 import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.request.RequestPostProcessor;
+import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+import org.springframework.web.context.WebApplicationContext;
 
-import javax.servlet.http.HttpServletResponse;
+import javax.servlet.Filter;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.httpBasic;
+import static org.springframework.security.test.web.servlet.response.SecurityMockMvcResultMatchers.authenticated;
+import static org.springframework.security.test.web.servlet.response.SecurityMockMvcResultMatchers.unauthenticated;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.redirectedUrl;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class SegurancaConfigTest {
 
     @Autowired
-    private FilterChainProxy springSecurityFilterChain;
+    private WebApplicationContext context;
 
-    private MockHttpServletRequest request;
+    @Autowired
+    private Filter springSecurityFilterChain;
 
-    private MockHttpServletResponse response;
-
-    private MockFilterChain chain;
+    private MockMvc mvc;
 
     @Before
-    public void setUp() throws Exception {
-        this.request = new MockHttpServletRequest();
-        this.response = new MockHttpServletResponse();
-        this.chain = new MockFilterChain();
+    public void setup() {
+        mvc = MockMvcBuilders
+            .webAppContextSetup(context)
+            .addFilters(springSecurityFilterChain)
+            .build();
     }
 
     @Test
-    public void testeNegaRequestInvalida() throws Exception {
-        this.springSecurityFilterChain.doFilter(this.request, this.response, this.chain);
-        assertThat(this.response.getStatus())
-            .isEqualTo(HttpServletResponse.SC_UNAUTHORIZED);
+    public void apiSecurityProdutosInvalid() throws Exception {
+        mvc
+            .perform(get("/api/produtos").with(httpBasicAuthenticationInvalid()))
+            .andExpect(unauthenticated());
     }
 
     @Test
-    public void userAuthenticates() throws Exception {
-        this.request.addHeader("Authorization",
-            "Basic " + new String(Base64.encode("user:password".getBytes("UTF-8"))));
+    public void apiSecurityCategoria() throws Exception {
+        mvc
+            .perform(get("/api/categorias").with(httpBasicAuthenticationValid()))
+            .andExpect(authenticated());
+    }
 
-        this.springSecurityFilterChain.doFilter(this.request, this.response, this.chain);
+    @Test
+    public void apiSecurityCategoriaInvalid() throws Exception {
+        mvc
+            .perform(get("/api/categorias").with(httpBasicAuthenticationInvalid()))
+            .andExpect(unauthenticated());
+    }
 
-        assertThat(this.response.getStatus()).isEqualTo(HttpServletResponse.SC_OK);
+    @Test
+    public void validLoginCheck() throws Exception {
+        mvc.perform(login().user("user").password("password"))
+            .andExpect(authenticated())
+            .andExpect(status().isFound())
+            .andExpect(redirectedUrl("/"));
+    }
+
+    @Test
+    public void invalidLoginCheck() throws Exception {
+        mvc.perform(login().user("user2").password("password"))
+            .andExpect(unauthenticated())
+            .andExpect(redirectedUrl("/login?error"));
+    }
+
+    private SecurityMockMvcRequestBuilders.FormLoginRequestBuilder login(){
+        return SecurityMockMvcRequestBuilders
+            .formLogin("/login");
+    }
+    private RequestPostProcessor httpBasicAuthenticationValid(){
+        return httpBasic("user", "password");
+    }
+
+    private RequestPostProcessor httpBasicAuthenticationInvalid(){
+        return httpBasic("notUser", "password");
     }
 }
