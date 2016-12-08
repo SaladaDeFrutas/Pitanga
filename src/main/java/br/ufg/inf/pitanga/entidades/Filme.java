@@ -20,10 +20,8 @@ public class Filme extends Atracao {
     @NotEmpty(message = "A produtora deve ser preenchido.")
     private String produtora;
 
-    /**
-     * Método construtor padrão.
-     */
     public Filme() {
+        //Necessário para o JPA instanciar o objeto
     }
     
     public Boolean getLegendado() {
