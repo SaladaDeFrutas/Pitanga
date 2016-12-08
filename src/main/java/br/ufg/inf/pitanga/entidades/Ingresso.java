@@ -8,36 +8,24 @@ public class Ingresso {
 
     @Id
     @GeneratedValue
-    private int id;
-    @OneToOne(cascade = CascadeType.ALL)
+    private Long id;
+    @OneToOne
     @JoinColumn(name = "email")
     private Cliente umCliente;
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "idSessao")
     private Sessao umaSessao;
-    @Embedded
+    @OneToOne
     private Assento umAssento;
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "nomeTipoIngresso")
     private TipoIngresso umTipoIngresso;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "idRegistroCompra")
-    private RegistroCompra registroCompra;
-
-    public RegistroCompra getRegistroCompra() {
-        return registroCompra;
-    }
-
-    public void setRegistroCompra(RegistroCompra registroCompra) {
-        this.registroCompra = registroCompra;
-    }
-
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -72,6 +60,5 @@ public class Ingresso {
     public void setUmTipoIngresso(TipoIngresso umTipoIngresso) {
         this.umTipoIngresso = umTipoIngresso;
     }
-
 
 }

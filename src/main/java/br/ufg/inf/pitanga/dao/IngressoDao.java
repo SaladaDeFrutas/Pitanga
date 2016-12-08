@@ -2,7 +2,7 @@ package br.ufg.inf.pitanga.dao;
 
 import br.ufg.inf.pitanga.entidades.Cliente;
 import br.ufg.inf.pitanga.entidades.Ingresso;
-import br.ufg.inf.pitanga.entidades.RegistroCompra;
+import br.ufg.inf.pitanga.entidades.Compra;
 import br.ufg.inf.pitanga.interfaces.dao.InterfaceIngressoDao;
 import org.springframework.stereotype.Repository;
 
@@ -41,7 +41,7 @@ public class IngressoDao implements InterfaceIngressoDao {
     }
 
     @Override
-    public Ingresso buscarPorId(int id) {
+    public Ingresso buscarPorId(Long id) {
         return manager.find(Ingresso.class, id);
     }
 
@@ -53,7 +53,7 @@ public class IngressoDao implements InterfaceIngressoDao {
 
     @SuppressWarnings("unchecked")
     @Override
-    public List<Ingresso> buscaPorRegistroCompra(RegistroCompra umRegistroCompra) {
-        return manager.createQuery("from Ingresso as i where registroCompra.idRegistroCompra=" + umRegistroCompra.getIdRegistroCompra()).getResultList();
+    public List<Ingresso> buscaPorRegistroCompra(Compra compra) {
+        return manager.createQuery("from Ingresso as i where compra.id=" + compra.getId()).getResultList();
     }
 }

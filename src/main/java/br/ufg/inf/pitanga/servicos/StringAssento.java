@@ -15,7 +15,7 @@ public class StringAssento {
         for (int i = 0; i < paresDePosicoes.length; i++) {
             String[] numeros = paresDePosicoes[i].split(",");
             Assento assento = new Assento();
-            assento.setFileira(Integer.parseInt(numeros[0]));
+            assento.setFila(Integer.parseInt(numeros[0]));
             assento.setColuna(Integer.parseInt(numeros[1]));
             assentos.add(assento);
         }
@@ -26,7 +26,7 @@ public class StringAssento {
         String string = "";
 
         for (Assento assento : assentos) {
-            string += String.valueOf(assento.getFileira());
+            string += String.valueOf(assento.getFila());
             string += ",";
             string += String.valueOf(assento.getColuna());
             string += ";";
@@ -41,7 +41,7 @@ public class StringAssento {
         for (int i = 0; i < assentosString.size(); i += 2) {
             Assento umAssento = new Assento();
             umAssento.setColuna(Integer.parseInt(assentosString.get(i)));
-            umAssento.setFileira(Integer.parseInt(assentosString.get(i + 1)));
+            umAssento.setFila(Integer.parseInt(assentosString.get(i + 1)));
             assentos.add(umAssento);
         }
         return assentos;

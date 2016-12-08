@@ -14,5 +14,5 @@ public interface InterfaceFilmeDao {
 
     public void alterarFilme(Filme umFilme);
 
-    public Filme buscarPorId(int id);
+    public Filme buscarPorId(Long id);
 }

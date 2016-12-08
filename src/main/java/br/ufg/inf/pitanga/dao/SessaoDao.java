@@ -40,15 +40,14 @@ public class SessaoDao implements InterfaceSessaoDao {
     }
 
     @Override
-    public Sessao buscarPorId(int id) {
+    public Sessao buscarPorId(Long id) {
         return manager.find(Sessao.class, id);
     }
 
     @SuppressWarnings("unchecked")
     @Override
     public List<Sessao> buscarPorAtracao(Atracao umaAtracao) {
-        return manager.createQuery("from Sessao as s where atracao.id=" + umaAtracao.getIdAtracao()).getResultList();
-
+        return manager.createQuery("from Sessao as s where atracao.id=" + umaAtracao.getId()).getResultList();
     }
 
 

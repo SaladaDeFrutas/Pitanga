@@ -23,7 +23,7 @@ public class FilmeDao implements InterfaceFilmeDao {
 
     @Override
     public void removerFilme(Filme umFilme) {
-        Filme filmeARemover = buscarPorId(umFilme.getIdAtracao());
+        Filme filmeARemover = buscarPorId(umFilme.getId());
         manager.remove(filmeARemover);
 
     }
@@ -41,7 +41,7 @@ public class FilmeDao implements InterfaceFilmeDao {
     }
 
     @Override
-    public Filme buscarPorId(int id) {
+    public Filme buscarPorId(Long id) {
         return manager.find(Filme.class, id);
     }
 

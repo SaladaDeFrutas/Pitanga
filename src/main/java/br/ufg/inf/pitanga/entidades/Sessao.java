@@ -13,7 +13,7 @@ public class Sessao {
     @Id
     @GeneratedValue
     @Column(name = "idSessao")
-    private int idSessao;
+    private long idSessao;
 
     @NotNull(message = "por favor, digite a data e hora de estreia.")
     @DateTimeFormat(pattern = "dd/MM/yyyy HH:mm")
@@ -36,11 +36,11 @@ public class Sessao {
     @Lob
     private String assentosOcupados;
 
-    public int getIdSessao() {
+    public long getIdSessao() {
         return idSessao;
     }
 
-    public void setIdSessao(int idSessao) {
+    public void setIdSessao(long idSessao) {
         this.idSessao = idSessao;
     }
 
@@ -75,6 +75,5 @@ public class Sessao {
     public void setAssentosOcupados(String assentosOcupados) {
         this.assentosOcupados = assentosOcupados;
     }
-
 
 }
