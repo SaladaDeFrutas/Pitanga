@@ -5,5 +5,5 @@ package br.ufg.inf.pitanga.controller;
  * @author cleber
  */
 public class Paginas {
-    public static String CADASTRO_RESTRITO_SUCESSO = "cadastroRestritoSucesso";
+    public static final String CADASTRO_RESTRITO_SUCESSO = "cadastroRestritoSucesso";
 }

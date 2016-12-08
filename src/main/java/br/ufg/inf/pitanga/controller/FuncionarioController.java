@@ -466,7 +466,6 @@ public class FuncionarioController {
     @RequestMapping("alteracaoSalaFuncionarios")
     public String alterarDadosSala(Sala sala, Model model) {
         sala = salaDao.buscarPorId(sala.getId());
-        StringAssento stringAssento = new StringAssento();
         model.addAttribute("sala", sala);
         return "alteracaoSala";
     }
@@ -477,7 +476,6 @@ public class FuncionarioController {
         if (result.hasErrors()) {
             return "alteracaoSala";
         }
-        //System.out.println("ID da sala:"+sala.getId());
         String assentosInvalidos;
         if (assentos != null) {
             StringAssento stringAssento = new StringAssento();
