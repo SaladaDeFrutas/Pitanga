@@ -5,6 +5,10 @@ package br.ufg.inf.pitanga.controller;
  */
 public class Paginas {
 
+    private Paginas(){
+        //Classe de utilidade
+    }
+    
     public static final String CADASTRO_RESTRITO_SUCESSO = "cadastroRestritoSucesso";
     public static final String INDEX_FUNCIONARIOS = "indexFuncionarios";
     public static final String CADASTRO_FILME = "cadastroFilme";
