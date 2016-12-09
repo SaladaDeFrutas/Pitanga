@@ -41,7 +41,6 @@ public class Compra {
         this.valorTotal = calcularTotal(ingressos);
         this.dataCompra = dataCompra;
         this.pagamentoAprovado = false;
-        this.valorTotal = new BigDecimal(0);
         this.ingressos = new ArrayList<>();
     }
 
