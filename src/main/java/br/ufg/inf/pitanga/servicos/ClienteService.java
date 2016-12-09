@@ -16,25 +16,68 @@ public class ClienteService {
     private ClienteRepository clienteRepository;
 
     /**
+     * Validação do nome do usuário, se o nome e maior que 5 caracteres e menor que 255 caracteres.
+     *
+     * @param nome Nome do usuário.
+     * @return True para nome válido e False para nome ínvalido.
+     */
+    private static Boolean validacaoNome(String nome) {
+        if ((nome.length() <= 5) || (nome.length() > 255)) {
+            return false;
+        }
+        return true;
+    }
+
+    /**
+     * Validação da data de nascimento do usuário, se o ano é maior que 1900 e menor que o ano corrente, se o mês
+     * está entre 1 e 12 e o dia está entre 1 e 31.
+     *
+     * @param dataNascimento Data de Nascimento do usuário.
+     * @return True para data de nascimento válido e False para data de nascimento ínvalido.
+     */
+    private static Boolean validacaoDataDeNascimento(Calendar dataNascimento) {
+        Calendar calendar = new GregorianCalendar().getInstance();
+
+        if ((dataNascimento.get(Calendar.YEAR) < 1900) ||
+            (dataNascimento.get(Calendar.YEAR) >= calendar.get(Calendar.YEAR))) {
+            return false;
+        }
+        return true;
+    }
+
+    /**
+     * Validação da senha, se a mesma possui mais de 25 caracteres
+     *
+     * @param senha senha do Cliente.
+     * @return true se a senha é valida, false se a senha não é válida.
+     */
+    private static Boolean validacaoSenha(String senha) {
+        if (senha.length() > 25) {
+            return false;
+        }
+        return true;
+    }
+
+    /**
      * Testa se as informações do cliente são consistentes, se verdadeiro, realiza o cadastro do cliente.
      *
      * @param cliente Cliente a ser armazenado na base de dados.
      * @return Cliente armazenado.
      */
-    public Cliente cadastrarCliente(Cliente cliente){
-        if (cliente == null){
+    public Cliente cadastrarCliente(Cliente cliente) {
+        if (cliente == null) {
             throw new InvalidParameterException("cliente");
         }
 
-        if (!validacaoNome(cliente.getNome())){
+        if (!validacaoNome(cliente.getNome())) {
             return null;
         }
 
-        if (!validacaoDataDeNascimento(cliente.getDataDeNascimento())){
+        if (!validacaoDataDeNascimento(cliente.getDataDeNascimento())) {
             return null;
         }
 
-        if (!validacaoSenha(cliente.getSenha())){
+        if (!validacaoSenha(cliente.getSenha())) {
             return null;
         }
 
@@ -48,8 +91,8 @@ public class ClienteService {
      * @param email Identificador primário;
      * @return Cliente que possui o identificador primário;
      */
-    public Cliente recuperarClientePorEmail(String email){
-        if ((email == null) || (email.equals(""))){
+    public Cliente recuperarClientePorEmail(String email) {
+        if ((email == null) || (email.equals(""))) {
             throw new InvalidParameterException("email");
         }
         return clienteRepository.findByEmail(email);
@@ -61,8 +104,8 @@ public class ClienteService {
      * @param cliente cliente a ser removido.
      * @return true para remoção com sucesso e falso para falha na remoção.
      */
-    public Boolean deletarCliente(Cliente cliente){
-        if (cliente == null){
+    public Boolean deletarCliente(Cliente cliente) {
+        if (cliente == null) {
             throw new InvalidParameterException("cliente");
         }
         String email = cliente.getEmail();
@@ -79,54 +122,12 @@ public class ClienteService {
      * @param cliente Cliente a ser alterado, já com as novas informações.
      * @return cliente alterado e que já consiste na base de dados.
      */
-    public Cliente alterarCliente(Cliente cliente){
-        if (cliente == null){
+    public Cliente alterarCliente(Cliente cliente) {
+        if (cliente == null) {
             throw new InvalidParameterException("cliente");
         }
         clienteRepository.save(cliente);
         return clienteRepository.findByEmail(cliente.getEmail());
     }
 
-    /**
-     * Validação do nome do usuário, se o nome e maior que 5 caracteres e menor que 255 caracteres.
-     *
-     * @param nome Nome do usuário.
-     * @return True para nome válido e False para nome ínvalido.
-     */
-    private static Boolean validacaoNome(String nome){
-        if ((nome.length() <= 5) || (nome.length() > 255)) {
-            return false;
-        }
-        return true;
-    }
-
-    /**
-     * Validação da data de nascimento do usuário, se o ano é maior que 1900 e menor que o ano corrente, se o mês
-     * está entre 1 e 12 e o dia está entre 1 e 31.
-     *
-     * @param dataNascimento Data de Nascimento do usuário.
-     * @return True para data de nascimento válido e False para data de nascimento ínvalido.
-     */
-    private static Boolean validacaoDataDeNascimento(Calendar dataNascimento){
-        Calendar calendar = new GregorianCalendar().getInstance();
-
-        if ((dataNascimento.get(Calendar.YEAR) < 1900) ||
-            (dataNascimento.get(Calendar.YEAR) >= calendar.get(Calendar.YEAR))){
-            return false;
-        }
-        return true;
-    }
-
-    /**
-     * Validação da senha, se a mesma possui mais de 25 caracteres
-     *
-     * @param senha senha do Cliente.
-     * @return true se a senha é valida, false se a senha não é válida.
-     */
-    private static Boolean validacaoSenha(String senha){
-        if (senha.length() > 25){
-            return false;
-        }
-        return true;
-    }
 }

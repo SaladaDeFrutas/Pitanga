@@ -268,8 +268,6 @@ public class FuncionarioController {
                 pecaDao.buscarPorId(peca.getId()));
         umaSessao.setData(sessao.getData());
 
-        umaSessao.setAssentosOcupados(" ");
-
         if (result.hasFieldErrors("data")) {
             return COMPLEMENTO_PAGINA_REDIRECT + Paginas.CADASTRO_SESSOES_PECA_FUNCIONARIOS;
         }
@@ -302,7 +300,6 @@ public class FuncionarioController {
         umaSessao.setAtracao(
                 filmeDao.buscarPorId(filme.getId()));
         umaSessao.setData(sessao.getData());
-        umaSessao.setAssentosOcupados(" ");
 
         if (result.hasFieldErrors("data")) {
             return COMPLEMENTO_PAGINA_REDIRECT + Paginas.CADASTRO_SESSOES_FILME_FUNCIONARIOS;

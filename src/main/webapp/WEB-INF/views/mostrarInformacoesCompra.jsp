@@ -38,7 +38,7 @@
     <h3>Ingressos Comprados:</h3>
 
     <table>
-        <c:forEach items="${ingressosCompra}" var="ingresso">
+        <c:forEach items="${compra.ingressos}" var="ingresso">
             <tr>
                 <td><b>Tipo:</b> ${ingresso.umTipoIngresso.nome} </td>
                 <td><b></b></td>
