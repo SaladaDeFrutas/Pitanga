@@ -1,6 +1,5 @@
 package br.ufg.inf.pitanga.servicos;
 
-import br.ufg.inf.pitanga.dao.ClienteDao;
 import br.ufg.inf.pitanga.entidades.Cliente;
 import br.ufg.inf.pitanga.entidades.Compra;
 import br.ufg.inf.pitanga.entidades.CompraDTO;
@@ -22,7 +21,7 @@ public class CompraServico {
     PagamentoPagseguroServico pagamentoPagseguroServico;
 
     @Autowired
-    ClienteDao clienteDao;
+    ClienteService clienteService;
 
     @Autowired
     InterfaceCompraDao compraDao;
@@ -38,7 +37,7 @@ public class CompraServico {
     }
 
     public List<CompraDTO> obtenhaComprasDoCliente(String email) {
-        Cliente cliente = clienteDao.buscarPorId(email);
+        Cliente cliente = clienteService.recuperarClientePorEmail(email);
         String nomeCliente = cliente.getNome();
         List<Compra> compras = compraRepository.findByCliente(cliente);
 
