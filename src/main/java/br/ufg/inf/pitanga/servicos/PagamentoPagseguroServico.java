@@ -36,7 +36,7 @@ public class PagamentoPagseguroServico implements InterfacePagamento {
             boolean onlyCheckoutCode = false;
             checkout.register(PagSeguroConfig.getAccountCredentials(), onlyCheckoutCode);
         } catch (PagSeguroServiceException e) {
-            log.error(e.getMessage());
+            log.error("Erro ao realizar pagamento.", e);
         }
     }
 
@@ -56,7 +56,7 @@ public class PagamentoPagseguroServico implements InterfacePagamento {
             transaction = TransactionSearchService.searchByCode(PagSeguroConfig.getAccountCredentials(),
                 codigoTransacao);
         } catch (PagSeguroServiceException e) {
-            log.error(e.getMessage());
+            log.error("Erro ao consultar transação.", e);
         }
 
         return transaction;
@@ -91,7 +91,7 @@ public class PagamentoPagseguroServico implements InterfacePagamento {
             transaction = NotificationService.checkTransaction(PagSeguroConfig.getAccountCredentials(),
                 codigoNotificacao);
         } catch (PagSeguroServiceException e) {
-            log.error(e.getMessage());
+            log.error("Erro ao receber notificação do pag seguro", e);
         }
 
         return transaction;
