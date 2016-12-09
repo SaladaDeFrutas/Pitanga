@@ -16,14 +16,19 @@ public class ClienteController {
     @Autowired
     private ClienteService clienteService;
 
+    private final String cadastro = "cadastro";
+
+    private final String cadastroSucesso = "cadastroSucesso";
+
+
     /**
      * Requisição da página de cadastro.
      *
      * @return nome da página de cadastro
      */
-    @RequestMapping("cadastro")
+    @RequestMapping(cadastro)
     public String retornaPaginaCadastro() {
-        return "cadastro";
+        return cadastro;
     }
 
     /**
@@ -37,13 +42,13 @@ public class ClienteController {
     @RequestMapping("cadastrarCliente")
     public String cadastrarCliente(@Valid @ModelAttribute("cliente") Cliente cliente, BindingResult result) {
         if (result.hasErrors()) {
-            return "cadastro";
+            return cadastro;
         }
 
         if (clienteService.cadastrarCliente(cliente) == null) {
-            return "cadastro";
+            return cadastro;
         }
-        return "cadastroSucesso";
+        return cadastroSucesso;
     }
 
 }
