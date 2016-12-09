@@ -1,4 +1,4 @@
-package br.ufg.inf.pitanga.controller;
+package br.ufg.inf.pitanga.controllers;
 
 /**
  * Esta classe declara todas as páginas web do sistema.

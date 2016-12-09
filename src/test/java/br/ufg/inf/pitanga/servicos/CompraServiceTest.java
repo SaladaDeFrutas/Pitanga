@@ -58,7 +58,7 @@ public class CompraServiceTest {
         Compra compraSalva = compraRepository.save(compra);
         Long idCompra = compraSalva.getId();
 
-        Compra compraObtida = compraServico.obtenhaCompraPeloId(idCompra);
+        Compra compraObtida = compraServico.buscarPorId(idCompra);
         assertEquals(codigoTransacao, compraObtida.getCodigoTransacao());
     }
 

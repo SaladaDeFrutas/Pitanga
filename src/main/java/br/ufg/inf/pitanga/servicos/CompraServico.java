@@ -40,7 +40,7 @@ public class CompraServico {
         return compraRepository.findOne(id);
     }
 
-    public void efetuarPagamento(ArrayList<Ingresso> ingressos, Compra novaCompra, Cliente cliente) {
+    private void efetuarPagamento(Compra novaCompra, Cliente cliente) {
         tipoPagamento = new PagamentoPagseguroServico();
         tipoPagamento.realizaPagamento(novaCompra, cliente);
     }

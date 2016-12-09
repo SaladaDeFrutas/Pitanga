@@ -1,14 +1,13 @@
-package br.ufg.inf.pitanga.controller;
+package br.ufg.inf.pitanga.controllers;
 
-import br.ufg.inf.pitanga.entidades.Atracao;
 import br.ufg.inf.pitanga.entidades.Compra;
 import br.ufg.inf.pitanga.entidades.Ingresso;
-import br.ufg.inf.pitanga.servicos.AtracaoServico;
 import br.ufg.inf.pitanga.servicos.CompraServico;
 import br.ufg.inf.pitanga.servicos.GeraPDFServico;
-import br.ufg.inf.pitanga.servicos.SessaoServico;
-import com.lowagie.text.DocumentException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletResponse;
@@ -16,6 +15,7 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.List;
 
+@Controller
 public class GeradorPDFController {
 
     GeraPDFServico geradorPDFServico;
@@ -23,11 +23,8 @@ public class GeradorPDFController {
     @Autowired
     private CompraServico compraServico;
 
-    @Autowired
-    private SessaoServico sessaoServico;
 
-    @Autowired
-    private AtracaoServico atracaoServico;
+    private final Logger log = LoggerFactory.getLogger(this.getClass());
 
     public GeradorPDFController() {
         geradorPDFServico = new GeraPDFServico();
@@ -39,17 +36,16 @@ public class GeradorPDFController {
         List<Ingresso> ingressosCompra = compra.getIngressos();
         escreveDadosGeraisDaCompraNoComprovante(compra);
 
-        for (Ingresso ingresso : ingressosCompra) {
+        for (Ingresso ingresso : ingressosCompra)
             escreveInformacoesSobreIngressoNoComprovante(ingresso);
-        }
 
         try {
             response.getOutputStream().write(geradorPDFServico.gerarPDFComprovante().toByteArray());
             response.setContentType("application/pdf");
             response.setHeader("Content-Disposition", "attachment; filename=ingresso" + compra.getId() + ".pdf");
             response.flushBuffer();
-        } catch (IOException | DocumentException ex) {
-            throw new RuntimeException("IOError writing file to output stream");
+        } catch (IOException e) {
+            log.error("ERRO ao gerar comprovante em PDF: " + e.getMessage());
         }
 
     }

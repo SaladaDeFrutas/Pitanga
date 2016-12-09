@@ -1,4 +1,4 @@
-package br.ufg.inf.pitanga.controller;
+package br.ufg.inf.pitanga.controllers;
 
 import br.ufg.inf.pitanga.entidades.Filme;
 import br.ufg.inf.pitanga.entidades.Peca;
@@ -7,11 +7,13 @@ import br.ufg.inf.pitanga.interfaces.dao.InterfaceFilmeDao;
 import br.ufg.inf.pitanga.interfaces.dao.InterfacePecaDao;
 import br.ufg.inf.pitanga.interfaces.dao.InterfaceSessaoDao;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
 
+@Controller
 public class AtracaoController {
 
     @Autowired

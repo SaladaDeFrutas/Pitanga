@@ -1,4 +1,4 @@
-package br.ufg.inf.pitanga.controller;
+package br.ufg.inf.pitanga.controllers;
 
 import br.ufg.inf.pitanga.dao.ClienteDao;
 import br.ufg.inf.pitanga.dao.FuncionarioDao;
