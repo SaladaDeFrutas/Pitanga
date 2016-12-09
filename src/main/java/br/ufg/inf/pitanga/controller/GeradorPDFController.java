@@ -18,6 +18,7 @@ import java.util.List;
 @Controller
 public class GeradorPDFController {
 
+    @Autowired
     GeraPDFServico geradorPDFServico;
 
     @Autowired

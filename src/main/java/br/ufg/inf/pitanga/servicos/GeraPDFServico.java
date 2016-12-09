@@ -6,9 +6,11 @@ import com.lowagie.text.Paragraph;
 import com.lowagie.text.pdf.PdfWriter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Service;
 
 import java.io.ByteArrayOutputStream;
 
+@Service
 public class GeraPDFServico {
 
     private StringBuilder textoParaPDF;
