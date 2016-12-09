@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>br.ufg.inf.pitanga</groupId>
     <artifactId>Pitanga</artifactId>
-    <version>0.0.4.4-SNAPSHOT</version>
+    <version>0.0.4.5-SNAPSHOT</version>
     <name>Pitanga</name>
 
     <properties>
@@ -93,6 +93,12 @@
             <groupId>jstl</groupId>
             <artifactId>jstl</artifactId>
             <version>1.2</version>
+        </dependency>
+        <dependency>
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
+            <version>RELEASE</version>
+            <scope>test</scope>
         </dependency>
 
     </dependencies>

@@ -2,7 +2,7 @@ package br.ufg.inf.pitanga.servicos;
 
 import br.com.uol.pagseguro.domain.Transaction;
 import br.com.uol.pagseguro.enums.TransactionStatus;
-import br.ufg.inf.pitanga.CalendarHelper;
+import br.ufg.inf.pitanga.PitangaTestHelper;
 import br.ufg.inf.pitanga.entidades.*;
 import br.ufg.inf.pitanga.entidades.enums.TipoAssento;
 import br.ufg.inf.pitanga.repository.*;
@@ -144,7 +144,7 @@ public class CompraServiceTest {
     private Compra adicionarCompraParaCliente(String valorTotal, String dataCompra, String emailCliente) {
         Cliente cliente = criarCliente(emailCliente, "nome");
         BigDecimal valor = new BigDecimal(valorTotal);
-        Calendar data = CalendarHelper.converteStringParaCalendar(dataCompra, "dd/MM/yyyy");
+        Calendar data = PitangaTestHelper.converteStringParaCalendar(dataCompra, "dd/MM/yyyy");
 
         Compra compra = new Compra();
         compra.setCliente(cliente);
@@ -199,22 +199,9 @@ public class CompraServiceTest {
     private Sessao criaSessao(Sala sala) {
         Sessao sessao = new Sessao();
         sessao.setData(Calendar.getInstance());
-        sessao.setAtracao(criaFilme());
+        sessao.setAtracao(PitangaTestHelper.criaFilme());
         sessao.setSala(sala);
         return sessaoRepository.save(sessao);
-    }
-
-    private Filme criaFilme() {
-        Filme filme = new Filme();
-        filme.setModoDeExibicao("3d");
-        filme.setProdutora("produtora");
-        filme.setTitulo("titulo");
-        filme.setIdioma("idioma");
-        filme.setDuracao(1);
-        filme.setSinopse("sinopse");
-        filme.setGenero("genero");
-        filme.setClassificacaoIndicativa(10);
-        return filme;
     }
 
     private Sala criaSalaComAssento(String nomeAssento) {
