@@ -26,6 +26,8 @@ public class TipoIngresso {
     }
 
     public void setPreco(BigDecimal preco) {
+        if (preco.compareTo(new BigDecimal(0)) < 1)
+            throw new IllegalArgumentException();
         this.preco = preco;
     }
 
@@ -34,6 +36,9 @@ public class TipoIngresso {
     }
 
     public void setNome(String nome) {
+        if (nome == null || nome.isEmpty() || !nome.matches("[a-zA-Z]+"))
+            throw new IllegalArgumentException();
+
         this.nome = nome;
     }
 
