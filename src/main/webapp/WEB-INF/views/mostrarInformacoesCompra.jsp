@@ -25,7 +25,7 @@
 
     <br>
     <b>Status do pagamento:</b> <c:choose>
-    <c:when test="${registroCompra.pagamentoAprovado}">
+    <c:when test="${compra.pagamentoAprovado}">
         <b>Aprovado</b>
     </c:when>
     <c:otherwise>
@@ -48,15 +48,15 @@
     </table>
     <br>
     <c:choose>
-        <c:when test="${registroCompra.pagamentoAprovado}">
-            <button type="submit" name="idRegistroCompra" value="${registroCompra.idRegistroCompra}"
+        <c:when test="${compra.pagamentoAprovado}">
+            <button type="submit" name="idRegistroCompra" value="${compra.id}"
                     class="btn btn-default">Imprimir ingressos
             </button>
 
         </c:when>
         <c:otherwise>
             A compra ainda não foi concluída, o comprovante com status pendente não garante seus ingressos.<br>
-            <button type="submit" name="idRegistroCompra" value="${registroCompra.idRegistroCompra}"
+            <button type="submit" name="idRegistroCompra" value="${compra.id}"
                     class="btn btn-default">Gerar Comprovante
             </button>
         </c:otherwise>

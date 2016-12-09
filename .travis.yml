@@ -11,13 +11,17 @@ cache:
   directories:
   - "$HOME/.m2/repository"
   - "$HOME/.sonar"
+services:
+- postgresql
+before_script:
+- psql -c "create user pitanga with password 'pitaga';" -U postgres
+- psql -c 'create database pitanga owner pitanga;' -U postgres
+- chmod +x executa_analise_sonar.sh
 script:
 - mvn clean -e -B
-- mvn -e -B org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar -Dsonar.login=$SONAR_TOKEN
-  -Dsonar.branch=$TRAVIS_PULL_REQUEST_BRANCH -Dsonar.github.oauth=$SONAR_GITHUB_TOKEN
-  -Dsonar.github.pullrequest=$TRAVIS_PULL_REQUEST
-- echo "PRB:$TRAVIS_PULL_REQUEST_BRANCH PR:$TRAVIS_PULL_REQUEST"
-- mvn package -e -B
+- ./executa_analise_sonar.sh
+after_success:
+- bash <(curl -s https://codecov.io/bash)
 env:
   global:
   - secure: LJ9xR29ve3yUVwqahZGPePVtpf7hafxEKRrONuolGEUnG1egsx2Hny8pVaWrWwBV0TlvDtroytWMZw/e7fAuyd3g407E4LlXzSCJBaWgeaTQlPgp3vpEOUlixQTzy05fNWfbkC5pPJKJsWU53X3OIpQDDiqjNjXTbloZ1J6sqV8lBNHSMLnTwzjbeOQS/uQhzdk8iYeXgh7q4VTSpcOO6J7kIZgCIkKgBfo1CcVgzvIdLJwdCXxdoMcqeiI8VoneriZzrVLXxW27Q53jOd/+UupykdGWy5ebw2+WSN+P07OoTakww/6BgcBuwHn2AfvmfyKdHLp8HOfz4x/lGs77uvr8D8xtGj5IkNsx3rLJHLRVWfLFnnvGXG4SHOPtfAjhlYmnnkpopFtqUHz+5NuJKEa1NSSszpAQQfTm9Ofuax5C7lZdQg4/Yxn/2rcKaqxiw0Q6KTw5O5aNbmmLh+rwNOib+WFhFjr/OMu3crHkM4tJXlnJdMSprrz13vWOLkvcf6W+ZYUMWj9qnNRYv7LojLyvIAjC8Ef6WuyHQ8lODAaEn8mlaO96Y9JK2GCVlnAamYMnfDb40h0nuKpoHJZDXMyXVUWLfPCnLA192se9KhQwXFopfTv4547EJrajugWumsYX61i5zjWFyYphojB7mcSrr1nC6mUiRc0k05b50RU=
