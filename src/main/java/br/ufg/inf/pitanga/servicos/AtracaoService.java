@@ -39,7 +39,7 @@ public class AtracaoService {
     }
 
     public Filme buscarFilmePorId(Long id) {
-        Filme filme = (Filme) atracaoRepository.findById(id);
+        Filme filme = (Filme) atracaoRepository.findOne(id);
         if (filme == null) {
             throw new InvalidParameterException(ATRACAO);
         }
@@ -50,7 +50,7 @@ public class AtracaoService {
         if (atracao == null) {
             throw new InvalidParameterException(ATRACAO);
         }
-        List<Sessao> listaSessoes = (List<Sessao>) atracaoRepository.findById(atracao.getId());
+        List<Sessao> listaSessoes = (List<Sessao>) atracaoRepository.findOne(atracao.getId());
         return listaSessoes;
     }
 }
