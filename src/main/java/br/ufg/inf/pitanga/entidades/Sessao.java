@@ -66,14 +66,6 @@ public class Sessao {
         this.sala = umaSala;
     }
 
-    public String getAssentosOcupados() {
-        return assentosOcupados;
-    }
-
-    public void setAssentosOcupados(String assentosOcupados) {
-        this.assentosOcupados = assentosOcupados;
-    }
-
     public String obtenhaDescricao() {
         String tituloAtracao = getAtracao().getTitulo();
         String dataSessao = formataData(getData());
