@@ -16,7 +16,7 @@ public interface InterfaceSessaoDao {
 
     public void alterarSessao(Sessao umaSessao);
 
-    public Sessao buscarPorId(Long Id);
+    public Sessao buscarPorId(Long id);
 
     public List<Sessao> buscarPorAtracao(Atracao umaAtracao);
 
