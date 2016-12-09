@@ -42,7 +42,7 @@ public class GeradorPDFController {
             response.setHeader("Content-Disposition", "attachment; filename=ingresso" + compra.getId() + ".pdf");
             response.flushBuffer();
         } catch (IOException e) {
-            log.error("ERRO ao gerar comprovante em PDF: " + e.getMessage());
+            log.error("ERRO ao gerar comprovante em PDF.", e);
         }
 
     }

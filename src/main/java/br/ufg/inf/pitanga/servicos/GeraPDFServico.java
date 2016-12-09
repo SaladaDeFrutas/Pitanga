@@ -32,7 +32,7 @@ public class GeraPDFServico {
                 this.textoParaPDF);
             documento.add(textoTicket);
         } catch (DocumentException e) {
-            log.error("ERRO ao escrever no documento: " + e.getMessage());
+            log.error("ERRO ao escrever no documento.", e);
         } finally {
             documento.close();
         }
