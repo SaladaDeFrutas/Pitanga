@@ -6,12 +6,13 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNull;
 
 import java.security.InvalidParameterException;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -21,9 +22,9 @@ public class ClienteServiceTest {
     private ClienteService clienteService;
 
     @Test
-    public void testeCadastrarClienteValido(){
+    public void testeCadastrarClienteValido() {
         Calendar dataNascimento = new GregorianCalendar();
-        dataNascimento.set(1990,11,6);
+        dataNascimento.set(1990, 11, 6);
 
         Cliente cliente = new Cliente();
         cliente.setNome("Marcos Vinicius Ribeiro Silva");
@@ -35,22 +36,22 @@ public class ClienteServiceTest {
 
         Cliente clienteSalvo = clienteService.recuperarClientePorEmail(cliente.getEmail());
 
-        assertEquals(cliente.getNome(),clienteSalvo.getNome());
-        assertEquals(cliente.getEmail(),clienteSalvo.getEmail());
-        assertEquals(cliente.getDataDeNascimento(),clienteSalvo.getDataDeNascimento());
-        assertEquals(cliente.getSenha(),clienteSalvo.getSenha());
+        assertEquals(cliente.getNome(), clienteSalvo.getNome());
+        assertEquals(cliente.getEmail(), clienteSalvo.getEmail());
+        assertEquals(cliente.getDataDeNascimento(), clienteSalvo.getDataDeNascimento());
+        assertEquals(cliente.getSenha(), clienteSalvo.getSenha());
     }
 
     @Test(expected = InvalidParameterException.class)
-    public void testeCadastrarClienteNull(){
+    public void testeCadastrarClienteNull() {
         Cliente cliente = null;
         clienteService.cadastrarCliente(cliente);
     }
 
     @Test
-    public void testeCadastroClienteNomeGrande(){
+    public void testeCadastroClienteNomeGrande() {
         Calendar dataNascimento = new GregorianCalendar();
-        dataNascimento.set(1990,11,6);
+        dataNascimento.set(1990, 11, 6);
 
         Cliente cliente = new Cliente();
         cliente.setNome("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" +
@@ -66,9 +67,9 @@ public class ClienteServiceTest {
     }
 
     @Test
-    public void testeCadastroClienteNomePequeno(){
+    public void testeCadastroClienteNomePequeno() {
         Calendar dataNascimento = new GregorianCalendar();
-        dataNascimento.set(1990,11,6);
+        dataNascimento.set(1990, 11, 6);
 
         Cliente cliente = new Cliente();
         cliente.setNome("aaa");
@@ -82,9 +83,9 @@ public class ClienteServiceTest {
     }
 
     @Test(expected = InvalidParameterException.class)
-    public void testeCadastrarClienteNomeNull(){
+    public void testeCadastrarClienteNomeNull() {
         Calendar dataNascimento = new GregorianCalendar();
-        dataNascimento.set(1990,11,6);
+        dataNascimento.set(1990, 11, 6);
 
         Cliente cliente = new Cliente();
         cliente.setNome(null);
@@ -96,9 +97,9 @@ public class ClienteServiceTest {
     }
 
     @Test
-    public void testeCadastroClienteDataDeNascimentoAnoInvalido(){
+    public void testeCadastroClienteDataDeNascimentoAnoInvalido() {
         Calendar dataNascimento = new GregorianCalendar();
-        dataNascimento.set(1500,11,6);
+        dataNascimento.set(1500, 11, 6);
 
         Cliente cliente = new Cliente();
         cliente.setNome("Marcos Vinicius Ribeiro Silva");
@@ -111,9 +112,9 @@ public class ClienteServiceTest {
     }
 
     @Test(expected = InvalidParameterException.class)
-    public void testeCadastroClienteDataDeNascimentoInvalida(){
+    public void testeCadastroClienteDataDeNascimentoInvalida() {
         Calendar dataNascimento = new GregorianCalendar();
-        dataNascimento.set(2030,5,20);
+        dataNascimento.set(2030, 5, 20);
 
         Cliente cliente = new Cliente();
         cliente.setNome("Marcos Vinicius Ribeiro Silva");
@@ -125,7 +126,7 @@ public class ClienteServiceTest {
     }
 
     @Test(expected = InvalidParameterException.class)
-    public void testeCadastroClienteDataDeNascimentoNull(){
+    public void testeCadastroClienteDataDeNascimentoNull() {
         Calendar dataNascimento = null;
 
         Cliente cliente = new Cliente();
@@ -138,9 +139,9 @@ public class ClienteServiceTest {
     }
 
     @Test(expected = InvalidParameterException.class)
-    public void testeCadastroClienteEmailSemArrouba(){
+    public void testeCadastroClienteEmailSemArrouba() {
         Calendar dataNascimento = new GregorianCalendar();
-        dataNascimento.set(1992,11,6);
+        dataNascimento.set(1992, 11, 6);
 
         Cliente cliente = new Cliente();
         cliente.setNome("Marcos Vinicius Ribeiro Silva");
@@ -152,9 +153,9 @@ public class ClienteServiceTest {
     }
 
     @Test(expected = InvalidParameterException.class)
-    public void testeCadastroClienteEmailSemPontoCom(){
+    public void testeCadastroClienteEmailSemPontoCom() {
         Calendar dataNascimento = new GregorianCalendar();
-        dataNascimento.set(1992,11,6);
+        dataNascimento.set(1992, 11, 6);
 
         Cliente cliente = new Cliente();
         cliente.setNome("Marcos Vinicius Ribeiro Silva");
@@ -166,9 +167,9 @@ public class ClienteServiceTest {
     }
 
     @Test(expected = InvalidParameterException.class)
-    public void testeCadastroClienteEmailNull(){
+    public void testeCadastroClienteEmailNull() {
         Calendar dataNascimento = new GregorianCalendar();
-        dataNascimento.set(1992,11,6);
+        dataNascimento.set(1992, 11, 6);
 
         Cliente cliente = new Cliente();
         cliente.setNome("Marcos Vinicius Ribeiro Silva");
@@ -180,9 +181,9 @@ public class ClienteServiceTest {
     }
 
     @Test
-    public void testeCadastroClienteSenhaGrande(){
+    public void testeCadastroClienteSenhaGrande() {
         Calendar dataNascimento = new GregorianCalendar();
-        dataNascimento.set(1992,11,6);
+        dataNascimento.set(1992, 11, 6);
 
         Cliente cliente = new Cliente();
         cliente.setNome("Marcos Vinicius Ribeiro Silva");
@@ -195,9 +196,9 @@ public class ClienteServiceTest {
     }
 
     @Test(expected = InvalidParameterException.class)
-    public void testeCadastroClienteSenhaPequena(){
+    public void testeCadastroClienteSenhaPequena() {
         Calendar dataNascimento = new GregorianCalendar();
-        dataNascimento.set(1992,11,6);
+        dataNascimento.set(1992, 11, 6);
 
         Cliente cliente = new Cliente();
         cliente.setNome("Marcos Vinicius Ribeiro Silva");
@@ -209,9 +210,9 @@ public class ClienteServiceTest {
     }
 
     @Test(expected = InvalidParameterException.class)
-    public void testeCadastroClienteSenhaNull(){
+    public void testeCadastroClienteSenhaNull() {
         Calendar dataNascimento = new GregorianCalendar();
-        dataNascimento.set(1992,11,6);
+        dataNascimento.set(1992, 11, 6);
 
         Cliente cliente = new Cliente();
         cliente.setNome("Marcos Vinicius Ribeiro Silva");
@@ -223,9 +224,9 @@ public class ClienteServiceTest {
     }
 
     @Test
-    public void testeRecuperarClientePorEmail(){
+    public void testeRecuperarClientePorEmail() {
         Calendar dataNascimento = new GregorianCalendar();
-        dataNascimento.set(1992,11,6);
+        dataNascimento.set(1992, 11, 6);
 
         Cliente cliente = new Cliente();
         cliente.setNome("Marcos Vinicius Ribeiro Silva");
@@ -235,28 +236,28 @@ public class ClienteServiceTest {
 
         clienteService.cadastrarCliente(cliente);
         Cliente clienteRecuperadoPorEmail = clienteService.recuperarClientePorEmail(cliente.getEmail());
-        assertEquals(cliente.getNome(),clienteRecuperadoPorEmail.getNome());
-        assertEquals(cliente.getSenha(),clienteRecuperadoPorEmail.getSenha());
-        assertEquals(cliente.getDataDeNascimento(),clienteRecuperadoPorEmail.getDataDeNascimento());
-        assertEquals(cliente.getEmail(),clienteRecuperadoPorEmail.getEmail());
+        assertEquals(cliente.getNome(), clienteRecuperadoPorEmail.getNome());
+        assertEquals(cliente.getSenha(), clienteRecuperadoPorEmail.getSenha());
+        assertEquals(cliente.getDataDeNascimento(), clienteRecuperadoPorEmail.getDataDeNascimento());
+        assertEquals(cliente.getEmail(), clienteRecuperadoPorEmail.getEmail());
     }
 
-    @Test(expected =  InvalidParameterException.class)
-    public void testeRecuperarClientePorEmailEmBranco(){
+    @Test(expected = InvalidParameterException.class)
+    public void testeRecuperarClientePorEmailEmBranco() {
         String email = "";
         clienteService.recuperarClientePorEmail(email);
     }
 
-    @Test(expected =  InvalidParameterException.class)
-    public void testeRecuperarClientePorEmailNull(){
+    @Test(expected = InvalidParameterException.class)
+    public void testeRecuperarClientePorEmailNull() {
         String email = null;
         clienteService.recuperarClientePorEmail(email);
     }
 
     @Test
-    public void testeDeletarCliente(){
+    public void testeDeletarCliente() {
         Calendar dataNascimento = new GregorianCalendar();
-        dataNascimento.set(1992,11,6);
+        dataNascimento.set(1992, 11, 6);
 
         Cliente cliente = new Cliente();
         cliente.setNome("Marcos Vinicius Ribeiro Silva");
@@ -270,16 +271,16 @@ public class ClienteServiceTest {
         assertNull(clienteRecuperadoPorEmailAposExclusao);
     }
 
-    @Test(expected =  InvalidParameterException.class)
-    public void testeDeletarClienteNull(){
+    @Test(expected = InvalidParameterException.class)
+    public void testeDeletarClienteNull() {
         Cliente cliente = null;
         clienteService.deletarCliente(cliente);
     }
 
     @Test
-    public void testeAlterarCliente(){
+    public void testeAlterarCliente() {
         Calendar dataNascimento = new GregorianCalendar();
-        dataNascimento.set(1992, 11,6);
+        dataNascimento.set(1992, 11, 6);
         String nomeOriginal = "Marcos Vinicius Ribeiro Silva";
         String nomeAlterado = "João da Silva";
         String email = "marcos.v.silva@live.com";
@@ -301,15 +302,16 @@ public class ClienteServiceTest {
 
         Cliente clienteGravado = clienteService.recuperarClientePorEmail(email);
 
-        assertEquals(clienteAlterado.getNome(),clienteGravado.getNome());
-        assertEquals(clienteAlterado.getSenha(),clienteGravado.getSenha());
-        assertEquals(clienteAlterado.getDataDeNascimento(),clienteGravado.getDataDeNascimento());
-        assertEquals(clienteAlterado.getEmail(),clienteGravado.getEmail());
+        assertEquals(clienteAlterado.getNome(), clienteGravado.getNome());
+        assertEquals(clienteAlterado.getSenha(), clienteGravado.getSenha());
+        assertEquals(clienteAlterado.getDataDeNascimento(), clienteGravado.getDataDeNascimento());
+        assertEquals(clienteAlterado.getEmail(), clienteGravado.getEmail());
     }
 
-    @Test(expected =  InvalidParameterException.class)
-    public void testeAlterarClienteNull(){
+    @Test(expected = InvalidParameterException.class)
+    public void testeAlterarClienteNull() {
         Cliente cliente = null;
         clienteService.alterarCliente(cliente);
     }
+
 }
