@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import java.security.InvalidParameterException;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.GregorianCalendar;
 
 @Service
@@ -38,7 +39,9 @@ public class ClienteService {
      * @return True para data de nascimento válido e False para data de nascimento ínvalido.
      */
     private static Boolean validacaoDataDeNascimento(Calendar dataNascimento) {
-        Calendar calendar = new GregorianCalendar().getInstance();
+        Date date = new Date(System.currentTimeMillis());
+        Calendar calendar = new GregorianCalendar();
+        calendar.setTime(date);
 
         if ((dataNascimento.get(Calendar.YEAR) < 1900) ||
             (dataNascimento.get(Calendar.YEAR) >= calendar.get(Calendar.YEAR))) {
@@ -94,7 +97,7 @@ public class ClienteService {
      * @return Cliente que possui o identificador primário;
      */
     public Cliente recuperarClientePorEmail(String email) {
-        if ((email == null) || (email.equals(""))) {
+        if ((email == null) || ("".equals(email))) {
             throw new InvalidParameterException("email");
         }
         return clienteRepository.findByEmail(email);
