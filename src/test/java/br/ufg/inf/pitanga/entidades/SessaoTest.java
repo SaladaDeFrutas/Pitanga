@@ -1,6 +1,6 @@
 package br.ufg.inf.pitanga.entidades;
 
-import br.ufg.inf.pitanga.CalendarHelper;
+import br.ufg.inf.pitanga.PitangaTestHelper;
 import org.junit.Test;
 
 import java.util.Calendar;
@@ -71,7 +71,7 @@ public class SessaoTest {
 
     @Test
     public void testObtenhaDescricaoDaSessao() {
-        Calendar dataSessao = CalendarHelper.converteStringParaCalendar("01/01/2000", "dd/MM/yyyy");
+        Calendar dataSessao = PitangaTestHelper.converteStringParaCalendar("01/01/2000", "dd/MM/yyyy");
         Sessao sessao = criaSessaoParaTeste("Star Wars 8", dataSessao);
         String descricaoDaSessao = "Star Wars 8 : 01/01/2000";
         assertEquals(descricaoDaSessao, sessao.obtenhaDescricao());
