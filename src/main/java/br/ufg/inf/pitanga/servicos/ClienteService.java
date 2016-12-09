@@ -1,9 +1,7 @@
 package br.ufg.inf.pitanga.servicos;
 
-import br.ufg.inf.pitanga.dao.ClienteDao;
 import br.ufg.inf.pitanga.entidades.Cliente;
 import br.ufg.inf.pitanga.repository.ClienteRepository;
-import com.sun.org.apache.xpath.internal.operations.Bool;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
