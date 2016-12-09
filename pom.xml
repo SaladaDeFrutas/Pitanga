@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>br.ufg.inf.pitanga</groupId>
     <artifactId>Pitanga</artifactId>
-    <version>0.0.4.3-SNAPSHOT</version>
+    <version>0.0.4.4-SNAPSHOT</version>
     <name>Pitanga</name>
 
     <properties>

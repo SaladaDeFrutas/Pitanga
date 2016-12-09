@@ -127,7 +127,7 @@ public class CompraServiceTest {
 
         Map<String, String> assentoPorTipoIngresso = obtenhaMapaNomeAssentoPorTipoIngresso(nomeAssento, nomeTipoIngresso);
 
-        compraServico.finalizarCompra(sessao.getIdSessao(), emailCliente, assentoPorTipoIngresso);
+        compraServico.finalizarCompra(sessao.getId(), emailCliente, assentoPorTipoIngresso);
         CompraDTO compraCriada = compraServico.obtenhaComprasDoCliente(emailCliente).get(0);
 
         assertEquals(nomeCliente, compraCriada.getNomeCliente());

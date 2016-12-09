@@ -75,7 +75,7 @@ public class CompraController {
     public String escolherLugar(Sessao umaSessao, Model model,
                                 @RequestParam Map<String, Integer> qntIngressosPorTipo) {
 
-        Long idSessao = umaSessao.getIdSessao();
+        Long idSessao = umaSessao.getId();
         Sessao sessao = sessaoServico.buscaSessaoPorId(idSessao);
         Long idSala = sessao.getSala().getId();
         Sala umaSala = salaServico.buscaSalaPorId(idSala);
@@ -98,7 +98,7 @@ public class CompraController {
 
         Cliente cliente = (Cliente) httpSession.getAttribute("usuarioLogado");
         String email = cliente.getEmail();
-        Long idSessao = sessao.getIdSessao();
+        Long idSessao = sessao.getId();
         compraServico.finalizarCompra(idSessao, email, assentoPorTipoIngresso);
         return new ModelAndView("redirect:" + OBRIGADO);
     }

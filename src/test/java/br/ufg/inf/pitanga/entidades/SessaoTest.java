@@ -13,16 +13,16 @@ public class SessaoTest {
 
     @Test
     public void getIdSessaoTest() {
-        long idSessao = 898098;
-        sessao.setIdSessao(idSessao);
-        assertEquals(idSessao, sessao.getIdSessao());
+        Long idSessao = 898098L;
+        sessao.setId(idSessao);
+        assertEquals(idSessao, sessao.getId());
     }
 
     @Test
     public void setIdSessaoTest() {
-        long idSessao = 894378;
-        sessao.setIdSessao(idSessao);
-        assertEquals(idSessao, sessao.getIdSessao());
+        Long idSessao = 894378L;
+        sessao.setId(idSessao);
+        assertEquals(idSessao, sessao.getId());
     }
 
     @Test
