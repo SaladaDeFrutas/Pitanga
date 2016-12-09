@@ -109,16 +109,12 @@ public class ClienteServico {
      * @param cliente cliente a ser removido.
      * @return true para remoção com sucesso e falso para falha na remoção.
      */
-    public Boolean deletarCliente(Cliente cliente) {
+    public void deletarCliente(Cliente cliente) {
         if (cliente == null) {
             throw new InvalidParameterException(CLIENTE);
         }
         String email = cliente.getEmail();
         clienteRepository.delete(cliente);
-        if (clienteRepository.findByEmail(email) == null) {
-            return true;
-        }
-        return false;
     }
 
     /**
