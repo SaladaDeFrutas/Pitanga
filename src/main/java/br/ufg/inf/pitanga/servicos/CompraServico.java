@@ -1,18 +1,14 @@
 package br.ufg.inf.pitanga.servicos;
 
-<<<<<<< HEAD
 import br.ufg.inf.pitanga.entidades.Cliente;
 import br.ufg.inf.pitanga.entidades.Compra;
 import br.ufg.inf.pitanga.entidades.CompraDTO;
 import br.ufg.inf.pitanga.entidades.Ingresso;
-import br.ufg.inf.pitanga.interfaces.dao.InterfaceCompraDao;
-=======
 import br.com.uol.pagseguro.domain.Transaction;
 import br.com.uol.pagseguro.enums.TransactionStatus;
 import br.ufg.inf.pitanga.entidades.*;
 import br.ufg.inf.pitanga.repository.AssentoRepository;
 import br.ufg.inf.pitanga.repository.ClienteRepository;
->>>>>>> da2c76ed0d4764133217b13b06d2d54cbb0dce17
 import br.ufg.inf.pitanga.repository.CompraRepository;
 import br.ufg.inf.pitanga.repository.TipoIngressoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,11 +24,7 @@ public class CompraServico {
     private PagamentoPagseguroServico pagamentoPagseguroServico;
 
     @Autowired
-<<<<<<< HEAD
-    ClienteService clienteService;
-=======
     private ClienteRepository clienteRepository;
->>>>>>> da2c76ed0d4764133217b13b06d2d54cbb0dce17
 
     @Autowired
     private CompraRepository compraRepository;
@@ -54,11 +46,7 @@ public class CompraServico {
     }
 
     public List<CompraDTO> obtenhaComprasDoCliente(String email) {
-<<<<<<< HEAD
-        Cliente cliente = clienteService.recuperarClientePorEmail(email);
-=======
         Cliente cliente = clienteRepository.findByEmail(email);
->>>>>>> da2c76ed0d4764133217b13b06d2d54cbb0dce17
         String nomeCliente = cliente.getNome();
         List<Compra> compras = compraRepository.findByCliente(cliente);
 
