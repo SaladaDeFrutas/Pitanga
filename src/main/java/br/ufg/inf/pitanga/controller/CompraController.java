@@ -1,4 +1,4 @@
-package br.ufg.inf.pitanga.controllers;
+package br.ufg.inf.pitanga.controller;
 
 import br.com.uol.pagseguro.domain.Transaction;
 import br.ufg.inf.pitanga.entidades.*;

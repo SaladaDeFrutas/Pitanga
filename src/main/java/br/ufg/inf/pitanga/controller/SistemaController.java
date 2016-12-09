@@ -1,4 +1,4 @@
-package br.ufg.inf.pitanga.controllers;
+package br.ufg.inf.pitanga.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

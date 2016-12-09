@@ -90,7 +90,7 @@ public class CompraServiceTest {
         Long idCompra = compra.getId();
         mockPagamentoPagseguroServico(codigoTransacao, idCompra.toString(), codigoNotificacao);
         compraServico.registrarCodigoTransacao(codigoTransacao);
-        Compra compraObtida = compraServico.obtenhaCompraPeloId(idCompra);
+        Compra compraObtida = compraServico.buscarPorId(idCompra);
 
         assertEquals(codigoTransacao, compraObtida.getCodigoTransacao());
     }
@@ -107,7 +107,7 @@ public class CompraServiceTest {
         Long idCompra = compra.getId();
         mockPagamentoPagseguroServico(codigoTransacao, idCompra.toString(), codigoNotificacao);
         compraServico.registrarPagamento(codigoNotificacao);
-        Compra compraObtida = compraServico.obtenhaCompraPeloId(idCompra);
+        Compra compraObtida = compraServico.buscarPorId(idCompra);
 
         assertEquals(codigoTransacao, compraObtida.getCodigoTransacao());
     }

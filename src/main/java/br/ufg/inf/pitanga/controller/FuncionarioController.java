@@ -1,4 +1,4 @@
-package br.ufg.inf.pitanga.controllers;
+package br.ufg.inf.pitanga.controller;
 
 import br.ufg.inf.pitanga.entidades.*;
 import br.ufg.inf.pitanga.repository.*;

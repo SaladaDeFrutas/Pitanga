@@ -1,5 +1,6 @@
-package br.ufg.inf.pitanga.controllers;
+package br.ufg.inf.pitanga.controller;
 
+import br.ufg.inf.pitanga.controller.GeradorPDFController;
 import org.junit.Before;
 
 public class GeradorPDFControllerTest {

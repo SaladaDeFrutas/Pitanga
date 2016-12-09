@@ -1,4 +1,4 @@
-package br.ufg.inf.pitanga.controllers;
+package br.ufg.inf.pitanga.controller;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
