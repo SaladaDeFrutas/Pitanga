@@ -29,9 +29,6 @@ public class AtracaoController {
     @RequestMapping(MOSTRAR_FILME)
     public String mostrarFilme(Filme filme, Model model) {
         Filme filmeEscolhido = atracaoService.buscarFilmePorId(filme.getId());
-        if (filme == null) {
-            throw new InvalidParameterException("Filme invalido");
-        }
         model.addAttribute("filme", filmeEscolhido);
         return "informacoesFilme";
     }
