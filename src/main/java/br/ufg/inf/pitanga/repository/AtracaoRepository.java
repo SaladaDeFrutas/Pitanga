@@ -7,9 +7,9 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface AtracaoRepository extends CrudRepository<Atracao, Long> {
 
-    Atracao findById(long id);
+    Atracao findById(Long id);
 
-    Atracao findAll();
+    Iterable<Atracao> findAll();
 }
 
 

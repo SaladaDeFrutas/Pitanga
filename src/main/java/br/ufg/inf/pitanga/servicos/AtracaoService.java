@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.security.InvalidParameterException;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -20,13 +21,21 @@ public class AtracaoService {
     private static final String ATRACAO = "atracao";
 
     public List<Filme> listarFilmes() {
-        List<Filme> listaFilmes = (List<Filme>) atracaoRepository.findAll();
-        return listaFilmes;
+        Iterable<Atracao> lista = atracaoRepository.findAll();
+        List<Filme> filmes = new ArrayList<>();
+        for (Atracao a : lista){
+            filmes.add((Filme) a);
+        }
+        return filmes;
     }
 
     public List<Peca> listarPecas() {
-        List<Peca> listaPecas = (List<Peca>) atracaoRepository.findAll();
-        return listaPecas;
+        Iterable<Atracao> lista = atracaoRepository.findAll();
+        List<Peca> pecas = new ArrayList<>();
+        for (Atracao a : lista){
+            pecas.add((Peca) a);
+        }
+        return pecas;
     }
 
     public Filme buscarFilmePorId(Long id) {
@@ -38,6 +47,10 @@ public class AtracaoService {
     }
 
     public List<Sessao> buscarPorAtracao(Atracao atracao) {
-        List<Sessao> listaSessoes = (List<Sessao>) atracaoRepository.findAll();
+        if (atracao == null) {
+            throw new InvalidParameterException(ATRACAO);
+        }
+        List<Sessao> listaSessoes = (List<Sessao>) atracaoRepository.findById(atracao.getId());
+        return listaSessoes;
     }
 }
