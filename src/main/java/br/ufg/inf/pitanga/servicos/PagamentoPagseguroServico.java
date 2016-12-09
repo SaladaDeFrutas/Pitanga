@@ -5,6 +5,7 @@ import br.com.uol.pagseguro.domain.checkout.Checkout;
 import br.com.uol.pagseguro.enums.Currency;
 import br.com.uol.pagseguro.exception.PagSeguroServiceException;
 import br.com.uol.pagseguro.properties.PagSeguroConfig;
+import br.com.uol.pagseguro.service.NotificationService;
 import br.com.uol.pagseguro.service.TransactionSearchService;
 import br.ufg.inf.pitanga.entidades.Cliente;
 import br.ufg.inf.pitanga.entidades.Compra;
@@ -35,7 +36,7 @@ public class PagamentoPagseguroServico implements InterfacePagamento {
             boolean onlyCheckoutCode = false;
             checkout.register(PagSeguroConfig.getAccountCredentials(), onlyCheckoutCode);
         } catch (PagSeguroServiceException e) {
-            log.error(e.getMessage());
+            log.error("Erro ao realizar pagamento.", e);
         }
     }
 
@@ -55,7 +56,7 @@ public class PagamentoPagseguroServico implements InterfacePagamento {
             transaction = TransactionSearchService.searchByCode(PagSeguroConfig.getAccountCredentials(),
                 codigoTransacao);
         } catch (PagSeguroServiceException e) {
-            System.err.println(e.getMessage());
+            log.error("Erro ao consultar transação.", e);
         }
 
         return transaction;
@@ -82,5 +83,17 @@ public class PagamentoPagseguroServico implements InterfacePagamento {
 
     public Transaction obtenhaTransacao(String codigoTransacao) {
         return consultarTransacao(codigoTransacao);
+    }
+
+    public Transaction receberNotificacaoCheckout(String codigoNotificacao) {
+        Transaction transaction = null;
+        try {
+            transaction = NotificationService.checkTransaction(PagSeguroConfig.getAccountCredentials(),
+                codigoNotificacao);
+        } catch (PagSeguroServiceException e) {
+            log.error("Erro ao receber notificação do pag seguro", e);
+        }
+
+        return transaction;
     }
 }

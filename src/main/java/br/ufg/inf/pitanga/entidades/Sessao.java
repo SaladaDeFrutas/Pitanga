@@ -21,22 +21,14 @@ public class Sessao {
     private Calendar data;
 
     @NotNull(message = "por favor, selecione a atracao")
-    @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE,
-        CascadeType.DETACH, CascadeType.PERSIST, CascadeType.REFRESH
-    })
+    @OneToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "idAtracao")
     private Atracao atracao;
 
     @NotNull(message = "por favor, selecione a sala")
-    @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE,
-        CascadeType.DETACH, CascadeType.PERSIST, CascadeType.REFRESH
-    })
+    @OneToOne
     @JoinColumn(name = "idSala")
     private Sala sala;
-
-    @Lob
-    @Deprecated
-    private String assentosOcupados;
 
     public long getIdSessao() {
         return idSessao;
@@ -68,14 +60,6 @@ public class Sessao {
 
     public void setSala(Sala umaSala) {
         this.sala = umaSala;
-    }
-
-    public String getAssentosOcupados() {
-        return assentosOcupados;
-    }
-
-    public void setAssentosOcupados(String assentosOcupados) {
-        this.assentosOcupados = assentosOcupados;
     }
 
     public String obtenhaDescricao() {

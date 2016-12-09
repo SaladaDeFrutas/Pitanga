@@ -23,7 +23,6 @@ public class Sala {
     private List<Assento> assentos;
 
     @OneToMany
-    @JoinColumn(name = "idSessao")
     private List<Sessao> sessoes;
 
 

@@ -1,5 +1,9 @@
 package br.ufg.inf.pitanga.servicos;
 
+import br.ufg.inf.pitanga.entidades.Cliente;
+import br.ufg.inf.pitanga.entidades.Compra;
+import br.ufg.inf.pitanga.entidades.CompraDTO;
+import br.ufg.inf.pitanga.entidades.Ingresso;
 import br.com.uol.pagseguro.domain.Transaction;
 import br.com.uol.pagseguro.enums.TransactionStatus;
 import br.ufg.inf.pitanga.entidades.*;
@@ -15,6 +19,9 @@ import java.util.*;
 
 @Service
 public class CompraServico {
+
+    @Autowired
+    private PagamentoPagseguroServico pagamentoPagseguroServico;
 
     @Autowired
     private ClienteRepository clienteRepository;
@@ -34,15 +41,8 @@ public class CompraServico {
     @Autowired
     private IngressoServico ingressoServico;
 
-    InterfacePagamento tipoPagamento;
-
     public Compra buscarPorId(Long id){
         return compraRepository.findOne(id);
-    }
-
-    private void efetuarPagamento(Compra novaCompra, Cliente cliente) {
-        tipoPagamento = new PagamentoPagseguroServico();
-        tipoPagamento.realizaPagamento(novaCompra, cliente);
     }
 
     public List<CompraDTO> obtenhaComprasDoCliente(String email) {
@@ -66,35 +66,36 @@ public class CompraServico {
     }
 
     public void registrarCodigoTransacao(String codigoTransacao) {
-        Transaction transacaoCompra = new PagamentoPagseguroServico().consultarTransacao(codigoTransacao);
-        Compra compra = compraRepository.findOne(Long.parseLong(transacaoCompra.getReference()));
+        Transaction transacaoCompra = pagamentoPagseguroServico.consultarTransacao(codigoTransacao);
+        Long idCompra = Long.parseLong(transacaoCompra.getReference());
+        Compra compra = compraRepository.findOne(idCompra);
         compra.setCodigoTransacao(codigoTransacao);
         compraRepository.save(compra);
     }
 
     public void registrarPagamento(String notificationCode) {
-        NotificacaoPagseguro novaNotificacao = new NotificacaoPagseguro();
-        Transaction respostaConsultaNotificacaoCheckout = novaNotificacao.receberNotificacaoCheckout(notificationCode);
+        Transaction respostaConsultaNotificacaoCheckout =
+            pagamentoPagseguroServico.receberNotificacaoCheckout(notificationCode);
 
         Compra compra = compraRepository.findOne(Long.parseLong(respostaConsultaNotificacaoCheckout.getReference()));
         compra.setCodigoTransacao(respostaConsultaNotificacaoCheckout.getCode());
         TransactionStatus statusTransacao = respostaConsultaNotificacaoCheckout.getStatus();
 
-        boolean pagamentoAprovado = new PagamentoPagseguroServico()
-            .traduzirStatusTransacaoPagseguro(statusTransacao.getValue().intValue());
+        boolean pagamentoAprovado =
+            pagamentoPagseguroServico.traduzirStatusTransacaoPagseguro(statusTransacao.getValue().intValue());
         compra.setPagamentoAprovado(pagamentoAprovado);
 
         compraRepository.save(compra);
     }
 
     public void finalizarCompra(Long idSessao, String emailCliente,
-                                HashMap<String, String> assentoEscolhidoPorTipoIngresso) {
+                                Map<String, String> assentoEscolhidoPorTipoIngresso) {
         Sessao sessao = sessaoServico.buscaSessaoPorId(idSessao);
         Cliente cliente = clienteRepository.findByEmail(emailCliente);
         List<Ingresso> ingressos = obtenhaListaDeIngressos(cliente, sessao, assentoEscolhidoPorTipoIngresso);
 
         Compra compra = salvaCompraComHoraAtual(cliente, ingressos);
-        efetuarPagamento(compra, cliente);
+        pagamentoPagseguroServico.realizaPagamento(compra, cliente);
     }
 
     private Compra salvaCompraComHoraAtual(Cliente cliente, List<Ingresso> ingressos) {

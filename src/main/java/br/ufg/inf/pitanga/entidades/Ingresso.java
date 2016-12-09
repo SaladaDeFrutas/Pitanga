@@ -2,8 +2,6 @@ package br.ufg.inf.pitanga.entidades;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
 
 @Entity
 @Table(name = "ingressos")
@@ -15,12 +13,12 @@ public class Ingresso {
     @OneToOne
     @JoinColumn(name = "email")
     private Cliente umCliente;
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne
     @JoinColumn(name = "idSessao")
     private Sessao umaSessao;
     @OneToOne
     private Assento umAssento;
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne
     @JoinColumn(name = "nomeTipoIngresso")
     private TipoIngresso umTipoIngresso;
 

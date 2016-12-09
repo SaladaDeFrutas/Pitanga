@@ -13,6 +13,9 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpSession;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
+import static br.ufg.inf.pitanga.controller.Paginas.*;
 
 @Controller
 public class CompraController {
@@ -43,7 +46,7 @@ public class CompraController {
         Iterable<TipoIngresso> tiposIngressos = tipoIngressoServico.listarTodosTiposIngresso();
         model.addAttribute("sessao", umaSessao);
         model.addAttribute("tiposIngressos", tiposIngressos);
-        return "escolherIngressos";
+        return ESCOLHER_INGRESSO;
     }
 
     /**
@@ -60,7 +63,7 @@ public class CompraController {
 
         model.addAttribute("registroCompra", compraObtida);
         model.addAttribute("transacaoCompra", transacaoCompra);
-        return "mostrarInformacoesCompra";
+        return INFORMACOES_COMPRA;
     }
 
     /**
@@ -70,23 +73,23 @@ public class CompraController {
      */
     @RequestMapping("lugares")
     public String escolherLugar(Sessao umaSessao, Model model,
-                                @RequestParam HashMap<String, Integer> qntIngressosPorTipo) {
+                                @RequestParam Map<String, Integer> qntIngressosPorTipo) {
 
         Long idSessao = umaSessao.getIdSessao();
-        umaSessao = sessaoServico.buscaSessaoPorId(idSessao);
-        Long idSala = umaSessao.getSala().getId();
+        Sessao sessao = sessaoServico.buscaSessaoPorId(idSessao);
+        Long idSala = sessao.getSala().getId();
         Sala umaSala = salaServico.buscaSalaPorId(idSala);
 
         model.addAttribute("sala", umaSala);
         model.addAttribute("qntIngressosPorTipo", qntIngressosPorTipo);
-        model.addAttribute("umaSessao", umaSessao);
-        return "mostrarLugares";
+        model.addAttribute("umaSessao", sessao);
+        return MOSTRAR_LUGARES;
     }
 
     /**
      * @param assentoPorTipoIngresso é uma mapa com o nome do assento escolhido e o tipo do ingresso
-     * @param sessao      sessao do filme/peca escolhida
-     * @param httpSession dados de sessao do usuario no sistema
+     * @param sessao                 sessao do filme/peca escolhida
+     * @param httpSession            dados de sessao do usuario no sistema
      * @return pagina para realizar a compra
      */
     @RequestMapping(value = "finalizarCompra")
@@ -97,7 +100,7 @@ public class CompraController {
         String email = cliente.getEmail();
         Long idSessao = sessao.getIdSessao();
         compraServico.finalizarCompra(idSessao, email, assentoPorTipoIngresso);
-        return new ModelAndView("redirect:obrigado");
+        return new ModelAndView("redirect:" + OBRIGADO);
     }
 
     /**
@@ -133,7 +136,7 @@ public class CompraController {
     @RequestMapping("obrigado")
     public String retornarPaginaObrigado(@RequestParam String codigoTransacao) {
         compraServico.registrarCodigoTransacao(codigoTransacao);
-        return "obrigado";
+        return OBRIGADO;
     }
 
     /**
@@ -150,7 +153,7 @@ public class CompraController {
         List<CompraDTO> comprasDTO = compraServico.obtenhaComprasDoCliente(cliente.getEmail());
 
         model.addAttribute("compras", comprasDTO);
-        return "mostrarCompras";
+        return MOSTRAR_COMPRAS;
     }
 
 }

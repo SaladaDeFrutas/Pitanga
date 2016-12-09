@@ -24,13 +24,13 @@ public class Compra {
     private BigDecimal valorTotal;
 
     @NotNull
-    @OneToMany(cascade = CascadeType.PERSIST)
+    @OneToMany
     private List<Ingresso> ingressos;
     private boolean pagamentoAprovado;
     private String codigoTransacao;
 
     public Compra() {
-
+        //Necessário para o JPA instanciar o objeto
     }
 
     public Compra(Cliente cliente, List<Ingresso> ingressos, Calendar dataCompra) {

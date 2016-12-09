@@ -70,20 +70,6 @@ public class SessaoTest {
     }
 
     @Test
-    public void getAssentosOcupadosTest() {
-        String assentosOcupados = "muitos";
-        sessao.setAssentosOcupados(assentosOcupados);
-        assertEquals(assentosOcupados, sessao.getAssentosOcupados());
-    }
-
-    @Test
-    public void setAssentosOcupadosTest() {
-        String assentosOcupados = "poucos";
-        sessao.setAssentosOcupados(assentosOcupados);
-        assertEquals(assentosOcupados, sessao.getAssentosOcupados());
-    }
-
-    @Test
     public void testObtenhaDescricaoDaSessao() {
         Calendar dataSessao = CalendarHelper.converteStringParaCalendar("01/01/2000", "dd/MM/yyyy");
         Sessao sessao = criaSessaoParaTeste("Star Wars 8", dataSessao);
