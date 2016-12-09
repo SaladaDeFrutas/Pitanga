@@ -36,11 +36,12 @@ public class CompraServiceTest {
 
     @Test
     public void testaObtenhaComprasDeUmClienteComSucesso() {
-        Cliente cliente = criarCliente();
-        String dataCompra = "04/12/2016";
 
-        Compra compra = adicionarCompraParaCliente(cliente, dataCompra);
-        CompraDTO compraDTO = compraServico.obtenhaComprasDoCliente(cliente.getEmail()).get(0);
+        String dataCompra = "04/12/2016";
+        String emailCliente = "teste@email.com";
+        String codigoTransacao = "12345";
+        Compra compra = adicionarCompraParaCliente(codigoTransacao, dataCompra, emailCliente);
+        CompraDTO compraDTO = compraServico.obtenhaComprasDoCliente(emailCliente).get(0);
 
         assertEquals(compraDTO.getDataCompra(), dataCompra);
         assertEquals(compraDTO.getNomeCliente(), compra.getCliente().getNome());
@@ -48,15 +49,28 @@ public class CompraServiceTest {
         assertEquals(compraDTO.getValorCompra(), compra.getValorTotal());
     }
 
-    private Cliente criarCliente() {
+    @Test
+    public void testaObtenhaCompraPeloId() {
+        String dataCompra = "01/01/2001";
+        String emailCliente = "teste@teste.com";
+        String codigoTransacao = "159159";
+        Compra compra = adicionarCompraParaCliente(codigoTransacao, dataCompra, emailCliente);
+        Compra compraSalva = compraRepository.save(compra);
+        Long idCompra = compraSalva.getId();
+
+        Compra compraObtida = compraServico.obtenhaCompraPeloId(idCompra);
+        assertEquals(codigoTransacao, compraObtida.getCodigoTransacao());
+    }
+
+    private Cliente criarCliente(String emailCliente) {
         Cliente cliente = new Cliente();
-        cliente.setEmail("teste@email.com");
+        cliente.setEmail(emailCliente);
         cliente.setNome("Nome do cliente");
         return clienteRepository.save(cliente);
     }
 
-    private Compra adicionarCompraParaCliente(Cliente cliente, String dataCompra) {
-        String codigoTransacao = "12345";
+    private Compra adicionarCompraParaCliente(String codigoTransacao, String dataCompra, String emailCliente) {
+        Cliente cliente = criarCliente(emailCliente);
         BigDecimal valor = new BigDecimal("35.99");
         Calendar data = CalendarHelper.converteStringParaCalendar(dataCompra, "dd/MM/yyyy");
 
