@@ -22,21 +22,6 @@ public class SistemaController {
         return "index";
     }
 
-    @RequestMapping("cadastrarCliente")
-    public String cadastrarCliente(@Valid Cliente umCliente,
-                                   BindingResult result) {
-        if (result.hasErrors()) {
-            return "cadastro";
-        }
-        clienteDao.adicionarCliente(umCliente);
-        return "cadastroSucesso";
-    }
-
-    @RequestMapping("cadastro")
-    public String retornaPaginaCadastro() {
-        return "cadastro";
-    }
-
     /**
      * @return caso a requisicao n encontre pagina retorna uma pagina de 404
      * para o usuario

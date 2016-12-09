@@ -2,9 +2,12 @@ package br.ufg.inf.pitanga.servicos;
 
 import br.ufg.inf.pitanga.dao.ClienteDao;
 import br.ufg.inf.pitanga.entidades.Cliente;
+import br.ufg.inf.pitanga.repository.ClienteRepository;
+import com.sun.org.apache.xpath.internal.operations.Bool;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.security.InvalidParameterException;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
@@ -12,7 +15,7 @@ import java.util.GregorianCalendar;
 public class ClienteService {
 
     @Autowired
-    private ClienteDao clienteDao;
+    private ClienteRepository clienteRepository;
 
     /**
      * Testa se as informações do cliente são consistentes, se verdadeiro, realiza o cadastro do cliente.
@@ -21,12 +24,11 @@ public class ClienteService {
      * @return Cliente armazenado.
      */
     public Cliente cadastrarCliente(Cliente cliente){
-
-        if (!validacaoNome(cliente.getNome())){
-            return null;
+        if (cliente == null){
+            throw new InvalidParameterException("cliente");
         }
 
-        if (!validacaoEmail(cliente.getEmail())){
+        if (!validacaoNome(cliente.getNome())){
             return null;
         }
 
@@ -34,7 +36,11 @@ public class ClienteService {
             return null;
         }
 
-        clienteDao.adicionarCliente(cliente);
+        if (!validacaoSenha(cliente.getSenha())){
+            return null;
+        }
+
+        clienteRepository.save(cliente);
         return cliente;
     }
 
@@ -45,7 +51,10 @@ public class ClienteService {
      * @return Cliente que possui o identificador primário;
      */
     public Cliente recuperarClientePorEmail(String email){
-        return clienteDao.buscarPorId(email);
+        if ((email == null) || (email.equals(""))){
+            throw new InvalidParameterException("email");
+        }
+        return clienteRepository.findByEmail(email);
     }
 
     /**
@@ -55,9 +64,12 @@ public class ClienteService {
      * @return true para remoção com sucesso e falso para falha na remoção.
      */
     public Boolean deletarCliente(Cliente cliente){
+        if (cliente == null){
+            throw new InvalidParameterException("cliente");
+        }
         String email = cliente.getEmail();
-        clienteDao.removerCliente(cliente);
-        if (clienteDao.buscarPorId(email) == null) {
+        clienteRepository.delete(cliente);
+        if (clienteRepository.findByEmail(email) == null) {
             return true;
         }
         return false;
@@ -70,8 +82,11 @@ public class ClienteService {
      * @return cliente alterado e que já consiste na base de dados.
      */
     public Cliente alterarCliente(Cliente cliente){
-        clienteDao.alterarCliente(cliente);
-        return clienteDao.buscarPorId(cliente.getEmail());
+        if (cliente == null){
+            throw new InvalidParameterException("cliente");
+        }
+        clienteRepository.save(cliente);
+        return clienteRepository.findByEmail(cliente.getEmail());
     }
 
     /**
@@ -81,31 +96,10 @@ public class ClienteService {
      * @return True para nome válido e False para nome ínvalido.
      */
     private static Boolean validacaoNome(String nome){
-        if (nome.length() > 255) {
+        if ((nome.length() <= 5) || (nome.length() > 255)) {
             return false;
         }
-
-        if (nome.length() <= 5) {
-            return false;
-        }
-
         return true;
-    }
-
-    /**
-     * Validação do email do usuário, se possui '@' no email.
-     *
-     * @param email Email para validação.
-     * @return True para email válido e False para email ínvalido.
-     */
-    private static Boolean validacaoEmail(String email){
-        if (email.indexOf('@') != -1){
-            if (email.indexOf(".com") != -1){
-                return true;
-            }
-            return false;
-        }
-        return false;
     }
 
     /**
@@ -122,15 +116,19 @@ public class ClienteService {
             (dataNascimento.get(Calendar.YEAR) >= calendar.get(Calendar.YEAR))){
             return false;
         }
+        return true;
+    }
 
-        if ((dataNascimento.get(Calendar.MONTH) <= 0) || (dataNascimento.get(Calendar.MONTH) > 12)){
+    /**
+     * Validação da senha, se a mesma possui mais de 25 caracteres
+     *
+     * @param senha senha do Cliente.
+     * @return true se a senha é valida, false se a senha não é válida.
+     */
+    private static Boolean validacaoSenha(String senha){
+        if (senha.length() > 25){
             return false;
         }
-
-        if ((dataNascimento.get(Calendar.DAY_OF_MONTH) <= 0) || (dataNascimento.get(Calendar.DAY_OF_MONTH) > 31)){
-            return false;
-        }
-
         return true;
     }
 }
