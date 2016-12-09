@@ -8,6 +8,6 @@ end_of_line = lf
 insert_final_newline = true
 
 # 4 space indentation
-[*.{java,jsp,css}]
+[*.{java,jsp,css,sh}]
 indent_style = space
 indent_size = 4

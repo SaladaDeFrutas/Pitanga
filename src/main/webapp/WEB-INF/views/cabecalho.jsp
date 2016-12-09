@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html; charset=UTF-8" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -40,7 +41,7 @@
                 <span class="icon-bar"></span>
             </button>
             <a class="navbar-brand" href="./">
-                <img src="/logo.png" alt="">
+                <img src="<c:url value="/images/logo.png"/>" alt="">
             </a>
         </div>
         <!-- Collect the nav links, forms, and other content for toggling -->

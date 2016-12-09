@@ -3,7 +3,6 @@ package br.ufg.inf.pitanga.controller;
 import br.ufg.inf.pitanga.entidades.*;
 import br.ufg.inf.pitanga.entidades.enums.TipoFuncionario;
 import br.ufg.inf.pitanga.interfaces.dao.*;
-import br.ufg.inf.pitanga.servicos.StringAssento;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
@@ -14,12 +13,27 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
-import java.util.ArrayList;
 import java.util.List;
 
 @Transactional
 @Controller
 public class FuncionarioController {
+
+    private static final String ATRIBUTO_MODAL_FILME = "filme";
+    private static final String ATRIBUTO_MODAL_FILMES = "filmes";
+    private static final String ATRIBUTO_MODAL_PECA = "peca";
+    private static final String ATRIBUTO_MODAL_PECAS = "pecas";
+    private static final String ATRIBUTO_MODAL_SALA = "sala";
+    private static final String ATRIBUTO_MODAL_SALAS = "salas";
+    private static final String ATRIBUTO_MODAL_SESSAO = "sessao";
+    private static final String ATRIBUTO_MODAL_SESSOES = "sessoes";
+    private static final String ATRIBUTO_MODAL_FUNCIONARIO = "funcionario";
+    private static final String ATRIBUTO_MODAL_FUNCIONARIOS = "funcionarios";
+    private static final String ATRIBUTO_MODAL_TIPO_INGRESSO = "tipoIngresso";
+    private static final String ATRIBUTO_MODAL_TIPOS_INGRESSO = "tiposIngresso";
+    
+    private static final String ARGUMENTO_URL_ID_ATRACAO = "idAtracao=";
+    private static final String COMPLEMENTO_PAGINA_REDIRECT = "redirect:";
 
     @Autowired
     private InterfaceFilmeDao filmeDao;
@@ -39,497 +53,463 @@ public class FuncionarioController {
     @Autowired
     private InterfaceSalaDao salaDao;
 
-
-    @RequestMapping("indexFuncionarios")
+    @RequestMapping(Paginas.INDEX_FUNCIONARIOS)
     public String retornaPaginaIndex() {
-        return "indexFuncionarios";
+        return Paginas.INDEX_FUNCIONARIOS;
     }
 
-    @RequestMapping("cadastrarFilmeFuncionarios")
+    @RequestMapping(Paginas.CADASTRAR_FILME_FUNCIONARIOS)
     public String cadastrarFilme(@Valid Filme umFilme, BindingResult result) {
         if (result.hasErrors()) {
-            return "cadastroFilme";
+            return Paginas.CADASTRO_FILME;
         }
         filmeDao.adicionarFilme(umFilme);
-        return "cadastroRestritoSucesso";
+        return Paginas.CADASTRO_RESTRITO_SUCESSO;
     }
 
-    @RequestMapping("cadastrarPecaFuncionarios")
+    @RequestMapping(Paginas.CADASTRAR_PECA_FUNCIONARIOS)
     public String cadastrarPeca(@Valid Peca umaPeca, BindingResult result) {
         if (result.hasErrors()) {
-            return "cadastroPeca";
+            return Paginas.CADASTRO_PECA;
         }
         pecaDao.adicionarPeca(umaPeca);
-        return "cadastroRestritoSucesso";
+        return Paginas.CADASTRO_RESTRITO_SUCESSO;
     }
 
-    @RequestMapping("gerenciarAtracoesFuncionarios")
+    @RequestMapping(Paginas.GERENCIAR_ATRACOES_FUNCIONARIOS)
     public String retornaPaginaGerenciaAtracoes() {
-        return "gerenciarAtracoes";
+        return Paginas.GERENCIAR_ATRACOES;
     }
 
-    @RequestMapping("gerenciarSessoesFuncionarios")
+    @RequestMapping(Paginas.GERENCIAR_SESSOES_FUNCIONARIOS)
     public String retornaPaginaGerenciaSessoes() {
-        return "gerenciarSessoes";
+        return Paginas.GERENCIAR_SESSOES;
     }
 
-    @RequestMapping("gerenciarSalasFuncionarios")
+    @RequestMapping(Paginas.GERENCIAR_SALAS_FUNCIONARIOS)
     public String retornaPaginaGerenciaSalas() {
-        return "gerenciarSalas";
+        return Paginas.GERENCIAR_SALAS;
     }
 
-
-    @RequestMapping("cadastroAtracoesFuncionarios")
+    @RequestMapping(Paginas.CADASTRO_ATRACOES_FUNCIONARIOS)
     public String retornaPaginaCadastroAtracoes() {
-        return "cadastroAtracoes";
+        return Paginas.CADASTRO_ATRACOES;
     }
 
-    @RequestMapping("cadastroFilmeFuncionarios")
+    @RequestMapping(Paginas.CADASTRO_FILME_FUNCIONARIOS)
     public String retornaPaginaCadastroFilme() {
-        return "cadastroFilme";
+        return Paginas.CADASTRO_FILME;
     }
 
-    @RequestMapping("cadastroPecaFuncionarios")
+    @RequestMapping(Paginas.CADASTRO_PECA_FUNCIONARIOS)
     public String retornaPaginaCadastroPeca() {
-        return "cadastroPeca";
+        return Paginas.CADASTRO_PECA;
     }
 
-    @RequestMapping("cadastroSessoesFuncionarios")
+    @RequestMapping(Paginas.CADASTRO_SESSOES_FUNCIONARIOS)
     public String retornaPaginaCadastroSessoes() {
-        return "cadastroSessoes";
+        return Paginas.CADASTRO_SESSOES;
     }
 
-    @RequestMapping("cadastroSalasFuncionarios")
+    @RequestMapping(Paginas.CADASTRO_SALAS_FUNCIONARIOS)
     public String retornaPaginaCadastroSalas() {
-        return "cadastroSalas";
+        return Paginas.CADASTRO_SALAS;
     }
 
-    @RequestMapping("gerenciarTipoIngressoFuncionarios")
+    @RequestMapping(Paginas.GERENCIAR_TIPO_INGRESSO_FUNCIONARIOS)
     public String retornaPaginaGerenciaTipoIngresso() {
-        return "gerenciarTipoIngresso";
+        return Paginas.GERENCIAR_TIPO_INGRESSO;
     }
 
-    @RequestMapping("cadastroTipoIngressoFuncionarios")
+    @RequestMapping(Paginas.CADASTRO_TIPO_INGRESSO_FUNCIONARIOS)
     public String retornaPaginaCadastroTipoIngresso() {
-        return "cadastroTipoIngresso";
+        return Paginas.CADASTRO_TIPO_INGRESSO;
     }
 
     /**
      * @param model adiciona atributos para a pagina JSP que sera retornada
      * @return pagina JSP de atracoes com botoes de alterar e excluir
      */
-    @RequestMapping("mostrarAtracoesFuncionarios")
+    @RequestMapping(Paginas.MOSTRAR_ATRACOES_FUNCIONARIOS)
     public String retornaPaginaAtracoes(Model model) {
-        List<Filme> filmes = filmeDao.listarFilmes();
-        List<Peca> pecas = pecaDao.listarPecas();
+        List<Filme> filmesBuscados = filmeDao.listarFilmes();
+        List<Peca> pecasBuscadas = pecaDao.listarPecas();
 
-        model.addAttribute("filmes", filmes);
-        model.addAttribute("pecas", pecas);
-        return "mostrarAtracoesFuncionarios";
+        model.addAttribute(ATRIBUTO_MODAL_FILMES, filmesBuscados);
+        model.addAttribute(ATRIBUTO_MODAL_PECAS, pecasBuscadas);
+        return Paginas.MOSTRAR_ATRACOES_FUNCIONARIOS;
     }
 
     /**
      * @param model adiciona atributos para a pagina JSP que sera retornada
-     * @return pagina JSP de atracoes para serem selecionadas e mostradas
-     * suas respectivas sessoes
+     * @return pagina JSP de atracoes para serem selecionadas e mostradas suas respectivas sessoes
      */
-    @RequestMapping("mostrarSessoesFuncionarios")
+    @RequestMapping(Paginas.MOSTRAR_SESSOES_FUNCIONARIOS)
     public String retornaPaginaAtracoesSessoes(Model model) {
-        List<Filme> filmes = filmeDao.listarFilmes();
-        List<Peca> pecas = pecaDao.listarPecas();
+        List<Filme> filmesBuscados = filmeDao.listarFilmes();
+        List<Peca> pecasBuscadas = pecaDao.listarPecas();
 
-        model.addAttribute("filmes", filmes);
-        model.addAttribute("pecas", pecas);
-        return "atracoesSessoesFuncionarios";
+        model.addAttribute(ATRIBUTO_MODAL_FILMES, filmesBuscados);
+        model.addAttribute(ATRIBUTO_MODAL_PECAS, pecasBuscadas);
+        return Paginas.ATRACOES_SESSOES_FUNCIONARIOS;
     }
 
-    @RequestMapping("cadastroSessoesFilmeFuncionarios")
+    @RequestMapping(Paginas.CADASTRO_SESSOES_FILME_FUNCIONARIOS)
     public String retornaPaginaCadastroSessaoFilme(Model model) {
-        List<Filme> filmes = filmeDao.listarFilmes();
-        List<Sala> salas = salaDao.listarSalas();
+        List<Filme> filmesBuscados = filmeDao.listarFilmes();
+        List<Sala> salasBuscadas = salaDao.listarSalas();
 
-        model.addAttribute("filmes", filmes);
-        model.addAttribute("salas", salas);
-        return "cadastroSessaoFilme";
+        model.addAttribute(ATRIBUTO_MODAL_FILMES, filmesBuscados);
+        model.addAttribute(ATRIBUTO_MODAL_SALAS, salasBuscadas);
+        return Paginas.CADASTRO_SESSAO_FILME;
     }
 
-    @RequestMapping("cadastroSessoesPecaFuncionarios")
+    @RequestMapping(Paginas.CADASTRO_SESSOES_PECA_FUNCIONARIOS)
     public String retornaPaginaCadastroSessaoPeca(Model model) {
         List<Peca> pecas = pecaDao.listarPecas();
         List<Sala> salas = salaDao.listarSalas();
 
-        model.addAttribute("pecas", pecas);
-        model.addAttribute("salas", salas);
-        return "cadastroSessaoPeca";
+        model.addAttribute(ATRIBUTO_MODAL_PECAS, pecas);
+        model.addAttribute(ATRIBUTO_MODAL_SALAS, salas);
+        return Paginas.CADASTRO_SESSAO_PECA;
     }
 
-    @RequestMapping("sessoesFilmeFuncionarios")
-    public String mostrarSessoesFilme(Filme umFilme, Model model) {
-        List<Sessao> sessoes = sessaoDao.buscarPorAtracao(umFilme);
-        model.addAttribute("sessoes", sessoes);
-        umFilme = filmeDao.buscarPorId(umFilme.getId());
-        model.addAttribute("filme", umFilme);
-        return "mostrarSessoesFilmeFuncionarios";
+    @RequestMapping(Paginas.SESSOES_FILME_FUNCIONARIOS)
+    public String mostrarSessoesFilme(Filme filme, Model model) {
+        List<Sessao> sessoesBuscadas = sessaoDao.buscarPorAtracao(filme);
+        model.addAttribute(ATRIBUTO_MODAL_SESSOES, sessoesBuscadas);
+        Filme filmeBuscado = filmeDao.buscarPorId(filme.getId());
+        model.addAttribute(ATRIBUTO_MODAL_FILME, filmeBuscado);
+        return Paginas.MOSTRAR_SESSOES_FILME_FUNCIONARIOS;
     }
 
-    @RequestMapping("sessoesPecaFuncionarios")
-    public String mostrarSessoesPeca(Peca umaPeca, Model model) {
-        List<Sessao> sessoes = sessaoDao.buscarPorAtracao(umaPeca);
-        model.addAttribute("sessoes", sessoes);
-        umaPeca = pecaDao.buscarPorId(umaPeca.getId());
-        model.addAttribute("peca", umaPeca);
-        return "mostrarSessoesPecaFuncionarios";
+    @RequestMapping(Paginas.SESSOES_PECA_FUNCIONARIOS)
+    public String mostrarSessoesPeca(Peca peca, Model model) {
+        List<Sessao> sessoesBuscadas = sessaoDao.buscarPorAtracao(peca);
+        model.addAttribute(ATRIBUTO_MODAL_SESSOES, sessoesBuscadas);
+        Peca pecaBuscada = pecaDao.buscarPorId(peca.getId());
+        model.addAttribute(ATRIBUTO_MODAL_PECA, pecaBuscada);
+        return Paginas.MOSTRAR_SESSOES_PECA_FUNCIONARIOS;
     }
 
-    @RequestMapping("alteracaoFilmeFuncionarios")
-    public String alterarDadosFilme(Filme umFilme, Model model) {
-        Filme filme = filmeDao.buscarPorId(umFilme.getId());
-        model.addAttribute("filme", filme);
-        return "alteracaoFilme";
+    @RequestMapping(Paginas.ALTERACAO_FILME_FUNCIONARIOS)
+    public String alterarDadosFilme(Filme filme, Model model) {
+        Filme filmeBuscado = filmeDao.buscarPorId(filme.getId());
+        model.addAttribute(ATRIBUTO_MODAL_FILME, filmeBuscado);
+        return Paginas.ALTERACAO_FILME;
     }
 
-    @RequestMapping("alterarFilmeFuncionarios")
+    @RequestMapping(Paginas.ALTERAR_FILME_FUNCIONARIOS)
     public String alterarFilme(@Valid Filme umFilme, BindingResult result) {
         if (result.hasErrors()) {
-            return "alteracaoFilme";
+            return Paginas.ALTERACAO_FILME;
         }
-        //System.out.println(umFilme.getId());
         filmeDao.alterarFilme(umFilme);
-        return "cadastroRestritoSucesso";
+        return Paginas.CADASTRO_RESTRITO_SUCESSO;
     }
 
-    @RequestMapping("exclusaoFilmeFuncionarios")
+    @RequestMapping(Paginas.EXCLUSAO_FILME_FUNCIONARIOS)
     public String excluirDadosFilme(Filme umFilme) {
         filmeDao.removerFilme(umFilme);
-        return "redirect:mostrarAtracoesFuncionarios";
+        return COMPLEMENTO_PAGINA_REDIRECT + Paginas.MOSTRAR_ATRACOES_FUNCIONARIOS;
     }
 
-    @RequestMapping("alteracaoPecaFuncionarios")
-    public String alterarDadosPeca(Peca umaPeca, Model model) {
-        Peca peca = pecaDao.buscarPorId(umaPeca.getId());
-        model.addAttribute("peca", peca);
-        return "alteracaoPeca";
+    @RequestMapping(Paginas.ALTERACAO_PECA_FUNCIONARIOS)
+    public String alterarDadosPeca(Peca peca, Model model) {
+        Peca pecaBuscada = pecaDao.buscarPorId(peca.getId());
+        model.addAttribute(ATRIBUTO_MODAL_PECA, pecaBuscada);
+        return Paginas.ALTERACAO_PECA;
     }
 
-    @RequestMapping("alteracaoSessaoFilmeFuncionarios")
+    @RequestMapping(Paginas.ALTERACAO_SESSAO_FILME_FUNCIONARIOS)
     public String alterarDadosSessaoFilme(Sessao sessao, Model model) {
-        sessao = sessaoDao.buscarPorId(sessao.getIdSessao());
+        Sessao sessaoBuscada = sessaoDao.buscarPorId(sessao.getIdSessao());
 
         List<Filme> filmes = filmeDao.listarFilmes();
         List<Sala> salas = salaDao.listarSalas();
 
-        model.addAttribute("filmes", filmes);
-        model.addAttribute("salas", salas);
-        model.addAttribute("sessao", sessao);
+        model.addAttribute(ATRIBUTO_MODAL_FILMES, filmes);
+        model.addAttribute(ATRIBUTO_MODAL_SALAS, salas);
+        model.addAttribute(ATRIBUTO_MODAL_SESSAO, sessaoBuscada);
 
-        return "alteracaoSessaoFilme";
+        return Paginas.ALTERACAO_SESSAO_FILME;
     }
 
-    @RequestMapping("alteracaoSessaoPecaFuncionarios")
+    @RequestMapping(Paginas.ALTERACAO_SESSAO_PECA_FUNCIONARIOS)
     public String alterarDadosSessaoPeca(Sessao sessao, Model model) {
-        sessao = sessaoDao.buscarPorId(sessao.getIdSessao());
+        Sessao sessaoBuscada = sessaoDao.buscarPorId(sessao.getIdSessao());
 
         List<Peca> pecas = pecaDao.listarPecas();
         List<Sala> salas = salaDao.listarSalas();
 
-        model.addAttribute("pecas", pecas);
-        model.addAttribute("salas", salas);
-        model.addAttribute("sessao", sessao);
+        model.addAttribute(ATRIBUTO_MODAL_PECAS, pecas);
+        model.addAttribute(ATRIBUTO_MODAL_SALAS, salas);
+        model.addAttribute(ATRIBUTO_MODAL_SESSAO, sessaoBuscada);
 
-        return "alteracaoSessaoPeca";
+        return Paginas.ALTERACAO_SESSAO_PECA;
     }
 
-
-    @RequestMapping("alteracaoTipoIngressoFuncionarios")
+    @RequestMapping(Paginas.ALTERACAO_TIPO_INGRESSO_FUNCIONARIOS)
     public String alterarDadosPeca(TipoIngresso umTipoIngresso, Model model) {
-        umTipoIngresso = tipoIngressoDao.buscarPorNome(umTipoIngresso.getNome());
-        model.addAttribute("tipoIngresso", umTipoIngresso);
-        return "alteracaoTipoIngresso";
+        TipoIngresso tipoIngressoBuscado = tipoIngressoDao.buscarPorNome(umTipoIngresso.getNome());
+        model.addAttribute(ATRIBUTO_MODAL_TIPO_INGRESSO, tipoIngressoBuscado);
+        return Paginas.ALTERACAO_TIPO_INGRESSO;
     }
 
-    @RequestMapping("cadastrarSessaoPecaFuncionarios")
+    @RequestMapping(Paginas.CADASTRAR_SESSAO_PECA_FUNCIONARIOS)
     public String cadastrarSessaoPeca(@Valid Sessao sessao,
-                                      BindingResult result, Peca peca) {
+            BindingResult result, Peca peca) {
         //criado para adicionar um objeto sem id
         Sessao umaSessao = new Sessao();
 
         umaSessao.setSala(
-            salaDao.buscarPorId(sessao.getSala().getId()));
+                salaDao.buscarPorId(sessao.getSala().getId()));
         umaSessao.setAtracao(
-            pecaDao.buscarPorId(peca.getId()));
+                pecaDao.buscarPorId(peca.getId()));
         umaSessao.setData(sessao.getData());
 
         umaSessao.setAssentosOcupados(" ");
 
         if (result.hasFieldErrors("data")) {
-            return "redirect:cadastroSessoesPecaFuncionarios";
+            return COMPLEMENTO_PAGINA_REDIRECT + Paginas.CADASTRO_SESSOES_PECA_FUNCIONARIOS;
         }
 
         List<Sessao> sessoes = sessaoDao.listarSessoes();
 
-		/* checa se ja existe uma sessao cadastrada com o mesmo horario 
+        /* checa se ja existe uma sessao cadastrada com o mesmo horario 
 		 * para a mesma atracao e para a mesma sala*/
         for (Sessao se : sessoes) {
-            if (se.getData().compareTo(umaSessao.getData()) == 0) {
-                if (umaSessao.getSala().getId() == se.getSala().getId()) {
-                    return "redirect:sessoesPecaFuncionarios?idAtracao=" + umaSessao.getAtracao().getId();
-                }
+            if (se.getData().compareTo(umaSessao.getData()) == 0
+                    && umaSessao.getSala().getId().equals(se.getSala().getId())) {
+                return COMPLEMENTO_PAGINA_REDIRECT + Paginas.SESSOES_PECA_FUNCIONARIOS + "?" + ARGUMENTO_URL_ID_ATRACAO 
+                        + umaSessao.getAtracao().getId();
             }
 
         }
 
         sessaoDao.adicionarSessao(umaSessao);
-        return "cadastroRestritoSucesso";
+        return Paginas.CADASTRO_RESTRITO_SUCESSO;
     }
 
-    @RequestMapping("cadastrarSessaoFilmeFuncionarios")
+    @RequestMapping(Paginas.CADASTRAR_SESSAO_FILME_FUNCIONARIOS)
     public String cadastrarSessaoFilme(@Valid Sessao sessao,
-                                       BindingResult result, Filme filme) {
+            BindingResult result, Filme filme) {
         //criado para adicionar um objeto sem id
         Sessao umaSessao = new Sessao();
 
         umaSessao.setSala(
-            salaDao.buscarPorId(sessao.getSala().getId()));
+                salaDao.buscarPorId(sessao.getSala().getId()));
         umaSessao.setAtracao(
-            filmeDao.buscarPorId(filme.getId()));
+                filmeDao.buscarPorId(filme.getId()));
         umaSessao.setData(sessao.getData());
         umaSessao.setAssentosOcupados(" ");
 
         if (result.hasFieldErrors("data")) {
-            return "redirect:cadastroSessoesFilmeFuncionarios";
+            return COMPLEMENTO_PAGINA_REDIRECT + Paginas.CADASTRO_SESSOES_FILME_FUNCIONARIOS;
         }
 
         List<Sessao> sessoes = sessaoDao.listarSessoes();
-		
-		/* checa se ja existe uma sessao cadastrada com o mesmo horario 
+
+        /* checa se ja existe uma sessao cadastrada com o mesmo horario 
 		 * para a mesma atracao e para a mesma sala*/
         for (Sessao se : sessoes) {
-            if (se.getData().compareTo(umaSessao.getData()) == 0) {
-                if (umaSessao.getSala().getId() == se.getSala().getId()) {
-                    return "redirect:sessoesFilmeFuncionarios?idAtracao=" + umaSessao.getAtracao().getId();
-                }
+            if (se.getData().compareTo(umaSessao.getData()) == 0
+                    && umaSessao.getSala().getId().equals(se.getSala().getId())) {
+                return COMPLEMENTO_PAGINA_REDIRECT + Paginas.SESSOES_FILME_FUNCIONARIOS + "?" + ARGUMENTO_URL_ID_ATRACAO 
+                        + umaSessao.getAtracao().getId();
             }
 
         }
         sessaoDao.adicionarSessao(umaSessao);
-        return "cadastroRestritoSucesso";
+        return Paginas.CADASTRO_RESTRITO_SUCESSO;
     }
 
-    @RequestMapping("alterarPecaFuncionarios")
+    @RequestMapping(Paginas.ALTERAR_PECA_FUNCIONARIOS)
     public String alterarPeca(@Valid Peca umaPeca, BindingResult result) {
         if (result.hasErrors()) {
-            return "alteracaoPeca";
+            return Paginas.ALTERACAO_PECA;
         }
         pecaDao.alterarPeca(umaPeca);
-        return "cadastroRestritoSucesso";
+        return Paginas.CADASTRO_RESTRITO_SUCESSO;
     }
 
-    @RequestMapping("alterarSessaoFilmeFuncionarios")
+    @RequestMapping(Paginas.ALTERAR_SESSAO_FILME_FUNCIONARIOS)
     public String alterarSessaoFilme(@Valid Sessao sessao, BindingResult result,
-                                     Filme filme) {
+            Filme filme) {
         //criado para adicionar um objeto sem id
-        Sessao umaSessao = sessaoDao.buscarPorId(sessao.getIdSessao());
-        //System.out.println(filme.getIdAtracao());
-        //System.out.println(sessao.getIdSessao());
+        Sessao sessaoBuscada = sessaoDao.buscarPorId(sessao.getIdSessao());
 
         List<Sessao> sessoes = sessaoDao.listarSessoes();
-		
-		/* checa se ja existe uma sessao cadastrada com o mesmo horario 
-		 * para a mesma atracao e para a mesma sala*/
+
+        // checa se ja existe uma sessao cadastrada com o mesmo horario para a mesma atracao e para a mesma sala
         for (Sessao se : sessoes) {
-            if (se.getData().compareTo(umaSessao.getData()) == 0) {
-                if (umaSessao.getSala().getId() == se.getSala().getId()) {
-                    return "redirect:sessoesFilmeFuncionarios?idAtracao=" + umaSessao.getAtracao().getId();
-                }
+            if (se.getData().compareTo(sessaoBuscada.getData()) == 0
+                    && sessaoBuscada.getSala().getId().equals(se.getSala().getId())) {
+                return COMPLEMENTO_PAGINA_REDIRECT + Paginas.SESSOES_FILME_FUNCIONARIOS + "?" + ARGUMENTO_URL_ID_ATRACAO 
+                        + sessaoBuscada.getAtracao().getId();
             }
 
         }
 
-        umaSessao.setSala(
-            salaDao.buscarPorId(sessao.getSala().getId()));
+        sessaoBuscada.setSala(
+                salaDao.buscarPorId(sessao.getSala().getId()));
 
-        umaSessao.setAtracao(
-            filmeDao.buscarPorId(filme.getId()));
+        sessaoBuscada.setAtracao(
+                filmeDao.buscarPorId(filme.getId()));
 
-        umaSessao.setData(sessao.getData());
+        sessaoBuscada.setData(sessao.getData());
 
         if (result.hasFieldErrors("data")) {
-            return "redirect:alteracaoSessaoFilmeFuncionarios";
+            return COMPLEMENTO_PAGINA_REDIRECT + Paginas.ALTERACAO_SESSAO_FILME_FUNCIONARIOS;
         }
 
-        sessaoDao.alterarSessao(umaSessao);
-        return "cadastroRestritoSucesso";
+        sessaoDao.alterarSessao(sessaoBuscada);
+        return Paginas.CADASTRO_RESTRITO_SUCESSO;
     }
 
-    @RequestMapping("alterarSessaoPecaFuncionarios")
+    @RequestMapping(Paginas.ALTERAR_SESSAO_PECA_FUNCIONARIOS)
     public String alterarSessaoPeca(@Valid Sessao sessao, BindingResult result,
-                                    Peca peca) {
+            Peca peca) {
         //criado para adicionar um objeto sem id
-        Sessao umaSessao = sessaoDao.buscarPorId(sessao.getIdSessao());
-        //System.out.println(peca.getIdAtracao());
+        Sessao sessaoBuscada = sessaoDao.buscarPorId(sessao.getIdSessao());
 
         List<Sessao> sessoes = sessaoDao.listarSessoes();
-		
-		/* checa se ja existe uma sessao cadastrada com o mesmo horario 
-		 * para a mesma atracao e para a mesma sala*/
+
+        // checa se ja existe uma sessao cadastrada com o mesmo horario para a mesma atracao e para a mesma sala
         for (Sessao se : sessoes) {
-            if (se.getData().compareTo(umaSessao.getData()) == 0) {
-                if (umaSessao.getSala().getId() == se.getSala().getId()) {
-                    return "redirect:sessoesPecaFuncionarios?idAtracao=" + umaSessao.getAtracao().getId();
-                }
+            if (se.getData().compareTo(sessaoBuscada.getData()) == 0
+                    && sessaoBuscada.getSala().getId().equals(se.getSala().getId())) {
+                return COMPLEMENTO_PAGINA_REDIRECT + Paginas.SESSOES_PECA_FUNCIONARIOS + "?" + ARGUMENTO_URL_ID_ATRACAO 
+                        + sessaoBuscada.getAtracao().getId();
             }
 
         }
 
-        umaSessao.setSala(
-            salaDao.buscarPorId(sessao.getSala().getId()));
+        sessaoBuscada.setSala(
+                salaDao.buscarPorId(sessao.getSala().getId()));
 
-        umaSessao.setAtracao(
-            pecaDao.buscarPorId(peca.getId()));
+        sessaoBuscada.setAtracao(
+                pecaDao.buscarPorId(peca.getId()));
 
-        umaSessao.setData(sessao.getData());
+        sessaoBuscada.setData(sessao.getData());
 
         if (result.hasFieldErrors("data")) {
-            return "redirect:alteracaoSessaoPecaFuncionarios";
+            return COMPLEMENTO_PAGINA_REDIRECT + Paginas.ALTERACAO_SESSAO_PECA_FUNCIONARIOS;
         }
 
-        sessaoDao.alterarSessao(umaSessao);
-        return "cadastroRestritoSucesso";
+        sessaoDao.alterarSessao(sessaoBuscada);
+        return Paginas.CADASTRO_RESTRITO_SUCESSO;
     }
 
-    @RequestMapping("alterarTipoIngressoFuncionarios")
+    @RequestMapping(Paginas.ALTERAR_TIPO_INGRESSO_FUNCIONARIOS)
     public String alterarTipoIngresso(@Valid TipoIngresso umTipoIngresso, BindingResult result) {
         if (result.hasErrors()) {
-            return "alteracaoTipoIngresso";
+            return Paginas.ALTERACAO_TIPO_INGRESSO;
         }
         tipoIngressoDao.alterarTipoIngresso(umTipoIngresso);
-        return "cadastroRestritoSucesso";
+        return Paginas.CADASTRO_RESTRITO_SUCESSO;
     }
 
-    @RequestMapping("exclusaoSessaoFuncionarios")
+    @RequestMapping(Paginas.EXCLUSAO_SESSAO_FUNCIONARIOS)
     public String excluirDadosSessao(Sessao sessao) {
-        //System.out.println(sessao.getIdSessao());
         sessaoDao.removerSessao(sessao);
-        return "redirect:gerenciarSessoesFuncionarios";
+        return COMPLEMENTO_PAGINA_REDIRECT + Paginas.GERENCIAR_SESSOES_FUNCIONARIOS;
     }
 
-    @RequestMapping("exclusaoTipoIngressoFuncionarios")
+    @RequestMapping(Paginas.EXCLUSAO_TIPO_INGRESSO_FUNCIONARIOS)
     public String excluirDadosTipoIngresso(TipoIngresso umTipoIngresso) {
         tipoIngressoDao.removerTipoIngresso(umTipoIngresso);
-        return "redirect:mostrarTipoIngressoFuncionarios";
+        return COMPLEMENTO_PAGINA_REDIRECT + Paginas.MOSTRAR_TIPO_INGRESSO_FUNCIONARIOS;
     }
 
-    @RequestMapping("exclusaoPecaFuncionarios")
+    @RequestMapping(Paginas.EXCLUSAO_PECA_FUNCIONARIOS)
     public String excluirDadosPeca(Peca umaPeca) {
         pecaDao.removerPeca(umaPeca);
-        return "redirect:mostrarAtracoesFuncionarios";
+        return COMPLEMENTO_PAGINA_REDIRECT + Paginas.MOSTRAR_ATRACOES_FUNCIONARIOS;
     }
 
-    @RequestMapping("mostrarTipoIngressoFuncionarios")
+    @RequestMapping(Paginas.MOSTRAR_TIPO_INGRESSO_FUNCIONARIOS)
     public String retornaPaginaTipoIngresso(Model model) {
         List<TipoIngresso> tiposIngresso = tipoIngressoDao.listarTipoIngresso();
-        model.addAttribute("tiposIngresso", tiposIngresso);
-        return "mostrarTipoIngressoFuncionarios";
+        model.addAttribute(ATRIBUTO_MODAL_TIPOS_INGRESSO, tiposIngresso);
+        return Paginas.MOSTRAR_TIPO_INGRESSO_FUNCIONARIOS;
     }
 
-    @RequestMapping("cadastrarTipoIngressoFuncionarios")
+    @RequestMapping(Paginas.CADASTRAR_TIPO_INGRESSO_FUNCIONARIOS)
     public String cadastrarTipoIngresso(@Valid TipoIngresso umTipoIngresso, BindingResult result, HttpServletRequest request) {
         if (result.hasErrors()) {
-            return "cadastroTipoIngresso";
+            return Paginas.CADASTRO_TIPO_INGRESSO;
         }
         tipoIngressoDao.adicionarTipoIngresso(umTipoIngresso);
-        return "cadastroRestritoSucesso";
+        return Paginas.CADASTRO_RESTRITO_SUCESSO;
     }
 
-    @RequestMapping("dimensoesSalaFuncionarios")
+    @RequestMapping(Paginas.DIMENSOES_SALA_FUNCIONARIOS)
     public String cadastroSala(@Valid Sala sala, Model model, BindingResult result) {
         if (result.hasErrors()) {
-            return "cadastroSalas";
+            return Paginas.CADASTRO_SALAS;
         }
-        model.addAttribute("sala", sala);
-        return "formatarSala";
+        model.addAttribute(ATRIBUTO_MODAL_SALA, sala);
+        return Paginas.FORMATAR_SALA;
     }
 
-    @RequestMapping("cadastrarSalaFuncionarios")
+    @RequestMapping(Paginas.CADASTRAR_SALA_FUNCIONARIOS)
     public String cadastrarSalaFuncionarios(Sala sala,
-                                            @RequestParam ArrayList<String> assentos) {
-        String assentosInvalidos;
-
-        if (assentos != null) {
-            System.out.println("array assentos:" + assentos.toString());
-            StringAssento stringAssento = new StringAssento();
-            ArrayList<Assento> arrayAssentosInvalidos = stringAssento.converterArrayStringParaArrayAssento(assentos);
-            assentosInvalidos = stringAssento.converterAssentoParaString(arrayAssentosInvalidos);
-        } else
-            assentosInvalidos = " ";
-
-        System.out.println("String assentos invalidos:" + assentosInvalidos);
+            @RequestParam List<String> assentos) {
         salaDao.adicionarSala(sala);
-        return "cadastroRestritoSucesso";
+        return Paginas.CADASTRO_RESTRITO_SUCESSO;
     }
 
-    @RequestMapping("mostrarSalasFuncionarios")
+    @RequestMapping(Paginas.MOSTRAR_SALAS_FUNCIONARIOS)
     public String retornaPaginaSalas(Model model) {
         List<Sala> salas = salaDao.listarSalas();
-        model.addAttribute("salas", salas);
-        return "mostrarSalasFuncionarios";
+        model.addAttribute(ATRIBUTO_MODAL_SALAS, salas);
+        return Paginas.MOSTRAR_SALAS_FUNCIONARIOS;
     }
 
-    @RequestMapping("alteracaoSalaFuncionarios")
+    @RequestMapping(Paginas.ALTERACAO_SALA_FUNCIONARIOS)
     public String alterarDadosSala(Sala sala, Model model) {
-        sala = salaDao.buscarPorId(sala.getId());
-        StringAssento stringAssento = new StringAssento();
-        model.addAttribute("sala", sala);
-        return "alteracaoSala";
+        Sala salaBuscada = salaDao.buscarPorId(sala.getId());
+        model.addAttribute(ATRIBUTO_MODAL_SALA, salaBuscada);
+        return Paginas.ALTERACAO_SALA;
     }
 
-    @RequestMapping("alterarSalaFuncionarios")
+    @RequestMapping(Paginas.ALTERAR_SALA_FUNCIONARIOS)
     public String alterarSala(@Valid Sala sala, BindingResult result,
-                              @RequestParam ArrayList<String> assentos) {
+            @RequestParam List<String> assentos) {
         if (result.hasErrors()) {
-            return "alteracaoSala";
+            return Paginas.ALTERACAO_SALA;
         }
-        //System.out.println("ID da sala:"+sala.getId());
-        String assentosInvalidos;
-        if (assentos != null) {
-            StringAssento stringAssento = new StringAssento();
-            ArrayList<Assento> arrayAssentosInvalidos = stringAssento.converterArrayStringParaArrayAssento(assentos);
-            assentosInvalidos = stringAssento.converterAssentoParaString(arrayAssentosInvalidos);
-        } else
-            assentosInvalidos = " ";
-
         salaDao.alterarSala(sala);
-        return "cadastroRestritoSucesso";
+        return Paginas.CADASTRO_RESTRITO_SUCESSO;
     }
 
-    @RequestMapping("exclusaoSalaFuncionarios")
+    @RequestMapping(Paginas.EXCLUSAO_SALA_FUNCIONARIOS)
     public String excluirSala(Sala sala) {
         salaDao.removerSala(sala);
-        return "redirect:mostrarSalasFuncionarios";
+        return COMPLEMENTO_PAGINA_REDIRECT + Paginas.MOSTRAR_SALAS_FUNCIONARIOS;
     }
 
     // Ao usar @Valid, nao usar redirect
-    @RequestMapping("cadastrarFuncionarios")
+    @RequestMapping(Paginas.CADASTRAR_FUNCIONARIOS)
     public String cadastrarFuncionario(@Valid Funcionario umFuncionario,
-                                       BindingResult result) {
+            BindingResult result) {
         if (result.hasErrors()) {
-            return "cadastroFuncionario";
+            return Paginas.CADASTRO_FUNCIONARIO;
         }
         funcionarioDao.adicionarFuncionario(umFuncionario);
-        return "cadastroRestritoSucesso";
+        return Paginas.CADASTRO_RESTRITO_SUCESSO;
     }
 
     /**
-     * @param model Usado para passar os niveis de acesso esperados para a pagina
-     *              JSP
      * @return pagina de cadastro de funcionarios
      */
-    @RequestMapping("cadastroFuncionarios")
+    @RequestMapping(Paginas.CADASTRO_FUNCIONARIOS)
     public String retornaPaginaCadastroFuncionarios() {
-        return "cadastroFuncionario";
+        return Paginas.CADASTRO_FUNCIONARIO;
     }
 
-    @RequestMapping("mostrarFuncionarios")
+    @RequestMapping(Paginas.MOSTRAR_FUNCIONARIOS)
     public String retornaPaginaFuncionarios(Model model) {
         List<Funcionario> funcionarios = funcionarioDao.listarFuncionario();
         Funcionario admin = null;
@@ -541,34 +521,34 @@ public class FuncionarioController {
         }
         funcionarios.remove(admin);
 
-        model.addAttribute("funcionarios", funcionarios);
-        return "mostrarFuncionarios";
+        model.addAttribute(ATRIBUTO_MODAL_FUNCIONARIOS, funcionarios);
+        return Paginas.MOSTRAR_FUNCIONARIOS;
     }
 
-    @RequestMapping("gerenciarFuncionarios")
+    @RequestMapping(Paginas.GERENCIAR_FUNCIONARIOS)
     public String retornaPaginaGerenciaFuncionarios() {
-        return "gerenciarFuncionarios";
+        return Paginas.GERENCIAR_FUNCIONARIOS;
     }
 
-    @RequestMapping("alteracaoFuncionarios")
+    @RequestMapping(Paginas.ALTERACAO_FUNCIONARIOS)
     public String alterarFuncionarios(Funcionario funcionario, Model model) {
-        funcionario = funcionarioDao.buscarPorId(funcionario.getEmail());
-        model.addAttribute("funcionario", funcionario);
-        return "alteracaoFuncionario";
+        Funcionario funcionarioBuscado = funcionarioDao.buscarPorId(funcionario.getEmail());
+        model.addAttribute(ATRIBUTO_MODAL_FUNCIONARIO, funcionarioBuscado);
+        return Paginas.ALTERACAO_FUNCIONARIO;
     }
 
-    @RequestMapping("alterarFuncionarios")
+    @RequestMapping(Paginas.ALTERAR_FUNCIONARIOS)
     public String alterarDadosFuncionarios(@Valid Funcionario funcionario, BindingResult result) {
         if (result.hasErrors()) {
-            return "alteracaoFuncionario";
+            return Paginas.ALTERACAO_FUNCIONARIO;
         }
         funcionarioDao.alterarFuncionario(funcionario);
-        return "cadastroRestritoSucesso";
+        return Paginas.CADASTRO_RESTRITO_SUCESSO;
     }
 
-    @RequestMapping("exclusaoFuncionarios")
+    @RequestMapping(Paginas.EXCLUSAO_FUNCIONARIOS)
     public String excluirFuncionario(Funcionario funcionario) {
         funcionarioDao.removerFuncionario(funcionario);
-        return "redirect:mostrarFuncionarios";
+        return COMPLEMENTO_PAGINA_REDIRECT + Paginas.MOSTRAR_FUNCIONARIOS;
     }
 }

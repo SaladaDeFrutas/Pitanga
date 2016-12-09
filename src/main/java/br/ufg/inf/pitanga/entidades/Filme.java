@@ -5,7 +5,6 @@ import org.hibernate.validator.constraints.NotEmpty;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
-import java.util.Calendar;
 
 @Entity
 @Table(name = "filmes")
@@ -21,6 +20,10 @@ public class Filme extends Atracao {
     @NotEmpty(message = "A produtora deve ser preenchido.")
     private String produtora;
 
+    public Filme() {
+        //Necessário para o JPA instanciar o objeto
+    }
+    
     public Boolean getLegendado() {
         return legendado;
     }
