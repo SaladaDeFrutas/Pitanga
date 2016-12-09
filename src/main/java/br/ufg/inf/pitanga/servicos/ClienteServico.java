@@ -113,7 +113,6 @@ public class ClienteServico {
         if (cliente == null) {
             throw new InvalidParameterException(CLIENTE);
         }
-        String email = cliente.getEmail();
         clienteRepository.delete(cliente);
     }
 
