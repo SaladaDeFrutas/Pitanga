@@ -197,24 +197,6 @@ public class FuncionarioControllerTest {
 
     @Test
     @WithMockUser(username = "pitanga", password = "pitanga")
-    public void deveRedirecionarParaPaginaAlteracaoSessaoFilmeFuncionarios() throws Exception {
-        mockMvc.perform(get("/alteracaoSessaoFilmeFuncionarios")
-            .accept(MediaType.ALL))
-            .andExpect(status().isOk())
-            .andDo(print());
-    }
-
-    @Test
-    @WithMockUser(username = "pitanga", password = "pitanga")
-    public void deveRedirecionarParaPaginaAlteracaoSessaoPecaFuncionarios() throws Exception {
-        mockMvc.perform(get("/alteracaoSessaoPecaFuncionarios")
-            .accept(MediaType.ALL))
-            .andExpect(status().isOk())
-            .andDo(print());
-    }
-
-    @Test
-    @WithMockUser(username = "pitanga", password = "pitanga")
     public void deveRedirecionarParaPaginaAlteracaoTipoIngressoFuncionarios() throws Exception {
         mockMvc.perform(get("/alteracaoTipoIngressoFuncionarios")
             .accept(MediaType.ALL))
