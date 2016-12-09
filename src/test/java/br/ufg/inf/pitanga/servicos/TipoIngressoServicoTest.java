@@ -49,21 +49,22 @@ public class TipoIngressoServicoTest {
     public void testaListarTodosIngressos() {
         TipoIngresso tipoIngresso1 = new TipoIngresso();
         BigDecimal preco1 = new BigDecimal(11);
-        tipoIngresso1.setNome("normal");
+        tipoIngresso1.setNome("diferente");
         tipoIngresso1.setPreco(preco1);
-        tipoIngressoRepository.save(tipoIngresso1);
+        tipoIngresso1 = tipoIngressoRepository.save(tipoIngresso1);
 
         TipoIngresso tipoIngresso2 = new TipoIngresso();
         BigDecimal preco2 = new BigDecimal(35);
-        tipoIngresso2.setNome("diferente");
+        tipoIngresso2.setNome("normal");
         tipoIngresso2.setPreco(preco2);
-        tipoIngressoRepository.save(tipoIngresso2);
+        tipoIngresso2 = tipoIngressoRepository.save(tipoIngresso2);
 
         Iterable<TipoIngresso> tiposIngressos = tipoIngressoServico.listarTodosTiposIngresso();
         List<TipoIngresso> listaTipoIngressos = new ArrayList<>();
         for (TipoIngresso tipoIngressoEncontrado : tiposIngressos) {
             listaTipoIngressos.add(tipoIngressoEncontrado);
         }
+        listaTipoIngressos.sort((o1, o2) -> o1.getNome().compareTo(o2.getNome()));
 
         TipoIngresso tipoIngressoEncontrado1 = listaTipoIngressos.get(0);
         assertEquals(tipoIngresso1.getNome(), tipoIngressoEncontrado1.getNome());

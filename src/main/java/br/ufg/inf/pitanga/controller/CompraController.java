@@ -4,6 +4,7 @@ import br.com.uol.pagseguro.domain.Transaction;
 import br.ufg.inf.pitanga.entidades.*;
 import br.ufg.inf.pitanga.servicos.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -16,6 +17,7 @@ import java.util.Map;
 
 import static br.ufg.inf.pitanga.controller.Paginas.*;
 
+@Controller
 public class CompraController {
 
     @Autowired
@@ -55,7 +57,7 @@ public class CompraController {
      */
     @RequestMapping("mostrarInformacoesCompra")
     public String mostrarInformacoesCompra(Compra compra, Model model) {
-        Compra compraObtida = compraServico.obtenhaCompraPeloId(compra.getId());
+        Compra compraObtida = compraServico.buscarPorId(compra.getId());
         String codigoTransacao = compra.getCodigoTransacao();
         Transaction transacaoCompra = pagamentoPagseguroServico.obtenhaTransacao(codigoTransacao);
 

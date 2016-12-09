@@ -41,8 +41,8 @@ public class CompraServico {
     @Autowired
     private IngressoServico ingressoServico;
 
-    public Compra obtenhaCompraPeloId(Long idCompra) {
-        return compraRepository.findOne(idCompra);
+    public Compra buscarPorId(Long id){
+        return compraRepository.findOne(id);
     }
 
     public List<CompraDTO> obtenhaComprasDoCliente(String email) {

@@ -1,11 +1,13 @@
 package br.ufg.inf.pitanga.controller;
 
-import br.ufg.inf.pitanga.entidades.*;
-import br.ufg.inf.pitanga.interfaces.dao.*;
-import br.ufg.inf.pitanga.repository.ClienteRepository;
-import br.ufg.inf.pitanga.servicos.GeraPDF;
-import com.lowagie.text.DocumentException;
+import br.ufg.inf.pitanga.entidades.Compra;
+import br.ufg.inf.pitanga.entidades.Ingresso;
+import br.ufg.inf.pitanga.servicos.CompraServico;
+import br.ufg.inf.pitanga.servicos.GeraPDFServico;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletResponse;
@@ -13,95 +15,64 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.List;
 
+@Controller
 public class GeradorPDFController {
 
     @Autowired
-    private InterfaceSessaoDao sessaoDao;
+    private GeraPDFServico geradorPDFServico;
 
     @Autowired
-    private InterfaceIngressoDao ingressoDao;
+    private CompraServico compraServico;
 
-    @Autowired
-    private ClienteRepository clienteRepository;
+    private final Logger log = LoggerFactory.getLogger(this.getClass());
 
-    @Autowired
-    private InterfaceCompraDao compraDao;
-
-    @Autowired
-    private InterfaceFilmeDao filmeDao;
-
-    @Autowired
-    private InterfacePecaDao pecaDao;
 
     @RequestMapping("gerarComprovante")
-    public void gerarComprovantePdf(Compra compra, HttpServletResponse response) {
-        GeraPDF geradorPDF = new GeraPDF();
-        compra.getId();
+    public void gerarComprovantePdf(Compra compraApenasComId, HttpServletResponse response) {
+        Compra compra = compraServico.buscarPorId(compraApenasComId.getId());
+        List<Ingresso> ingressosCompra = compra.getIngressos();
+        escreveDadosGeraisDaCompraNoComprovante(compra);
 
-        compra = compraDao.buscarPorId(
-            compra.getId());
+        for (Ingresso ingresso : ingressosCompra)
+            escreveInformacoesSobreIngressoNoComprovante(ingresso);
 
-        /**
-         * itens a colocar no pdf
-         */
-        // id da compra
-        geradorPDF.concatenaStringTexto("ID da CompraServico: " + compra.getId() + "\n");
-
-        // data da compra
-        geradorPDF.concatenaStringTexto("Data: " + new SimpleDateFormat("dd/MM/yy HH:mm").format(compra.getDataCompra().getTime()) + "\n");
-
-        String status;
-        if (!compra.isPagamentoAprovado())
-            status = "Não concluído";
-        else
-            status = "Concluído";
-        //status da compra true ou false pro pagamento
-        geradorPDF.concatenaStringTexto("Status da compra: " + status + "\n");
-
-        // nome do cliente
-        Cliente umCliente = clienteRepository.findByEmail(compra.getCliente().getEmail());
-        geradorPDF.concatenaStringTexto("Nome do Cliente: " + umCliente.getNome() + "\n");
-        geradorPDF.concatenaStringTexto("--------------------------------------------------------------"
-            + "----------------------------------------------------\n");
-        geradorPDF.concatenaStringTexto("\nIngressos escolhidos:\n");
-
-        //ingressos da compra
-        List<Ingresso> ingressosCompra = ingressoDao.buscaPorRegistroCompra(compra);
-        for (Ingresso ingresso : ingressosCompra) {
-            // tipo do ingresso
-            geradorPDF.concatenaStringTexto("Tipo: " + ingresso.getUmTipoIngresso().getNome() + "\n");
-
-            // sessao com data de exibicao
-            Sessao umaSessao = sessaoDao.buscarPorId(ingresso.getUmaSessao().getIdSessao());
-            geradorPDF.concatenaStringTexto("Data de Exibição: " + new SimpleDateFormat("dd/MM/yy HH:mm").format(
-                umaSessao.getData().getTime()) + "\n");
-
-            Long idAtracao = umaSessao.getAtracao().getId();
-            Filme filme = filmeDao.buscarPorId(idAtracao);
-            if (filme != null)
-                // nome do filme
-                geradorPDF.concatenaStringTexto("Filme: " + filme.getTitulo() + "\n");
-            else {
-                // nome da peca
-                Peca peca = pecaDao.buscarPorId(idAtracao);
-                geradorPDF.concatenaStringTexto("Peça: " + peca.getTitulo() + "\n");
-            }
-
-            // id da sala
-            geradorPDF.concatenaStringTexto("Sala: " + umaSessao.getIdSessao() + "\n");
-
-            // fileira e coluna da sala pro ingresso
-            geradorPDF.concatenaStringTexto("Assento: " + (ingresso.getUmAssento().getFila() + 1) + (ingresso.getUmAssento().getColuna() + 1) + "\n\n");
-        }
-        //retorna o pdf completo
         try {
-            response.getOutputStream().write(geradorPDF.gerarPDFComprovante().toByteArray());
+            response.getOutputStream().write(geradorPDFServico.gerarPDFComprovante().toByteArray());
             response.setContentType("application/pdf");
             response.setHeader("Content-Disposition", "attachment; filename=ingresso" + compra.getId() + ".pdf");
             response.flushBuffer();
-        } catch (IOException | DocumentException ex) {
-            throw new RuntimeException("IOError writing file to output stream");
+        } catch (IOException e) {
+            log.error("ERRO ao gerar comprovante em PDF.", e);
         }
+
     }
 
+    private void escreveDadosGeraisDaCompraNoComprovante(Compra compra) {
+        geradorPDFServico.concatenaStringTexto("ID da CompraServico: " + compra.getId() + "\n");
+        geradorPDFServico.concatenaStringTexto("Data: " + new SimpleDateFormat("dd/MM/yy HH:mm").format(
+            compra.getDataCompra().getTime()) + "\n");
+        geradorPDFServico.concatenaStringTexto("Status da compra: " + getStatusCompra(compra) + "\n");
+        geradorPDFServico.concatenaStringTexto("Nome do Cliente: " + compra.getCliente().getNome() + "\n");
+        geradorPDFServico.concatenaStringTexto("--------------------------------------------------------------"
+            + "----------------------------------------------------\n");
+        geradorPDFServico.concatenaStringTexto("\nIngressos escolhidos:\n");
+    }
+
+
+    private void escreveInformacoesSobreIngressoNoComprovante(Ingresso ingresso) {
+
+        geradorPDFServico.concatenaStringTexto("Tipo: " + ingresso.getUmTipoIngresso().getNome() + "\n");
+        geradorPDFServico.concatenaStringTexto("Data de Exibição: " + new SimpleDateFormat("dd/MM/yy HH:mm").format(
+            ingresso.getUmaSessao().getData().getTime()) + "\n");
+        geradorPDFServico.concatenaStringTexto("Atração: " + ingresso.getUmaSessao().getAtracao().getTitulo() + "\n");
+        geradorPDFServico.concatenaStringTexto("Sala: " + ingresso.getUmaSessao().getIdSessao() + "\n");
+        geradorPDFServico.concatenaStringTexto("Assento: " + (ingresso.getUmAssento().getFila() + 1) + (ingresso.getUmAssento().getColuna() + 1) + "\n\n");
+    }
+
+    private String getStatusCompra(Compra compra) {
+        if (!compra.isPagamentoAprovado())
+            return "Não concluído";
+        else
+            return "Concluído";
+    }
 }

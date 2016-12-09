@@ -110,6 +110,13 @@ public class CompraTest {
         compra.setValorTotal(null);
     }
 
+    @Test
+    public void testSetIdComSucesso(){
+        Long id = 1L;
+        compra.setId(id);
+        assertEquals(id, compra.getId());
+    }
+
     private Cliente criaClienteParaTeste() {
         return new Cliente();
     }
