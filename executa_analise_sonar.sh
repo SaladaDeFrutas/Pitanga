@@ -1,12 +1,13 @@
-#!/bin/sh
+#!/bin/bash
 
 set -euo pipefail
 
 export MAVEN_OPTS="-Xmx1G -Xms128m"
-MAVEN_OPTIONS="-Dmaven.test.redirectTestOutputToFile=false -Dsurefire.useFile=false -B -e -V"
+MAVEN_OPTIONS="-B -e -V"
 
- if [ "$TRAVIS_BRANCH" == "master" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
-    echo 'Analyse and trigger QA of master branch'
+echo "$TRAVIS_BRANCH, $TRAVIS_PULL_REQUEST"
+if [ "$TRAVIS_BRANCH" == "master" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
+    echo 'Analyse master branch'
 
     # Fetch all commit history so that SonarQube has exact blame information
     # for issue auto-assignment
@@ -15,40 +16,25 @@ MAVEN_OPTIONS="-Dmaven.test.redirectTestOutputToFile=false -Dsurefire.useFile=fa
     # For this reason errors are ignored with "|| true"
     git fetch --unshallow || true
 
-    mvn org.jacoco:jacoco-maven-plugin:prepare-agent deploy sonar:sonar \
+    mvn org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar \
           $MAVEN_OPTIONS \
-          -Pdeploy-sonarsource \
-          -Dsonar.host.url=$SONAR_HOST_URL \
-          -Dsonar.login=$SONAR_TOKEN \
-          -Dsonar.projectVersion=$INITIAL_VERSION
+          -Dsonar.login=$SONAR_TOKEN
 
-  elif [[ "$TRAVIS_BRANCH" == "branch-"* ]] && [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
-    echo 'release branch: trigger QA, no analysis'
-
-    export PROJECT_VERSION=`maven_expression "project.version"`
-
-    mvn deploy \
-        $MAVEN_OPTIONS \
-        -Pdeploy-sonarsource,release
-
-  elif [ "$TRAVIS_PULL_REQUEST" != "false" ] && [ -n "${GITHUB_TOKEN:-}" ]; then
+elif [ "$TRAVIS_PULL_REQUEST" != "false" ]; then
     echo 'Internal pull request: trigger QA and analysis'
 
-    mvn org.jacoco:jacoco-maven-plugin:prepare-agent deploy sonar:sonar \
+    mvn org.jacoco:jacoco-maven-plugin:prepare-agent package sonar:sonar \
         $MAVEN_OPTIONS \
-        -Dsource.skip=true \
-        -Pdeploy-sonarsource \
         -Dsonar.analysis.mode=preview \
+        -Dsonar.branch=$TRAVIS_PULL_REQUEST_BRANCH \
         -Dsonar.github.pullRequest=$TRAVIS_PULL_REQUEST \
-        -Dsonar.github.repository=$TRAVIS_REPO_SLUG \
-        -Dsonar.github.oauth=$GITHUB_TOKEN \
-        -Dsonar.host.url=$SONAR_HOST_URL \
+        -Dsonar.github.oauth=$SONAR_GITHUB_TOKEN \
         -Dsonar.login=$SONAR_TOKEN
 
-  else
-    echo 'Feature branch or external pull request: no QA, no analysis. Skip sources'
+else
+    echo 'Normal push, just executing tests'
 
-    mvn install \
-        $MAVEN_OPTIONS \
-        -Dsource.skip=true
-  fi
+    mvn package \
+        $MAVEN_OPTIONS
+fi
+

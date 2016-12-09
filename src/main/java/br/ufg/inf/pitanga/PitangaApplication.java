@@ -9,4 +9,5 @@ public class PitangaApplication {
     public static void main(String[] args) {
         SpringApplication.run(PitangaApplication.class, args);
     }
+
 }
