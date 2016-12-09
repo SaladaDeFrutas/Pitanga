@@ -12,6 +12,7 @@ public class IngressoServico {
     private IngressoRepository ingressoRepository;
 
     public Ingresso salvaIngresso(Cliente cliente, Sessao sessao, Assento assento, TipoIngresso tipoIngresso) {
-        return ingressoRepository.save(new Ingresso(cliente, sessao, assento, tipoIngresso));
+        Ingresso ingresso = new Ingresso(cliente, sessao, assento, tipoIngresso);
+        return ingressoRepository.save(ingresso);
     }
 }

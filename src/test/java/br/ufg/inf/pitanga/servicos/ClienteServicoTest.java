@@ -16,10 +16,10 @@ import static org.junit.Assert.assertNull;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class ClienteServiceTest {
+public class ClienteServicoTest {
 
     @Autowired
-    private ClienteService clienteService;
+    private ClienteServico clienteServico;
 
     @Test
     public void testeCadastrarClienteValido() {
@@ -32,9 +32,9 @@ public class ClienteServiceTest {
         cliente.setEmail("marcos.v.silva@live.com");
         cliente.setSenha("123456");
 
-        clienteService.cadastrarCliente(cliente);
+        clienteServico.cadastrarCliente(cliente);
 
-        Cliente clienteSalvo = clienteService.recuperarClientePorEmail(cliente.getEmail());
+        Cliente clienteSalvo = clienteServico.recuperarClientePorEmail(cliente.getEmail());
 
         assertEquals(cliente.getNome(), clienteSalvo.getNome());
         assertEquals(cliente.getEmail(), clienteSalvo.getEmail());
@@ -45,7 +45,7 @@ public class ClienteServiceTest {
     @Test(expected = InvalidParameterException.class)
     public void testeCadastrarClienteNull() {
         Cliente cliente = null;
-        clienteService.cadastrarCliente(cliente);
+        clienteServico.cadastrarCliente(cliente);
     }
 
     @Test
@@ -61,7 +61,7 @@ public class ClienteServiceTest {
         cliente.setEmail("marcos.v.silva@live.com");
         cliente.setSenha("123456");
 
-        Cliente clienteSalvo = clienteService.cadastrarCliente(cliente);
+        Cliente clienteSalvo = clienteServico.cadastrarCliente(cliente);
 
         assertNull(clienteSalvo);
     }
@@ -77,7 +77,7 @@ public class ClienteServiceTest {
         cliente.setEmail("marcos.v.silva@live.com");
         cliente.setSenha("123456");
 
-        Cliente clienteSalvo = clienteService.cadastrarCliente(cliente);
+        Cliente clienteSalvo = clienteServico.cadastrarCliente(cliente);
 
         assertNull(clienteSalvo);
     }
@@ -93,7 +93,7 @@ public class ClienteServiceTest {
         cliente.setEmail("marcos.v.silva@live.com");
         cliente.setSenha("123456");
 
-        clienteService.cadastrarCliente(cliente);
+        clienteServico.cadastrarCliente(cliente);
     }
 
     @Test
@@ -107,7 +107,7 @@ public class ClienteServiceTest {
         cliente.setEmail("marcos.v.silva@live.com");
         cliente.setSenha("123456");
 
-        Cliente clienteSalvo = clienteService.cadastrarCliente(cliente);
+        Cliente clienteSalvo = clienteServico.cadastrarCliente(cliente);
         assertNull(clienteSalvo);
     }
 
@@ -122,7 +122,7 @@ public class ClienteServiceTest {
         cliente.setEmail("marcos.v.silva@live.com");
         cliente.setSenha("123456");
 
-        clienteService.cadastrarCliente(cliente);
+        clienteServico.cadastrarCliente(cliente);
     }
 
     @Test(expected = InvalidParameterException.class)
@@ -135,7 +135,7 @@ public class ClienteServiceTest {
         cliente.setEmail("marcos.v.silva@live.com");
         cliente.setSenha("123456");
 
-        clienteService.cadastrarCliente(cliente);
+        clienteServico.cadastrarCliente(cliente);
     }
 
     @Test(expected = InvalidParameterException.class)
@@ -149,7 +149,7 @@ public class ClienteServiceTest {
         cliente.setEmail("marcos.v.silva.live.com");
         cliente.setSenha("123456");
 
-        clienteService.cadastrarCliente(cliente);
+        clienteServico.cadastrarCliente(cliente);
     }
 
     @Test(expected = InvalidParameterException.class)
@@ -163,7 +163,7 @@ public class ClienteServiceTest {
         cliente.setEmail("marcos.v.silva@livecom");
         cliente.setSenha("123456");
 
-        clienteService.cadastrarCliente(cliente);
+        clienteServico.cadastrarCliente(cliente);
     }
 
     @Test(expected = InvalidParameterException.class)
@@ -177,7 +177,7 @@ public class ClienteServiceTest {
         cliente.setEmail(null);
         cliente.setSenha("123456");
 
-        clienteService.cadastrarCliente(cliente);
+        clienteServico.cadastrarCliente(cliente);
     }
 
     @Test
@@ -191,7 +191,7 @@ public class ClienteServiceTest {
         cliente.setEmail("marcos.v.silva@live.com");
         cliente.setSenha("123456789012345678901234567890");
 
-        Cliente clienteGravado = clienteService.cadastrarCliente(cliente);
+        Cliente clienteGravado = clienteServico.cadastrarCliente(cliente);
         assertNull(clienteGravado);
     }
 
@@ -206,7 +206,7 @@ public class ClienteServiceTest {
         cliente.setEmail("marcos.v.silva@live.com");
         cliente.setSenha("123");
 
-        clienteService.cadastrarCliente(cliente);
+        clienteServico.cadastrarCliente(cliente);
     }
 
     @Test(expected = InvalidParameterException.class)
@@ -220,7 +220,7 @@ public class ClienteServiceTest {
         cliente.setEmail("marcos.v.silva@live.com");
         cliente.setSenha(null);
 
-        clienteService.cadastrarCliente(cliente);
+        clienteServico.cadastrarCliente(cliente);
     }
 
     @Test
@@ -234,8 +234,8 @@ public class ClienteServiceTest {
         cliente.setEmail("marcos.v.silva@live.com");
         cliente.setSenha("123456");
 
-        clienteService.cadastrarCliente(cliente);
-        Cliente clienteRecuperadoPorEmail = clienteService.recuperarClientePorEmail(cliente.getEmail());
+        clienteServico.cadastrarCliente(cliente);
+        Cliente clienteRecuperadoPorEmail = clienteServico.recuperarClientePorEmail(cliente.getEmail());
         assertEquals(cliente.getNome(), clienteRecuperadoPorEmail.getNome());
         assertEquals(cliente.getSenha(), clienteRecuperadoPorEmail.getSenha());
         assertEquals(cliente.getDataDeNascimento(), clienteRecuperadoPorEmail.getDataDeNascimento());
@@ -245,13 +245,13 @@ public class ClienteServiceTest {
     @Test(expected = InvalidParameterException.class)
     public void testeRecuperarClientePorEmailEmBranco() {
         String email = "";
-        clienteService.recuperarClientePorEmail(email);
+        clienteServico.recuperarClientePorEmail(email);
     }
 
     @Test(expected = InvalidParameterException.class)
     public void testeRecuperarClientePorEmailNull() {
         String email = null;
-        clienteService.recuperarClientePorEmail(email);
+        clienteServico.recuperarClientePorEmail(email);
     }
 
     @Test
@@ -265,16 +265,16 @@ public class ClienteServiceTest {
         cliente.setEmail("marcos.v.silva@live.com");
         cliente.setSenha("123456");
 
-        clienteService.cadastrarCliente(cliente);
-        clienteService.deletarCliente(cliente);
-        Cliente clienteRecuperadoPorEmailAposExclusao = clienteService.recuperarClientePorEmail(cliente.getEmail());
+        clienteServico.cadastrarCliente(cliente);
+        clienteServico.deletarCliente(cliente);
+        Cliente clienteRecuperadoPorEmailAposExclusao = clienteServico.recuperarClientePorEmail(cliente.getEmail());
         assertNull(clienteRecuperadoPorEmailAposExclusao);
     }
 
     @Test(expected = InvalidParameterException.class)
     public void testeDeletarClienteNull() {
         Cliente cliente = null;
-        clienteService.deletarCliente(cliente);
+        clienteServico.deletarCliente(cliente);
     }
 
     @Test
@@ -291,16 +291,16 @@ public class ClienteServiceTest {
         clientePrincipal.setDataDeNascimento(dataNascimento);
         clientePrincipal.setEmail(email);
         clientePrincipal.setSenha(senha);
-        clienteService.cadastrarCliente(clientePrincipal);
+        clienteServico.cadastrarCliente(clientePrincipal);
 
         Cliente clienteAlterado = new Cliente();
         clienteAlterado.setNome(nomeAlterado);
         clienteAlterado.setDataDeNascimento(dataNascimento);
         clienteAlterado.setEmail(email);
         clienteAlterado.setSenha(senha);
-        clienteService.alterarCliente(clienteAlterado);
+        clienteServico.alterarCliente(clienteAlterado);
 
-        Cliente clienteGravado = clienteService.recuperarClientePorEmail(email);
+        Cliente clienteGravado = clienteServico.recuperarClientePorEmail(email);
 
         assertEquals(clienteAlterado.getNome(), clienteGravado.getNome());
         assertEquals(clienteAlterado.getSenha(), clienteGravado.getSenha());
@@ -311,7 +311,7 @@ public class ClienteServiceTest {
     @Test(expected = InvalidParameterException.class)
     public void testeAlterarClienteNull() {
         Cliente cliente = null;
-        clienteService.alterarCliente(cliente);
+        clienteServico.alterarCliente(cliente);
     }
 
 }
