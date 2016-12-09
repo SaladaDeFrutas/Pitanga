@@ -1,10 +1,11 @@
 package br.ufg.inf.pitanga.entidades;
 
 import br.ufg.inf.pitanga.entidades.enums.TipoFuncionario;
-import java.security.InvalidParameterException;
+
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
+import java.security.InvalidParameterException;
 
 @Entity
 @Table(name = "funcionarios")
@@ -27,9 +28,8 @@ public class Funcionario extends Usuario {
 
     public Funcionario(TipoFuncionario nivelAcesso, int matricula) {
         this();
-        
-        setNivelAcesso(nivelAcesso);
-        setMatricula(matricula);
+        this.nivelAcesso = nivelAcesso;
+        this.matricula = matricula;
     }
 
     public TipoFuncionario getNivelAcesso() {

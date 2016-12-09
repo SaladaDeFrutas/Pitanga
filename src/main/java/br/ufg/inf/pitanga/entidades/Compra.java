@@ -5,6 +5,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
@@ -30,7 +31,8 @@ public class Compra {
     private String codigoTransacao;
 
     public Compra() {
-        //Necessário para o JPA instanciar o objeto
+        this.ingressos = new ArrayList<>();
+        this.valorTotal = new BigDecimal(0);
     }
 
     public Compra(Cliente cliente, List<Ingresso> ingressos, Calendar dataCompra) {
@@ -39,6 +41,8 @@ public class Compra {
         this.valorTotal = calcularTotal(ingressos);
         this.dataCompra = dataCompra;
         this.pagamentoAprovado = false;
+        this.valorTotal = new BigDecimal(0);
+        this.ingressos = new ArrayList<>();
     }
 
     private BigDecimal calcularTotal(List<Ingresso> ingressos) {
