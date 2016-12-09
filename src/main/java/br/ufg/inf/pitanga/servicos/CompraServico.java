@@ -1,5 +1,9 @@
 package br.ufg.inf.pitanga.servicos;
 
+import br.ufg.inf.pitanga.entidades.Cliente;
+import br.ufg.inf.pitanga.entidades.Compra;
+import br.ufg.inf.pitanga.entidades.CompraDTO;
+import br.ufg.inf.pitanga.entidades.Ingresso;
 import br.com.uol.pagseguro.domain.Transaction;
 import br.com.uol.pagseguro.enums.TransactionStatus;
 import br.ufg.inf.pitanga.entidades.*;
