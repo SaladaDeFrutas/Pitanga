@@ -5,6 +5,7 @@ import br.com.uol.pagseguro.domain.checkout.Checkout;
 import br.com.uol.pagseguro.enums.Currency;
 import br.com.uol.pagseguro.exception.PagSeguroServiceException;
 import br.com.uol.pagseguro.properties.PagSeguroConfig;
+import br.com.uol.pagseguro.service.NotificationService;
 import br.com.uol.pagseguro.service.TransactionSearchService;
 import br.ufg.inf.pitanga.entidades.Cliente;
 import br.ufg.inf.pitanga.entidades.Compra;
@@ -82,5 +83,25 @@ public class PagamentoPagseguroServico implements InterfacePagamento {
 
     public Transaction obtenhaTransacao(String codigoTransacao) {
         return consultarTransacao(codigoTransacao);
+    }
+
+    public Transaction receberNotificacaoCheckout(String codigoNotificacao) {
+        Transaction transaction = null;
+
+        try {
+        	/* Set your account credentials on src/pagseguro-config.properties
+			 * You can create an payment using an application credential and set an authorizationCode
+			 * ApplicationCredentials applicationCredentials = PagSeguroConfig.getApplicationCredentials();
+             * applicationCredentials.setAuthorizationCode("your_authorizationCode");
+			 */
+
+            transaction = NotificationService.checkTransaction(PagSeguroConfig.getAccountCredentials(),
+                codigoNotificacao);
+
+        } catch (PagSeguroServiceException e) {
+            System.err.println(e.getMessage());
+        }
+
+        return transaction;
     }
 }

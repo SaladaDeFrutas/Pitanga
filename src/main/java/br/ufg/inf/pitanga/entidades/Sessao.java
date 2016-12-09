@@ -21,16 +21,12 @@ public class Sessao {
     private Calendar data;
 
     @NotNull(message = "por favor, selecione a atracao")
-    @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE,
-        CascadeType.DETACH, CascadeType.PERSIST, CascadeType.REFRESH
-    })
+    @OneToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "idAtracao")
     private Atracao atracao;
 
     @NotNull(message = "por favor, selecione a sala")
-    @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE,
-        CascadeType.DETACH, CascadeType.PERSIST, CascadeType.REFRESH
-    })
+    @OneToOne
     @JoinColumn(name = "idSala")
     private Sala sala;
 

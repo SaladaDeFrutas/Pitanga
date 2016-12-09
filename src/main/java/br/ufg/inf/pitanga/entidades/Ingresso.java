@@ -15,12 +15,12 @@ public class Ingresso {
     @OneToOne
     @JoinColumn(name = "email")
     private Cliente umCliente;
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne
     @JoinColumn(name = "idSessao")
     private Sessao umaSessao;
     @OneToOne
     private Assento umAssento;
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne
     @JoinColumn(name = "nomeTipoIngresso")
     private TipoIngresso umTipoIngresso;
 
