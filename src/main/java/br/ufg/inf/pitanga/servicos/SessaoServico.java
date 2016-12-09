@@ -11,10 +11,6 @@ public class SessaoServico {
     @Autowired
     private SessaoRepository sessaoRepository;
 
-    public Sessao buscarPorId(Long id) {
-        return sessaoRepository.findOne(id);
-    }
-
     public Sessao buscaSessaoPorId(Long idSessao) {
         return sessaoRepository.findOne(idSessao);
     }

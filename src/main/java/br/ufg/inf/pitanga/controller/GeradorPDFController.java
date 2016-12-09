@@ -65,7 +65,7 @@ public class GeradorPDFController {
         geradorPDFServico.concatenaStringTexto("Data de Exibição: " + new SimpleDateFormat("dd/MM/yy HH:mm").format(
             ingresso.getUmaSessao().getData().getTime()) + "\n");
         geradorPDFServico.concatenaStringTexto("Atração: " + ingresso.getUmaSessao().getAtracao().getTitulo() + "\n");
-        geradorPDFServico.concatenaStringTexto("Sala: " + ingresso.getUmaSessao().getIdSessao() + "\n");
+        geradorPDFServico.concatenaStringTexto("Sala: " + ingresso.getUmaSessao().getId() + "\n");
         geradorPDFServico.concatenaStringTexto("Assento: " + (ingresso.getUmAssento().getFila() + 1) + (ingresso.getUmAssento().getColuna() + 1) + "\n\n");
     }
 

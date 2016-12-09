@@ -14,7 +14,7 @@ public class Sessao {
     @Id
     @GeneratedValue
     @Column(name = "idSessao")
-    private long idSessao;
+    private Long id;
 
     @NotNull(message = "por favor, digite a data e hora de estreia.")
     @DateTimeFormat(pattern = "dd/MM/yyyy HH:mm")
@@ -30,12 +30,12 @@ public class Sessao {
     @JoinColumn(name = "idSala")
     private Sala sala;
 
-    public long getIdSessao() {
-        return idSessao;
+    public Long getId() {
+        return id;
     }
 
-    public void setIdSessao(long idSessao) {
-        this.idSessao = idSessao;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public Calendar getData() {

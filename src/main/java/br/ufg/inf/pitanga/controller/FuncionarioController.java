@@ -213,7 +213,7 @@ public class FuncionarioController {
 
     @RequestMapping(Paginas.ALTERACAO_SESSAO_FILME_FUNCIONARIOS)
     public String alterarDadosSessaoFilme(Sessao sessao, Model model) {
-        Sessao sessaoBuscada = sessaoRepository.findOne(sessao.getIdSessao());
+        Sessao sessaoBuscada = sessaoRepository.findOne(sessao.getId());
 
         Iterable<Atracao> filmes = atracaoRepository.findAll();
         Iterable<Sala> salas = salaRepository.findAll();
@@ -227,7 +227,7 @@ public class FuncionarioController {
 
     @RequestMapping(Paginas.ALTERACAO_SESSAO_PECA_FUNCIONARIOS)
     public String alterarDadosSessaoPeca(Sessao sessao, Model model) {
-        Sessao sessaoBuscada = sessaoRepository.findOne(sessao.getIdSessao());
+        Sessao sessaoBuscada = sessaoRepository.findOne(sessao.getId());
 
         Iterable<Atracao> pecas = atracaoRepository.findAll();
         Iterable<Sala> salas = salaRepository.findAll();
@@ -320,7 +320,7 @@ public class FuncionarioController {
     public String alterarSessaoFilme(@Valid Sessao sessao, BindingResult result,
                                      Filme filme) {
         //criado para adicionar um objeto sem id
-        Sessao sessaoBuscada = sessaoRepository.findOne(sessao.getIdSessao());
+        Sessao sessaoBuscada = sessaoRepository.findOne(sessao.getId());
 
         Iterable<Sessao> sessoes = sessaoRepository.findAll();
 
@@ -351,7 +351,7 @@ public class FuncionarioController {
     public String alterarSessaoPeca(@Valid Sessao sessao, BindingResult result,
                                     Peca peca) {
         //criado para adicionar um objeto sem id
-        Sessao sessaoBuscada = sessaoRepository.findOne(sessao.getIdSessao());
+        Sessao sessaoBuscada = sessaoRepository.findOne(sessao.getId());
         Iterable<Sessao> sessoes = sessaoRepository.findAll();
 
         // checa se ja existe uma sessao cadastrada com o mesmo horario para a mesma atracao e para a mesma sala
