@@ -30,12 +30,15 @@ public class Compra {
     private String codigoTransacao;
 
     public Compra() {
+
     }
 
-    public Compra(Cliente cliente, List<Ingresso> ingressos) {
+    public Compra(Cliente cliente, List<Ingresso> ingressos, Calendar dataCompra) {
         this.cliente = cliente;
         this.ingressos = ingressos;
         this.valorTotal = calcularTotal(ingressos);
+        this.dataCompra = dataCompra;
+        this.pagamentoAprovado = false;
     }
 
     private BigDecimal calcularTotal(List<Ingresso> ingressos) {

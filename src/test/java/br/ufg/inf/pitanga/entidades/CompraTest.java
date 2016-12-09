@@ -29,8 +29,8 @@ public class CompraTest {
             add(ingresso1);
             add(ingresso2);
         }};
-
-        Compra compra = new Compra(cliente, ingressos);
+        Calendar dataCompra = Calendar.getInstance();
+        Compra compra = new Compra(cliente, ingressos, dataCompra);
         BigDecimal valorTotal = valor1.add(valor2);
         assertEquals(valorTotal, compra.getValorTotal());
     }
