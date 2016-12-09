@@ -1,68 +1,60 @@
 package br.ufg.inf.pitanga.controller;
 
-import br.ufg.inf.pitanga.entidades.Atracao;
 import br.ufg.inf.pitanga.entidades.Filme;
 import br.ufg.inf.pitanga.entidades.Peca;
 import br.ufg.inf.pitanga.entidades.Sessao;
-import br.ufg.inf.pitanga.interfaces.dao.InterfaceFilmeDao;
-import br.ufg.inf.pitanga.interfaces.dao.InterfacePecaDao;
-import br.ufg.inf.pitanga.interfaces.dao.InterfaceSessaoDao;
+import br.ufg.inf.pitanga.servicos.AtracaoService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
 
+@Controller
 public class AtracaoController {
 
     @Autowired
-    private InterfaceFilmeDao filmeDao;
+    private AtracaoService atracaoService;
 
-    @Autowired
-    private InterfacePecaDao pecaDao;
+    private static final String MOSTRAR_FILME = "mostrarFilme";
 
-    @Autowired
-    private InterfaceSessaoDao sessaoDao;
+    private static final String MOSTRAR_ATRACAO = "mostrarAtracoes";
 
-    @RequestMapping("/mostrarFilme")
-    public String mostrarFilme(Filme umFilme, Model model) {
-        Atracao filmeEscolhido = atracaoRepository.findOne(umFilme.getId());
+    private static final String MOSTRAR_SESSOES_FILME = "mostrarSessoesFilme";
+
+    private static final String MOSTRAR_SESSOES_PECA = "mostrarSessoesPeca";
+
+    @RequestMapping(MOSTRAR_FILME)
+    public String mostrarFilme(Filme filme, Model model) {
+        Filme filmeEscolhido = atracaoService.buscarFilmePorId(filme.getId());
         model.addAttribute("filme", filmeEscolhido);
         return "informacoesFilme";
     }
 
-    /**
-     * @param model adiciona atributos para a pagina JSP que sera retornada
-     * @return pagina JSP de atracoes
-     */
-    @RequestMapping("mostrarAtracoes")
+    @RequestMapping(MOSTRAR_ATRACAO)
     public String retornaPaginaAtracoes(Model model) {
-        List<Filme> filmes = filmeDao.listarFilmes();
-        List<Peca> pecas = pecaDao.listarPecas();
+        List<Filme> filmes = atracaoService.listarFilmes();
+        List<Peca> pecas = atracaoService.listarPecas();
 
         model.addAttribute("filmes", filmes);
         model.addAttribute("pecas", pecas);
         return "mostrarAtracoes";
     }
 
-    /**
-     * @param umFilme ID e titulo do filme
-     * @param model   adiciona o ID e titulo do filme e a lista de sessoes
-     * @return
-     */
-    @RequestMapping("mostrarSessoesFilme")
-    public String mostrarSessoesFilme(Filme umFilme, Model model) {
-        List<Sessao> sessoes = sessaoDao.buscarPorAtracao(umFilme);
+    @RequestMapping(MOSTRAR_SESSOES_FILME)
+    public String mostrarSessoesFilme(Filme filme, Model model) {
+        List<Sessao> sessoes = atracaoService.buscarPorAtracao(filme);
         model.addAttribute("sessoes", sessoes);
-        model.addAttribute("filme", umFilme);
+        model.addAttribute("filme", filme);
         return "mostrarSessoesFilme";
     }
 
-    @RequestMapping("mostrarSessoesPeca")
-    public String mostrarSessoesPeca(Peca umaPeca, Model model) {
-        List<Sessao> sessoes = sessaoDao.buscarPorAtracao(umaPeca);
+    @RequestMapping(MOSTRAR_SESSOES_PECA)
+    public String mostrarSessoesPeca(Peca peca, Model model) {
+        List<Sessao> sessoes = atracaoService.buscarPorAtracao(peca);
         model.addAttribute("sessoes", sessoes);
-        model.addAttribute("peca", umaPeca);
+        model.addAttribute("peca", peca);
         return "mostrarSessoesPeca";
     }
 }
