@@ -2,8 +2,6 @@ package br.ufg.inf.pitanga.entidades;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
 
 @Entity
 @Table(name = "ingressos")

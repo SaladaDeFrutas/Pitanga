@@ -56,7 +56,7 @@ public class PagamentoPagseguroServico implements InterfacePagamento {
             transaction = TransactionSearchService.searchByCode(PagSeguroConfig.getAccountCredentials(),
                 codigoTransacao);
         } catch (PagSeguroServiceException e) {
-            System.err.println(e.getMessage());
+            log.error(e.getMessage());
         }
 
         return transaction;
@@ -87,19 +87,11 @@ public class PagamentoPagseguroServico implements InterfacePagamento {
 
     public Transaction receberNotificacaoCheckout(String codigoNotificacao) {
         Transaction transaction = null;
-
         try {
-        	/* Set your account credentials on src/pagseguro-config.properties
-			 * You can create an payment using an application credential and set an authorizationCode
-			 * ApplicationCredentials applicationCredentials = PagSeguroConfig.getApplicationCredentials();
-             * applicationCredentials.setAuthorizationCode("your_authorizationCode");
-			 */
-
             transaction = NotificationService.checkTransaction(PagSeguroConfig.getAccountCredentials(),
                 codigoNotificacao);
-
         } catch (PagSeguroServiceException e) {
-            System.err.println(e.getMessage());
+            log.error(e.getMessage());
         }
 
         return transaction;

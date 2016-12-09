@@ -30,7 +30,7 @@ public class Compra {
     private String codigoTransacao;
 
     public Compra() {
-
+        //Necessário para o JPA instanciar o objeto
     }
 
     public Compra(Cliente cliente, List<Ingresso> ingressos, Calendar dataCompra) {
