@@ -1,7 +1,7 @@
 package br.ufg.inf.pitanga.controller;
 
 import br.ufg.inf.pitanga.entidades.Cliente;
-import br.ufg.inf.pitanga.servicos.ClienteService;
+import br.ufg.inf.pitanga.servicos.ClienteServico;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -14,7 +14,7 @@ import javax.validation.Valid;
 public class ClienteController {
 
     @Autowired
-    private ClienteService clienteService;
+    private ClienteServico clienteServico;
 
     private static final String CADASTRO = "cadastro";
 
@@ -45,7 +45,7 @@ public class ClienteController {
             return CADASTRO;
         }
 
-        if (clienteService.cadastrarCliente(cliente) == null) {
+        if (clienteServico.cadastrarCliente(cliente) == null) {
             return CADASTRO;
         }
         return CADASTROSUCESSO;
