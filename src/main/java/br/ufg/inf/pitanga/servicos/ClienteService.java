@@ -15,7 +15,7 @@ public class ClienteService {
     @Autowired
     private ClienteRepository clienteRepository;
 
-    private static final String strCliente = "cliente";
+    private static final String CLIENTE = "cliente";
 
     /**
      * Validação do nome do usuário, se o nome e maior que 5 caracteres e menor que 255 caracteres.
@@ -68,7 +68,7 @@ public class ClienteService {
      */
     public Cliente cadastrarCliente(Cliente cliente) {
         if (cliente == null) {
-            throw new InvalidParameterException(strCliente);
+            throw new InvalidParameterException(CLIENTE);
         }
 
         if (!validacaoNome(cliente.getNome())) {
@@ -108,7 +108,7 @@ public class ClienteService {
      */
     public Boolean deletarCliente(Cliente cliente) {
         if (cliente == null) {
-            throw new InvalidParameterException(strCliente);
+            throw new InvalidParameterException(CLIENTE);
         }
         String email = cliente.getEmail();
         clienteRepository.delete(cliente);
@@ -126,7 +126,7 @@ public class ClienteService {
      */
     public Cliente alterarCliente(Cliente cliente) {
         if (cliente == null) {
-            throw new InvalidParameterException(strCliente);
+            throw new InvalidParameterException(CLIENTE);
         }
         clienteRepository.save(cliente);
         return clienteRepository.findByEmail(cliente.getEmail());
