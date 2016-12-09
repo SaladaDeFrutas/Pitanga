@@ -14,12 +14,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.util.ReflectionTestUtils;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
 import java.util.*;
 
 import static org.junit.Assert.assertEquals;
 
+@Transactional
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class CompraServiceTest {
