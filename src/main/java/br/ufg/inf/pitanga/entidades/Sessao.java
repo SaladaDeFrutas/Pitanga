@@ -30,10 +30,6 @@ public class Sessao {
     @JoinColumn(name = "idSala")
     private Sala sala;
 
-    @Lob
-    @Deprecated
-    private String assentosOcupados;
-
     public long getIdSessao() {
         return idSessao;
     }
