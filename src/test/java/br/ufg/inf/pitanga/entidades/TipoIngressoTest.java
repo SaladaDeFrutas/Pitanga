@@ -1,9 +1,10 @@
 package br.ufg.inf.pitanga.entidades;
 
-import br.ufg.inf.pitanga.entidades.enums.TipoAssento;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+
+import java.math.BigDecimal;
 
 public class TipoIngressoTest {
     TipoIngresso tipoIngresso;
@@ -37,13 +38,15 @@ public class TipoIngressoTest {
 
     @Test
     public void testaGetESetPrecoComValorValidoComSucesso() {
-        tipoIngresso.setPreco(32.00);
-        Assert.assertEquals(32.00, tipoIngresso.getPreco(), 2);
+        BigDecimal preco = new BigDecimal(32.00);
+        tipoIngresso.setPreco(preco);
+        Assert.assertEquals(preco, tipoIngresso.getPreco());
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void testaGetESetPrecoComValorNegativoELancaIllegalArgumentException() {
-        double preco = -32.1;
+        BigDecimal preco = new BigDecimal(-32.00);
         tipoIngresso.setPreco(preco);
     }
+
 }

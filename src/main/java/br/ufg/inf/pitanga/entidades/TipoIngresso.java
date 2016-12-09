@@ -26,7 +26,7 @@ public class TipoIngresso {
     }
 
     public void setPreco(BigDecimal preco) {
-        if (preco < 0)
+        if (preco.compareTo(new BigDecimal(0)) < 1)
             throw new IllegalArgumentException();
         this.preco = preco;
     }
