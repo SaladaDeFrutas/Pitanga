@@ -3,7 +3,7 @@ package br.ufg.inf.pitanga.controller;
 /**
  * Esta classe declara todas as páginas web do sistema.
  */
-public class Paginas {
+public final class Paginas {
 
     public static final String CADASTRO_RESTRITO_SUCESSO = "cadastroRestritoSucesso";
     public static final String INDEX_FUNCIONARIOS = "indexFuncionarios";
@@ -93,4 +93,5 @@ public class Paginas {
     private Paginas() {
         //Classe de utilidade
     }
+
 }
