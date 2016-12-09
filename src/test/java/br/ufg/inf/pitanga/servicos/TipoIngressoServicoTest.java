@@ -27,7 +27,7 @@ public class TipoIngressoServicoTest {
     private TipoIngressoRepository tipoIngressoRepository;
 
     @Test
-    public void testaObterUmIngressoInexistente() {
+    public void testaObterUmTipoIngressoInexistente() {
         String nomeIngressoInexistente = UUID.randomUUID().toString();
         TipoIngresso tipoIngressoEncontrado = tipoIngressoServico.obtenhaTipoIngressoPorNome(nomeIngressoInexistente);
         assertNull(tipoIngressoEncontrado);

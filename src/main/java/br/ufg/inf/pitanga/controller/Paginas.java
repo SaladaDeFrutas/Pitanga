@@ -90,7 +90,8 @@ public final class Paginas {
     public static final String OBRIGADO = "obrigado";
     public static final String MOSTRAR_COMPRAS = "mostrarCompras";
 
-    public Paginas() {
+    private Paginas() {
         //Classe de utilidade
     }
+
 }
