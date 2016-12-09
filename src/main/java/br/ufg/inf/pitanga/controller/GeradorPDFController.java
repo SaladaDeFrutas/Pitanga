@@ -2,6 +2,7 @@ package br.ufg.inf.pitanga.controller;
 
 import br.ufg.inf.pitanga.entidades.*;
 import br.ufg.inf.pitanga.interfaces.dao.*;
+import br.ufg.inf.pitanga.repository.ClienteRepository;
 import br.ufg.inf.pitanga.servicos.GeraPDF;
 import com.lowagie.text.DocumentException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +22,7 @@ public class GeradorPDFController {
     private InterfaceIngressoDao ingressoDao;
 
     @Autowired
-    private InterfaceClienteDao clienteDao;
+    private ClienteRepository clienteRepository;
 
     @Autowired
     private InterfaceCompraDao compraDao;
@@ -58,7 +59,7 @@ public class GeradorPDFController {
         geradorPDF.concatenaStringTexto("Status da compra: " + status + "\n");
 
         // nome do cliente
-        Cliente umCliente = clienteDao.buscarPorId(compra.getCliente().getEmail());
+        Cliente umCliente = clienteRepository.findByEmail(compra.getCliente().getEmail());
         geradorPDF.concatenaStringTexto("Nome do Cliente: " + umCliente.getNome() + "\n");
         geradorPDF.concatenaStringTexto("--------------------------------------------------------------"
             + "----------------------------------------------------\n");
@@ -101,6 +102,6 @@ public class GeradorPDFController {
         } catch (IOException | DocumentException ex) {
             throw new RuntimeException("IOError writing file to output stream");
         }
-
     }
+
 }
