@@ -16,12 +16,6 @@ import java.util.List;
 public class GeradorPDFController {
 
     @Autowired
-    private InterfaceTipoIngressoDao tipoIngressoDao;
-
-    @Autowired
-    private InterfaceSalaDao salaDao;
-
-    @Autowired
     private InterfaceSessaoDao sessaoDao;
 
     @Autowired

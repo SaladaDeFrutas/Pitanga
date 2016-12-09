@@ -1,11 +1,11 @@
 package br.ufg.inf.pitanga.controller;
 
+import br.ufg.inf.pitanga.entidades.Atracao;
 import br.ufg.inf.pitanga.entidades.Filme;
 import br.ufg.inf.pitanga.entidades.Peca;
 import br.ufg.inf.pitanga.entidades.Sessao;
-import br.ufg.inf.pitanga.interfaces.dao.InterfaceFilmeDao;
-import br.ufg.inf.pitanga.interfaces.dao.InterfacePecaDao;
-import br.ufg.inf.pitanga.interfaces.dao.InterfaceSessaoDao;
+import br.ufg.inf.pitanga.repository.AtracaoRepository;
+import br.ufg.inf.pitanga.repository.SessaoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,24 +15,15 @@ import java.util.List;
 public class AtracaoController {
 
     @Autowired
-    private InterfaceFilmeDao filmeDao;
+    private AtracaoRepository atracaoRepository;
 
     @Autowired
-    private InterfacePecaDao pecaDao;
-
-    @Autowired
-    private InterfaceSessaoDao sessaoDao;
+    private SessaoRepository sessaoRepository;
 
     @RequestMapping("/mostrarFilme")
     public String mostrarFilme(Filme umFilme, Model model) {
-        // filmeDao.adicionarFilme(umFilme);
-        Filme filmeEscolhido = filmeDao.buscarPorId(umFilme.getId());
-        // List<Sessao> listaDeSessoes= ses
-        // @AutowiredsaoDao.buscarPorAtracao(umFilme.getId());
-        // System.out.println(filmeEscolhido.getTitulo());
+        Atracao filmeEscolhido = atracaoRepository.findOne(umFilme.getId());
         model.addAttribute("filme", filmeEscolhido);
-        // model.addAtribute("listaDeSessoes",listaDeSessoes);
-        // model.addAttribute("filme",umFilme);
         return "informacoesFilme";
     }
 
@@ -42,11 +33,9 @@ public class AtracaoController {
      */
     @RequestMapping("mostrarAtracoes")
     public String retornaPaginaAtracoes(Model model) {
-        List<Filme> filmes = filmeDao.listarFilmes();
-        List<Peca> pecas = pecaDao.listarPecas();
+        Iterable<Atracao> filmes = atracaoRepository.findAll();
 
         model.addAttribute("filmes", filmes);
-        model.addAttribute("pecas", pecas);
         return "mostrarAtracoes";
     }
 
@@ -57,7 +46,7 @@ public class AtracaoController {
      */
     @RequestMapping("mostrarSessoesFilme")
     public String mostrarSessoesFilme(Filme umFilme, Model model) {
-        List<Sessao> sessoes = sessaoDao.buscarPorAtracao(umFilme);
+        List<Sessao> sessoes = sessaoRepository.findByAtracao(umFilme);
         model.addAttribute("sessoes", sessoes);
         model.addAttribute("filme", umFilme);
         return "mostrarSessoesFilme";
@@ -65,7 +54,7 @@ public class AtracaoController {
 
     @RequestMapping("mostrarSessoesPeca")
     public String mostrarSessoesPeca(Peca umaPeca, Model model) {
-        List<Sessao> sessoes = sessaoDao.buscarPorAtracao(umaPeca);
+        List<Sessao> sessoes = sessaoRepository.findByAtracao(umaPeca);
         model.addAttribute("sessoes", sessoes);
         model.addAttribute("peca", umaPeca);
         return "mostrarSessoesPeca";
