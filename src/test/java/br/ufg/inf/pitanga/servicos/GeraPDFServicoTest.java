@@ -5,6 +5,7 @@ import com.lowagie.text.DocumentException;
 import com.lowagie.text.pdf.PdfWriter;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
@@ -16,8 +17,10 @@ import java.io.IOException;
 @SpringBootTest
 public class GeraPDFServicoTest {
 
-    GeraPDFServico geraPDFServico = new GeraPDFServico();
-    public static final String RESULT = "C://developer//hello_memory.pdf";
+    @Autowired
+    private GeraPDFServico geraPDFServico;
+
+    private static final String RESULT = "hello_memory.pdf";
 
     @Test
     public void testaGerarComprovante() throws IOException, DocumentException {

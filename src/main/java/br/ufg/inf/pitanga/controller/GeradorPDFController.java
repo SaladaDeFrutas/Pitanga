@@ -19,17 +19,13 @@ import java.util.List;
 public class GeradorPDFController {
 
     @Autowired
-    GeraPDFServico geradorPDFServico;
+    private GeraPDFServico geradorPDFServico;
 
     @Autowired
     private CompraServico compraServico;
 
-
     private final Logger log = LoggerFactory.getLogger(this.getClass());
 
-    public GeradorPDFController() {
-        geradorPDFServico = new GeraPDFServico();
-    }
 
     @RequestMapping("gerarComprovante")
     public void gerarComprovantePdf(Compra compraApenasComId, HttpServletResponse response) {
