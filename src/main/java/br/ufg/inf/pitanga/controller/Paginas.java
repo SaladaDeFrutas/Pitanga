@@ -84,6 +84,12 @@ public class Paginas {
 
     public static final String LOGIN = "login";
 
+    public static final String INFORMACOES_COMPRA = "mostrarInformacoesCompra";
+    public static final String ESCOLHER_INGRESSO = "escolherIngressos";
+    public static final String MOSTRAR_LUGARES = "mostrarLugares";
+    public static final String OBRIGADO = "obrigado";
+    public static final String MOSTRAR_COMPRAS = "mostrarCompras";
+
     private Paginas() {
         //Classe de utilidade
     }
