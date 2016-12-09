@@ -16,9 +16,9 @@ public class ClienteController {
     @Autowired
     private ClienteService clienteService;
 
-    private final String cadastro = "cadastro";
+    private static final String cadastro = "cadastro";
 
-    private final String cadastroSucesso = "cadastroSucesso";
+    private static final String cadastroSucesso = "cadastroSucesso";
 
 
     /**
