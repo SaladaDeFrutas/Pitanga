@@ -18,4 +18,5 @@ public class SessaoServico {
     public Sessao buscaSessaoPorId(Long idSessao) {
         return sessaoRepository.findOne(idSessao);
     }
+
 }

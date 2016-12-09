@@ -18,4 +18,5 @@ public class TipoIngressoServico {
     public TipoIngresso obtenhaTipoIngressoPorNome(String nomeTipoIngresso) {
         return tipoIngressoRepository.findByNome(nomeTipoIngresso);
     }
+
 }
